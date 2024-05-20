@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+
+    <script>
+        (function (d) {
+            var config = {
+                kitId: 'xfr4aba',
+                scriptTimeout: 3000,
+                async: true
+            },
+                h = d.documentElement, t = setTimeout(function () { h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive"; }, config.scriptTimeout), tk = d.createElement("script"), f = false, s = d.getElementsByTagName("script")[0], a; h.className += " wf-loading"; tk.src = 'https://use.typekit.net/' + config.kitId + '.js'; tk.async = true; tk.onload = tk.onreadystatechange = function () { a = this.readyState; if (f || a && a != "complete" && a != "loaded") return; f = true; clearTimeout(t); try { Typekit.load(config) } catch (e) { } }; s.parentNode.insertBefore(tk, s)
+        })(document);
+    </script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="wrapper bc-brown vh100 ">
+        <div class="header"></div>
+        <div class="content">
+            <form action="">
+                <div class="inputFileds">
+                    <div class="filed">
+                        <div class="top">
+                            <label for="nickname">닉네임</label>
+                            <div class="description">한글, 영문 2자 ~ 12글자</div>
+                        </div>
+                        <input type="text" id="nickname">
+                    </div>
+                    <div class="filed">
+                        <div class="top">
+                            <label for="id">아이디</label>
+                            <div class="description">영문, 숫자, 3~20글자 (특수문자 _ 만 사용가능)</div>
+                        </div>
+                        <input type="text" id="id">
+                    </div>
+                    <div class="filed">
+                        <div class="top">
+                            <label for="password">비밀번호</label>
+                            <div class="description">6자 이상의 영문, 숫자, 특수문자</div>
+                        </div>
+                        <input type="password" id="password">
+                    </div>
+                    <div class="filed">
+                        <div class="top">
+                            <label for="check_pw">비밀번호 확인</label>
+                            <!-- <div class="description">한글, 영문 2자 ~ 12글자</div> -->
+                        </div>
+                        <input type="password" id="check_pw">
+                    </div>
+                    <div class="checkGroup">
+                        <div class="filed">
+                            <input type="checkbox" name="all" id="all">
+                            <div class="top">
+                                <label for="all">모두 동의</label>
+                            </div>
+                        </div>
+                        <div class="filed">
+                            <div class="top">
+                                <label for="accept1">[필수] 이용약관 동의</label>
+                                <div class="description">내용보기</div>
+                            </div>
+                            <input type="checkbox" name="accept" id="accept1">
+                        </div>
+                        <div class="filed">
+                            <div class="top">
+                                <label for="accept2">[필수] 개인정보 수집 및 이용 동의</label>
+                                <div class="description">내용보기</div>
+                            </div>
+                            <input type="checkbox" name="accept" id="accept2">
+                        </div>
+                    </div>
+                </div>
+                <div class="btns">
+                    <button>이전</button>
+                    <input type="submit" value="회원가입">
+                </div>
+
+            </form>
+        </div>
+        <div class="footer"></div>
+    </div>
+</body>
+
+</html>

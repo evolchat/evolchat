@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+
+    <script>
+        (function (d) {
+            var config = {
+                kitId: 'xfr4aba',
+                scriptTimeout: 3000,
+                async: true
+            },
+                h = d.documentElement, t = setTimeout(function () { h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive"; }, config.scriptTimeout), tk = d.createElement("script"), f = false, s = d.getElementsByTagName("script")[0], a; h.className += " wf-loading"; tk.src = 'https://use.typekit.net/' + config.kitId + '.js'; tk.async = true; tk.onload = tk.onreadystatechange = function () { a = this.readyState; if (f || a && a != "complete" && a != "loaded") return; f = true; clearTimeout(t); try { Typekit.load(config) } catch (e) { } }; s.parentNode.insertBefore(tk, s)
+        })(document);
+    </script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="wrapper bc-brown vh100 ">
+        <div class="login-wrap max1280 flex-c-c">
+            <div class="header"></div>
+            <div class="content">
+                <form action="">
+                    <div class="inputFileds">
+                        <div class="filed-input  flex-c">
+                            <input type="text" id="id" placeholder="아이디">
+                        </div>
+                        <div class="filed-input  flex-c">
+    
+                            <input type="password" id="password" placeholder="비밀번호">
+                        </div>
+                        <div class="etcGroup">
+                            <div class="filed">
+                                <input type="checkbox" name="all" id="all">
+                                <label for="all"></label>
+                                <div class="top">
+                                    로그인 상태 유지
+                                </div>
+                            </div>
+                            <div class="href">
+                               <a href="">회원가입</a>
+                               <a href="">계정정보 찾기</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btns">
+                        <button>로그인</button>
+                    </div>
+                </form>
+                <div class="sns">
+                    <p class="line">SNS 로그인</p>
+                    <div class="herf-sns">
+                        <a href="" class="login-btn-sns naver"><span></span><span>네이버 로그인</span></a>
+                        <a href="" class="login-btn-sns kakao"><span></span><span>카카오 로그인</span></a>
+                        <a href="" class="login-btn-sns google"><span></span><span>구글 로그인</span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer">© Graycode All Rights Reserved.</div>
+        </div>
+        
+    </div>
+</body>
+
+</html>
