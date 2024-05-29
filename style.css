@@ -78,7 +78,9 @@ summary,
 time,
 mark,
 audio,
-video {
+video,
+input,
+button {
     margin: 0;
     padding: 0;
     border: 0;
@@ -129,16 +131,15 @@ body {
     font-style: normal;
 }
 
-input[type=text] {
+input[type=text],
+input[type="password"] {
     background-color: transparent;
     border: none;
-    border: 0;
     outline: transparent;
     background: 0 0;
     -webkit-appearance: none;
     text-overflow: ellipsis;
-    -webkit-box-sizing: content-box;
-    box-sizing: content-box;
+    box-sizing: border-box;
 }
 
 img {
@@ -157,6 +158,7 @@ img {
 ::-webkit-scrollbar-track {
     background-color: #69696978;
 }
+
 /* 폰트 사이즈 정리 1rem : 16px*/
 .px8 {
     font-size: 0.5rem;
@@ -394,6 +396,9 @@ table {
 .text-center {
     text-align: center;
 }
+.opacity100{opacity: 100%;}
+.opacity80{opacity: 80%;}
+.opacity60{opacity: 60%;}
 
 .g-1 {
     display: inline-block;
@@ -515,6 +520,31 @@ table {
     width: 8.333333%;
     display: inline-block;
 }
+/* 배경색 정의 */
+/* 
+2024-05-27 기준으로 
+상단 해더  #1B1C1E
+푸터 #232428
+왼쪽 사이드 #27292D
+오른쪽 채팅창 #27292D
+메인 #2C2E33
+*/
+
+.bc-header{
+    background-color: #1B1C1E;
+}
+
+.bc-footer{
+    background-color: #232428;
+}
+
+.bc-aside{
+    background-color: #27292D;
+}
+.bc-main{
+    background-color: #2C2E33;
+}
+
 
 .bc-black {
     background-color: #1e2124;
@@ -540,12 +570,38 @@ table {
     background: linear-gradient(#08600b, #0a310e);
 }
 
+.bc-blue {
+    background-color: #185cc6;
+}
 
+.bc-red {
+    background-color: #c52123;
+}
 
+.bc-green {
+    background-color: #4f9e46;
+}
+
+.bc-grey {
+    background-color: #767683;
+}
+.bc-activate {
+    background-color: #8744ff;
+}
+
+/* 글자 색 정의 */
+.label-color {
+    color: #77787C;
+}
+
+.description-color {
+    color: #4D4F53;
+}
 
 .white {
     color: #fff;
 }
+.orange{color:#FFCF40}
 
 .grey-1 {
     color: #a0afbd;
@@ -567,22 +623,7 @@ table {
     color: #76777D
 }
 
-.bc-blue {
-    background-color: #185cc6;
-}
-
-.bc-red {
-    background-color: #c52123;
-}
-
-.bc-green {
-    background-color: #4f9e46;
-}
-
-.bc-grey {
-    background-color: #767683;
-}
-
+/* 테두리 색 정의 */
 .border-red {
     border-color: #cf0e0f;
 }
@@ -600,9 +641,22 @@ table {
     height: 36px;
 }
 
+/* 로고들 */
 .bg-logo {
     background: url('asset/images/sprites/css_sprites.png') -10px -10px;
 }
+
+.graycode {
+    background: url('asset/images/sprites/etc_sprites.png');
+    width: 158px;
+    height: 22px;
+    display: inline-block;
+    background-position: -49px -435px;
+}
+
+
+/* 로고들 */
+
 
 .bg-nav-1 {
     background: url('asset/images/sprites/css_sprites.png') -66px -10px;
@@ -764,6 +818,14 @@ table {
     display: inline-block;
 }
 
+.icon-google-play {
+    background-position: -95px -826px;
+}
+
+.icon-apple {
+    background-position: -54px -825px;
+}
+
 .icon-naver {
     background-position: 1px -372px;
 }
@@ -775,6 +837,16 @@ table {
 .icon-google {
     background-position: 1px -491px;
 }
+
+/* 성인표시 아이콘 */
+.icon-19 {
+    background: url('asset/images/sprites/etc_sprites.png');
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    background-position: -45px -368px;
+}
+
 
 
 .shopping-item {
@@ -872,9 +944,6 @@ table {
 .shopping-item-icon-3 {
     background-position: 2px -122px;
 }
-
-
-
 
 /* Space, Clover, Heart, Diamond */
 .bg-card {
@@ -1124,23 +1193,52 @@ table {
     display: flex !important;
     flex-direction: column;
 }
-
+/* header */
 header {
     max-width: 220px;
     width: 100%;
+    padding: 0 10px;
 }
-
-header>.nav {
-    margin: 10px;
+/* 최근메시지 영역 */
+header>p{
+margin-top: 20px;
+margin-bottom: 10px;
 }
+/* 최근메시지 영역 */
 
 header>.nav>li {
-    padding: 10px;
+ 
 
+}
+header>.nav a.active{
+    background-color: #8744FF;
+    color: #fff;
+}
+header>.nav a{
+      display: flex;
+    width: 100%;
+    padding: 10px;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+}
+header>.nav a>div{
+    margin-right: 20px;
+}
+header .recentMessages li{
+    margin: 2px 0;
+    padding: 10px;
+}
+header .recentMessages li>a{
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+header .recentMessages li div{
+    line-height: 1rem;
 }
 
 .wrap>.content {
-    padding: 20px;
+    /* padding: 20px; */
 }
 
 .gameLayer {
@@ -1191,37 +1289,54 @@ header>.nav>li {
 }
 
 /* .header */
-.header {
+.wrapper>.header {
     padding: 10px;
 }
 
-.header .logo {
+.wrapper>.header .logo {
     flex-wrap: wrap;
     width: 200px;
 
 }
 
-.header>.menu li {
+.wrapper>.header>.menu li {
     padding: 0 20px;
 }
 
-.header .logo {
+.wrapper>.header .logo {
     max-height: 60px;
 }
 
-.header .logo .logoText {
+.wrapper>.header .logo .logoText {
     font-size: 1.5rem;
     color: #fff;
 
 }
 
-.header .menu-btn-layer {
+.wrapper>.header .header-search {
+    margin: 0 40px;
+    max-width: 360px;
+    width: 100%;
+    max-height: 44px;
+    min-height: 44px;
+    height: 44px;
+    background-color: #2C2E33;
+    border-radius: 5px;
+    padding: 0 15px;
+}
+
+.wrapper>.header .header-search input {
+    height: 100%;
+    width: 100%;
+}
+
+.wrapper>.header .menu-btn-layer {
     height: 36px;
     width: 36px;
     padding: 10px;
 }
 
-.header .menu-btn-layer .menu-btn {
+.wrapper>.header .menu-btn-layer .menu-btn {
     display: flex !important;
     /* position: relative; */
     /* max-width: 36px; */
@@ -1234,22 +1349,13 @@ header>.nav>li {
 
 }
 
-.header .menu-btn-layer .menu-btn>.line {
+.wrapper>.header .menu-btn-layer .menu-btn>.line {
     width: 100%;
     height: 2px;
     background-color: #fff;
 }
 
-.header .menu-btn-layer .menu-btn::after {
-    width: 100%;
-    height: 2px;
-    background-color: #fff;
-    /* position: absolute; */
-    content: '';
-    display: inline-block;
-}
-
-.header .menu-btn-layer .menu-btn::before {
+.wrapper>.header .menu-btn-layer .menu-btn::after {
     width: 100%;
     height: 2px;
     background-color: #fff;
@@ -1258,37 +1364,46 @@ header>.nav>li {
     display: inline-block;
 }
 
-.header .menu {
+.wrapper>.header .menu-btn-layer .menu-btn::before {
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+    /* position: absolute; */
+    content: '';
+    display: inline-block;
+}
+
+.wrapper>.header .menu {
     max-width: 700px;
     width: 100%;
 }
 
-.header .info_option .items {
+.wrapper>.header .info_option .items {
     padding: 10px;
     font-size: 0.9rem;
 }
 
-.header .info_option .active {
+.wrapper>.header .info_option .active {
     background-color: #40393c;
     border-radius: 10px;
 }
 
-.header .info_option .items:nth-child(1),
-.header .info_option .items:nth-child(2) {
+.wrapper>.header .info_option .items:nth-child(1),
+.wrapper>.header .info_option .items:nth-child(2) {
     border-radius: 20px;
     border: 1px solid #312c2e;
 }
 
-.header .info_option .items:nth-child(1) {
+.wrapper>.header .info_option .items:nth-child(1) {
     color: #c4a572;
 }
 
-.header .info_option .items:nth-child(2) {
+.wrapper>.header .info_option .items:nth-child(2) {
     color: #fff;
     padding: 0;
 }
 
-.header .info_option .items:nth-child(2)>span:last-child {
+.wrapper>.header .info_option .items:nth-child(2)>span:last-child {
     background-color: #d88117;
     border-radius: 10px;
     height: 100%;
@@ -1340,6 +1455,38 @@ div.mainContent {
     flex-grow: 1;
 }
 
+
+/* sub-header */
+.sub-header{
+    padding: 10px 20px;
+}
+.sub-header>.list{
+    padding: 12px 6px;    
+    margin: 0 4px;
+}
+.sub-header>.active{
+    opacity: 1;
+    border-radius: 5px;
+    background-color: #3A3C43;
+}
+.sub-header-search{
+    max-height: 44px;
+    min-height: 44px;
+    padding: 0 14px;
+    border-radius: 5px;
+}
+.sub-header-search input{
+    width: 100%;
+    min-height: 44px;
+    height: 100%;
+    color: #fff;
+}
+/* sub-header */
+
+
+.chatingLayer{
+    padding: 0 20px;
+}
 .chatLayer>div>div.title {
     color: #fff;
     padding: 10px 0;
@@ -1349,25 +1496,38 @@ div.mainContent {
 .chatLayer>div>div.title span {
     color: #f5931c;
 }
-
+div.chatContent{
+    margin-left: 10px;
+}
 div.chatContent>div.bottom.grey-1 {
     padding: 10px;
 }
-
+div.chatContent>div.bottom{
+    margin-top: 4px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 10px;
+}
 div.chatContent>div.text.grey-1 {
     border-radius: 10px;
     padding: 10px;
 }
-
+.chatLayer>div>div.chatInsert{
+    padding:20px ;
+    max-height: 58px;
+    min-height: 58px;
+}
 .chatLayer>div>div.chatInsert>input[type=text] {
     border: none;
-    height: 45px;
     width: 100%;
+    color: #fff;
     max-width: 200px;
 }
 
 /* gameLayer */
 div.mainContent {
+    padding-bottom: 80px;
     position: relative;
 }
 
@@ -1481,6 +1641,10 @@ div.mainContent>div.mainLayer>div>div>div.bottom>div>div>div {
     max-width: 1080px;
     margin: 0 auto;
     padding-bottom: 70px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 40px;
+    width: 100%;
 }
 
 .footer .footer-notification,
@@ -1488,8 +1652,17 @@ div.mainContent>div.mainLayer>div>div>div.bottom>div>div>div {
     font-size: 0.8125 rem;
 }
 
+.footer .top .logo {
+    justify-content: space-between;
+}
+
+.footer .center {
+    margin: 20px 0;
+}
+
 .footer .footer-nav {
     justify-content: space-between;
+    margin: 50px 0;
 }
 
 .footer .footer-nav .nav-list .nav-title {
@@ -1504,37 +1677,55 @@ div.mainContent>div.mainLayer>div>div>div.bottom>div>div>div {
 }
 
 .footer-corp {
-    margin-top: 35px;
+    margin-top: 20px;
+}
+
+.footer-corp>div {
+    margin: 10px 0;
 }
 
 /* 여기까지 footer */
 
 
 /* join & login */
-.login-wrap {
-    flex-direction: column;
-}
-
 .assign-wrap {
     max-width: 390px;
     width: 100%;
+    flex-direction: column;
 }
 
 .assign-wrap .content {
     width: 100%;
 }
 
+.join-wrap .content {
+    text-align: center;
+}
+
+.assign-wrap .header {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.assign-wrap .header .safety {
+    letter-spacing: 0.375rem;
+}
+
 .assign-wrap input[type="text"],
 .assign-wrap input[type="password"] {
-    background-color: transparent;
+    background-color: #232428;
     padding: 5px;
     border: none;
     height: 100%;
+    width: 100%;
+    border-radius: 10px;
     color: #fff;
 }
 
 .assign-wrap input[type="checkbox"] {
     display: none;
+
 }
 
 .assign-wrap input[type="checkbox"]+label {
@@ -1564,9 +1755,34 @@ div.mainContent>div.mainLayer>div>div>div.bottom>div>div>div {
 .assign-wrap .field-input {
     max-width: 350px;
     height: 42px;
-    border: 1px solid #40393c;
+    /* border: 1px solid #40393c;
     border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    border-top-right-radius: 10px; */
+}
+
+.join-wrap .inputfields {
+    display: inline-block;
+}
+
+.assign-wrap .inputfields .field {
+    margin: 10px 0;
+    max-width: 350px;
+}
+
+.assign-wrap .inputfields .field .top {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 8px;
+
+}
+
+.join-wrap .field .input {
+    width: 100%;
+
+    max-height: 50px;
+    min-height: 50px;
 }
 
 .login-wrap .sns .herf-sns .icon-sns {
@@ -1963,3 +2179,29 @@ div.mainContent>div.mainLayer>div>div>div.bottom>div>div>div {
     max-height: 50px;
     font-size: 0.8125 rem;
 }
+
+
+/* messenger_blocklists */
+
+.user-list-layer{
+    padding: 0 20px;
+    text-align: left;
+}
+.user-list-layer .user-list{
+    max-height: 72px;
+    min-height: 72px;
+}
+.user-list-layer .user-list > div{
+    margin-right: 8px;
+}
+.user-list-layer .user{
+   flex-grow: 1;
+   line-height: 1rem;
+}
+.user-list-layer .btn{
+    border-radius: 5px;
+    background-color:#35373D ;
+    color: #ffffff87; 
+    padding: 13px 9px;
+}
+/* messenger_blocklists */

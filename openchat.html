@@ -22,7 +22,7 @@
 
 <body>
     <div class="wrapper bc-black vh100 ">
-        <div class="header flex-row">
+        <div class="header flex-row bc-header">
             <div class="wrap  g-8 flex-row">
                 <div class="logo flex-row flex-c">
                     <div class="bg-nav bg-logo"></div>
@@ -33,7 +33,10 @@
                         </div>
                     </div>
                 </div>
-
+                <div class="header-search">
+                    <input type="text" class="white" placeholder="에볼류션 테이블 검색">
+                    <i class="search"></i>
+                </div>
 
             </div>
             <div class="wrap flex-row  g-4">
@@ -52,7 +55,7 @@
 
         </div>
         <Section class="container flex-row">
-            <header>
+            <header class="bc-aside">
                 <ul class="nav">
                     <li class="grey-1"><a class="" href="#">
                             <div class="bg-i-manu bg-i-manu-1"></div>에볼루션
@@ -94,9 +97,9 @@
                                 class="notice">3</span></a></li>
                 </ul>
             </header>
-            <div class="wrap bd-gray-dark ">
+            <div class="wrap bc-footer ">
                 <div class="content">
-                    <div class="mainContent">
+                    <div class="mainContent bc-main">
                         <div class="mainLayer">
                             <div class="room-layer">
                                 <div class="room">
@@ -340,27 +343,29 @@
 
                     </div>
 
-                    <div class="footer grey-5">
+                    <div class="footer grey-5 bc-footer">
                         <div class="footer-notification">
                             <div class="top">
-                                <div class="logo"></div>
-                                <div class="icons-wrap">
-                                    <div class="icon"></div>
-                                    <div class="icon"></div>
+                                <div class="logo flex-c flex-row"><img src="asset/images/logo/logo.png" alt="EVOLCHAT 로고">
+                                    <div class="icons-wrap">
+                                        <div class="icon-sns icon-apple"></div>
+                                        <div class="icon-sns icon-google-play"></div>
+                                    </div>
                                 </div>
+                                
                             </div>
-                            <div class="center">
-                                <p>에볼챗(evolchat.com)은 데이터를 기반으로 한 게임 분석 및 커뮤니티, 채팅을 서비스합니다. 금전을 걸고 할 수 있는 도박은 제공하지 않으며,
+                            <div class="center  px13">
+                                <p>에볼챗(evolchat.com)은 데이터를 기반으로 한 게임 분석 및 커뮤니티, 채팅을 서비스합니다.<br> 금전을 걸고 할 수 있는 도박은 제공하지 않으며,
                                     무료로 제공되는 양도가 불가능한 배팅 포인트를 이용하여 가상의 배팅을 즐기실 수 있습니다.</p>
                             </div>
-                            <div class="bottom">
-                                <div class="icon"></div>
-                                <p>에볼챗은 만 19세 미만의 청소년은 가입이 불가합니다. 본인이 아닌 타인의 명의를 도용, 대여하여 인증하는 행위를 금지합니다.</p>
+                            <div class="bottom flex-row flex-c px13">
+                                <div class="icon icon-19"></div>
+                                <p>에볼챗은 만 19세 미만의 청소년은 가입이 불가합니다.<br> 본인이 아닌 타인의 명의를 도용, 대여하여 인증하는 행위를 금지합니다.</p>
                             </div>
                         </div>
-                        <div class="footer-nav flex-row">
+                        <div class="footer-nav flex-row px14">
                             <div class="nav-list">
-                                <div class="nav-title"><a href="#">에볼루션</a></div>
+                                <div class="nav-title px17"><a href="#">에볼루션</a></div>
                                 <div class="nav-item"><a href="#">바카라</a></div>
                                 <div class="nav-item"><a href="#">식보</a></div>
                                 <div class="nav-item"><a href="#">최고의 게임</a></div>
@@ -369,7 +374,7 @@
                                 <div class="nav-item"><a href="#">즐겨찾기</a></div>
                             </div>
                             <div class="nav-list">
-                                <div class="nav-title"><a href="#">커뮤니티</a></div>
+                                <div class="nav-title px17"><a href="#">커뮤니티</a></div>
                                 <div class="nav-item"><a href="#">자유</a></div>
                                 <div class="nav-item"><a href="#">포토</a></div>
                                 <div class="nav-item"><a href="#">유머</a></div>
@@ -378,19 +383,19 @@
                                 <div class="nav-item"><a href="#">신고게시판</a></div>
                             </div>
                             <div class="nav-list">
-                                <div class="nav-title"><a href="#">오픈채팅</a></div>
+                                <div class="nav-title px17"><a href="#">오픈채팅</a></div>
                                 <div class="nav-item"><a href="#">오픈채팅 목록</a></div>
                                 <div class="nav-item"><a href="#">오픈채팅 개설</a></div>
                             </div>
                             <div class="nav-list">
-                                <div class="nav-title"><a href="#">랭킹</a></div>
+                                <div class="nav-title px17"><a href="#">랭킹</a></div>
                                 <div class="nav-item"><a href="#">수익</a></div>
                                 <div class="nav-item"><a href="#">승률</a></div>
                                 <div class="nav-item"><a href="#">연승</a></div>
                                 <div class="nav-item"><a href="#">잭팟 수령</a></div>
                             </div>
                             <div class="nav-list">
-                                <div class="nav-title"><a href="#">상점</a></div>
+                                <div class="nav-title px17"><a href="#">상점</a></div>
                                 <div class="nav-item"><a href="#">채팅</a></div>
                                 <div class="nav-item"><a href="#">꾸미기</a></div>
                                 <div class="nav-item"><a href="#">포인트</a></div>
@@ -398,14 +403,14 @@
                                 <div class="nav-item"><a href="#">기타</a></div>
                             </div>
                             <div class="nav-list">
-                                <div class="nav-title"><a href="#">고객센터</a></div>
+                                <div class="nav-title px17"><a href="#">고객센터</a></div>
                                 <div class="nav-item"><a href="#">공지사항</a></div>
                                 <div class="nav-item"><a href="#">도움말</a></div>
                                 <div class="nav-item"><a href="#">문의하기</a></div>
                                 <div class="nav-item"><a href="#">블랙리스트</a></div>
                             </div>
                             <div class="nav-list">
-                                <div class="nav-title"><a href="#">메신저</a></div>
+                                <div class="nav-title px17"><a href="#">메신저</a></div>
                                 <div class="nav-item"><a href="#">친구 목록</a></div>
                                 <div class="nav-item"><a href="#">다이렉트 메시지</a></div>
                                 <div class="nav-item"><a href="#">차단 목록</a></div>
@@ -413,17 +418,17 @@
                             </div>
                         </div>
                         <div class="footer-corp">
-                            <div class="logo-corp"></div>
-                            <p>(주)그레이코드 개인정보보호책임자 홍길동 주소 : 서울시 강남구 논현동 243-17번지 1층 전화 : 1588-4444 팩스 : 02-248-4444
+                            <div class="logo-corp graycode"></div>
+                            <p class="px13">(주)그레이코드 개인정보보호책임자 홍길동 주소 : 서울시 강남구 논현동 243-17번지 1층 전화 : 1588-4444 팩스 : 02-248-4444<br>
                                 E-mail : contact@evolchat.com 사업자등록번호 : 220-87-17456 통신판매업 신고번호 : 제2024-서울강남-1659호
                                 사업자정보확인</p>
-                            <div class="copy-corp"></div>
+                            <div class="copy-corp"><img src="asset/images/logo/corp.png" alt="corp.png"></div>
                         </div>
                     </div>
                 </div>
 
             </div>
-            <div class="content chatLayer">
+            <div class="content chatLayer bc-aside">
                 <div class="chat">
                     <div class="title">
                         <p>코리아 스피드 바카라 A <span class="">582</span></p>
@@ -437,7 +442,7 @@
                                         <div class="nickname grey-4">우울한협객</div>
                                         <div class="time grey-1">16:03</div>
                                     </div>
-                                    <div class="bottom grey-1 bc-brown">
+                                    <div class="bottom white opacity80 bc-gray-dark">
                                         <div class="text ">
                                             오늘 카드가 너무 이쁘게 나오네~ 100출 1000마감 해봐야겠다!
                                         </div>
@@ -452,7 +457,7 @@
                                         <div class="nickname grey-4">우울한협객</div>
                                         <div class="time grey-1">16:03</div>
                                     </div>
-                                    <div class="bottom grey-1 bc-brown">
+                                    <div class="bottom white opacity80 bc-gray-dark">
                                         <div class="text ">
                                             오늘 카드가 너무 이쁘게 나오네~ 100출 1000마감 해봐야겠다!
                                         </div>
@@ -467,7 +472,7 @@
                                         <div class="nickname grey-4">우울한협객</div>
                                         <div class="time grey-1">16:03</div>
                                     </div>
-                                    <div class="bottom grey-1 bc-brown">
+                                    <div class="bottom white opacity80 bc-gray-dark">
                                         <div class="text ">
                                             오늘 카드가 너무 이쁘게 나오네~ 100출 1000마감 해봐야겠다!
                                         </div>
@@ -482,7 +487,7 @@
                                         <div class="nickname grey-4">우울한협객</div>
                                         <div class="time grey-1">16:03</div>
                                     </div>
-                                    <div class="bottom grey-1 bc-brown">
+                                    <div class="bottom white opacity80 bc-gray-dark">
                                         <div class="text ">
                                             오늘 카드가 너무 이쁘게 나오네~ 100출 1000마감 해봐야겠다!
                                         </div>
@@ -497,7 +502,7 @@
                                         <div class="nickname grey-4">우울한협객</div>
                                         <div class="time grey-1">16:03</div>
                                     </div>
-                                    <div class="bottom grey-1 bc-brown">
+                                    <div class="bottom white opacity80 bc-gray-dark">
                                         <div class="text ">
                                             오늘 카드가 너무 이쁘게 나오네~ 100출 1000마감 해봐야겠다!
                                         </div>
@@ -512,7 +517,7 @@
                                         <div class="nickname grey-4">우울한협객</div>
                                         <div class="time grey-1">16:03</div>
                                     </div>
-                                    <div class="bottom grey-1 bc-brown">
+                                    <div class="bottom white opacity80 bc-gray-dark">
                                         <div class="text ">
                                             오늘 카드가 너무 이쁘게 나오네~ 100출 1000마감 해봐야겠다!
                                         </div>
@@ -527,7 +532,7 @@
                                         <div class="nickname grey-4">우울한협객</div>
                                         <div class="time grey-1">16:03</div>
                                     </div>
-                                    <div class="bottom grey-1 bc-brown">
+                                    <div class="bottom white opacity80 bc-gray-dark">
                                         <div class="text ">
                                             오늘 카드가 너무 이쁘게 나오네~ 100출 1000마감 해봐야겠다!
                                         </div>
@@ -542,7 +547,7 @@
                                         <div class="nickname grey-4">우울한협객</div>
                                         <div class="time grey-1">16:03</div>
                                     </div>
-                                    <div class="bottom grey-1 bc-brown">
+                                    <div class="bottom white opacity80 bc-gray-dark">
                                         <div class="text ">
                                             오늘 카드가 너무 이쁘게 나오네~ 100출 1000마감 해봐야겠다!
                                         </div>
@@ -557,7 +562,7 @@
                                         <div class="nickname grey-4">우울한협객</div>
                                         <div class="time grey-1">16:03</div>
                                     </div>
-                                    <div class="bottom grey-1 bc-brown">
+                                    <div class="bottom white opacity80 bc-gray-dark">
                                         <div class="text ">
                                             오늘 카드가 너무 이쁘게 나오네~ 100출 1000마감 해봐야겠다!
                                         </div>
@@ -572,7 +577,7 @@
                                         <div class="nickname grey-4">우울한협객</div>
                                         <div class="time grey-1">16:03</div>
                                     </div>
-                                    <div class="bottom grey-1 bc-brown">
+                                    <div class="bottom white opacity80 bc-gray-dark">
                                         <div class="text ">
                                             오늘 카드가 너무 이쁘게 나오네~ 100출 1000마감 해봐야겠다!
                                         </div>
@@ -587,7 +592,7 @@
                                         <div class="nickname grey-4">우울한협객</div>
                                         <div class="time grey-1">16:03</div>
                                     </div>
-                                    <div class="bottom grey-1 bc-brown">
+                                    <div class="bottom white opacity80 bc-gray-dark">
                                         <div class="text ">
                                             오늘 카드가 너무 이쁘게 나오네~ 100출 1000마감 해봐야겠다!
                                         </div>
@@ -602,7 +607,7 @@
                                         <div class="nickname grey-4">우울한협객</div>
                                         <div class="time grey-1">16:03</div>
                                     </div>
-                                    <div class="bottom grey-1 bc-brown">
+                                    <div class="bottom white opacity80 bc-gray-dark">
                                         <div class="text ">
                                             오늘 카드가 너무 이쁘게 나오네~ 100출 1000마감 해봐야겠다!
                                         </div>
@@ -617,7 +622,7 @@
                                         <div class="nickname grey-4">우울한협객</div>
                                         <div class="time grey-1">16:03</div>
                                     </div>
-                                    <div class="bottom grey-1 bc-brown">
+                                    <div class="bottom white opacity80 bc-gray-dark">
                                         <div class="text ">
                                             오늘 카드가 너무 이쁘게 나오네~ 100출 1000마감 해봐야겠다!
                                         </div>
@@ -632,7 +637,7 @@
                                         <div class="nickname grey-4">우울한협객</div>
                                         <div class="time grey-1">16:03</div>
                                     </div>
-                                    <div class="bottom grey-1 bc-brown">
+                                    <div class="bottom white opacity80 bc-gray-dark">
                                         <div class="text ">
                                             오늘 카드가 너무 이쁘게 나오네~ 100출 1000마감 해봐야겠다!
                                         </div>
@@ -647,7 +652,7 @@
                                         <div class="nickname grey-4">우울한협객</div>
                                         <div class="time grey-1">16:03</div>
                                     </div>
-                                    <div class="bottom grey-1 bc-brown">
+                                    <div class="bottom white opacity80 bc-gray-dark">
                                         <div class="text ">
                                             오늘 카드가 너무 이쁘게 나오네~ 100출 1000마감 해봐야겠다!
                                         </div>
@@ -662,7 +667,7 @@
                                         <div class="nickname grey-4">우울한협객</div>
                                         <div class="time grey-1">16:03</div>
                                     </div>
-                                    <div class="bottom grey-1 bc-brown">
+                                    <div class="bottom white opacity80 bc-gray-dark">
                                         <div class="text ">
                                             오늘 카드가 너무 이쁘게 나오네~ 100출 1000마감 해봐야겠다!
                                         </div>
@@ -677,7 +682,7 @@
                                         <div class="nickname grey-4">우울한협객</div>
                                         <div class="time grey-1">16:03</div>
                                     </div>
-                                    <div class="bottom grey-1 bc-brown">
+                                    <div class="bottom white opacity80 bc-gray-dark">
                                         <div class="text ">
                                             오늘 카드가 너무 이쁘게 나오네~ 100출 1000마감 해봐야겠다!
                                         </div>
@@ -692,7 +697,7 @@
                                         <div class="nickname grey-4">우울한협객</div>
                                         <div class="time grey-1">16:03</div>
                                     </div>
-                                    <div class="bottom grey-1 bc-brown">
+                                    <div class="bottom white opacity80 bc-gray-dark">
                                         <div class="text ">
                                             오늘 카드가 너무 이쁘게 나오네~ 100출 1000마감 해봐야겠다!
                                         </div>
@@ -707,7 +712,7 @@
                                         <div class="nickname grey-4">우울한협객</div>
                                         <div class="time grey-1">16:03</div>
                                     </div>
-                                    <div class="bottom grey-1 bc-brown">
+                                    <div class="bottom white opacity80 bc-gray-dark">
                                         <div class="text ">
                                             오늘 카드가 너무 이쁘게 나오네~ 100출 1000마감 해봐야겠다!
                                         </div>
@@ -722,7 +727,7 @@
                                         <div class="nickname grey-4">우울한협객</div>
                                         <div class="time grey-1">16:03</div>
                                     </div>
-                                    <div class="bottom grey-1 bc-brown">
+                                    <div class="bottom white opacity80 bc-gray-dark">
                                         <div class="text ">
                                             오늘 카드가 너무 이쁘게 나오네~ 100출 1000마감 해봐야겠다!
                                         </div>
@@ -737,7 +742,7 @@
                                         <div class="nickname grey-4">우울한협객</div>
                                         <div class="time grey-1">16:03</div>
                                     </div>
-                                    <div class="bottom grey-1 bc-brown">
+                                    <div class="bottom white opacity80 bc-gray-dark">
                                         <div class="text ">
                                             오늘 카드가 너무 이쁘게 나오네~ 100출 1000마감 해봐야겠다!
                                         </div>
@@ -752,7 +757,7 @@
                                         <div class="nickname grey-4">우울한협객</div>
                                         <div class="time grey-1">16:03</div>
                                     </div>
-                                    <div class="bottom grey-1 bc-brown">
+                                    <div class="bottom white opacity80 bc-gray-dark">
                                         <div class="text ">
                                             오늘 카드가 너무 이쁘게 나오네~ 100출 1000마감 해봐야겠다!
                                         </div>
@@ -763,9 +768,9 @@
                         </div>
 
                     </div>
-                    <div class="chatInsert bc-brown">
+                    <div class="chatInsert bc-gray-dark">
                         <div class="btn other"></div>
-                        <input type="text" class="bc-brown" placeholder="채팅 메세지 보내기">
+                        <input type="text"  placeholder="채팅 메세지 보내기">
                         <div class="btn gif"></div>
                         <div class="btn img"></div>
                     </div>
