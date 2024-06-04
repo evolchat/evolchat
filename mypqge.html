@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>에볼챗닷컴 : 고객샌터 - 도움말</title>
+    <title>에볼챗닷컴 : 마이페이지</title>
 
     <script>
         (function (d) {
@@ -16,8 +16,8 @@
                 h = d.documentElement, t = setTimeout(function () { h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive"; }, config.scriptTimeout), tk = d.createElement("script"), f = false, s = d.getElementsByTagName("script")[0], a; h.className += " wf-loading"; tk.src = 'https://use.typekit.net/' + config.kitId + '.js'; tk.async = true; tk.onload = tk.onreadystatechange = function () { a = this.readyState; if (f || a && a != "complete" && a != "loaded") return; f = true; clearTimeout(t); try { Typekit.load(config) } catch (e) { } }; s.parentNode.insertBefore(tk, s)
         })(document);
     </script>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="asset/css/style.css">
+
 </head>
 
 <body>
@@ -61,107 +61,232 @@
                             <div class="bg-i-manu bg-i-manu-1"></div>에볼루션
                         </a></li>
                     <li class="grey-1"><a class="" href="#">
-                            <div class="bg-i-manu bg-i-manu-2"></div>메신저<span class="notice">3</span>
+                            <div class="bg-i-manu bg-i-manu-1"></div>오토봇
                         </a></li>
-                    <li class="grey-1"><a class="" href="#">
+
+                    <li class="grey-1"><a class="" href="./openchat.html">
                             <div class="bg-i-manu bg-i-manu-3"></div>오픈채팅
                         </a></li>
-                    <li class="grey-1"><a class="" href="#">
+                    <li class="grey-1"><a class="" href="./community_free.html">
                             <div class="bg-i-manu bg-i-manu-4"></div>커뮤니티
                         </a></li>
-                    <li class="grey-1"><a class="" href="#">
+                    <li class="grey-1"><a class="" href="./rank.html">
                             <div class="bg-i-manu bg-i-manu-5"></div>랭킹
                         </a></li>
                     <li class="grey-1"><a class="" href="#">
                             <div class="bg-i-manu bg-i-manu-6"></div>상점
                         </a></li>
-                    <li class="grey-1"><a class="" href="#">
+                    <li class="grey-1"><a class="" href="./support_notice.html">
                             <div class="bg-i-manu bg-i-manu-7"></div>고객센터
                         </a></li>
+                    <li class="grey-1"><a class="" href="./messenger_friend.html">
+                            <div class="bg-i-manu bg-i-manu-2"></div>메신저<span class="notice">3</span>
+                        </a></li>
                 </ul>
-                <p>최근 메시지</p>
-                <ul>
-                    <li class="grey-1"><a href="#"><img src="asset/images/profile/user1.png" />라이언일병구하기 <span
-                                class="notice">3</span></a></li>
-                    <li class="grey-1"><a href="#"><img src="asset/images/profile/user2.png" />우울한협객 <span
-                                class="notice">3</span></a></li>
-                    <li class="grey-1"><a href="#"><img src="asset/images/profile/user1.png" />라이언일병구하기 <span
-                                class="notice">3</span></a></li>
-                    <li class="grey-1"><a href="#"><img src="asset/images/profile/user2.png" />우울한협객 <span
-                                class="notice">3</span></a></li>
-                    <li class="grey-1"><a href="#"><img src="asset/images/profile/user1.png" />라이언일병구하기 <span
-                                class="notice">3</span></a></li>
-                    <li class="grey-1"><a href="#"><img src="asset/images/profile/user2.png" />우울한협객 <span
-                                class="notice">3</span></a></li>
-                    <li class="grey-1"><a href="#"><img src="asset/images/profile/user1.png" />라이언일병구하기 <span
-                                class="notice">3</span></a></li>
+                <p class="px12 opacity60 white">최근 메시지 <span class="orange">4</span></p>
+                <ul class="white recentMessages">
+                    <li class="grey-1"><a href="#" class="flex-row flex-c">
+                            <img src="asset/images/profile/user1.png" />
+                            <div class="opacity60">
+                                <p class=" px14">슈퍼컴퓨터분석</p>
+                                <p class=" px12">오늘 언제 시작하세요?</p>
+                            </div>
+                            <span class="notice">3</span>
+                        </a>
+                    </li>
+                    <li class="grey-1"><a href="#" class="flex-row flex-c">
+                            <img src="asset/images/profile/user1.png" />
+                            <div class="opacity60">
+                                <p class=" px14">슈퍼컴퓨터분석</p>
+                                <p class=" px12">오늘 언제 시작하세요?</p>
+                            </div>
+                            <span class="notice">3</span>
+                        </a>
+                    </li>
+                    <li class="grey-1"><a href="#" class="flex-row flex-c">
+                            <img src="asset/images/profile/user1.png" />
+                            <div class="opacity60">
+                                <p class=" px14">슈퍼컴퓨터분석</p>
+                                <p class=" px12">오늘 언제 시작하세요?</p>
+                            </div>
+                            <span class="notice">3</span>
+                        </a>
+                    </li>
+                    <li class="grey-1"><a href="#" class="flex-row flex-c">
+                            <img src="asset/images/profile/user1.png" />
+                            <div class="opacity60">
+                                <p class=" px14">슈퍼컴퓨터분석</p>
+                                <p class=" px12">오늘 언제 시작하세요?</p>
+                            </div>
+                            <span class="notice">3</span>
+                        </a>
+                    </li>
                 </ul>
             </header>
-            <div class="wrap bc-footer">
+            <div class="wrap bc-footer ">
                 <div class="content">
                     <div class="mainContent bc-main">
-                        <div class="mainLayer">
-                            <div class="search-area">
-                                <h2 class="white px44">궁금하신 내용을<br> 검색하시면 해결해드릴게요!</h2>
-                                <div class="search">
-                                    <div class="input">
-                                        <input type="text" placeholder="궁금하신 사항을 검색해 보세요.">
-                                    </div>
-
-                                </div>
-                                <div class="character-wrap">
-                                    <div class="character position-r">
-                                        <img src="asset/images/Character/head.png" alt="물음표 모양의 캐릭터 머리">
-                                    </div>
-                                </div>
+                        <div class="sub-header flex-row flex-c white opacity60 px15">
+                            <div class="list active"><a href="#">내정보</a></div>
+                            <div class="list"><a href="#">아이템</a></div>
+                            <div class="list"><a href="#">캐시</a></div>
+                            <div class="list"><a href="#">배팅 포인트</a></div>
+                            <div class="list"><a href="#">활동 포인트</a></div>
+                            <div class="list"><a href="#">골드칩</a></div>
+                            <div class="list"><a href="#">마이홈</a></div>
+                            <div class="list"><a href="#">비빌번호 변경</a></div>
+                        </div>
+                        <div class="sub-header hidden">
+                            <div class="sub-header-search bc-footer">
+                                <input type="text" placeholder="닉네임 검색">
                             </div>
-                            <div class="text-wrap help">
-                                <div class="text_set grey-5 g-6  px15">
-                                    <div class="title white px24">계정 관련</div>
-                                    <div class="question">아이디와 비밀번호(계정정보)를 잃어 버렸습니다.</div>
-                                    <div class="question">회원 탈퇴는 어디서 할 수 있나요?</div>
-                                    <div class="question">본인 명의의 휴대폰이 없는데 회원가입을 할 수 없나요?</div>
-                                    <div class="question">미성년자인데 회원가입을 할 수 없나요?</div>
-                                    <div class="question">여러개의 계정을 생성할 수 있나요?</div>
-                                </div>
-                                <div class="text_set grey-5 g-6 px15">
-                                    <div class="title white px24">서비스 이용 및 운영정책</div>
-                                    <div class="question">이용 중 활동 정지를 당했는데 해제할 수 있는 방법이 없나요?</div>
-                                    <div class="question">채팅창에서 성인물이나 욕설을 하는 사람을 신고할 수 없나요?</div>
-                                    <div class="question">잭팟(Jackpot)은 뭔가요?</div>
-                                </div>
-                                <div class="text_set grey-5 g-6 px15">
-                                    <div class="title white px24">아이템 관련</div>
-                                    <div class="question">아이템을 샀는데 채팅(오픈채팅 개설, 메신저, 전적초기화...)이 되지 않습니다.</div>
-                                    <div class="question">회원 탈퇴는 어디서 할 수 있나요?</div>
-                                    <div class="question">본인 명의의 휴대폰이 없는데 회원가입을 할 수 없나요?</div>
-                                    <div class="question">미성년자인데 회원가입을 할 수 없나요?</div>
-                                    <div class="question">여러개의 계정을 생성할 수 있나요?</div>
-                                </div>
-                                <div class="text_set grey-5 g-6 px15">
-                                    <div class="title white px24">광고 및 비지니스 관련</div>
-                                    <div class="question">이용 중 활동 정지를 당했는데 해제할 수 있는 방법이 없나요?</div>
-                                    <div class="question">채팅창에서 성인물이나 욕설을 하는 사람을 신고할 수 없나요?</div>
-                                    <div class="question">잭팟(Jackpot)은 뭔가요?</div>
-                                </div>
-                            </div>
-
                         </div>
 
+                        <div class="mainLayer white">
+                            <div class="content-wrap flex-c-c flex-column">
+                                <div class="etc flex-row">
+                                    <div class="money-wrap g-6">
+                                        <div class="flex-row flex-c">
+                                            <div></div>
+                                            <div>캐시</div>
+                                            <div>1,000,000</div>
+                                        </div>
+                                        <div class="flex-row flex-c">
+                                            <div></div>
+                                            <div>배팅 포인트</div>
+                                            <div>1,000,000</div>
+                                        </div>
+                                        <div class="flex-row flex-c">
+                                            <div></div>
+                                            <div>배팅 수익</div>
+                                            <div>-62,000,000</div>
+                                        </div>
+                                        <div class="flex-row flex-c">
+                                            <div></div>
+                                            <div>활동 포인트</div>
+                                            <div>45000</div>
+                                        </div>
+                                        <div class="flex-row flex-c">
+                                            <div></div>
+                                            <div>골드칩</div>
+                                            <div>100</div>
+                                        </div>
+                                    </div>
+                                    <div class="flex-row g-6">
+                                        <div class="text-wrap  g-6">
+                                            <div class="title">잭팟의 주인공이 되어보세요.</div>
+                                            <ol>
+                                                <li>잭팟 보상으로 지급되는 골드칩은 에볼챗에서 사용하는 가상의 화폐로 현금으로 환전이 가능합니다.</li>
+                                                <li>매주 월요일 오전 00:00 - 00:30분에 한 주간 가장 많은 배팅 수익을 낸 탑랭커(수익랭킹 1위 - 3위)
+                                                    회원님에게잭팟 머니가 분배 지급됩니다.</li>
+                                                <li>배팅 참여 인원이 1,000명 이하일 경우에는 잭팟이 이월됩니다.</li>
+                                            </ol>
+
+                                        </div>
+                                        <div class="img-illust illust-5"></div>
+                                    </div>
+
+                                </div>
+                                <div class="information flex-column">
+                                    <div class="title">기본 정보</div>
+                                    <div class="img-area">
+                                        <div class="profile">
+                                            <label for="file">
+                                                <div class="btn-upload">파일 업로드하기</div>
+                                            </label>
+                                            <input type="file" name="file" id="file">
+                                            <div class="text">
+                                                <p>2MB 이내의 이미지 파일을 업로드 해주세요.
+                                                    사이즈는 512x512를 권장합니다.</p>
+                                            </div>
+                                        </div>
+                                        <div class="background"></div>
+                                    </div>
+                                    <div class="input-area">
+                                        <div class="field">
+                                            <label for="password">아이디</label>
+                                            <input class="input" type="text" id="password">
+                                        </div>
+                                        <div class="field">
+                                            <label for="password">아이디</label>
+                                            <input class="input" type="text" id="password">
+                                        </div>
+                                        <div class="field">
+                                            <label for="password">아이디</label>
+                                            <input class="input" type="text" id="password">
+                                        </div>
+                                        <div class="field">
+                                            <label for="password">아이디</label>
+                                            <input class="input" type="text" id="password">
+                                        </div>
+                                        <div class="field">
+                                            <label for="password">아이디</label>
+                                            <input class="input" type="text" id="password">
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+                                <div class="information">
+                                    <div class="title">추가 정보</div>
+                                    <div class="input-area">
+                                        <div class="field">
+                                            <label for="password">오늘의 한마디</label>
+                                            <input class="input" type="text" id="password" value="평생 살 것처럼 꿈을 꾸어라.그리고 내일 죽을 것처럼 오늘을 살아라.">
+                                            <div class="count">39/60</div>
+                                        </div>
+                                        <div class="field">
+                                            <label for="password">국가</label>
+                                            <div class="select-box">
+                                                <div class="placeholder">대한민국</div>
+                                                <div class="option-wrap">
+                                                    <div class="option">대한민국</div>
+                                                    <div class="option">대한민국</div>
+                                                    <div class="option">대한민국</div>
+                                                    <div class="option">대한민국</div>
+                                                    <div class="option">대한민국</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="field">
+                                            <label for="password">지역</label>
+                                            <input class="input" type="text" id="password">
+                                        </div>
+                                        <div class="field">
+                                            <label for="password">성별</label>
+                                            <input class="input" type="radio" name="sex" value="1">남성
+                                            <input class="input" type="radio" name="sex" value="2">여성
+                                        </div>
+                                        <div class="field">
+                                            <label for="password">나의 프로필에 지역 정보를 공개하시겠습니까?</label>
+                                            <input class="input" type="radio" name="public" value="1">공개
+                                            <input class="input" type="radio" name="public" value="2">비공개
+                                        </div>
+                                        <div class="field">
+                                            <label for="password">이메일</label>
+                                            <input class="input" type="text" id="password">
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
+
                     <div class="footer grey-5 bc-footer">
                         <div class="footer-notification">
                             <div class="top">
-                                <div class="logo flex-c flex-row"><img src="asset/images/logo/logo.png" alt="EVOLCHAT 로고">
+                                <div class="logo flex-c flex-row"><img src="asset/images/logo/logo.png"
+                                        alt="EVOLCHAT 로고">
                                     <div class="icons-wrap">
                                         <div class="icon-sns icon-apple"></div>
                                         <div class="icon-sns icon-google-play"></div>
                                     </div>
                                 </div>
-                                
+
                             </div>
                             <div class="center  px13">
-                                <p>에볼챗(evolchat.com)은 데이터를 기반으로 한 게임 분석 및 커뮤니티, 채팅을 서비스합니다.<br> 금전을 걸고 할 수 있는 도박은 제공하지 않으며,
+                                <p>에볼챗(evolchat.com)은 데이터를 기반으로 한 게임 분석 및 커뮤니티, 채팅을 서비스합니다.<br> 금전을 걸고 할 수 있는 도박은 제공하지
+                                    않으며,
                                     무료로 제공되는 양도가 불가능한 배팅 포인트를 이용하여 가상의 배팅을 즐기실 수 있습니다.</p>
                             </div>
                             <div class="bottom flex-row flex-c px13">
@@ -219,13 +344,14 @@
                                 <div class="nav-title px17"><a href="#">메신저</a></div>
                                 <div class="nav-item"><a href="#">친구 목록</a></div>
                                 <div class="nav-item"><a href="#">다이렉트 메시지</a></div>
-                                <div class="nav-item"><a href="#">차단 목록</a></div>
-                                <div class="nav-item"><a href="#">친구 추가하기</a></div>
+                                <div class="nav-item"><a href="./messenger_blocklists.html">차단 목록</a></div>
+                                <div class="nav-item"><a href="./messenger_add_friend.html">친구 추가하기</a></div>
                             </div>
                         </div>
                         <div class="footer-corp">
                             <div class="logo-corp graycode"></div>
-                            <p class="px13">(주)그레이코드 개인정보보호책임자 홍길동 주소 : 서울시 강남구 논현동 243-17번지 1층 전화 : 1588-4444 팩스 : 02-248-4444<br>
+                            <p class="px13">(주)그레이코드 개인정보보호책임자 홍길동 주소 : 서울시 강남구 논현동 243-17번지 1층 전화 : 1588-4444 팩스 :
+                                02-248-4444<br>
                                 E-mail : contact@evolchat.com 사업자등록번호 : 220-87-17456 통신판매업 신고번호 : 제2024-서울강남-1659호
                                 사업자정보확인</p>
                             <div class="copy-corp"><img src="asset/images/logo/corp.png" alt="corp.png"></div>
@@ -242,7 +368,7 @@
                     <div class="content">
                         <div class="chatingLayer">
                             <div class="chatLayout  flex-row ">
-                                <div class="profile"><img src="image\profile\user1.png" alt="#"></div>
+                                <div class="profile"><img src="asset/images/profile/user1.png" alt="#"></div>
                                 <div class="chatContent">
                                     <div class="top flex-row flex-c">
                                         <div class="nickname grey-4">우울한협객</div>
@@ -257,7 +383,7 @@
                                 </div>
                             </div>
                             <div class="chatLayout  flex-row ">
-                                <div class="profile"><img src="image\profile\user1.png" alt="#"></div>
+                                <div class="profile"><img src="asset/images/profile/user1.png" alt="#"></div>
                                 <div class="chatContent">
                                     <div class="top flex-row flex-c">
                                         <div class="nickname grey-4">우울한협객</div>
@@ -272,7 +398,7 @@
                                 </div>
                             </div>
                             <div class="chatLayout  flex-row ">
-                                <div class="profile"><img src="image\profile\user1.png" alt="#"></div>
+                                <div class="profile"><img src="asset/images/profile/user1.png" alt="#"></div>
                                 <div class="chatContent">
                                     <div class="top flex-row flex-c">
                                         <div class="nickname grey-4">우울한협객</div>
@@ -287,7 +413,7 @@
                                 </div>
                             </div>
                             <div class="chatLayout  flex-row ">
-                                <div class="profile"><img src="image\profile\user1.png" alt="#"></div>
+                                <div class="profile"><img src="asset/images/profile/user1.png" alt="#"></div>
                                 <div class="chatContent">
                                     <div class="top flex-row flex-c">
                                         <div class="nickname grey-4">우울한협객</div>
@@ -302,7 +428,22 @@
                                 </div>
                             </div>
                             <div class="chatLayout  flex-row ">
-                                <div class="profile"><img src="image\profile\user1.png" alt="#"></div>
+                                <div class="profile"><img src="asset/images/profile/user1.png" alt="#"></div>
+                                <div class="chatContent">
+                                    <div class="top flex-row flex-c">
+                                        <div class="nickname grey-4">우울한협객</div>
+                                        <div class="time grey-1">16:03</div>
+                                    </div>
+                                    <div class="bottom white bc-activate">
+                                        <div class="text ">
+                                            오늘 카드가 너무 이쁘게 나오네~ 100출 1000마감 해봐야겠다!
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="chatLayout  flex-row ">
+                                <div class="profile"><img src="asset/images/profile/user1.png" alt="#"></div>
                                 <div class="chatContent">
                                     <div class="top flex-row flex-c">
                                         <div class="nickname grey-4">우울한협객</div>
@@ -317,7 +458,7 @@
                                 </div>
                             </div>
                             <div class="chatLayout  flex-row ">
-                                <div class="profile"><img src="image\profile\user1.png" alt="#"></div>
+                                <div class="profile"><img src="asset/images/profile/user1.png" alt="#"></div>
                                 <div class="chatContent">
                                     <div class="top flex-row flex-c">
                                         <div class="nickname grey-4">우울한협객</div>
@@ -332,7 +473,7 @@
                                 </div>
                             </div>
                             <div class="chatLayout  flex-row ">
-                                <div class="profile"><img src="image\profile\user1.png" alt="#"></div>
+                                <div class="profile"><img src="asset/images/profile/user1.png" alt="#"></div>
                                 <div class="chatContent">
                                     <div class="top flex-row flex-c">
                                         <div class="nickname grey-4">우울한협객</div>
@@ -347,7 +488,7 @@
                                 </div>
                             </div>
                             <div class="chatLayout  flex-row ">
-                                <div class="profile"><img src="image\profile\user1.png" alt="#"></div>
+                                <div class="profile"><img src="asset/images/profile/user1.png" alt="#"></div>
                                 <div class="chatContent">
                                     <div class="top flex-row flex-c">
                                         <div class="nickname grey-4">우울한협객</div>
@@ -362,7 +503,7 @@
                                 </div>
                             </div>
                             <div class="chatLayout  flex-row ">
-                                <div class="profile"><img src="image\profile\user1.png" alt="#"></div>
+                                <div class="profile"><img src="asset/images/profile/user1.png" alt="#"></div>
                                 <div class="chatContent">
                                     <div class="top flex-row flex-c">
                                         <div class="nickname grey-4">우울한협객</div>
@@ -377,7 +518,7 @@
                                 </div>
                             </div>
                             <div class="chatLayout  flex-row ">
-                                <div class="profile"><img src="image\profile\user1.png" alt="#"></div>
+                                <div class="profile"><img src="asset/images/profile/user1.png" alt="#"></div>
                                 <div class="chatContent">
                                     <div class="top flex-row flex-c">
                                         <div class="nickname grey-4">우울한협객</div>
@@ -392,7 +533,7 @@
                                 </div>
                             </div>
                             <div class="chatLayout  flex-row ">
-                                <div class="profile"><img src="image\profile\user1.png" alt="#"></div>
+                                <div class="profile"><img src="asset/images/profile/user1.png" alt="#"></div>
                                 <div class="chatContent">
                                     <div class="top flex-row flex-c">
                                         <div class="nickname grey-4">우울한협객</div>
@@ -407,7 +548,7 @@
                                 </div>
                             </div>
                             <div class="chatLayout  flex-row ">
-                                <div class="profile"><img src="image\profile\user1.png" alt="#"></div>
+                                <div class="profile"><img src="asset/images/profile/user1.png" alt="#"></div>
                                 <div class="chatContent">
                                     <div class="top flex-row flex-c">
                                         <div class="nickname grey-4">우울한협객</div>
@@ -422,7 +563,7 @@
                                 </div>
                             </div>
                             <div class="chatLayout  flex-row ">
-                                <div class="profile"><img src="image\profile\user1.png" alt="#"></div>
+                                <div class="profile"><img src="asset/images/profile/user1.png" alt="#"></div>
                                 <div class="chatContent">
                                     <div class="top flex-row flex-c">
                                         <div class="nickname grey-4">우울한협객</div>
@@ -437,7 +578,7 @@
                                 </div>
                             </div>
                             <div class="chatLayout  flex-row ">
-                                <div class="profile"><img src="image\profile\user1.png" alt="#"></div>
+                                <div class="profile"><img src="asset/images/profile/user1.png" alt="#"></div>
                                 <div class="chatContent">
                                     <div class="top flex-row flex-c">
                                         <div class="nickname grey-4">우울한협객</div>
@@ -452,7 +593,7 @@
                                 </div>
                             </div>
                             <div class="chatLayout  flex-row ">
-                                <div class="profile"><img src="image\profile\user1.png" alt="#"></div>
+                                <div class="profile"><img src="asset/images/profile/user1.png" alt="#"></div>
                                 <div class="chatContent">
                                     <div class="top flex-row flex-c">
                                         <div class="nickname grey-4">우울한협객</div>
@@ -467,7 +608,7 @@
                                 </div>
                             </div>
                             <div class="chatLayout  flex-row ">
-                                <div class="profile"><img src="image\profile\user1.png" alt="#"></div>
+                                <div class="profile"><img src="asset/images/profile/user1.png" alt="#"></div>
                                 <div class="chatContent">
                                     <div class="top flex-row flex-c">
                                         <div class="nickname grey-4">우울한협객</div>
@@ -482,7 +623,7 @@
                                 </div>
                             </div>
                             <div class="chatLayout  flex-row ">
-                                <div class="profile"><img src="image\profile\user1.png" alt="#"></div>
+                                <div class="profile"><img src="asset/images/profile/user1.png" alt="#"></div>
                                 <div class="chatContent">
                                     <div class="top flex-row flex-c">
                                         <div class="nickname grey-4">우울한협객</div>
@@ -497,7 +638,7 @@
                                 </div>
                             </div>
                             <div class="chatLayout  flex-row ">
-                                <div class="profile"><img src="image\profile\user1.png" alt="#"></div>
+                                <div class="profile"><img src="asset/images/profile/user1.png" alt="#"></div>
                                 <div class="chatContent">
                                     <div class="top flex-row flex-c">
                                         <div class="nickname grey-4">우울한협객</div>
@@ -512,7 +653,7 @@
                                 </div>
                             </div>
                             <div class="chatLayout  flex-row ">
-                                <div class="profile"><img src="image\profile\user1.png" alt="#"></div>
+                                <div class="profile"><img src="asset/images/profile/user1.png" alt="#"></div>
                                 <div class="chatContent">
                                     <div class="top flex-row flex-c">
                                         <div class="nickname grey-4">우울한협객</div>
@@ -527,7 +668,7 @@
                                 </div>
                             </div>
                             <div class="chatLayout  flex-row ">
-                                <div class="profile"><img src="image\profile\user1.png" alt="#"></div>
+                                <div class="profile"><img src="asset/images/profile/user1.png" alt="#"></div>
                                 <div class="chatContent">
                                     <div class="top flex-row flex-c">
                                         <div class="nickname grey-4">우울한협객</div>
@@ -542,22 +683,7 @@
                                 </div>
                             </div>
                             <div class="chatLayout  flex-row ">
-                                <div class="profile"><img src="image\profile\user1.png" alt="#"></div>
-                                <div class="chatContent">
-                                    <div class="top flex-row flex-c">
-                                        <div class="nickname grey-4">우울한협객</div>
-                                        <div class="time grey-1">16:03</div>
-                                    </div>
-                                    <div class="bottom white opacity80 bc-gray-dark">
-                                        <div class="text ">
-                                            오늘 카드가 너무 이쁘게 나오네~ 100출 1000마감 해봐야겠다!
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="chatLayout  flex-row ">
-                                <div class="profile"><img src="image\profile\user1.png" alt="#"></div>
+                                <div class="profile"><img src="asset/images/profile/user1.png" alt="#"></div>
                                 <div class="chatContent">
                                     <div class="top flex-row flex-c">
                                         <div class="nickname grey-4">우울한협객</div>
@@ -576,7 +702,7 @@
                     </div>
                     <div class="chatInsert bc-gray-dark">
                         <div class="btn other"></div>
-                        <input type="text"  placeholder="채팅 메세지 보내기">
+                        <input type="text" placeholder="채팅 메세지 보내기">
                         <div class="btn gif"></div>
                         <div class="btn img"></div>
                     </div>

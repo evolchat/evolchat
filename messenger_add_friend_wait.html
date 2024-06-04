@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>에볼챗닷컴 : 포토</title>
+    <title>에볼챗닷컴 : 메신저 - 친구추가</title>
 
     <script>
         (function (d) {
@@ -16,8 +16,8 @@
                 h = d.documentElement, t = setTimeout(function () { h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive"; }, config.scriptTimeout), tk = d.createElement("script"), f = false, s = d.getElementsByTagName("script")[0], a; h.className += " wf-loading"; tk.src = 'https://use.typekit.net/' + config.kitId + '.js'; tk.async = true; tk.onload = tk.onreadystatechange = function () { a = this.readyState; if (f || a && a != "complete" && a != "loaded") return; f = true; clearTimeout(t); try { Typekit.load(config) } catch (e) { } }; s.parentNode.insertBefore(tk, s)
         })(document);
     </script>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="asset/css/style.css">
+    
 </head>
 
 <body>
@@ -64,22 +64,22 @@
                             <div class="bg-i-manu bg-i-manu-1"></div>오토봇
                         </a></li>
 
-                    <li class="grey-1"><a class="" href="#">
+                    <li class="grey-1"><a class="" href="./openchat.html">
                             <div class="bg-i-manu bg-i-manu-3"></div>오픈채팅
                         </a></li>
-                    <li class="grey-1"><a class="active" href="#">
+                    <li class="grey-1"><a class="active" href="./community_free.html">
                             <div class="bg-i-manu bg-i-manu-4"></div>커뮤니티
                         </a></li>
-                    <li class="grey-1"><a class="" href="#">
+                    <li class="grey-1"><a class="" href="./rank.html">
                             <div class="bg-i-manu bg-i-manu-5"></div>랭킹
                         </a></li>
                     <li class="grey-1"><a class="" href="#">
                             <div class="bg-i-manu bg-i-manu-6"></div>상점
                         </a></li>
-                    <li class="grey-1"><a class="" href="#">
+                    <li class="grey-1"><a class="" href="./support_notice.html">
                             <div class="bg-i-manu bg-i-manu-7"></div>고객센터
                         </a></li>
-                    <li class="grey-1"><a class="" href="#">
+                    <li class="grey-1"><a class="" href="./messenger_friend.html">
                             <div class="bg-i-manu bg-i-manu-2"></div>메신저<span class="notice">3</span>
                         </a></li>
                 </ul>
@@ -127,242 +127,41 @@
                 <div class="content">
                     <div class="mainContent bc-main">
                         <div class="sub-header flex-row flex-c white opacity60 px15">
-                            <div class="list"><a href="#">지유</a></div>
-                            <div class="list active"><a href="#">포토</a></div>
-                            <div class="list "><a href="#">유머</a></div>
-                            <div class="list"><a href="#">동영상</a></div>
-                            <div class="list"><a href="#">노하우</a></div>
-                            <div class="list"><a href="#">신고게시판</a></div>
+                            <div class="list"><a href="./messenger_friend.html">친구</a></div>
+                            <div class="list"><a href="./messenger_message.html">메시지</a></div>
+                            <div class="list "><a href="./messenger_blocklists.html">차단 목록</a></div>
+                            <div class="list active"><a href="./messenger_add_friend.html">친구 추가하기</a></div>
                         </div>
                         <div class="sub-header">
                             <div class="sub-header-search bc-footer">
-                                <input type="text" placeholder="제목, 내용, 태그 검색">
+                                <input type="text" placeholder="닉네임을 입력하여 친구를 추가할 수 있어요.">
                             </div>
                         </div>
+                      
                         <div class="mainLayer">
-
-                            <div class="photo-item-layer">
-                                <div class="photo-layout">
-                                    <div class="img">
-                                        <img src="asset/images/photo/photo_1.jpg" alt="#">
+                            <div class="user-list-layer  px15 white">
+                                <div class="user-list flex-row flex-c">
+                                    <div class="profile"><img src="asset/images/profile/user1.png" alt="#"></div>
+                                    <div class="user">
+                                        <p class="nickname opacity80">우울한협객</p>
+                                        <p class="text opacity60 px14">너희들은 내일만 보고 살지? 내일만 사는 놈은 오늘만 사는 놈한테 죽는다. 난 오늘만 살어!</p>
                                     </div>
-                                    <div class="txt-wrap position-a">
-                                        <div class="v-h"></div>
-                                        <div class="top">
-                                            <div class="tit-wrap white">
-                                                아이유가 이번에 컨셉을 아주 제대로 잡은 것 같아 보인다!
-                                                <span class="count">+19</span>
-                                            </div>
-                                        </div>
-                                        <div class="bottom  flex-row">
-                                            <div class="datetime">2024.4.13 8:23</div>
-                                            <div class="view">2564</div>
-                                            <div class="like">44</div>
-                                        </div>
-                                    </div>
+                                    <button class="btn">친구 요청 취소</button>
                                 </div>
-                                <div class="user-layout flex-row flex-c">
-                                    <div class="profile">
-                                        <img src="asset/images/profile/user1.png" alt="#">
+                                <div class="user-list flex-row flex-c">
+                                    <div class="profile"><img src="asset/images/profile/user1.png" alt="#"></div>
+                                    <div class="user">
+                                        <p class="nickname opacity80">연기의정신</p>
                                     </div>
-                                    <div class="nickname">고스트라이더</div>
-                                    <div class="rank">RANK 1</div>
+                                    <button class="btn">친구 요청 취소</button>
                                 </div>
-                            </div>
-                            <div class="photo-item-layer">
-                                <div class="photo-layout">
-                                    <div class="img">
-                                        <img src="asset/images/photo/photo_2.jpg" alt="#">
+                                <div class="user-list flex-row flex-c">
+                                    <div class="profile"><img src="asset/images/profile/user1.png" alt="#"></div>
+                                    <div class="user">
+                                        <p class="nickname opacity80">우울한협객</p>
+                                        <p class="text opacity60 px14">너희들은 내일만 보고 살지? 내일만 사는 놈은 오늘만 사는 놈한테 죽는다. 난 오늘만 살어!</p>
                                     </div>
-                                    <div class="txt-wrap position-a">
-                                        <div class="v-h"></div>
-                                        <div class="top">
-                                            <div class="tit-wrap white">
-                                                박은빈 '화이트데이 사탕 주고픈 연예인' 1위
-                                                <span class="count">+19</span>
-                                            </div>
-                                        </div>
-                                        <div class="bottom  flex-row">
-                                            <div class="datetime">2024.4.13 8:23</div>
-                                            <div class="view">2564</div>
-                                            <div class="like">44</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="user-layout flex-row flex-c">
-                                    <div class="profile">
-                                        <img src="asset/images/profile/user1.png" alt="#">
-                                    </div>
-                                    <div class="nickname">고스트라이더</div>
-                                    <div class="rank">RANK 1</div>
-                                </div>
-                            </div>
-                            <div class="photo-item-layer">
-                                <div class="photo-layout">
-                                    <div class="img">
-                                        <img src="asset/images/photo/photo_1.jpg" alt="#">
-                                    </div>
-                                    <div class="txt-wrap position-a">
-                                        <div class="v-h"></div>
-                                        <div class="top">
-                                            <div class="tit-wrap white">
-                                                아이유가 이번에 컨셉을 아주 제대로 잡은 것 같아 보인다!
-                                                <span class="count">+19</span>
-                                            </div>
-                                        </div>
-                                        <div class="bottom  flex-row">
-                                            <div class="datetime">2024.4.13 8:23</div>
-                                            <div class="view">2564</div>
-                                            <div class="like">44</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="user-layout flex-row flex-c">
-                                    <div class="profile">
-                                        <img src="asset/images/profile/user1.png" alt="#">
-                                    </div>
-                                    <div class="nickname">고스트라이더</div>
-                                    <div class="rank">RANK 1</div>
-                                </div>
-                            </div>
-                            <div class="photo-item-layer">
-                                <div class="photo-layout">
-                                    <div class="img">
-                                        <img src="asset/images/photo/photo_2.jpg" alt="#">
-                                    </div>
-                                    <div class="txt-wrap position-a">
-                                        <div class="v-h"></div>
-                                        <div class="top">
-                                            <div class="tit-wrap white">
-                                                박은빈 '화이트데이 사탕 주고픈 연예인' 1위
-                                                <span class="count">+19</span>
-                                            </div>
-                                        </div>
-                                        <div class="bottom  flex-row">
-                                            <div class="datetime">2024.4.13 8:23</div>
-                                            <div class="view">2564</div>
-                                            <div class="like">44</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="user-layout flex-row flex-c">
-                                    <div class="profile">
-                                        <img src="asset/images/profile/user1.png" alt="#">
-                                    </div>
-                                    <div class="nickname">고스트라이더</div>
-                                    <div class="rank">RANK 1</div>
-                                </div>
-                            </div>
-                            <div class="photo-item-layer">
-                                <div class="photo-layout">
-                                    <div class="img">
-                                        <img src="asset/images/photo/photo_1.jpg" alt="#">
-                                    </div>
-                                    <div class="txt-wrap position-a">
-                                        <div class="v-h"></div>
-                                        <div class="top">
-                                            <div class="tit-wrap white">
-                                                아이유가 이번에 컨셉을 아주 제대로 잡은 것 같아 보인다!
-                                                <span class="count">+19</span>
-                                            </div>
-                                        </div>
-                                        <div class="bottom  flex-row">
-                                            <div class="datetime">2024.4.13 8:23</div>
-                                            <div class="view">2564</div>
-                                            <div class="like">44</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="user-layout flex-row flex-c">
-                                    <div class="profile">
-                                        <img src="asset/images/profile/user1.png" alt="#">
-                                    </div>
-                                    <div class="nickname">고스트라이더</div>
-                                    <div class="rank">RANK 1</div>
-                                </div>
-                            </div>
-                            <div class="photo-item-layer">
-                                <div class="photo-layout">
-                                    <div class="img">
-                                        <img src="asset/images/photo/photo_2.jpg" alt="#">
-                                    </div>
-                                    <div class="txt-wrap position-a">
-                                        <div class="v-h"></div>
-                                        <div class="top">
-                                            <div class="tit-wrap white">
-                                                박은빈 '화이트데이 사탕 주고픈 연예인' 1위
-                                                <span class="count">+19</span>
-                                            </div>
-                                        </div>
-                                        <div class="bottom  flex-row">
-                                            <div class="datetime">2024.4.13 8:23</div>
-                                            <div class="view">2564</div>
-                                            <div class="like">44</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="user-layout flex-row flex-c">
-                                    <div class="profile">
-                                        <img src="asset/images/profile/user1.png" alt="#">
-                                    </div>
-                                    <div class="nickname">고스트라이더</div>
-                                    <div class="rank">RANK 1</div>
-                                </div>
-                            </div>
-                            <div class="photo-item-layer">
-                                <div class="photo-layout">
-                                    <div class="img">
-                                        <img src="asset/images/photo/photo_1.jpg" alt="#">
-                                    </div>
-                                    <div class="txt-wrap position-a">
-                                        <div class="v-h"></div>
-                                        <div class="top">
-                                            <div class="tit-wrap white">
-                                                아이유가 이번에 컨셉을 아주 제대로 잡은 것 같아 보인다!
-                                                <span class="count">+19</span>
-                                            </div>
-                                        </div>
-                                        <div class="bottom  flex-row">
-                                            <div class="datetime">2024.4.13 8:23</div>
-                                            <div class="view">2564</div>
-                                            <div class="like">44</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="user-layout flex-row flex-c">
-                                    <div class="profile">
-                                        <img src="asset/images/profile/user1.png" alt="#">
-                                    </div>
-                                    <div class="nickname">고스트라이더</div>
-                                    <div class="rank">RANK 1</div>
-                                </div>
-                            </div>
-                            <div class="photo-item-layer">
-                                <div class="photo-layout">
-                                    <div class="img">
-                                        <img src="asset/images/photo/photo_2.jpg" alt="#">
-                                    </div>
-                                    <div class="txt-wrap position-a">
-                                        <div class="v-h"></div>
-                                        <div class="top">
-                                            <div class="tit-wrap white">
-                                                박은빈 '화이트데이 사탕 주고픈 연예인' 1위
-                                                <span class="count">+19</span>
-                                            </div>
-                                        </div>
-                                        <div class="bottom  flex-row">
-                                            <div class="datetime">2024.4.13 8:23</div>
-                                            <div class="view">2564</div>
-                                            <div class="like">44</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="user-layout flex-row flex-c">
-                                    <div class="profile">
-                                        <img src="asset/images/profile/user1.png" alt="#">
-                                    </div>
-                                    <div class="nickname">고스트라이더</div>
-                                    <div class="rank">RANK 1</div>
+                                    <button class="btn">친구 요청 취소</button>
                                 </div>
                             </div>
 
@@ -441,8 +240,8 @@
                                 <div class="nav-title px17"><a href="#">메신저</a></div>
                                 <div class="nav-item"><a href="#">친구 목록</a></div>
                                 <div class="nav-item"><a href="#">다이렉트 메시지</a></div>
-                                <div class="nav-item"><a href="#">차단 목록</a></div>
-                                <div class="nav-item"><a href="#">친구 추가하기</a></div>
+                                <div class="nav-item"><a href="./messenger_blocklists.html">차단 목록</a></div>
+                                <div class="nav-item"><a href="./messenger_add_friend.html">친구 추가하기</a></div>
                             </div>
                         </div>
                         <div class="footer-corp">
