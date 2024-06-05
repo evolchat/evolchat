@@ -324,6 +324,10 @@ img {
     font-size: 3rem;
 }
 
+.p20 {
+    padding: 20px;
+}
+
 blockquote:before,
 blockquote:after,
 q:before,
@@ -342,7 +346,7 @@ table {
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 .v-h {
@@ -404,6 +408,14 @@ table {
 
 .text-center {
     text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
 }
 
 .opacity100 {
@@ -668,6 +680,7 @@ table {
 /* 로고들 */
 .bg-logo {
     background: url('../images/sprites/css_sprites.png') -10px -10px;
+    margin-right: 8px;
 }
 
 .graycode {
@@ -896,6 +909,7 @@ table {
     height: 200px;
     background-position: 0px -220px;
 }
+
 /* 마이페이지 */
 .illust-5 {
     width: 130px;
@@ -1265,6 +1279,35 @@ table {
     height: 20px;
 }
 
+
+/* 파일 업로드 버튼 */
+.btn-upload {
+    min-width: 150px;
+    max-width: 168px;
+    /* width: 100%; */
+    height: 40px;
+    background: transparent;
+    border: 1px solid #535560;
+    border-radius: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.btn-upload:hover {
+    background: #4d4d4d;
+    color: #fff;
+}
+
+.file {
+    display: none;
+}
+
+
+
+
 /* 여기부터 index */
 .wrapper {
     display: flex !important;
@@ -1273,7 +1316,7 @@ table {
 
 /* header */
 header {
-    max-width: 220px;
+    max-width: 240px;
     width: 100%;
     padding: 0 10px;
 }
@@ -1376,6 +1419,33 @@ header .recentMessages li div {
     padding: 10px;
 }
 
+.wrapper>.header .left {
+    max-width: 240px;
+    width: 100%;
+    /* padding: 0 10px; */
+}
+
+.wrapper>.header .center .items {
+    margin: 0 5px;
+    background-color: #111214;
+    padding: 10px;
+    border-radius: 50px;
+}
+
+.wrapper>.header .center .items span {
+    margin-right: 6px;
+}
+
+.wrapper>.header .center {
+    flex-grow: 1;
+    justify-content: space-between;
+}
+
+.wrapper>.header .right {
+    max-width: 360px;
+    width: 100%;
+}
+
 .wrapper>.header .logo {
     flex-wrap: wrap;
     width: 200px;
@@ -1397,7 +1467,7 @@ header .recentMessages li div {
 }
 
 .wrapper>.header .header-search {
-    margin: 0 40px;
+    /* margin: 0 40px; */
     max-width: 360px;
     width: 100%;
     max-height: 44px;
@@ -1461,6 +1531,11 @@ header .recentMessages li div {
     width: 100%;
 }
 
+.wrapper>.header .info_option {
+    justify-content: space-evenly;
+    width: 100%;
+}
+
 .wrapper>.header .info_option .items {
     padding: 10px;
     font-size: 0.9rem;
@@ -1471,11 +1546,11 @@ header .recentMessages li div {
     border-radius: 10px;
 }
 
-.wrapper>.header .info_option .items:nth-child(1),
+/* .wrapper>.header .info_option .items:nth-child(1),
 .wrapper>.header .info_option .items:nth-child(2) {
     border-radius: 20px;
     border: 1px solid #312c2e;
-}
+} */
 
 .wrapper>.header .info_option .items:nth-child(1) {
     color: #c4a572;
@@ -1486,12 +1561,12 @@ header .recentMessages li div {
     padding: 0;
 }
 
-.wrapper>.header .info_option .items:nth-child(2)>span:last-child {
+/* .wrapper>.header .info_option .items:nth-child(2)>span:last-child {
     background-color: #d88117;
     border-radius: 10px;
     height: 100%;
     padding: 10px
-}
+} */
 
 body>div>section {
     flex-grow: 1;
@@ -2327,9 +2402,12 @@ div.mainContent>div.mainLayer>div>div>div.bottom>div>div>div {
 
 
 /* mypage */
-.mainLayer .content-wrap > .etc{width: 100%;text-align: left;}
+.mainLayer .mypage>div {
+    width: 100%;
+    text-align: left;
+}
 
-.mainLayer .money-wrap>div{
+.mainLayer .money-wrap>div {
     border: 1px solid #35373D;
     background-color: #303237;
     width: 100%;
@@ -2345,6 +2423,86 @@ div.mainContent>div.mainLayer>div>div>div.bottom>div>div>div {
 .mainLayer .money-wrap>div:last-child {
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
+}
+
+.information {
+    padding: 40px;
+}
+
+.information button {
+    background-color: #8744FF;
+    color: #fff;
+    min-width: 100px;
+    min-height: 30px;
+    padding: 6px;
+}
+
+.information .infotitle {
+    margin-bottom: 40px;
+}
+
+.information .img-area .profileimg {
+    width: 120px;
+    height: 120px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.information .img-area img {
+    height: 100%;
+    width: 100%;
+    border: 0 none;
+    vertical-align: top;
+    object-fit: cover;
+}
+
+.information .img-area .backgroundimg {
+    width: 400px;
+    height: 120px;
+    overflow: hidden;
+}
+.information .img-area .row >div{
+    margin-right:30px ;
+}
+.input-area .border {
+    height: 50px;
+    border-radius: 5px;
+    border: 1px solid #3A3C43;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+
+}
+
+.input-area .border input {
+    flex-grow: 1;
+    color: #656B70;
+    background-color: transparent;
+}
+
+.mypage .row {
+    margin-bottom: 40px;
+}
+
+.input-area .field>div:first-child {
+    margin-bottom: 10px;
+}
+
+.information input[type="checkbox"]+label {
+    display: inline-block;
+    min-width: 30px;
+    height: 44px;
+    background-color: #35373D;
+    position: relative;
+    border-radius: 50px;
+    padding: 13px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.information input[type="checkbox"]:checked+label {
+    background-color: #8744FF;
+    color: #fff;
 }
 
 /* mypage */

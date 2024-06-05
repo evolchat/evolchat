@@ -23,7 +23,7 @@
 <body>
     <div class="wrapper bc-black vh100 ">
         <div class="header flex-row bc-header">
-            <div class="wrap  g-8 flex-row">
+            <div class="wrap flex-row left">
                 <div class="logo flex-row flex-c">
                     <div class="bg-nav bg-logo"></div>
                     <div class="logoText">EVOLCHAT</div>
@@ -33,26 +33,33 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="center  flex-row flex-c">
                 <div class="header-search">
                     <input type="text" class="white" placeholder="에볼류션 테이블 검색">
                     <i class="search"></i>
                 </div>
-
+                <div class="white flex-row flex-c px15">
+                    <div class="items flex-c"><span class="bg-i-item-1 "></span><span>JACKPOT</span><span>1,592</span>
+                    </div>
+                    <div class="items flex-c"><span class="bg-i-item-2 "></span><span>B</span><span>1,000,002</span>
+                    </div>
+                    <div class="items flex-c"><span class="bg-i-item-3 ">TEMP</span></div>
+                    <div class="items flex-c"><span class="bg-i-item-4 ">TEMP</span></div>
+                </div>
             </div>
-            <div class="wrap flex-row  g-4">
+            <div class="wrap flex-row right flex-c">
                 <div class="info_option flex-row">
-                    <div class="items flex-c"><span class="bg-i-item-1 "></span>JACKPOT <span>1,592</span></div>
-                    <div class="items flex-c"><span class="bg-i-item-2 "></span>50,592<span>무료충전</span></div>
                     <div class="items flex-c"><span class="bg-i-btn  bg-i-btn-1"></span></div>
                     <div class="items flex-c"><span class="bg-i-btn  bg-i-btn-2"></span></div>
                     <div class="items flex-c active"><span class="bg-i-btn  bg-i-btn-3"></span></div>
                     <div class="items flex-c"><span class="bg-i-btn  bg-i-btn-4"></span></div>
                     <div class="items flex-c"><span class="bg-i-btn  bg-i-btn-5"></span></div>
-                    <div class="items flex-c"><span class="bg-i-btn  bg-i-btn-6"></span></div>
+                    <div class="items flex-c"><img src="asset/images/profile/user1.png" alt="프로필이미지.png"></div>
                 </div>
             </div>
 
-          
+
         </div>
         <Section class="container flex-row">
             <header class="bc-aside">
@@ -60,13 +67,14 @@
                     <li class="grey-1"><a class="" href="#">
                             <div class="bg-i-manu bg-i-manu-1"></div>에볼루션
                         </a></li>
-                    <li class="grey-1"><a class="" href="./messenger_friend.html">
-                            <div class="bg-i-manu bg-i-manu-2"></div>메신저<span class="notice">3</span>
+                    <li class="grey-1"><a class="" href="#">
+                            <div class="bg-i-manu bg-i-manu-10"></div>오토봇
                         </a></li>
+
                     <li class="grey-1"><a class="" href="./openchat.html">
                             <div class="bg-i-manu bg-i-manu-3"></div>오픈채팅
                         </a></li>
-                    <li class="grey-1"><a class="" href="#">
+                    <li class="grey-1"><a class="" href="./community_free.html">
                             <div class="bg-i-manu bg-i-manu-4"></div>커뮤니티
                         </a></li>
                     <li class="grey-1"><a class="" href="./rank.html">
@@ -78,23 +86,48 @@
                     <li class="grey-1"><a class="" href="./support_notice.html">
                             <div class="bg-i-manu bg-i-manu-7"></div>고객센터
                         </a></li>
+                    <li class="grey-1"><a class="" href="./messenger_friend.html">
+                            <div class="bg-i-manu bg-i-manu-2"></div>메신저<span class="notice hidden">3</span>
+                        </a></li>
                 </ul>
-                <p>최근 메시지</p>
-                <ul>
-                    <li class="grey-1"><a href="#"><img src="asset/images/profile/user1.png" />라이언일병구하기 <span
-                                class="notice">3</span></a></li>
-                    <li class="grey-1"><a href="#"><img src="asset/images/profile/user2.png" />우울한협객 <span
-                                class="notice">3</span></a></li>
-                    <li class="grey-1"><a href="#"><img src="asset/images/profile/user1.png" />라이언일병구하기 <span
-                                class="notice">3</span></a></li>
-                    <li class="grey-1"><a href="#"><img src="asset/images/profile/user2.png" />우울한협객 <span
-                                class="notice">3</span></a></li>
-                    <li class="grey-1"><a href="#"><img src="asset/images/profile/user1.png" />라이언일병구하기 <span
-                                class="notice">3</span></a></li>
-                    <li class="grey-1"><a href="#"><img src="asset/images/profile/user2.png" />우울한협객 <span
-                                class="notice">3</span></a></li>
-                    <li class="grey-1"><a href="#"><img src="asset/images/profile/user1.png" />라이언일병구하기 <span
-                                class="notice">3</span></a></li>
+                <p class="px12 opacity60 white">최근 메시지 <span class="orange">4</span></p>
+                <ul class="white recentMessages">
+                    <li class="grey-1"><a href="#" class="flex-row flex-c">
+                            <img src="asset/images/profile/user1.png" />
+                            <div class="opacity60">
+                                <p class=" px14">슈퍼컴퓨터분석</p>
+                                <p class=" px12">오늘 언제 시작하세요?</p>
+                            </div>
+                            <span class="notice">3</span>
+                        </a>
+                    </li>
+                    <li class="grey-1"><a href="#" class="flex-row flex-c">
+                            <img src="asset/images/profile/user1.png" />
+                            <div class="opacity60">
+                                <p class=" px14">슈퍼컴퓨터분석</p>
+                                <p class=" px12">오늘 언제 시작하세요?</p>
+                            </div>
+                            <span class="notice">3</span>
+                        </a>
+                    </li>
+                    <li class="grey-1"><a href="#" class="flex-row flex-c">
+                            <img src="asset/images/profile/user1.png" />
+                            <div class="opacity60">
+                                <p class=" px14">슈퍼컴퓨터분석</p>
+                                <p class=" px12">오늘 언제 시작하세요?</p>
+                            </div>
+                            <span class="notice">3</span>
+                        </a>
+                    </li>
+                    <li class="grey-1"><a href="#" class="flex-row flex-c">
+                            <img src="asset/images/profile/user1.png" />
+                            <div class="opacity60">
+                                <p class=" px14">슈퍼컴퓨터분석</p>
+                                <p class=" px12">오늘 언제 시작하세요?</p>
+                            </div>
+                            <span class="notice">3</span>
+                        </a>
+                    </li>
                 </ul>
             </header>
             <div class="wrap bc-footer">
