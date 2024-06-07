@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>에볼챗닷컴 : 랭킹</title>
+    <title>에볼챗닷컴 : 마이페이지</title>
 
     <script>
         (function (d) {
@@ -17,7 +17,7 @@
         })(document);
     </script>
     <link rel="stylesheet" href="asset/css/style.css">
-    
+
 </head>
 
 <body>
@@ -134,136 +134,310 @@
                 <div class="content">
                     <div class="mainContent bc-main">
                         <div class="sub-header flex-row flex-c white opacity60 px15">
-                            <div class="list active"><a href="./rank.html">배팅 수익</a></div>
-                            <div class="list "><a href="#">최근 100게임 적중률</a></div>
-                            <div class="list "><a href="#">바카라 연승</a></div>
-                            <div class="list"><a href="#">최대 배당 당첨</a></div>
-                            <div class="list"><a href="#">잭팟 수령</a></div>
+                            <div class="list active"><a href="#">내정보</a></div>
+                            <div class="list"><a href="#">아이템</a></div>
+                            <div class="list"><a href="#">캐시</a></div>
+                            <div class="list"><a href="#">배팅 포인트</a></div>
                             <div class="list"><a href="#">활동 포인트</a></div>
+                            <div class="list"><a href="#">골드칩</a></div>
+                            <div class="list"><a href="#">마이홈</a></div>
+                            <div class="list"><a href="#">비빌번호 변경</a></div>
                         </div>
-                        <div class="sub-header">
+                        <div class="sub-header hidden">
                             <div class="sub-header-search bc-footer">
                                 <input type="text" placeholder="닉네임 검색">
                             </div>
                         </div>
-                        <div class="mainLayer">
-                            <div class="table-radius">
-                                <table class="rank-table white">
-                                    <thead>
-                                        <tr>
-                                            <th>순위</th>
-                                            <th>프로필</th>
-                                            <th>닉네임</th>
-                                            <th>배팅 수익</th>
-                                            <th>배팅 전적</th>
-                                            <th>승률</th>
-                                            <th>최대 연승</th>
-                                            <th>활동기간</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td><img src="asset/images/profile/user1.png" alt="#"></td>
-                                            <td>우울한협객</td>
-                                            <td>1,048,150,000</td>
-                                            <td><span>394승</span><span>291패</span></td>
-                                            <td>57.52%</td>
-                                            <td>12연승</td>
-                                            <td>245일</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
 
-                            </div>
+                        <div class="mainLayer white">
+                            <div class="content-wrap flex-c-c flex-column p20 mypage">
+                                <div class="etc flex-row">
+                                    <div class="money-wrap g-6" style="margin-right: 20px;">
+                                        <div class="flex-row flex-c">
+                                            <div></div>
+                                            <div>캐시</div>
+                                            <div>1,000,000</div>
+                                        </div>
+                                        <div class="flex-row flex-c">
+                                            <div></div>
+                                            <div>배팅 포인트</div>
+                                            <div>1,000,000</div>
+                                        </div>
+                                        <div class="flex-row flex-c">
+                                            <div></div>
+                                            <div>배팅 수익</div>
+                                            <div>-62,000,000</div>
+                                        </div>
+                                        <div class="flex-row flex-c">
+                                            <div></div>
+                                            <div>활동 포인트</div>
+                                            <div>45000</div>
+                                        </div>
+                                        <div class="flex-row flex-c">
+                                            <div></div>
+                                            <div>골드칩</div>
+                                            <div>100</div>
+                                        </div>
+                                    </div>
+                                    <div class="flex-row g-6">
+                                        <div class="text-wrap  g-6">
+                                            <div class="title">잭팟의 주인공이 되어보세요.</div>
+                                            <ol>
+                                                <li>잭팟 보상으로 지급되는 골드칩은 에볼챗에서 사용하는 가상의 화폐로 현금으로 환전이 가능합니다.</li>
+                                                <li>매주 월요일 오전 00:00 - 00:30분에 한 주간 가장 많은 배팅 수익을 낸 탑랭커(수익랭킹 1위 - 3위)
+                                                    회원님에게잭팟 머니가 분배 지급됩니다.</li>
+                                                <li>배팅 참여 인원이 1,000명 이하일 경우에는 잭팟이 이월됩니다.</li>
+                                            </ol>
 
-                        </div>
+                                        </div>
+                                        <div class="img-illust illust-5"></div>
+                                    </div>
+
+                                </div>
+                                <div class="information flex-column px15">
+                                    <div class="infotitle px17">기본 정보</div>
+                                    <div class="img-area">
+                                        <div class="row  flex-row">
+                                            <div class="profileimg"><img src="asset/images/photo/photo_1.jpg"
+                                                    alt="프로필.png"></div>
+                                            <div class="profile">
+                                                <label for="profile">
+                                                    <div class="btn-upload">파일 업로드하기</div>
+                                                </label>
+                                                <input type="file" class="file" name="profile" id="profile">
+                                                <div class="text">
+                                                    <p>2MB 이내의 이미지 파일을 업로드 해주세요.<br>
+                                                        사이즈는 512x512를 권장합니다.</p>
+                                                </div>
+                                            </div>
+                                            <div class="items">
+                                                <p>프로필 사진 등록권</p>
+                                                <p>1개 보유</p>
+                                            </div>
+                                        </div>
+                                        <div class="row flex-row">
+                                            <div class="backgroundimg"><img src="asset/images/photo/images.jpg"
+                                                    alt="프로필배경.png"></div>
+                                            <div class="background">
+                                                <label for="background">
+                                                    <div class="btn-upload">마이홈 배경 업로드</div>
+                                                </label>
+                                                <input type="file" class="file" name="background" id="background">
+                                                <div class="text">
+                                                    <p>2MB 이내의 이미지 파일을 업로드 해주세요.<br>
+                                                        사이즈는 664x200를 권장합니다.</p>
+                                                </div>
+                                            </div>
+                                            <div class="items">
+                                                <p>마이홈 배경 등록권</p>
+                                                <p>미보유</p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="input-area">
+                                        <div class="row flex-row">
+                                            <div class="field g-6" style="margin-right: 30px;">
+                                                <div class="g-12">
+                                                    <label for="id">아이디</label>
+                                                </div>
+                                                <div class="border">
+                                                    <input class="input" type="text" id="id" value="graycode" disabled
+                                                        readonly>
+                                                </div>
+                                            </div>
+                                            <div class="field g-6">
+                                                <div class="g-12">
+                                                    <label for="username">사용자 이름</label>
+                                                </div>
+                                                <div class="border">
+                                                    <input class="input" type="text" id="username" value="홍길동" disabled
+                                                        readonly>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="field">
+                                                <div class="g-12">
+                                                    <label for="nickname">닉네임</label>
+                                                </div>
+                                                <div class="border">
+                                                    <input class="input" type="text" id="nickname" value="그레이코드">
+                                                    <div class="count">5/12</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="field">
+                                                <div class="g-12">
+                                                    <label for="url">마이홈 URL</label>
+                                                </div>
+                                                <div class="border">
+                                                    <input class="input" type="text" id="url" value="graycode" disabled
+                                                        readonly>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="field">
+                                                <div class="g-12">
+                                                    <label for="phone">휴대폰 번호</label>
+                                                </div>
+                                                <div class="border">
+                                                    <input class="input" type="text" id="phone" value="010-****-**52"
+                                                        disabled readonly>
+                                                    <button>변경하기</button>
+                                                </div>
+                                                <p>
+                                                    사용하시는 휴대폰 번호 변경 시 반드시 변경하기를 통해 반드시 본인인증을 해주시길 부탁드립니다.
+                                                </p>
+                                            </div>
+                                        </div>
 
 
-                    </div>
+                                    </div>
 
-                    <div class="footer grey-5 bc-footer">
-                        <div class="footer-notification">
-                            <div class="top">
-                                <div class="logo flex-c flex-row"><img src="asset/images/logo/logo.png" alt="EVOLCHAT 로고">
-                                    <div class="icons-wrap">
-                                        <div class="icon-sns icon-apple"></div>
-                                        <div class="icon-sns icon-google-play"></div>
+                                </div>
+                                <div class="information ">
+                                    <div class="infotitle px17">추가 정보</div>
+                                    <div class="input-area">
+                                        <div class="row">
+                                            <div class="field">
+                                                <label for="password">오늘의 한마디</label>
+                                                <div class="border">
+                                                    <input class="input" type="text" id="password"
+                                                        value="평생 살 것처럼 꿈을 꾸어라.그리고 내일 죽을 것처럼 오늘을 살아라." readonly
+                                                        disabled>
+                                                    <div class="count">39/60</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="field">
+                                                <label for="password">국가</label>
+                                                <div class="select-box">
+                                                    <div class="placeholder">대한민국</div>
+                                                    <div class="option-wrap hidden">
+                                                        <div class="option">대한민국</div>
+                                                        <div class="option">대한민국</div>
+                                                        <div class="option">대한민국</div>
+                                                        <div class="option">대한민국</div>
+                                                        <div class="option">대한민국</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="field">
+                                                <label for="password">지역</label>
+                                                <input class="input" type="text" id="password">
+                                            </div>
+                                            <div class="field">
+                                                <label for="password">성별</label>
+                                                <input class="input" type="radio" name="sex" value="1" id="m"
+                                                    checked><label for="m">남성</label>
+                                                <input class="input" type="radio" name="sex" value="2" id="w"><label
+                                                    for="w">여성</label>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="field">
+                                                <label for="password">나의 프로필에 지역 정보를 공개하시겠습니까?</label>
+                                                <input class="input" type="radio" name="public" value="1" checked
+                                                    id="public"><label for="public">공개</label>
+                                                <input class="input" type="radio" name="public" value="2"
+                                                    id="private"><label for="private">비공개</label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="field">
+                                                <label for="password">이메일</label>
+                                                <div class="border">
+                                                    <input class="input" type="email" id="email" value="graycode"
+                                                        disabled readonly>
+                                                    <button>인증번호 발송</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="field">
+                                                <label for="password">은행</label>
+                                                <div class="border">
+                                                    <div class="select-box">
+                                                        <div class="placeholder">대한민국</div>
+                                                        <div class="option-wrap hidden">
+                                                            <div class="option">대한민국</div>
+                                                            <div class="option">대한민국</div>
+                                                            <div class="option">대한민국</div>
+                                                            <div class="option">대한민국</div>
+                                                            <div class="option">대한민국</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="field">
+                                                <label for="password">계좌번호</label>
+                                                <div class="border">
+                                                    <input class="input" type="text" id="email" value='' disabled
+                                                        readonly placeholder="계좌번호를 입력해 주세요.">
+                                                </div>
+                                            </div>
+                                            <div class="resident_registration_certificate">
+                                                주민등록증이 등록되지 않았습니다.
+                                            </div>
+                                            <label for="background">
+                                                <div class="btn-upload">주민등록증 업로드</div>
+                                            </label>
+                                            <input type="file" class="file" name="background" id="background">
+
+                                        </div>
+                                        <div class="row">
+                                            <label for="password">관심사</label><span>(최대 5개 선택 가능)</span>
+                                            <div class="row">
+                                                <input class="input hidden" type="checkbox" name="interests"
+                                                    id="interest-1">
+                                                <label for="interest-1">바카라</label>
+                                                <input class="input hidden" type="checkbox" name="interests"
+                                                    id="interest-2">
+                                                <label for="interest-2">식보</label>
+                                                <input class="input hidden" type="checkbox" name="interests"
+                                                    id="interest-3">
+                                                <label for="interest-3">룰렛</label>
+                                                <input class="input hidden" type="checkbox" name="interests"
+                                                    id="interest-4">
+                                                <label for="interest-4">게임 쇼</label>
+                                                <input class="input hidden" type="checkbox" name="interests"
+                                                    id="interest-5">
+                                                <label for="interest-5">스포츠</label>
+                                                <input class="input hidden" type="checkbox" name="interests"
+                                                    id="interest-6">
+                                                <label for="interest-6">게임</label>
+                                                <input class="input hidden" type="checkbox" name="interests"
+                                                    id="interest-7">
+                                                <label for="interest-7">가상화폐</label>
+                                                <input class="input hidden" type="checkbox" name="interests"
+                                                    id="interest-8">
+                                                <label for="interest-8">주식</label>
+                                                <input class="input hidden" type="checkbox" name="interests"
+                                                    id="interest-9">
+                                                <label for="interest-9">친목</label>
+                                                <input class="input hidden" type="checkbox" name="interests"
+                                                    id="interest-10">
+                                                <label for="interest-10">중고거래</label>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                
-                            </div>
-                            <div class="center  px13">
-                                <p>에볼챗(evolchat.com)은 데이터를 기반으로 한 게임 분석 및 커뮤니티, 채팅을 서비스합니다.<br> 금전을 걸고 할 수 있는 도박은 제공하지 않으며,
-                                    무료로 제공되는 양도가 불가능한 배팅 포인트를 이용하여 가상의 배팅을 즐기실 수 있습니다.</p>
-                            </div>
-                            <div class="bottom flex-row flex-c px13">
-                                <div class="icon icon-19"></div>
-                                <p>에볼챗은 만 19세 미만의 청소년은 가입이 불가합니다.<br> 본인이 아닌 타인의 명의를 도용, 대여하여 인증하는 행위를 금지합니다.</p>
+
                             </div>
                         </div>
-                        <div class="footer-nav flex-row px14">
-                            <div class="nav-list">
-                                <div class="nav-title px17"><a href="#">에볼루션</a></div>
-                                <div class="nav-item"><a href="#">바카라</a></div>
-                                <div class="nav-item"><a href="#">식보</a></div>
-                                <div class="nav-item"><a href="#">최고의 게임</a></div>
-                                <div class="nav-item"><a href="#">룰렛</a></div>
-                                <div class="nav-item"><a href="#">게임 쇼</a></div>
-                                <div class="nav-item"><a href="#">즐겨찾기</a></div>
-                            </div>
-                            <div class="nav-list">
-                                <div class="nav-title px17"><a href="#">커뮤니티</a></div>
-                                <div class="nav-item"><a href="#">자유</a></div>
-                                <div class="nav-item"><a href="#">포토</a></div>
-                                <div class="nav-item"><a href="#">유머</a></div>
-                                <div class="nav-item"><a href="#">동영상</a></div>
-                                <div class="nav-item"><a href="#">노하우&팁</a></div>
-                                <div class="nav-item"><a href="#">신고게시판</a></div>
-                            </div>
-                            <div class="nav-list">
-                                <div class="nav-title px17"><a href="#">오픈채팅</a></div>
-                                <div class="nav-item"><a href="#">오픈채팅 목록</a></div>
-                                <div class="nav-item"><a href="#">오픈채팅 개설</a></div>
-                            </div>
-                            <div class="nav-list">
-                                <div class="nav-title px17"><a href="#">랭킹</a></div>
-                                <div class="nav-item"><a href="#">수익</a></div>
-                                <div class="nav-item"><a href="#">승률</a></div>
-                                <div class="nav-item"><a href="#">연승</a></div>
-                                <div class="nav-item"><a href="#">잭팟 수령</a></div>
-                            </div>
-                            <div class="nav-list">
-                                <div class="nav-title px17"><a href="#">상점</a></div>
-                                <div class="nav-item"><a href="#">채팅</a></div>
-                                <div class="nav-item"><a href="#">꾸미기</a></div>
-                                <div class="nav-item"><a href="#">포인트</a></div>
-                                <div class="nav-item"><a href="#">골드칩</a></div>
-                                <div class="nav-item"><a href="#">기타</a></div>
-                            </div>
-                            <div class="nav-list">
-                                <div class="nav-title px17"><a href="#">고객센터</a></div>
-                                <div class="nav-item"><a href="#">공지사항</a></div>
-                                <div class="nav-item"><a href="#">도움말</a></div>
-                                <div class="nav-item"><a href="#">문의하기</a></div>
-                                <div class="nav-item"><a href="#">블랙리스트</a></div>
-                            </div>
-                            <div class="nav-list">
-                                <div class="nav-title px17"><a href="#">메신저</a></div>
-                                <div class="nav-item"><a href="#">친구 목록</a></div>
-                                <div class="nav-item"><a href="#">다이렉트 메시지</a></div>
-                                <div class="nav-item"><a href="./messenger_blocklists.html">차단 목록</a></div>
-                                <div class="nav-item"><a href="./messenger_add_friend.html">친구 추가하기</a></div>
-                            </div>
-                        </div>
-                        <div class="footer-corp">
-                            <div class="logo-corp graycode"></div>
-                            <p class="px13">(주)그레이코드 개인정보보호책임자 홍길동 주소 : 서울시 강남구 논현동 243-17번지 1층 전화 : 1588-4444 팩스 : 02-248-4444<br>
-                                E-mail : contact@evolchat.com 사업자등록번호 : 220-87-17456 통신판매업 신고번호 : 제2024-서울강남-1659호
-                                사업자정보확인</p>
-                            <div class="copy-corp"><img src="asset/images/logo/corp.png" alt="corp.png"></div>
-                        </div>
+                        <div class="row information">
+                            <button style="margin-right: 10px;">취소</button><button>확인</button>
+                          </div>
                     </div>
+
+                
                 </div>
 
             </div>
