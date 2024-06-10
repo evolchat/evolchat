@@ -2,7 +2,6 @@ package com.glossy.evolchat.model;
 
 import lombok.Data;
 import jakarta.persistence.*;
-
 import java.time.LocalDateTime;
 
 @Entity

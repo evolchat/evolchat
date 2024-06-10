@@ -1,6 +1,5 @@
 package com.glossy.evolchat.controller;
 
-import com.glossy.evolchat.dto.UserDto;
 import com.glossy.evolchat.model.User;
 import com.glossy.evolchat.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,30 +20,8 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public UserDto getUserById(@PathVariable int id) {
-        // Assume UserDto is a DTO representing user details including new fields
-        User user = userService.getUserById(id);
-        UserDto userDto = new UserDto();
-        // Mapping existing fields
-        userDto.setUserId(user.getUserId());
-        userDto.setUsername(user.getUsername());
-        userDto.setEmail(user.getEmail());
-        userDto.setRoleId(user.getRoleId());
-        // Mapping new fields
-        userDto.setProfilePicture(user.getProfilePicture());
-        userDto.setHomeBackgroundPicture(user.getHomeBackgroundPicture());
-        userDto.setMyHomeUrl(user.getMyHomeUrl());
-        userDto.setNickname(user.getNickname());
-        userDto.setTodaysMessage(user.getTodaysMessage());
-        userDto.setCountry(user.getCountry());
-        userDto.setRegion(user.getRegion());
-        userDto.setGender(user.getGender());
-        userDto.setLocationPublic(user.isLocationPublic());
-        userDto.setBankName(user.getBankName());
-        userDto.setAccountNumber(user.getAccountNumber());
-        userDto.setIdCardPicture(user.getIdCardPicture());
-        userDto.setInterests(user.getInterests());
-        return userDto;
+    public User getUserById(@PathVariable int id) {
+        return userService.getUserById(id);
     }
 
     @PostMapping
@@ -55,5 +32,10 @@ public class UserController {
     @DeleteMapping("/{id}")
     public void deleteUser(@PathVariable int id) {
         userService.deleteUser(id);
+    }
+
+    @GetMapping("/login")
+    public String loginPage() {
+        return "login"; // login.html 페이지로 이동
     }
 }
