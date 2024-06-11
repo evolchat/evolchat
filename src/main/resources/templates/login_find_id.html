@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>계정정보 찾기</title>
+
+    <script>
+        (function (d) {
+            var config = {
+                kitId: 'xfr4aba',
+                scriptTimeout: 3000,
+                async: true
+            },
+                h = d.documentElement, t = setTimeout(function () { h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive"; }, config.scriptTimeout), tk = d.createElement("script"), f = false, s = d.getElementsByTagName("script")[0], a; h.className += " wf-loading"; tk.src = 'https://use.typekit.net/' + config.kitId + '.js'; tk.async = true; tk.onload = tk.onreadystatechange = function () { a = this.readyState; if (f || a && a != "complete" && a != "loaded") return; f = true; clearTimeout(t); try { Typekit.load(config) } catch (e) { } }; s.parentNode.insertBefore(tk, s)
+        })(document);
+    </script>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <!-- select box -->
+    <script src="../static/plugin/jQuery/jquery-3.7.1.min.js"></script>
+    <script src="../static/plugin/lcdsantos-jQuery-Selectric/src/jquery.selectric.js"></script>
+    <link rel="stylesheet" href="../static/plugin/lcdsantos-jQuery-Selectric/selectric.css">
+    <!-- select box -->
+</head>
+
+<body>
+    <div class="wrapper bc-main vh100 ">
+        <div class="login-wrap max1280 flex-c-c assign-wrap">
+            <div class="header m-b-40">
+                <div class="safety grey-3 px17 m-b-40">
+                    <p>SAFETY AREA</p>
+                </div>
+                <div class="logo"><img src="../static/images/logo/login_logo.png" alt="logo.png"></div>
+            </div>
+            <div class="content white">
+            
+                <input type="radio" name="type" id="type1" class="hidden" checked>
+                <label for="type1">회원정보에 등록된 휴대폰으로 인증</label>
+                <div class="type1 hidden">
+                    <div class="description description-color">회원정보에 등록한 휴대전화 번호와 입력한 휴대폰 번호가 같아야, 인증번호를 받을 수 있습니다.
+                    </div>
+                    <div class="field">
+                        <div class="top px14">
+                            <label for="nickname">이름</label>
+                        </div>
+                        <input class="input" type="text" id="nickname">
+                    </div>
+                    <div class="field">
+                        <div class="top px14">
+                            <label for="phone">휴대폰 번호</label>
+                        </div>
+                        <select name="" id="">
+                            <option value="+82">+82</option>
+                            <option value="+82">+82</option>
+                            <option value="+82">+82</option>
+                            <option value="+82">+82</option>
+                        </select>
+                        <input class="input" type="number" id="phone">
+                        <button>인증번호 발송</button>
+                        <input class="input" type="number" id="number" placeholder="인증번호 6자리 숫자 입력">
+                        <div class="description description-color">인증번호가 오지 않나요?</div>
+                        <div class="log">1588-1588 번호가 스팸 문자로 등록되어 있는 것은 아닌지 확인해주세요. 스팸 문자로 등록되어 있지 않다면, 다시 한 번 '인증번호
+                            받기'를 눌러주세요.</div>
+                    </div>
+                </div>
+
+                <input type="radio" name="type" id="type2" class="hidden">
+                <label for="type2">회원정보에 등록된 이메일로 인증</label>
+                <div class="type2 hidden">
+                    <div class="description description-color">회원정보에 등록한 휴대전화 번호와 입력한 휴대폰 번호가 같아야, 인증번호를 받을 수 있습니다.
+                    </div>
+                    <div class="field">
+                        <div class="top px14">
+                            <label for="nickname">이름</label>
+                        </div>
+                        <input class="input" type="text" id="nickname">
+                    </div>
+                    <div class="field">
+                        <div class="top px14">
+                            <label for="phone">이메일 주소</label>
+                        </div>
+                        <input class="input" type="email" id="email">
+                        <button>인증번호 발송</button>
+                        <input class="input" type="number" id="number" placeholder="인증번호 6자리 숫자 입력">
+                        <div class="description description-color">인증번호가 오지 않나요?</div>
+                        <div class="log">1588-1588 번호가 스팸 문자로 등록되어 있는 것은 아닌지 확인해주세요. 스팸 문자로 등록되어 있지 않다면, 다시 한 번 '인증번호
+                            받기'를 눌러주세요.</div>
+                    </div>
+
+                </div>
+                <input type="radio" name="type" id="type3" class="hidden">
+                <label for="type3">회원정보에 등록된 이메일로 인증</label>
+                <div class="type3 hidden">
+                    <div class="description description-color">회원정보에 등록한 휴대전화 번호와 입력한 휴대폰 번호가 같아야, 인증번호를 받을 수 있습니다.
+                    </div>
+                </div>
+            </div>
+            <div class="footer"><img src="../static/images/logo/corp.png" alt=""></div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -16,11 +16,11 @@
                 h = d.documentElement, t = setTimeout(function () { h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive"; }, config.scriptTimeout), tk = d.createElement("script"), f = false, s = d.getElementsByTagName("script")[0], a; h.className += " wf-loading"; tk.src = 'https://use.typekit.net/' + config.kitId + '.js'; tk.async = true; tk.onload = tk.onreadystatechange = function () { a = this.readyState; if (f || a && a != "complete" && a != "loaded") return; f = true; clearTimeout(t); try { Typekit.load(config) } catch (e) { } }; s.parentNode.insertBefore(tk, s)
         })(document);
     </script>
-    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="../static/css/style.css">
     <!-- select box -->
-    <script src="static/plugin/jQuery/jquery-3.7.1.min.js"></script>
-    <script src="static/plugin/lcdsantos-jQuery-Selectric/src/jquery.selectric.js"></script>
-    <link rel="stylesheet" href="static/plugin/lcdsantos-jQuery-Selectric/selectric.css">
+    <script src="../static/plugin/jQuery/jquery-3.7.1.min.js"></script>
+    <script src="../static/plugin/lcdsantos-jQuery-Selectric/src/jquery.selectric.js"></script>
+    <link rel="stylesheet" href="../static/plugin/lcdsantos-jQuery-Selectric/selectric.css">
     <!-- select box -->
 </head>
 
@@ -29,7 +29,7 @@
         <div class="login-wrap max1280 flex-c-c assign-wrap">
             <div class="header m-b-40">
                 <div class="safety grey-3 px17 m-b-40"><p>SAFETY AREA</p></div>
-                <div class="logo"><img src="static/images/logo/login_logo.png" alt="logo.png"></div>
+                <div class="logo"><img src="../static/images/logo/login_logo.png" alt="logo.png"></div>
             </div>
             <div class="content">
                 <form action="/login" method="post">
@@ -45,18 +45,8 @@
                         </div>
                     </div>
                 </form>
-                <!-- hjh.20240610 : SNS 주석처리 -->
-                <!-- <div class="sns">-->
-                <!--     <p class="line">SNS 로그인</p>-->
-                <!--     <div class="herf-sns">-->
-                <!--         <a href="" class="login-btn-sns naver position-r"><span class="icon-sns icon-naver position-a"></span>-->
-                <!--             <div class="text-center"><span>네이버 로그인</span></div></a>-->
-                <!--         <a href="" class="login-btn-sns kakao  position-r"><span class="icon-sns icon-kakao position-a"></span><span>카카오 로그인</span></a>-->
-                <!--         <a href="" class="login-btn-sns google  position-r"><span class="icon-sns icon-google position-a"></span><span>구글 로그인</span></a>-->
-                <!--     </div>-->
-                <!-- </div>-->
             </div>
-            <div class="footer"><img src="static/images/logo/corp.png" alt=""></div>
+            <div class="footer"><img src="../static/images/logo/corp.png" alt=""></div>
         </div>
     </div>
 </body>
