@@ -40,6 +40,7 @@ Include **jQuery Selectric:**
 Include **jQuery Selectric** styles, and change it to your taste :D _(please refer to our [demo page](http://lcdsantos.github.io/jQuery-Selectric/demo.html) for more themes and other customizations)_
 
 ```html
+
 <link rel="stylesheet" href="selectric.css">
 ```
 
