@@ -2234,7 +2234,7 @@ div.mainContent>div.mainLayer>div>div>div.bottom>div>div>div {
 .character-wrap .character {
     width: 360px;
     height: 180px;
-    background-image: url("asset/images/Character/body.png");
+    background-image: url("static/images/Character/body.png");
 }
 
 .character-wrap .character img {
