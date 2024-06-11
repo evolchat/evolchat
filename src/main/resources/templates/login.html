@@ -16,60 +16,63 @@
                 h = d.documentElement, t = setTimeout(function () { h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive"; }, config.scriptTimeout), tk = d.createElement("script"), f = false, s = d.getElementsByTagName("script")[0], a; h.className += " wf-loading"; tk.src = 'https://use.typekit.net/' + config.kitId + '.js'; tk.async = true; tk.onload = tk.onreadystatechange = function () { a = this.readyState; if (f || a && a != "complete" && a != "loaded") return; f = true; clearTimeout(t); try { Typekit.load(config) } catch (e) { } }; s.parentNode.insertBefore(tk, s)
         })(document);
     </script>
-    <link rel="stylesheet" href="/css/style.css">
-<!-- select box -->
-    <script src="/plugin/jQuery/jquery-3.7.1.min.js"></script>
-    <script src="/plugin/lcdsantos-jQuery-Selectric/src/jquery.selectric.js"></script>
-    <link rel="stylesheet" href="/plugin/lcdsantos-jQuery-Selectric/selectric.css">
+ <link rel="stylesheet" href="/css/style.css">
+ <!-- select box -->
+     <script src="/plugin/jQuery/jquery-3.7.1.min.js"></script>
+     <script src="/plugin/lcdsantos-jQuery-Selectric/src/jquery.selectric.js"></script>
+     <link rel="stylesheet" href="/plugin/lcdsantos-jQuery-Selectric/selectric.css">
     <!-- select box -->
 </head>
 
 <body>
-<div class="wrapper bc-brown vh100 ">
-    <div class="login-wrap max1280 flex-c-c assign-wrap">
-        <div class="header"></div>
-        <div class="content">
-            <form action="/login" method="post">
-                <div class="inputfields">
-                    <div class="field-input  flex-c">
-                        <input type="text" name="username" id="id" placeholder="아이디" required>
-                    </div>
-                    <div class="field-input  flex-c">
-                        <input type="password" name="password" id="password" placeholder="비밀번호" required>
-                    </div>
-                    <div class="etcGroup">
-                        <div class="field">
-                            <input type="checkbox" name="remember-me" id="all">
-                            <label for="all"></label>
-                            <div class="top">
-                                로그인 상태 유지
+    <div class="wrapper bc-main vh100 ">
+        <div class="login-wrap max1280 flex-c-c assign-wrap">
+            <div class="header m-b-40">
+                <div class="safety grey-3 px17 m-b-40"><p>SAFETY AREA</p></div>
+                <div class="logo"><img src="asset/images/logo/login_logo.png" alt="logo.png"></div>
+            </div>
+            <div class="content">
+                <form action="/login" method="post">
+                    <div class="inputfields ">
+                        <div class="field-input m-b-10 flex-c">
+                            <input type="text" name="username" id="id" placeholder="아이디" required>
+                        </div>
+                        <div class="field-input  flex-c">
+                            <input type="password" name="password" id="password" placeholder="비밀번호" required>
+                        </div>
+                        <div class="etcGroup">
+                            <div class="field white flex-c flex-row m-b-20">
+                                <input type="checkbox" name="remember-me" id="all">
+                                <label for="all"></label>
+                                <div class="top opacity60">
+                                    로그인 상태 유지
+                                </div>
+                            </div>
+                            <div class="btns m-b-20">
+                                <button type="submit"><span class="white">로그인</span></button>
+                            </div>
+                            <div class="href px14">
+                                <a class="white opacity60" href="/register">회원가입</a>
+                                <a class="white opacity60 m-b-10" href="/find-id">아이디 찾기</a>
+                                <a class="white opacity60" href="/find-password">비밀번호 찾기</a>
                             </div>
                         </div>
-                        <div class="href">
-                            <a href="/register">회원가입</a>
-                            <a href="/find-id">계정정보 찾기</a>
-                            <a href="/find-password">비밀번호 찾기</a>
-                        </div>
                     </div>
-                </div>
-                <div class="btns">
-                    <button type="submit">로그인</button>
-                </div>
-            </form>
-            <!-- hjh.20240610 : SNS 주석처리 -->
-            <!-- <div class="sns">-->
-            <!--     <p class="line">SNS 로그인</p>-->
-            <!--     <div class="herf-sns">-->
-            <!--         <a href="" class="login-btn-sns naver position-r"><span class="icon-sns icon-naver position-a"></span>-->
-            <!--             <div class="text-center"><span>네이버 로그인</span></div></a>-->
-            <!--         <a href="" class="login-btn-sns kakao  position-r"><span class="icon-sns icon-kakao position-a"></span><span>카카오 로그인</span></a>-->
-            <!--         <a href="" class="login-btn-sns google  position-r"><span class="icon-sns icon-google position-a"></span><span>구글 로그인</span></a>-->
-            <!--     </div>-->
-            <!-- </div>-->
+                </form>
+                <!-- hjh.20240610 : SNS 주석처리 -->
+                <!-- <div class="sns">-->
+                <!--     <p class="line">SNS 로그인</p>-->
+                <!--     <div class="herf-sns">-->
+                <!--         <a href="" class="login-btn-sns naver position-r"><span class="icon-sns icon-naver position-a"></span>-->
+                <!--             <div class="text-center"><span>네이버 로그인</span></div></a>-->
+                <!--         <a href="" class="login-btn-sns kakao  position-r"><span class="icon-sns icon-kakao position-a"></span><span>카카오 로그인</span></a>-->
+                <!--         <a href="" class="login-btn-sns google  position-r"><span class="icon-sns icon-google position-a"></span><span>구글 로그인</span></a>-->
+                <!--     </div>-->
+                <!-- </div>-->
+            </div>
+            <div class="footer"><img src="asset/images/logo/corp.png" alt=""></div>
         </div>
-        <div class="footer">© Graycode All Rights Reserved.</div>
     </div>
-</div>
 </body>
 
 </html>
