@@ -5,19 +5,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>에볼챗닷컴 : 커뮤니티 - 자유</title>
- 
+
     <script>
-        (function(d) {
-          var config = {
-            kitId: 'xfr4aba',
-            scriptTimeout: 3000,
-            async: true
-          },
-          h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+        (function (d) {
+            var config = {
+                kitId: 'xfr4aba',
+                scriptTimeout: 3000,
+                async: true
+            },
+                h = d.documentElement, t = setTimeout(function () { h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive"; }, config.scriptTimeout), tk = d.createElement("script"), f = false, s = d.getElementsByTagName("script")[0], a; h.className += " wf-loading"; tk.src = 'https://use.typekit.net/' + config.kitId + '.js'; tk.async = true; tk.onload = tk.onreadystatechange = function () { a = this.readyState; if (f || a && a != "complete" && a != "loaded") return; f = true; clearTimeout(t); try { Typekit.load(config) } catch (e) { } }; s.parentNode.insertBefore(tk, s)
         })(document);
-      </script>
-         <link rel="stylesheet" href="asset/css/style.css">
-         
+    </script>
+    <link rel="stylesheet" href="asset/css/style.css">
+    <!-- select box -->
+    <script src="asset/plugin/jQuery/jquery-3.7.1.min.js"></script>
+    <script src="asset/plugin/lcdsantos-jQuery-Selectric/src/jquery.selectric.js"></script>
+    <link rel="stylesheet" href="asset/plugin/lcdsantos-jQuery-Selectric/selectric.css">
+    <!-- select box -->
+
+    <!-- select box -->
+    <script src="asset/plugin/jQuery/jquery-3.7.1.min.js"></script>
+    <script src="asset/plugin/lcdsantos-jQuery-Selectric/src/jquery.selectric.js"></script>
+    <link rel="stylesheet" href="asset/plugin/lcdsantos-jQuery-Selectric/selectric.css">
+    <!-- select box -->
 </head>
 
 <body>
@@ -80,7 +90,7 @@
                     <li class="grey-1"><a class="" href="rank.html">
                             <div class="bg-i-manu bg-i-manu-5"></div>랭킹
                         </a></li>
-                      <li class="grey-1"><a class="" href="shopping.html">
+                    <li class="grey-1"><a class="" href="shopping.html">
                             <div class="bg-i-manu bg-i-manu-6"></div>상점
                         </a></li>
                     <li class="grey-1"><a class="" href="support_notice.html">
@@ -160,7 +170,8 @@
                                                 어제 새벽에 달성한 저의 10배목 인증샷! <span>+3</span>
                                             </div>
                                             <div class="summary">
-                                                어제 복구할려고 혼자 쌩쇼 하면서 결국 해냈네요! 3시간 30분 정도 걸린 것 같습니다. 다른 고수님들은 이런 경험 많으시겠지만 전 처음이라서 자랑하고 싶어 이렇게 스샷까지 찍어 올려봅니다!! ^^
+                                                어제 복구할려고 혼자 쌩쇼 하면서 결국 해냈네요! 3시간 30분 정도 걸린 것 같습니다. 다른 고수님들은 이런 경험 많으시겠지만
+                                                전 처음이라서 자랑하고 싶어 이렇게 스샷까지 찍어 올려봅니다!! ^^
                                             </div>
                                             <div class="etc">
                                                 <div class="profile flex-row flex-c">
@@ -225,16 +236,18 @@
                     <div class="footer grey-5 bc-footer">
                         <div class="footer-notification">
                             <div class="top">
-                                <div class="logo flex-c flex-row"><img src="asset/images/logo/logo.png" alt="EVOLCHAT 로고">
+                                <div class="logo flex-c flex-row"><img src="asset/images/logo/logo.png"
+                                        alt="EVOLCHAT 로고">
                                     <div class="icons-wrap">
                                         <div class="icon-sns icon-apple"></div>
                                         <div class="icon-sns icon-google-play"></div>
                                     </div>
                                 </div>
-                                
+
                             </div>
                             <div class="center  px13">
-                                <p>에볼챗(evolchat.com)은 데이터를 기반으로 한 게임 분석 및 커뮤니티, 채팅을 서비스합니다.<br> 금전을 걸고 할 수 있는 도박은 제공하지 않으며,
+                                <p>에볼챗(evolchat.com)은 데이터를 기반으로 한 게임 분석 및 커뮤니티, 채팅을 서비스합니다.<br> 금전을 걸고 할 수 있는 도박은 제공하지
+                                    않으며,
                                     무료로 제공되는 양도가 불가능한 배팅 포인트를 이용하여 가상의 배팅을 즐기실 수 있습니다.</p>
                             </div>
                             <div class="bottom flex-row flex-c px13">
@@ -298,7 +311,8 @@
                         </div>
                         <div class="footer-corp">
                             <div class="logo-corp graycode"></div>
-                            <p class="px13">(주)그레이코드 개인정보보호책임자 홍길동 주소 : 서울시 강남구 논현동 243-17번지 1층 전화 : 1588-4444 팩스 : 02-248-4444<br>
+                            <p class="px13">(주)그레이코드 개인정보보호책임자 홍길동 주소 : 서울시 강남구 논현동 243-17번지 1층 전화 : 1588-4444 팩스 :
+                                02-248-4444<br>
                                 E-mail : contact@evolchat.com 사업자등록번호 : 220-87-17456 통신판매업 신고번호 : 제2024-서울강남-1659호
                                 사업자정보확인</p>
                             <div class="copy-corp"><img src="asset/images/logo/corp.png" alt="corp.png"></div>
@@ -657,6 +671,11 @@
             </div>
         </Section>
     </div>
+    <script>
+        $(function () {
+            $('select').selectric();
+        });
+    </script>
 </body>
 
 </html>

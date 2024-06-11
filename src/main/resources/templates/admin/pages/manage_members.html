@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원관리</title>
+    <link rel="stylesheet" href="../asset/css/style.css">
+    <script src="../../asset/plugin/jQuery/jquery-3.7.1.min.js"></script>
+    <script src="../../asset/plugin/lcdsantos-jQuery-Selectric/src/jquery.selectric.js"></script>
+    <link rel="stylesheet" href="../../asset/plugin/lcdsantos-jQuery-Selectric/selectric.css">
+</head>
+
+<body>
+    <div class="warp flex-row vh100 white">
+        <div class="left flex-column">
+            <div class="logo p-left-right-20">
+                <img src="" alt="로고.png" class="hidden">
+            </div>
+            <div class="nav flex-column">
+                <nav>
+                    <ul class="h100">
+                        <li class="flex-c p-left-right-20"><a href="#"><i>icon</i>대시보드</a></li>
+                        <li class="active flex-c p-left-right-20"><a href="#"><i>icon</i>회원관리</a></li>
+                        <li class="flex-c p-left-right-20"><a href="#"><i>icon</i>게시물 관리</a></li>
+                        <li class="flex-c p-left-right-20"><a href="#"><i>icon</i>채팅 관리</a></li>
+                        <li class="flex-c p-left-right-20"><a href="#"><i>icon</i>포인트 관리</a></li>
+                        <li class="flex-c p-left-right-20"><a href="#"><i>icon</i>아이템 관리</a></li>
+                        <li class="flex-c p-left-right-20"><a href="#"><i>icon</i>광고 관리</a></li>
+                        <li class="flex-c p-left-right-20"><a href="#"><i>icon</i>통계</a></li>
+                        <li class="flex-c p-left-right-20"><a href="#"><i>icon</i>환경설정</a></li>
+                    </ul>
+                </nav>
+                <div class="btn">
+                    <button>로그아웃</button>
+                </div>
+            </div>
+        </div>
+        <div class="right flex-column">
+            <div class="top flex-row flex-sb flex-c p-left-right-30">
+                <div class="search-area flex-row flex-c">
+                    <input type="text" class="white" placeholder="회원 닉네임 검색">
+                </div>
+                <div class="flex-row flex-c ">
+                    <div class="">TEMP</div>
+                    <div class="">TEMP</div>
+                    <div class="">닉네임</div>
+                </div>
+            </div>
+            <div class="content-wrap  p-left-right-30">
+                <div class="content-header flex-row flex-sb">
+                    <div class="nav-wrap">
+                        <ul class="flex-row flex-c h100">
+                            <li class="active">전체목록</li>
+                            <li>일반회원</li>
+                            <li>프리미엄 회원</li>
+                            <li>활동정지 회원</li>
+                            <li>탈퇴 회원</li>
+                        </ul>
+                    </div>
+                    <div class="btn-wrap">
+                        <button>선택 활동정지</button>
+                        <button>선택 포인트 몰수</button>
+                        <button>회원추가</button>
+                    </div>
+                </div>
+                <div class="content-body">
+                    <div class="search-area flex-row flex-c">
+                        <select>
+                            <option>닉네임</option>
+                            <option>Two</option>
+                            <option>Three</option>
+                            <option>Four</option>
+                            <option>Five</option>
+                        </select>
+                        <input type="text" class="white" placeholder="회원 닉네임 검색">
+                    </div>
+                    <div class="table px14">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th width="2.87%"><input type="checkbox" name="row" value="1"></th>
+                                    <th width="10.43%">아이디</th>
+                                    <th width="11.73%">닉네임</th>
+                                    <th width="4.04%">이름</th>
+                                    <th width="11.73%">이메일</th>
+                                    <th width="3.91%">등급</th>
+                                    <th width="3.91%">계좌</th>
+                                    <th width="7.82%">캐시</th>
+                                    <th width="7.82%">활동 포인트</th>
+                                    <th width="7.82%">골드칩</th>
+                                    <th width="9.13%">배팅 포인트</th>
+                                    <th width="6.52%">가입일</th>
+                                    <th width="10.23%">최근 로그인</th>
+                                    <th width="2.87%">...</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-center">
+                                <tr>
+                                    <td><input type="checkbox" name="row" value="1"></td>
+                                    <td>graycode</td>
+                                    <td>그레이코드</td>
+                                    <td>홍길동</td>
+                                    <td>graycode82@naver.com</td>
+                                    <td class="purple">프리미엄</td>
+                                    <td>✓</td>
+                                    <td class="text-right">450,000</td>
+                                    <td class="text-right">45,780</td>
+                                    <td class="text-right">1,000</td>
+                                    <td class="text-right">450,000,000</td>
+                                    <td>2023-03-06</td>
+                                    <td>2023-03-06 02:36:33</td>
+                                    <td>...</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" name="row" value="1"></td>
+                                    <td>graycode</td>
+                                    <td>그레이코드</td>
+                                    <td>홍길동</td>
+                                    <td>graycode82@naver.com</td>
+                                    <td class="red">정지</td>
+                                    <td>✓</td>
+                                    <td class="text-right">450,000</td>
+                                    <td class="text-right">45,780</td>
+                                    <td class="text-right">1,000</td>
+                                    <td class="text-right">450,000,000</td>
+                                    <td>2023-03-06</td>
+                                    <td>2023-03-06 02:36:33</td>
+                                    <td>...</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" name="row" value="1"></td>
+                                    <td>graycode</td>
+                                    <td>그레이코드</td>
+                                    <td>홍길동</td>
+                                    <td>graycode82@naver.com</td>
+                                    <td class="white">프리미엄</td>
+                                    <td>✓</td>
+                                    <td class="text-right">450,000</td>
+                                    <td class="text-right">45,780</td>
+                                    <td class="text-right">1,000</td>
+                                    <td class="text-right">450,000,000</td>
+                                    <td>2023-03-06</td>
+                                    <td>2023-03-06 02:36:33</td>
+                                    <td>...</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" name="row" value="1"></td>
+                                    <td>graycode</td>
+                                    <td>그레이코드</td>
+                                    <td>홍길동</td>
+                                    <td>graycode82@naver.com</td>
+                                    <td class="white">프리미엄</td>
+                                    <td>✓</td>
+                                    <td class="text-right">450,000</td>
+                                    <td class="text-right">45,780</td>
+                                    <td class="text-right">1,000</td>
+                                    <td class="text-right">450,000,000</td>
+                                    <td>2023-03-06</td>
+                                    <td>2023-03-06 02:36:33</td>
+                                    <td>...</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        $(function () {
+            $('select').selectric();
+        });
+    </script>
+
+</body>
+
+</html>

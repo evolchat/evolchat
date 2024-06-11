@@ -10,13 +10,13 @@
 
 <body>
     <div class="warp flex-row vh100 white">
-        <div class="left ">
+        <div class="left flex-column">
             <div class="logo p-left-right-20">
-                <img src="" alt="로고.png">
+                <img src="" alt="로고.png" class="hidden">
             </div>
-            <div class="nav">
+            <div class="nav flex-column">
                 <nav>
-                    <ul>
+                    <ul class="h100">
                         <li class="active flex-c p-left-right-20"><a href="#"><i>icon</i>대시보드</a></li>
                         <li class="flex-c p-left-right-20"><a href="#"><i>icon</i>회원관리</a></li>
                         <li class="flex-c p-left-right-20"><a href="#"><i>icon</i>게시물 관리</a></li>
@@ -33,10 +33,10 @@
                 </div>
             </div>
         </div>
-        <div class="right">
-            <div class="top flex-row flex-sb  p-left-right-30">
-                <div class="serch-area">
-                    <input type="text" placeholder="회원 닉네임 검색">
+        <div class="right flex-column">
+            <div class="top flex-row flex-sb flex-c p-left-right-30">
+                <div class="search-area flex-row flex-c">
+                    <input type="text" class="white" placeholder="회원 닉네임 검색">
                 </div>
                 <div class="flex-row flex-c ">
                     <div class="">TEMP</div>
