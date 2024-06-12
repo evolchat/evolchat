@@ -333,6 +333,9 @@ img {
 .m-lr-10 {
     margin: 0 10px;
 }
+.m-b-8 {
+    margin-bottom: 8px;
+}
 .m-b-10 {
     margin-bottom: 10px;
 }
@@ -359,7 +362,17 @@ table {
 .wrapper {
     font-size: 1rem;
 }
-
+.cb{
+    width: 0 !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 0 !important;
+    border: none !important;
+    visibility: hidden !important;
+    line-height: 0 !important;
+    clear: both;
+}
 .hidden {
     display: none !important;
 }
@@ -415,6 +428,7 @@ table {
 
 .vh100 {
     height: 100vh;
+    overflow-y: auto;
 }
 
 .h100 {
@@ -471,7 +485,7 @@ table {
 }
 
 .g-6 {
-    display: inline-block;
+    display: inline-block !important;
     width: 50%;
 }
 
@@ -1904,7 +1918,9 @@ div.mainContent>div.mainLayer>div>div>div.bottom>div>div>div {
 }
 
 .assign-wrap input[type="text"],
-.assign-wrap input[type="password"] {
+.assign-wrap input[type="password"],
+.assign-wrap input[type="email"],
+.assign-wrap input[type="tel"] {
     background-color: #232428;
     padding: 5px;
     border: none;
@@ -1998,7 +2014,9 @@ div.mainContent>div.mainLayer>div>div>div.bottom>div>div>div {
 }
 
 .login-btn-activate {
-    background-color: #8744ff;
+    background-color: #8744ff !important;
+    color: #FFF !important;
+    border-radius: 5px !important;
 }
 
 .login-btn-disable {
@@ -2047,6 +2065,9 @@ div.mainContent>div.mainLayer>div>div>div.bottom>div>div>div {
 
 
 /* 계정찾기 부분 */
+.login-wrap input[type="radio"]{
+    float: left;
+}
 .login-wrap input[type="radio"]:checked{
     display: block !important;
     outline: #03c104;
@@ -2054,8 +2075,21 @@ div.mainContent>div.mainLayer>div>div>div.bottom>div>div>div {
 .login-wrap .content.white input#type1:checked ~ .type1{
     display: block !important;
 }
-
-
+.login-wrap .content.white input#type2:checked ~ .type2{
+    display: block !important;
+}
+.login-wrap .content.white input#type3:checked ~ .type3{
+    display: block !important;
+}
+.login-wrap .line{
+    margin: 30px 0;
+    height: 1px;
+    width: 100%;
+    background-color: #35373D;
+}
+.login-wrap label{
+    cursor: pointer;
+}
 
 /* join & login */
 
