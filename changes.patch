@@ -1,0 +1,335 @@
+diff --git a/src/main/resources/static/css/style.css b/src/main/resources/static/css/style.css
+index a6d0d8c..3b87bf5 100644
+--- a/src/main/resources/static/css/style.css
++++ b/src/main/resources/static/css/style.css
+@@ -323,11 +323,27 @@ img {
+ .px48 {
+     font-size: 3rem;
+ }
+-
+-.p20 {
++/* padding , margin*/
++.p-20 {
+     padding: 20px;
+ }
+ 
++
++.m-lr-10 {
++    margin: 0 10px;
++}
++.m-b-10 {
++    margin-bottom: 10px;
++}
++.m-b-20 {
++    margin-bottom: 20px;
++}
++.m-b-40 {
++    margin-bottom: 40px;
++}
++/* padding , margin*/
++
++
+ blockquote:before,
+ blockquote:after,
+ q:before,
+@@ -1858,8 +1874,14 @@ div.mainContent>div.mainLayer>div>div>div.bottom>div>div>div {
+ 
+ 
+ /* join & login */
++.safety{
++    height: 60px;
++    display: flex;
++    justify-content: center;
++    align-items: center;
++}
+ .assign-wrap {
+-    max-width: 390px;
++    max-width: 350px;
+     width: 100%;
+     flex-direction: column;
+ }
+@@ -1900,26 +1922,29 @@ div.mainContent>div.mainLayer>div>div>div.bottom>div>div>div {
+ 
+ .assign-wrap input[type="checkbox"]+label {
+     display: inline-block;
+-    width: 30px;
+-    height: 30px;
+-    border: 3px solid #707070;
++    width: 20px;
++    height: 20px;
++    border-radius: 3px;
++    border: 1px solid #454853;
+     position: relative;
+ }
+ 
+ .assign-wrap input[type="checkbox"]:checked+label::after {
+     content: '✔';
+-    font-size: 25px;
+-    width: 30px;
+-    height: 30px;
++    color: #fff;
++    /* font-size: 14px; */
++    font-size: 0.875rem;
++    width: 100%;
++    height: 100%;
+     text-align: center;
+     position: absolute;
+-    left: 0;
+-    top: 0;
+-    color: #fff;
++    left: 50%;
++    top: 50%;
++    transform: translate(-50%, -50%);
+ }
+ 
+ .assign-wrap input[type="checkbox"]:checked+label {
+-    background-color: #5865f2;
++    background-color: #8744FF;
+ }
+ 
+ .assign-wrap .field-input {
+@@ -1944,7 +1969,7 @@ div.mainContent>div.mainLayer>div>div>div.bottom>div>div>div {
+     flex-direction: row;
+     flex-wrap: wrap;
+     justify-content: space-between;
+-    margin-bottom: 8px;
++    /* margin-bottom: 8px; */
+ 
+ }
+ 
+@@ -1998,10 +2023,16 @@ div.mainContent>div.mainLayer>div>div>div.bottom>div>div>div {
+     text-align: center;
+     display: inline-block;
+     padding: 10px;
+-    background-color: #40393c;
++    background-color: #35373D;
+     border: none;
+ }
+ 
++.login-wrap .btns button span {
++    color: #fff;
++    opacity: 20%;
++}
++
++
+ .login-wrap .sns .line {
+     margin: 40px 0;
+     color: #a0afbd;
+@@ -2518,28 +2549,32 @@ div.mainContent>div.mainLayer>div>div>div.bottom>div>div>div {
+     background-color: #F23F42;
+     color: #fff;
+ }
+-.myitem .count-btn-wrap{
++
++.myitem .count-btn-wrap {
+     border-radius: 5px;
+ }
+-.myitem button{
++
++.myitem button {
+     border-radius: 5px;
+     background-color: #8744FF;
+     color: #fff;
+ }
++
+ /* myitem */
+ 
+ /* my_activitypoints */
+ 
+-.mainLayer > div .table-radius{
++.mainLayer>div .table-radius {
+     padding: 20px;
+ }
+-.mypqge-table
+-{
++
++.mypqge-table {
+     width: 100%;
+     height: 100%;
+     border-collapse: collapse;
+     border-style: hidden;
+ }
++
+ .mypqge-table tbody tr {
+     height: 58px;
+ }
+diff --git a/src/main/resources/templates/admin/asset/css/style.css b/src/main/resources/templates/admin/asset/css/style.css
+index 52b6b5b..8e33c2f 100644
+--- a/src/main/resources/templates/admin/asset/css/style.css
++++ b/src/main/resources/templates/admin/asset/css/style.css
+@@ -324,7 +324,7 @@ img {
+     font-size: 3rem;
+ }
+ 
+-.p20 {
++.p-20 {
+     padding: 20px;
+ }
+ 
+diff --git a/src/main/resources/templates/login.html b/src/main/resources/templates/login.html
+index 1c9fefc..097f913 100644
+--- a/src/main/resources/templates/login.html
++++ b/src/main/resources/templates/login.html
+@@ -16,60 +16,63 @@
+                 h = d.documentElement, t = setTimeout(function () { h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive"; }, config.scriptTimeout), tk = d.createElement("script"), f = false, s = d.getElementsByTagName("script")[0], a; h.className += " wf-loading"; tk.src = 'https://use.typekit.net/' + config.kitId + '.js'; tk.async = true; tk.onload = tk.onreadystatechange = function () { a = this.readyState; if (f || a && a != "complete" && a != "loaded") return; f = true; clearTimeout(t); try { Typekit.load(config) } catch (e) { } }; s.parentNode.insertBefore(tk, s)
+         })(document);
+     </script>
+-    <link rel="stylesheet" href="/css/style.css">
+-<!-- select box -->
+-    <script src="/plugin/jQuery/jquery-3.7.1.min.js"></script>
+-    <script src="/plugin/lcdsantos-jQuery-Selectric/src/jquery.selectric.js"></script>
+-    <link rel="stylesheet" href="/plugin/lcdsantos-jQuery-Selectric/selectric.css">
++ <link rel="stylesheet" href="/css/style.css">
++ <!-- select box -->
++     <script src="/plugin/jQuery/jquery-3.7.1.min.js"></script>
++     <script src="/plugin/lcdsantos-jQuery-Selectric/src/jquery.selectric.js"></script>
++     <link rel="stylesheet" href="/plugin/lcdsantos-jQuery-Selectric/selectric.css">
+     <!-- select box -->
+ </head>
+ 
+ <body>
+-<div class="wrapper bc-brown vh100 ">
+-    <div class="login-wrap max1280 flex-c-c assign-wrap">
+-        <div class="header"></div>
+-        <div class="content">
+-            <form action="/login" method="post">
+-                <div class="inputfields">
+-                    <div class="field-input  flex-c">
+-                        <input type="text" name="username" id="id" placeholder="아이디" required>
+-                    </div>
+-                    <div class="field-input  flex-c">
+-                        <input type="password" name="password" id="password" placeholder="비밀번호" required>
+-                    </div>
+-                    <div class="etcGroup">
+-                        <div class="field">
+-                            <input type="checkbox" name="remember-me" id="all">
+-                            <label for="all"></label>
+-                            <div class="top">
+-                                로그인 상태 유지
+-                            </div>
++    <div class="wrapper bc-main vh100 ">
++        <div class="login-wrap max1280 flex-c-c assign-wrap">
++            <div class="header m-b-40">
++                <div class="safety grey-3 px17 m-b-40"><p>SAFETY AREA</p></div>
++                <div class="logo"><img src="asset/images/logo/login_logo.png" alt="logo.png"></div>
++            </div>
++            <div class="content">
++                <form action="/login" method="post">
++                    <div class="inputfields ">
++                        <div class="field-input m-b-10 flex-c">
++                            <input type="text" name="username" id="id" placeholder="아이디" required>
++                        </div>
++                        <div class="field-input  flex-c">
++                            <input type="password" name="password" id="password" placeholder="비밀번호" required>
+                         </div>
+-                        <div class="href">
+-                            <a href="/register">회원가입</a>
+-                            <a href="/find-id">계정정보 찾기</a>
+-                            <a href="/find-password">비밀번호 찾기</a>
++                        <div class="etcGroup">
++                            <div class="field white flex-c flex-row m-b-20">
++                                <input type="checkbox" name="remember-me" id="all">
++                                <label for="all"></label>
++                                <div class="top opacity60">
++                                    로그인 상태 유지
++                                </div>
++                            </div>
++                            <div class="btns m-b-20">
++                                <button type="submit"><span class="white">로그인</span></button>
++                            </div>
++                            <div class="href px14">
++                                <a class="white opacity60" href="/register">회원가입</a>
++                                <a class="white opacity60 m-b-10" href="/find-id">아이디 찾기</a>
++                                <a class="white opacity60" href="/find-password">비밀번호 찾기</a>
++                            </div>
+                         </div>
+                     </div>
+-                </div>
+-                <div class="btns">
+-                    <button type="submit">로그인</button>
+-                </div>
+-            </form>
+-            <!-- hjh.20240610 : SNS 주석처리 -->
+-            <!-- <div class="sns">-->
+-            <!--     <p class="line">SNS 로그인</p>-->
+-            <!--     <div class="herf-sns">-->
+-            <!--         <a href="" class="login-btn-sns naver position-r"><span class="icon-sns icon-naver position-a"></span>-->
+-            <!--             <div class="text-center"><span>네이버 로그인</span></div></a>-->
+-            <!--         <a href="" class="login-btn-sns kakao  position-r"><span class="icon-sns icon-kakao position-a"></span><span>카카오 로그인</span></a>-->
+-            <!--         <a href="" class="login-btn-sns google  position-r"><span class="icon-sns icon-google position-a"></span><span>구글 로그인</span></a>-->
+-            <!--     </div>-->
+-            <!-- </div>-->
++                </form>
++                <!-- hjh.20240610 : SNS 주석처리 -->
++                <!-- <div class="sns">-->
++                <!--     <p class="line">SNS 로그인</p>-->
++                <!--     <div class="herf-sns">-->
++                <!--         <a href="" class="login-btn-sns naver position-r"><span class="icon-sns icon-naver position-a"></span>-->
++                <!--             <div class="text-center"><span>네이버 로그인</span></div></a>-->
++                <!--         <a href="" class="login-btn-sns kakao  position-r"><span class="icon-sns icon-kakao position-a"></span><span>카카오 로그인</span></a>-->
++                <!--         <a href="" class="login-btn-sns google  position-r"><span class="icon-sns icon-google position-a"></span><span>구글 로그인</span></a>-->
++                <!--     </div>-->
++                <!-- </div>-->
++            </div>
++            <div class="footer"><img src="asset/images/logo/corp.png" alt=""></div>
+         </div>
+-        <div class="footer">© Graycode All Rights Reserved.</div>
+     </div>
+-</div>
+ </body>
+ 
+-</html>
++</html>
+\ No newline at end of file
+diff --git a/src/main/resources/templates/my_activitypoints.html b/src/main/resources/templates/my_activitypoints.html
+index 3018872..e6b9265 100644
+--- a/src/main/resources/templates/my_activitypoints.html
++++ b/src/main/resources/templates/my_activitypoints.html
+@@ -155,7 +155,7 @@
+                         </div>
+ 
+                         <div class="mainLayer white">
+-                            <div class="content-wrap flex-c-c flex-column p20 mypage">
++                            <div class="content-wrap flex-c-c flex-column p-20 mypage">
+                                 <div class="etc flex-row">
+                                     <div class="money-wrap g-6" style="margin-right: 20px;">
+                                         <div class="flex-row flex-c">
+diff --git a/src/main/resources/templates/my_goldchip.html b/src/main/resources/templates/my_goldchip.html
+index 8cb68ea..195ef51 100644
+--- a/src/main/resources/templates/my_goldchip.html
++++ b/src/main/resources/templates/my_goldchip.html
+@@ -155,7 +155,7 @@
+                         </div>
+ 
+                         <div class="mainLayer white">
+-                            <div class="content-wrap flex-c-c flex-column p20 mypage">
++                            <div class="content-wrap flex-c-c flex-column p-20 mypage">
+                                 <div class="etc flex-row">
+                                     <div class="money-wrap g-6" style="margin-right: 20px;">
+                                         <div class="flex-row flex-c">
+diff --git a/src/main/resources/templates/my_mypqge.html b/src/main/resources/templates/my_mypqge.html
+index 42a0154..8386d9e 100644
+--- a/src/main/resources/templates/my_mypqge.html
++++ b/src/main/resources/templates/my_mypqge.html
+@@ -155,7 +155,7 @@
+                         </div>
+ 
+                         <div class="mainLayer white">
+-                            <div class="content-wrap flex-c-c flex-column p20 mypage">
++                            <div class="content-wrap flex-c-c flex-column p-20 mypage">
+                                 <div class="etc flex-row">
+                                     <div class="money-wrap g-6" style="margin-right: 20px;">
+                                         <div class="flex-row flex-c">
+diff --git a/src/main/resources/templates/mypqge.html b/src/main/resources/templates/mypqge.html
+index 7ec74f7..422bd87 100644
+--- a/src/main/resources/templates/mypqge.html
++++ b/src/main/resources/templates/mypqge.html
+@@ -155,7 +155,7 @@
+                         </div>
+ 
+                         <div class="mainLayer white">
+-                            <div class="content-wrap flex-c-c flex-column p20 mypage">
++                            <div class="content-wrap flex-c-c flex-column p-20 mypage">
+                                 <div class="etc flex-row">
+                                     <div class="money-wrap g-6" style="margin-right: 20px;">
+                                         <div class="flex-row flex-c">
