@@ -1,0 +1,10 @@
+diff a/src/main/resources/templates/admin/asset/css/style.css b/src/main/resources/templates/admin/asset/css/style.css	(rejected hunks)
+@@ -324,7 +324,7 @@ img {
+     font-size: 3rem;
+ }
+ 
+-.p20 {
++.p-20 {
+     padding: 20px;
+ }
+ 
