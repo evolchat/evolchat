@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>채팅관리 - 전체 채팅</title>
-    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../../../static/css/admin.css">
 </head>
 
 <body>
@@ -44,8 +44,8 @@
                     <div class="">닉네임</div>
                 </div>
             </div>
-            <div class="content-wrap  p-left-right-30">
-                <div class="content-header flex-row flex-sb">
+            <div class="content-wrap  flex-column">
+                <div class="content-header flex-row flex-sb p-left-right-30">
                     <div class="nav-wrap">
                         <ul class="flex-row flex-c h100">
                             <li class="active">전체목록</li>
@@ -55,14 +55,135 @@
                             <li>탈퇴 회원</li>
                         </ul>
                     </div>
-                    <div class="btn-wrap">
-                        <button>선택 활동정지</button>
-                        <button>선택 포인트 몰수</button>
-                        <button>회원추가</button>
-                    </div>
+
                 </div>
-                <div class="content-body">
-                    
+                <div class="content-body flex-row flex flex-grow manage_chat_all">
+                    <div class="chat-area flex-grow flex-column">
+                        <div class="chat-area flex-grow flex-column p-left-right-30">
+                            <div class="flex-grow"></div>
+                            <div class="chat flex-row flex-c">
+                                <img src="../../.././static/images/profile/user1.png" alt="user.png">
+                                <div class="info m-lr-10">
+                                    <div class="nameandtime  flex-row flex-c m-b-8">
+                                        <div class="">포커페이스</div>
+                                        <div class="">16:48</div>
+                                    </div>
+                                    <p>코스바 C 오늘 진짜 딜러 진상이네...왜 저렇게 답답하게 패를 까냐? 속터지네! 총판들 없나?</p>
+                                </div>
+                            </div>
+                            <div class="chat flex-row flex-c">
+                                <img src="../../.././static/images/profile/user1.png" alt="user.png">
+                                <div class="info m-lr-10">
+                                    <div class="nameandtime  flex-row flex-c m-b-8">
+                                        <div class="">포커페이스</div>
+                                        <div class="">16:48</div>
+                                    </div>
+                                    <p>코스바 C 오늘 진짜 딜러 진상이네...왜 저렇게 답답하게 패를 까냐? 속터지네! 총판들 없나?</p>
+                                </div>
+                            </div>
+                            <div class="chat flex-row flex-c select">
+                                <img src="../../.././static/images/profile/user1.png" alt="user.png">
+                                <div class="info m-lr-10">
+                                    <div class="nameandtime  flex-row flex-c m-b-8">
+                                        <div class="">포커페이스</div>
+                                        <div class="">16:48</div>
+                                    </div>
+                                    <p><span class="orange">관리자</span> 분들이 오늘은 일을 열심히 하시는 것 같은데? 뭔 말을 못하겠네!</p>
+                                </div>
+                            </div>
+                            <div class="chat flex-row flex-c">
+                                <img src="../../.././static/images/profile/user1.png" alt="user.png">
+                                <div class="info m-lr-10">
+                                    <div class="nameandtime  flex-row flex-c m-b-8">
+                                        <div class="">포커페이스</div>
+                                        <div class="">16:48</div>
+                                    </div>
+                                    <p>코스바 C 오늘 진짜 딜러 진상이네...왜 저렇게 답답하게 패를 까냐? 속터지네! 총판들 없나?</p>
+                                </div>
+                            </div>
+                            <div class="chat flex-row flex-c">
+                                <img src="../../.././static/images/profile/user1.png" alt="user.png">
+                                <div class="info m-lr-10">
+                                    <div class="nameandtime  flex-row flex-c m-b-8">
+                                        <div class="">포커페이스</div>
+                                        <div class="">16:48</div>
+                                    </div>
+                                    <p>코스바 C 오늘 진짜 딜러 진상이네...왜 저렇게 답답하게 패를 까냐? 속터지네! 총판들 없나?</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-area flex-column">
+                            <div class="btn-wrap">
+                                <button>TEMP</button><button>TEMP</button><button>TEMP</button><button>TEMP</button>
+                            </div>
+                            <div class="input-wrap flex-grow">
+                                <textarea name="" id="" placeholder="관리자 채팅 메시지 보내기"></textarea>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                    <div class="item-chat-area">
+                        <div class="top flex-row flex-c">
+                            <div class="item-name">고성능 확성기</div>
+                            <div class="item-time orange">3:32초 남음</div>
+                        </div>
+                        <div class="item-wrap">
+                            <div class="item active">
+                                <div class="userinfo  flex-row flex-c item-title flex-sa">
+                                    <img src="../../../static/images/profile/user1.png" alt="profile.png">
+                                    <div class="name">FunnyPink</div>
+                                    <div class="icon">ICON</div>
+                                    <div class="icon">ICON</div>
+                                </div>
+                                <div class="content item-text">
+                                    오늘 100출 400마감 하려고 합니다. 프젝 같이 진행하실 분은 메시지나 제 오픈 채팅방으로 놀러오세요!
+                                </div>
+                                <div class="line"></div>
+                            </div>
+                            <div class="item opacity40">
+                                <div class="userinfo  flex-row flex-c item-title flex-sa">
+                                    <img src="../../../static/images/profile/user1.png" alt="profile.png">
+                                    <div class="name">FunnyPink</div>
+                                    <div class="icon">ICON</div>
+                                    <div class="icon">ICON</div>
+                                </div>
+                                <div class="content item-text">
+                                    오늘 100출 400마감 하려고 합니다. 프젝 같이 진행하실 분은 메시지나 제 오픈 채팅방으로 놀러오세요!
+                                </div>
+                                <div class="line"></div>
+                            </div>
+                            <div class="item opacity40">
+                                <div class="userinfo  flex-row flex-c item-title flex-sa">
+                                    <img src="../../../static/images/profile/user1.png" alt="profile.png">
+                                    <div class="name">FunnyPink</div>
+                                    <div class="icon">ICON</div>
+                                    <div class="icon">ICON</div>
+                                </div>
+                                <div class="content item-text">
+                                    오늘 100출 400마감 하려고 합니다. 프젝 같이 진행하실 분은 메시지나 제 오픈 채팅방으로 놀러오세요!
+                                </div>
+                                <div class="line"></div>
+                            </div>
+                            <div class="item opacity40">
+                                <div class="userinfo  flex-row flex-c item-title flex-sa">
+                                    <img src="../../../static/images/profile/user1.png" alt="profile.png">
+                                    <div class="name">FunnyPink</div>
+                                    <div class="icon">ICON</div>
+                                    <div class="icon">ICON</div>
+                                </div>
+                                <div class="content item-text">
+                                    오늘 100출 400마감 하려고 합니다. 프젝 같이 진행하실 분은 메시지나 제 오픈 채팅방으로 놀러오세요!
+                                </div>
+                                <div class="line"></div>
+                            </div>
+
+                        </div>
+
+
+
+                    </div>
                 </div>
             </div>
         </div>
