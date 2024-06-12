@@ -2020,8 +2020,12 @@ div.mainContent>div.mainLayer>div>div>div.bottom>div>div>div {
 
 
 /* 계정찾기 부분 */
-.login-wrap #type1:checked ~ .type1{
-    display: inline-block !important;
+.login-wrap input[type="radio"]:checked{
+    display: block !important;
+    outline: #03c104;
+}
+.login-wrap .content.white input#type1:checked ~ .type1{
+    display: block !important;
 }
 
 
