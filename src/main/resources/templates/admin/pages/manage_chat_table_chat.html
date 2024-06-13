@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>채팅관리 - 전체 채팅</title>
+    <link rel="stylesheet" href="../../../static/css/admin.css">
+</head>
+
+<body>
+    <div class="warp flex-row vh100 white">
+        <div class="left flex-column">
+            <div class="logo p-left-right-20">
+                <img src="" alt="로고.png" class="hidden">
+            </div>
+            <div class="nav flex-column">
+                <nav>
+                    <ul class="h100">
+                        <li class="active flex-c p-left-right-20"><a href="#"><i>icon</i>대시보드</a></li>
+                        <li class="flex-c p-left-right-20"><a href="#"><i>icon</i>회원관리</a></li>
+                        <li class="flex-c p-left-right-20"><a href="#"><i>icon</i>게시물 관리</a></li>
+                        <li class="flex-c p-left-right-20"><a href="#"><i>icon</i>채팅 관리</a></li>
+                        <li class="flex-c p-left-right-20"><a href="#"><i>icon</i>포인트 관리</a></li>
+                        <li class="flex-c p-left-right-20"><a href="#"><i>icon</i>아이템 관리</a></li>
+                        <li class="flex-c p-left-right-20"><a href="#"><i>icon</i>광고 관리</a></li>
+                        <li class="flex-c p-left-right-20"><a href="#"><i>icon</i>통계</a></li>
+                        <li class="flex-c p-left-right-20"><a href="#"><i>icon</i>환경설정</a></li>
+                    </ul>
+                </nav>
+                <div class="btn">
+                    <button>로그아웃</button>
+                </div>
+            </div>
+        </div>
+        <div class="right flex-column">
+            <div class="top flex-row flex-sb flex-c p-left-right-30">
+                <div class="search-area flex-row flex-c">
+                    <input type="text" class="white" placeholder="회원 닉네임 검색">
+                </div>
+                <div class="flex-row flex-c ">
+                    <div class="">TEMP</div>
+                    <div class="">TEMP</div>
+                    <div class="">닉네임</div>
+                </div>
+            </div>
+            <div class="content-wrap  flex-column">
+                <div class="content-header flex-row flex-sb p-left-right-30">
+                    <div class="nav-wrap">
+                        <ul class="flex-row flex-c h100">
+                            <li class="active">전체목록</li>
+                            <li>일반회원</li>
+                            <li>프리미엄 회원</li>
+                            <li>활동정지 회원</li>
+                            <li>탈퇴 회원</li>
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="content-body flex-row flex flex-grow manage_chat_all">
+                    <div class="chat-area flex-grow flex-column">
+                        <div class="chat-area flex-grow flex-column p-left-right-30">
+                            <div class="flex-grow"></div>
+                            <div class="chat flex-row flex-c">
+                                <img src="../../.././static/images/profile/user1.png" alt="user.png">
+                                <div class="info m-lr-10">
+                                    <div class="nameandtime  flex-row flex-c m-b-8">
+                                        <div class="">포커페이스</div>
+                                        <div class="">16:48</div>
+                                    </div>
+                                    <p>코스바 C 오늘 진짜 딜러 진상이네...왜 저렇게 답답하게 패를 까냐? 속터지네! 총판들 없나?</p>
+                                </div>
+                            </div>
+                            <div class="chat flex-row flex-c">
+                                <img src="../../.././static/images/profile/user1.png" alt="user.png">
+                                <div class="info m-lr-10">
+                                    <div class="nameandtime  flex-row flex-c m-b-8">
+                                        <div class="">포커페이스</div>
+                                        <div class="">16:48</div>
+                                    </div>
+                                    <p>코스바 C 오늘 진짜 딜러 진상이네...왜 저렇게 답답하게 패를 까냐? 속터지네! 총판들 없나?</p>
+                                </div>
+                            </div>
+                            <div class="chat flex-row flex-c select">
+                                <img src="../../.././static/images/profile/user1.png" alt="user.png">
+                                <div class="info m-lr-10">
+                                    <div class="nameandtime  flex-row flex-c m-b-8">
+                                        <div class="">포커페이스</div>
+                                        <div class="">16:48</div>
+                                    </div>
+                                    <p><span class="orange">관리자</span> 분들이 오늘은 일을 열심히 하시는 것 같은데? 뭔 말을 못하겠네!</p>
+                                </div>
+                            </div>
+                            <div class="chat flex-row flex-c">
+                                <img src="../../.././static/images/profile/user1.png" alt="user.png">
+                                <div class="info m-lr-10">
+                                    <div class="nameandtime  flex-row flex-c m-b-8">
+                                        <div class="">포커페이스</div>
+                                        <div class="">16:48</div>
+                                    </div>
+                                    <p>코스바 C 오늘 진짜 딜러 진상이네...왜 저렇게 답답하게 패를 까냐? 속터지네! 총판들 없나?</p>
+                                </div>
+                            </div>
+                            <div class="chat flex-row flex-c">
+                                <img src="../../.././static/images/profile/user1.png" alt="user.png">
+                                <div class="info m-lr-10">
+                                    <div class="nameandtime  flex-row flex-c m-b-8">
+                                        <div class="">포커페이스</div>
+                                        <div class="">16:48</div>
+                                    </div>
+                                    <p>코스바 C 오늘 진짜 딜러 진상이네...왜 저렇게 답답하게 패를 까냐? 속터지네! 총판들 없나?</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-area flex-column">
+                            <div class="btn-wrap">
+                                <button>TEMP</button><button>TEMP</button><button>TEMP</button><button>TEMP</button>
+                            </div>
+                            <div class="input-wrap flex-grow">
+                                <textarea name="" id="" placeholder="관리자 채팅 메시지 보내기"></textarea>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                    <div class="table-chat-list">
+                        <div class="top flex-row flex-c">
+                            <div class="item-name">테이블 채팅 목록</div>
+                        </div>
+                        <div class="item-wrap">
+                            <div class="item  flex-c flex-rowactive">
+                                <div class="content ">
+                                    코리아 스피드 바카라 A
+                                </div>
+                            </div>
+                            <div class="item  flex-c flex-row">
+                                <div class="content">
+                                    코리아 스피드 바카라 B
+                                </div>
+                            </div>
+                            <div class="item  flex-c flex-row">
+                                <div class="content">
+                                    코리아 스피드 바카라 B
+                                </div>
+                            </div>
+                            <div class="item  flex-c flex-row">
+                                <div class="content">
+                                    코리아 스피드 바카라 B
+                                </div>
+                            </div>
+                            <div class="item  flex-c flex-row">
+                                <div class="content">
+                                    코리아 스피드 바카라 B
+                                </div>
+                            </div>
+                            <div class="item  flex-c flex-row">
+                                <div class="content">
+                                    코리아 스피드 바카라 B
+                                </div>
+                            </div>
+                            <div class="item  flex-c flex-row">
+                                <div class="content">
+                                    코리아 스피드 바카라 B
+                                </div>
+                            </div>
+                            <div class="item  flex-c flex-row">
+                                <div class="content">
+                                    코리아 스피드 바카라 B
+                                </div>
+                            </div>
+                            <div class="item  flex-c flex-row">
+                                <div class="content">
+                                    코리아 스피드 바카라 B
+                                </div>
+                            </div>
+                            <div class="item  flex-c flex-row">
+                                <div class="content">
+                                    코리아 스피드 바카라 B
+                                </div>
+                            </div>
+                            <div class="item  flex-c flex-row">
+                                <div class="content">
+                                    코리아 스피드 바카라 B
+                                </div>
+                            </div>
+                            <div class="item  flex-c flex-row">
+                                <div class="content">
+                                    코리아 스피드 바카라 B
+                                </div>
+                            </div>
+                            <div class="item  flex-c flex-row">
+                                <div class="content">
+                                    코리아 스피드 바카라 B
+                                </div>
+                            </div>
+                            <div class="item  flex-c flex-row">
+                                <div class="content">
+                                    코리아 스피드 바카라 B
+                                </div>
+                            </div>
+                            <div class="item  flex-c flex-row">
+                                <div class="content">
+                                    코리아 스피드 바카라 B
+                                </div>
+                            </div>
+                            <div class="item  flex-c flex-row">
+                                <div class="content">
+                                    코리아 스피드 바카라 B
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>광고관리 - 세부설정</title>
+    <link rel="stylesheet" href="../../../static/css/admin.css">
+    <script src="../../../static/plugin/jQuery/jquery-3.7.1.min.js"></script>
+    <script src="../../../static/plugin/lcdsantos-jQuery-Selectric/src/jquery.selectric.js"></script>
+    <link rel="stylesheet" href="../../../static/plugin/lcdsantos-jQuery-Selectric/selectric.css">
+</head>
+
+<body>
+    <div class="warp flex-row vh100 white">
+        <div class="left flex-column">
+            <div class="logo p-left-right-20">
+                <img src="" alt="로고.png" class="hidden">
+            </div>
+            <div class="nav flex-column">
+                <nav>
+                    <ul class="h100">
+                        <li class="flex-c p-left-right-20"><a href="#"><i>icon</i>대시보드</a></li>
+                        <li class="active flex-c p-left-right-20"><a href="#"><i>icon</i>회원관리</a></li>
+                        <li class="flex-c p-left-right-20"><a href="#"><i>icon</i>게시물 관리</a></li>
+                        <li class="flex-c p-left-right-20"><a href="#"><i>icon</i>채팅 관리</a></li>
+                        <li class="flex-c p-left-right-20"><a href="#"><i>icon</i>포인트 관리</a></li>
+                        <li class="flex-c p-left-right-20"><a href="#"><i>icon</i>아이템 관리</a></li>
+                        <li class="flex-c p-left-right-20"><a href="#"><i>icon</i>광고 관리</a></li>
+                        <li class="flex-c p-left-right-20"><a href="#"><i>icon</i>통계</a></li>
+                        <li class="flex-c p-left-right-20"><a href="#"><i>icon</i>환경설정</a></li>
+                    </ul>
+                </nav>
+                <div class="btn">
+                    <button>로그아웃</button>
+                </div>
+            </div>
+        </div>
+        <div class="right flex-column">
+            <div class="top flex-row flex-sb flex-c p-left-right-30">
+                <div class="search-area flex-row flex-c">
+                    <input type="text" class="white" placeholder="회원 닉네임 검색">
+                </div>
+                <div class="flex-row flex-c ">
+                    <div class="">TEMP</div>
+                    <div class="">TEMP</div>
+                    <div class="">닉네임</div>
+                </div>
+            </div>
+            <div class="content-wrap  p-left-right-30">
+                <div class="content-header flex-row flex-sb">
+                    <div class="nav-wrap">
+                        <ul class="flex-row flex-c h100">
+                            <li class="active">전체목록</li>
+                            <li>일반회원</li>
+                            <li>프리미엄 회원</li>
+                            <li>활동정지 회원</li>
+                            <li>탈퇴 회원</li>
+                        </ul>
+                    </div>
+                    <div class="btn-wrap">
+                        <button>선택 활동정지</button>
+                        <button>선택 포인트 몰수</button>
+                        <button>회원추가</button>
+                    </div>
+                </div>
+                <div class="content-body px14">
+                    <div class="row">
+                        <div class="title px19">기본 정보</div>
+                        <div class="content-wrap flex-column g-12">
+                            <div class="content-left g-12">
+                                <div class="row flex-row flex-c">
+                                    <div class="content-left flex-row flex-c flex-sb">
+                                        <div class="name opacity80">PC 이미지</div>
+                                        <div class="opacity80">800x120</div>
+                                    </div>
+                                    <div class="content-right flex-column flex-c flex-sb flex-grow">
+                                        <div class="content-img g-12">
+                                            <div class="w800h120" style="width: 800px;height: 120px; overflow: hidden;">
+                                                <img src="../../../static/images/photo/ads.png" alt=""
+                                                    style="height: 100%;">
+                                            </div>
+                                        </div>
+                                        <div class="content flex-c flex-row g-12">
+                                            <div class="background">
+                                                <label for="background">
+                                                    <div class="btn-upload">배너 이미지 업로드</div>
+                                                </label>
+                                                <input type="file" class="file" name="background" id="background">
+                                            </div>
+                                            <input type="color" class="deco" id="bg" value="#fff">
+                                            <label for="bg">배경색</label>
+                                            <input type="color" class="deco" id="board" value="transparent">
+                                            <label for="bg">테두리</label>
+                                            <div class="btn-wrap">
+                                                <input type="radio" name="img-align-pc" id="left-pc">
+                                                <input type="radio" name="img-align-pc" id="center-pc" checked>
+                                                <input type="radio" name="img-align-pc" id="right-pc">
+                                                <label for="left-pc">왼쪽</label>
+                                                <label for="center-pc">중앙</label>
+                                                <label for="right-pc">오른쪽</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row flex-row flex-c">
+                                    <div class="content-left flex-row flex-c flex-sb">
+                                        <div class="name opacity80">모바일 이미지</div>
+                                        <div class="opacity80">240x80</div>
+                                    </div>
+                                    <div class="content-right flex-column flex-c flex-sb flex-grow">
+                                        <div class="content-img g-12">
+                                            <div class="w800h120" style="width: 240px;height: 80px; overflow: hidden;">
+                                                <img src="../../../static/images/photo/ads.png" alt=""
+                                                    style="height: 100%;">
+                                            </div>
+                                        </div>
+                                        <div class="content flex-c flex-row g-12">
+                                            <div class="background">
+                                                <label for="background">
+                                                    <div class="btn-upload">배너 이미지 업로드</div>
+                                                </label>
+                                                <input type="file" class="file" name="background" id="background">
+                                            </div>
+                                            <input type="color" class="deco" id="bg" value="#fff">
+                                            <label for="bg">배경색</label>
+                                            <input type="color" class="deco" id="board" value="transparent">
+                                            <label for="bg">테두리</label>
+                                            <div class="btn-wrap">
+                                                <input type="radio" name="img-align-mobile" id="left-mobile">
+                                                <input type="radio" name="img-align-mobile" id="center-mobile" checked>
+                                                <input type="radio" name="img-align-mobile" id="right-mobile">
+                                                <label for="left-mobile">왼쪽</label>
+                                                <label for="center-mobile">중앙</label>
+                                                <label for="right-mobile">오른쪽</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row flex-row flex-c">
+                                    <div class="content-left flex-row flex-c flex-sb">
+                                        <div class="name opacity80">이미지 설명</div>
+
+                                    </div>
+                                    <div class="content-right flex-row flex-c flex-sb flex-grow">
+                                        <input type="text" class="white" value="쉐보레 전시장 방문 이벤트"
+                                            placeholder="이미지 설명을 입력해주세요.">
+                                    </div>
+                                </div>
+                                <div class="row flex-row flex-c">
+                                    <div class="content-left flex-row flex-c flex-sb">
+                                        <div class="name opacity80">링크 URL</div>
+
+                                    </div>
+                                    <div class="content-right flex-row flex-c flex-sb flex-grow">
+                                        <input type="text" class="white" value="https://www.chevrolet.co.kr/events"
+                                            placeholder="URL을 입력해주세요.">
+                                    </div>
+                                </div>
+
+                                <div class="row flex-row flex-c visible">
+                                    <div class="content-left flex-row flex-c flex-sb">
+                                        <div class="name opacity80">접속기기</div>
+
+                                    </div>
+                                    <div class="content-right flex-row flex-c flex-sb flex-grow">
+                                        <select name="" id="">
+                                            <option value="">모두</option>
+                                            <option value="">ㅁㅁㅁ</option>
+                                            <option value="">ㅁㅁㅁ</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row flex-row flex-c visible">
+                                    <div class="content-left flex-row flex-c flex-sb">
+                                        <div class="name opacity80">출력 위치</div>
+
+                                    </div>
+                                    <div class="content-right flex-row flex-c flex-sb flex-grow">
+                                        <select name="" id="">
+                                            <option value="">메인 상단</option>
+                                            <option value="">ㅁㅁㅁ</option>
+                                            <option value="">ㅁㅁㅁ</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row flex-row flex-c">
+                                    <div class="content-left flex-row flex-c flex-sb">
+                                        <div class="name opacity80">광고 시작일시</div>
+
+                                    </div>
+                                    <div class="content-right flex-row flex-c flex-sb flex-grow">
+                                        <input type="datetime">
+                                        <input type="checkbox" id="today"> <label for="today">오늘</label>
+                                    </div>
+                                </div>
+                                <div class="row flex-row flex-c">
+                                    <div class="content-left flex-row flex-c flex-sb">
+                                        <div class="name opacity80">광고 종료일시</div>
+
+                                    </div>
+                                    <div class="content-right flex-row flex-c flex-sb flex-grow">
+                                        <input type="datetime">
+                                        <input type="checkbox" id="todayadd30"> <label for="todayadd30">오늘+30일</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content-right g-12">
+                                <div class="row flex-row flex-c">
+                                    <div class="content-left flex-row flex-c flex-sb">
+                                        <div class="name opacity80">업체명</div>
+
+                                    </div>
+                                    <div class="content-right flex-row flex-c flex-sb flex-grow">
+                                        <input type="text" class="white" value="GM Korea" placeholder="업체명을 입력해주세요.">
+                                    </div>
+                                </div>
+                                <div class="row flex-row flex-c">
+                                    <div class="content-left flex-row flex-c flex-sb">
+                                        <div class="name opacity80">연락처</div>
+
+                                    </div>
+                                    <div class="content-right flex-row flex-c flex-sb flex-grow">
+                                        <input type="text" class="white" value="010-4497-8663"
+                                            placeholder="연락처를 입력해주세요.">
+                                    </div>
+                                </div>
+                                <div class="row flex-row flex-c">
+                                    <div class="content-left flex-row flex-c flex-sb">
+                                        <div class="name opacity80">담당자</div>
+
+                                    </div>
+                                    <div class="content-right flex-row flex-c flex-sb flex-grow">
+                                        <input type="text" class="white" value="홍길동 과장" placeholder="담당자 정보를 입력해주세요.">
+                                    </div>
+                                </div>
+                                <div class="row flex-row flex-c">
+                                    <div class="content-left flex-row flex-c flex-sb">
+                                        <div class="name opacity80">부가정보</div>
+
+                                    </div>
+                                    <div class="content-right flex-row flex-c flex-sb flex-grow">
+                                        <textarea name="" id="" class="textarea">카카오톡 : graycode82@kakao.com, 이메일 : graycode82@gmail.com
+                                        담당자가 다음달 광고비 협상 요구함</textarea>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        $(function () {
+            $('select').selectric();
+        });
+    </script>
+
+</body>
+
+</html>

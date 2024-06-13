@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>환경설정 - 기본 환경설정</title>
+    <link rel="stylesheet" href="../../../static/css/admin.css">
+        <script src="../../../static/plugin/jQuery/jquery-3.7.1.min.js"></script>
+    <script src="../../../static/plugin/lcdsantos-jQuery-Selectric/src/jquery.selectric.js"></script>
+    <link rel="stylesheet" href="../../../static/plugin/lcdsantos-jQuery-Selectric/selectric.css">
+</head>
+
+<body>
+    <div class="warp flex-row vh100 white">
+        <div class="left flex-column">
+            <div class="logo p-left-right-20">
+                <img src="" alt="로고.png" class="hidden">
+            </div>
+            <div class="nav flex-column">
+                <nav>
+                    <ul class="h100">
+                        <li class="flex-c p-left-right-20"><a href="#"><i>icon</i>대시보드</a></li>
+                        <li class="active flex-c p-left-right-20"><a href="#"><i>icon</i>회원관리</a></li>
+                        <li class="flex-c p-left-right-20"><a href="#"><i>icon</i>게시물 관리</a></li>
+                        <li class="flex-c p-left-right-20"><a href="#"><i>icon</i>채팅 관리</a></li>
+                        <li class="flex-c p-left-right-20"><a href="#"><i>icon</i>포인트 관리</a></li>
+                        <li class="flex-c p-left-right-20"><a href="#"><i>icon</i>아이템 관리</a></li>
+                        <li class="flex-c p-left-right-20"><a href="#"><i>icon</i>광고 관리</a></li>
+                        <li class="flex-c p-left-right-20"><a href="#"><i>icon</i>통계</a></li>
+                        <li class="flex-c p-left-right-20"><a href="#"><i>icon</i>환경설정</a></li>
+                    </ul>
+                </nav>
+                <div class="btn">
+                    <button>로그아웃</button>
+                </div>
+            </div>
+        </div>
+        <div class="right flex-column">
+            <div class="top flex-row flex-sb flex-c p-left-right-30">
+                <div class="search-area flex-row flex-c">
+                    <input type="text" class="white" placeholder="회원 닉네임 검색">
+                </div>
+                <div class="flex-row flex-c ">
+                    <div class="">TEMP</div>
+                    <div class="">TEMP</div>
+                    <div class="">닉네임</div>
+                </div>
+            </div>
+            <div class="content-wrap  p-left-right-30">
+                <div class="content-header flex-row flex-sb">
+                    <div class="nav-wrap">
+                        <ul class="flex-row flex-c h100">
+                            <li class="active">전체목록</li>
+                            <li>일반회원</li>
+                            <li>프리미엄 회원</li>
+                            <li>활동정지 회원</li>
+                            <li>탈퇴 회원</li>
+                        </ul>
+                    </div>
+                    <div class="btn-wrap">
+                        <button>수정완료</button>
+                    </div>
+                </div>
+                <div class="content-body px14">
+                    <div class="row">
+                        <div class="title px19">기본 설정</div>
+                        <div class="content-wrap flex-row g-12">
+                            <div class="content-left g-6">
+                                <div class="row flex-row flex-c">
+                                    <div class="content-left flex-row flex-c flex-sb">
+                                        <div class="name opacity80">글작성 시 AP</div>
+                                    </div>
+                                    <div class="content-right flex-row flex-c flex-sb flex-grow">
+                                        <input type="text" class="white g-12" value="5">
+                                    </div>
+                                </div>
+                                <div class="row flex-row flex-c">
+                                    <div class="content-left flex-row flex-c flex-sb">
+                                        <div class="name opacity80">추천 받을 시 AP</div>
+
+                                    </div>
+                                    <div class="content-right flex-row flex-c flex-sb flex-grow">
+                                        <input type="text" class="white g-12" value="5">
+                                    </div>
+                                </div>
+                                <div class="row flex-row flex-c">
+                                    <div class="content-left flex-row flex-c flex-sb">
+                                        <div class="name opacity80">로그인 시 AP</div>
+
+                                    </div>
+                                    <div class="content-right flex-row flex-c flex-sb flex-grow">
+                                        <input type="text" class="white g-12" value="5">
+                                    </div>
+                                </div>
+                                <div class="row flex-row flex-c">
+                                    <div class="content-left flex-row flex-c flex-sb">
+                                        <div class="name opacity80">메시지 자동 삭제 (일)</div>
+
+                                    </div>
+                                    <div class="content-right flex-row flex-c flex-sb flex-grow">
+
+                                        <input type="text" class="white g-12" value="5">
+                                    </div>
+                                </div>
+                                <div class="row flex-row flex-c">
+                                    <div class="content-left flex-row flex-c flex-sb">
+                                        <div class="name opacity80">글작성 간격 (초)</div>
+
+                                    </div>
+                                    <div class="content-right flex-row flex-c flex-sb flex-grow">
+                                        <input type="text" class="white g-12" value="5">
+                                    </div>
+                                </div>
+                                <div class="row flex-row flex-c">
+                                    <div class="content-left flex-row flex-c flex-sb">
+                                        <div class="name opacity80">추천수 제한 (일)</div>
+
+                                    </div>
+                                    <div class="content-right flex-row flex-c flex-sb flex-grow">
+                                        <input type="text" class="white g-12" value="5">
+                                    </div>
+                                </div>
+                                <div class="row flex-row flex-c">
+                                    <div class="content-left flex-row flex-c flex-sb">
+                                        <div class="name opacity80">프로필 사진 용량</div>
+
+                                    </div>
+                                    <div class="content-right flex-row flex-c flex-sb flex-grow">
+                                        <input type="text" class="white g-12" value="5">
+                                    </div>
+                                </div>
+                                <div class="row flex-row flex-c">
+                                    <div class="content-left flex-row flex-c flex-sb">
+                                        <div class="name opacity80">오픈채팅 이미지 용량</div>
+
+                                    </div>
+                                    <div class="content-right flex-row flex-c flex-sb flex-grow">
+                                        <input type="text" class="white g-12" value="5">
+                                    </div>
+                                </div>
+                                <div class="row flex-row flex-c">
+                                    <div class="content-left flex-row flex-c flex-sb">
+                                        <div class="name opacity80">업로드 이미지 용량</div>
+
+                                    </div>
+                                    <div class="content-right flex-row flex-c flex-sb flex-grow">
+                                        <input type="text" class="white g-12" value="5">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content-right g-6">
+                                <div class="row flex-row flex-c">
+                                    <div class="content-left flex-row flex-c flex-sb">
+                                        <div class="name opacity80">댓글 작성 시 AP</div>
+                                    </div>
+                                    <div class="content-right flex-row flex-c flex-sb flex-grow">
+                                        <input type="text" class="white g-12" value="5">
+                                    </div>
+                                </div>
+                                <div class="row flex-row flex-c">
+                                    <div class="content-left flex-row flex-c flex-sb">
+                                        <div class="name opacity80">조회수 100당 AP</div>
+
+                                    </div>
+                                    <div class="content-right flex-row flex-c flex-sb flex-grow">
+                                        <input type="text" class="white g-12" value="5">
+                                    </div>
+                                </div>
+                                <div class="row flex-row flex-c">
+                                    <div class="content-left flex-row flex-c flex-sb">
+                                        <div class="name opacity80">AP : 골드칩 1개</div>
+
+                                    </div>
+                                    <div class="content-right flex-row flex-c flex-sb flex-grow">
+                                        <input type="text" class="white g-12" value="5">
+                                    </div>
+                                </div>
+                                <div class="row flex-row flex-c">
+                                    <div class="content-left flex-row flex-c flex-sb">
+                                        <div class="name opacity80">채팅 참여 권한 (일)</div>
+
+                                    </div>
+                                    <div class="content-right flex-row flex-c flex-sb flex-grow">
+
+                                        <input type="text" class="white g-12" value="5">
+                                    </div>
+                                </div>
+                                <div class="row flex-row flex-c">
+                                    <div class="content-left flex-row flex-c flex-sb">
+                                        <div class="name opacity80">댓글 작성 간격 (초)</div>
+
+                                    </div>
+                                    <div class="content-right flex-row flex-c flex-sb flex-grow">
+                                        <input type="text" class="white g-12" value="5">
+                                    </div>
+                                </div>
+                                <div class="row flex-row flex-c">
+                                    <div class="content-left flex-row flex-c flex-sb">
+                                        <div class="name opacity80">댓글 최소 글자 수</div>
+
+                                    </div>
+                                    <div class="content-right flex-row flex-c flex-sb flex-grow">
+                                        <input type="text" class="white g-12" value="5">
+                                    </div>
+                                </div>
+                                <div class="row flex-row flex-c">
+                                    <div class="content-left flex-row flex-c flex-sb">
+                                        <div class="name opacity80">마이홈 배경 용량</div>
+
+                                    </div>
+                                    <div class="content-right flex-row flex-c flex-sb flex-grow">
+                                        <input type="text" class="white g-12" value="5">
+                                    </div>
+                                </div>
+                                <div class="row flex-row flex-c">
+                                    <div class="content-left flex-row flex-c flex-sb">
+                                        <div class="name opacity80">일반회원 친구 수 제한</div>
+
+                                    </div>
+                                    <div class="content-right flex-row flex-c flex-sb flex-grow">
+                                        <input type="text" class="white g-12" value="5">
+                                    </div>
+                                </div>
+                                <div class="row flex-row flex-c">
+                                    <div class="content-left flex-row flex-c flex-sb">
+                                        <div class="name opacity80">다이렉트 메시지 제한</div>
+
+                                    </div>
+                                    <div class="content-right flex-row flex-c flex-sb flex-grow">
+                                        <input type="text" class="white g-12" value="5">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="title px19">기본 설정</div>
+                        <div class="content-wrap flex-row g-12">
+                            <div class="content-left g-6">
+                                <div class="row flex-row flex-c">
+                                    <div class="content-left flex-row flex-c flex-sb">
+                                        <div class="name opacity80">회원탈퇴후 삭제일</div>
+                                    </div>
+                                    <div class="content-right flex-row flex-c flex-sb flex-grow">
+                                        <input type="text" class="white g-12" value="5">
+                                    </div>
+                                </div>
+                                <div class="row flex-row flex-c">
+                                    <div class="content-left flex-row flex-c flex-sb">
+                                        <div class="name opacity80">글쓰기 권한 (일)</div>
+
+                                    </div>
+                                    <div class="content-right flex-row flex-c flex-sb flex-grow">
+                                        <input type="text" class="white g-12" value="5">
+                                    </div>
+                                </div>
+                                <div class="row flex-row flex-c">
+                                    <div class="content-left flex-row flex-c flex-sb">
+                                        <div class="name opacity80">아이디, 닉네임, 금지단어</div>
+
+                                    </div>
+                                    <div class="content-right flex-row flex-c flex-sb flex-grow">
+                                        <textarea name="" id="" >admin,administrator,관리자,운영자,어드민,주인장,webmaster,웹마스터,sysop,시삽,시샵,manager,매니저,메니저,root,루트,su,guest,방문객</textarea>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <div class="content-right g-6">
+                                <div class="row flex-row flex-c">
+                                    <div class="content-left flex-row flex-c flex-sb">
+                                        <div class="name opacity80">채팅 참여 권한 (일)</div>
+                                    </div>
+                                    <div class="content-right flex-row flex-c flex-sb flex-grow">
+                                        <input type="text" class="white g-12" value="5">
+                                    </div>
+                                </div>
+                                <div class="row flex-row flex-c">
+                                    <div class="content-left flex-row flex-c flex-sb">
+                                        <div class="name opacity80">댓글 쓰기 권한 (일)</div>
+
+                                    </div>
+                                    <div class="content-right flex-row flex-c flex-sb flex-grow">
+                                        <input type="text" class="white g-12" value="5">
+                                    </div>
+                                </div>
+                                <div class="row flex-row flex-c">
+                                    <div class="content-left flex-row flex-c flex-sb">
+                                        <div class="name opacity80">사용 금지 메일</div>
+
+                                    </div>
+                                    <div class="content-right flex-row flex-c flex-sb flex-grow">
+                                        <textarea name="" id="" >acuxi.com
+                                            avastu.com
+                                            ruu.kr
+                                            teml.net</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        $(function () {
+            $('select').selectric();
+        });
+    </script>
+
+</body>
+
+</html>

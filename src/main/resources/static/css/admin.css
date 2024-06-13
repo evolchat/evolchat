@@ -132,7 +132,10 @@ body {
 }
 
 input[type=text],
-input[type="password"] {
+input[type="password"],
+input[type="datetime"],
+input[type="password"]
+ {
     background-color: transparent;
     border: none;
     outline: transparent;
@@ -331,24 +334,45 @@ img {
 .m-lr-10 {
     margin: 0 10px;
 }
+
 .m-b-8 {
     margin-bottom: 8px;
 }
+
 .m-b-10 {
     margin-bottom: 10px;
 }
+
 .m-b-20 {
     margin-bottom: 20px;
 }
+
 .m-b-40 {
     margin-bottom: 40px;
 }
+
 blockquote:before,
 blockquote:after,
 q:before,
 q:after {
     content: '';
     content: none;
+}
+
+.deco {
+    width: 40px;
+    height: 40px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    border: none;
+}
+
+/* 안쪽부분의 디자인 변경 */
+.deco::-webkit-color-swatch {
+    border-radius: 30px;
+    border: none;
 }
 
 table {
@@ -362,6 +386,10 @@ table {
 
 .hidden {
     display: none !important;
+}
+
+.visible {
+    overflow: visible !important;
 }
 
 .v-h {
@@ -409,9 +437,11 @@ table {
     display: flex !important;
     justify-content: space-between;
 }
-.flex-grow{
-    flex-grow:1;
+
+.flex-grow {
+    flex-grow: 1;
 }
+
 .position-r {
     position: relative;
 }
@@ -451,9 +481,11 @@ table {
 .opacity60 {
     opacity: 60%;
 }
+
 .opacity40 {
     opacity: 40%;
 }
+
 .g-1 {
     display: inline-block;
     width: 8.333333333333334%;
@@ -707,6 +739,7 @@ button {
 .purple {
     color: #8744FF;
 }
+
 .yellow {
     color: #FFBF00;
 }
@@ -847,61 +880,73 @@ thead th {
 
 /* 회원관리 회원정보 수정 */
 
-.content-body > .row:first-child{
+.content-body>.row:first-child {
     margin-top: 30px;
-} 
-.content-body > .row:not(:last-child){
+}
+
+.content-body>.row:not(:last-child) {
     margin-bottom: 30px;
-} 
-.content-body > .row .row{
+}
+
+.content-body>.row .row {
     border-top: 1px solid #35373D;
     overflow: hidden;
     border-left: 1px solid #35373D;
 }
-.content-body > .row .row:last-child{
+
+.content-body>.row .row:last-child {
     border-bottom: 1px solid #35373D;
 }
-.content-body > .row .content-left.g-6 >.row:first-child{
+
+.content-body>.row .content-left.g-6>.row:first-child {
     border-top-left-radius: 5px;
 }
-.content-body > .row .content-right.g-6 >.row:first-child{
+
+.content-body>.row .content-right.g-6>.row:first-child {
     border-top-right-radius: 5px;
 }
-.content-body > .row .content-left.g-6 >.row:last-child{
+
+.content-body>.row .content-left.g-6>.row:last-child {
     border-bottom-left-radius: 5px;
 }
-.content-body > .row .content-right.g-6 >.row:last-child{
+
+.content-body>.row .content-right.g-6>.row:last-child {
     border-bottom-right-radius: 5px;
 }
-.content-body > .row .row>div:first-child{
+
+.content-body>.row .row>div:first-child {
     border-right: solid 1px #35373D;
 }
-.content-body > .row .content-right.g-6 >.row{
+
+.content-body>.row .content-right.g-6>.row {
     border-right: 1px solid #35373D;
 }
-.content-body > .row .row>div{
+
+.content-body>.row .row>div {
     min-height: 44px;
     height: 100%;
     display: flex;
 }
-.content-body > .row .row > .content-left,
-.content-body > .row > .content-wrap .g-6>.area:first-child
-{
+
+.content-body>.row .row>.content-left,
+.content-body>.row>.content-wrap .g-6>.area:first-child {
     width: 160px;
     background-color: #303237;
 }
-.content-body > .row .row > .content-right{
+
+.content-body>.row .row>.content-right {
     flex-grow: 1;
     padding: 0 20px;
     width: 100%;
     background-color: #2C2E33;
 }
-.content-body > .row .row > .content-left .name{
+
+.content-body>.row .row>.content-left .name {
     padding: 0 20px;
     width: 100%;
 }
 
-.content-body > .row .img-no{
+.content-body>.row .img-no {
     border-radius: 50%;
     background-color: #3A3C43;
     width: 120px;
@@ -912,7 +957,7 @@ thead th {
     text-align: center;
 }
 
-.content-body > .row .background-img-no{
+.content-body>.row .background-img-no {
     border-radius: 5px;
     background-color: #3A3C43;
     width: 400px;
@@ -922,35 +967,45 @@ thead th {
     align-items: center;
     text-align: center;
 }
-.additional_information .flex-row.flex-c:first-child .area{
+
+.additional_information .flex-row.flex-c:first-child .area {
     height: 140px;
-} 
+}
 
 /* 채팅관리 - 전체 채팅 */
-.manage_chat_all .item-chat-area{
+.manage_chat_all .item-chat-area {
     width: 360px;
     background-color: #27292D;
     /* margin: 0 -30px 0 0; */
 }
-.manage_chat_all .item-chat-area .item-title{
+
+.manage_chat_all .item-chat-area .item-title {
     background-color: #D00000;
     padding: 5px 15px;
 }
-.manage_chat_all .item-chat-area  .item-text{
+
+.manage_chat_all .item-chat-area .item-text {
     background-color: #E62117;
     padding: 15px;
 }
-.manage_chat_all .chat-area .chat{min-height: 64px;}
-.manage_chat_all .chat-area .chat.select{
+
+.manage_chat_all .chat-area .chat {
+    min-height: 64px;
+}
+
+.manage_chat_all .chat-area .chat.select {
     background-color: #282A2E;
 }
-.manage_chat_all .chat-area .chat span{
+
+.manage_chat_all .chat-area .chat span {
     text-decoration: underline;
 }
-.manage_chat_all .btn-wrap{
-    margin:15px 0;
+
+.manage_chat_all .btn-wrap {
+    margin: 15px 0;
 }
-.manage_chat_all .input-area{
+
+.manage_chat_all .input-area {
     /* height: 120px; */
     background-color: #35373D;
     min-height: 120px;
@@ -960,7 +1015,8 @@ thead th {
     padding: 0 30px;
 
 }
-.manage_chat_all .input-area textarea{
+
+.manage_chat_all .input-area textarea {
     margin: 0;
     padding: 0;
     border: none;
@@ -968,9 +1024,71 @@ thead th {
     resize: none;
     box-sizing: border-box;
     width: 100%;
-    height: 100px; /* Example height, adjust as needed */
+    height: 100px;
+    /* Example height, adjust as needed */
     font-family: inherit;
     font-size: inherit;
     background-color: #35373D;
     color: #fff;
+}
+
+
+/* 채팅관리 - 테이블 채팅*/
+.table-chat-list .item{
+    height: 40px;
+    padding: 0 20px;
+}
+
+
+
+/* 광고 관리  */
+.table.manage_banner td img {
+    height: 100%;
+    width: 100%;
+    border: 0 none;
+    vertical-align: top;
+    object-fit: cover;
+}
+
+.table.manage_banner .table-img {
+    height: 80px;
+    padding: 10px;
+}
+
+/* .table.manage_banner th {
+    min-width: 100px;
+} */
+
+.table.manage_banner {}
+
+
+
+
+/* 광고 관리 - 세부 설정*/
+
+.content-body>.row .content-img {
+    height: 120px;
+    overflow: hidden;
+}
+
+.textarea {
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    resize: none;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100px;
+    /* Example height, adjust as needed */
+    font-family: inherit;
+    font-size: inherit;
+    background-color: #35373D;
+    color: #fff;
+}
+
+/* 관리자 권한설정 */
+
+.table.admin td{
+height: 100px;
 }
