@@ -333,6 +333,9 @@ img {
 .m-lr-10 {
     margin: 0 10px;
 }
+.m-b-5 {
+    margin-bottom: 5px;
+}
 .m-b-8 {
     margin-bottom: 8px;
 }
@@ -485,6 +488,9 @@ table {
 
 .opacity60 {
     opacity: 60%;
+}
+.opacity40 {
+    opacity: 40%;
 }
 
 .g-1 {
@@ -2001,7 +2007,12 @@ div.mainContent>div.mainLayer>div>div>div.bottom>div>div>div {
 .join-wrap .inputfields {
     display: inline-block;
 }
-
+.join-wrap .inputfields .phone{
+    width: 100%;
+  border-radius: 5px;
+  height: 100px;
+  padding: 20px 30px;
+}
 .assign-wrap .inputfields .field {
     margin: 10px 0;
     max-width: 350px;
