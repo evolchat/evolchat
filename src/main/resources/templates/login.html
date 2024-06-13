@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>로그인</title>
 
+    <!-- Typekit script -->
     <script>
         (function (d) {
             var config = {
@@ -16,42 +17,15 @@
                 h = d.documentElement, t = setTimeout(function () { h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive"; }, config.scriptTimeout), tk = d.createElement("script"), f = false, s = d.getElementsByTagName("script")[0], a; h.className += " wf-loading"; tk.src = 'https://use.typekit.net/' + config.kitId + '.js'; tk.async = true; tk.onload = tk.onreadystatechange = function () { a = this.readyState; if (f || a && a != "complete" && a != "loaded") return; f = true; clearTimeout(t); try { Typekit.load(config) } catch (e) { } }; s.parentNode.insertBefore(tk, s)
         })(document);
     </script>
-    <link rel="stylesheet" th:href="@{../static/css/style.css}">
-    <!-- select box -->
-    <script th:src="@{../static/plugin/jQuery/jquery-3.7.1.min.js}"></script>
-    <script th:src="@{../static/plugin/lcdsantos-jQuery-Selectric/src/jquery.selectric.js}"></script>
-    <script th:src="@{../static/js/login.js}"></script>
-    <link rel="stylesheet" th:href="@{../static/plugin/lcdsantos-jQuery-Selectric/selectric.css}">
-    <!-- select box -->
-    <style>
-        .loading-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.7);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-        }
-        .loading-overlay.show {
-            display: flex;
-        }
-        .loading-spinner {
-            border: 4px solid rgba(0, 0, 0, 0.1);
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            border-left-color: #09f;
-            animation: spin 1s ease infinite;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-    </style>
+
+    <!-- CSS link -->
+    <link rel="stylesheet" th:href="@{/static/css/style.css}">
+    <link rel="stylesheet" th:href="@{/static/plugin/lcdsantos-jQuery-Selectric/selectric.css}">
+
+    <!-- JavaScript link -->
+    <script th:src="@{/static/plugin/jQuery/jquery-3.7.1.min.js}"></script>
+    <script th:src="@{/static/plugin/lcdsantos-jQuery-Selectric/src/jquery.selectric.js}"></script>
+    <script th:src="@{/static/js/login.js}"></script>
 </head>
 
 <body>
@@ -65,23 +39,23 @@
                 <p>SAFETY AREA</p>
             </div>
             <div class="logo">
-                <img th:src="@{../static/images/logo/login_logo.png}" alt="logo.png">
+                <img th:src="@{/static/images/logo/login_logo.png}" alt="logo.png">
             </div>
         </div>
         <div class="content">
-            <form id="loginForm" th:action="@{/perform_login}" method="post">
-                <div th:if="${error != null}" class="error-message">
-                    <p th:text="${error}">아이디 또는 비밀번호가 잘못되었습니다.</p>
+            <form id="loginForm" th:action="@{/login}" method="post">
+                <div th:if="${param.error}" class="error-message">
+                    <p th:text="${error}"></p>
                 </div>
-                <div th:if="${logout != null}" class="success-message">
-                    <p th:text="${logout}">성공적으로 로그아웃 되었습니다.</p>
+                <div th:if="${param.logout}" class="success-message">
+                    <p th:text="${logout}"></p>
                 </div>
                 <div class="inputfields">
                     <div class="field-input m-b-10 flex-c">
-                        <input type="text" name="username" id="id" placeholder="아이디" required>
+                        <input type="text" name="username" id="id" placeholder="아이디" autocomplete="username" required>
                     </div>
                     <div class="field-input flex-c">
-                        <input type="password" name="password" id="password" placeholder="비밀번호" required>
+                        <input type="password" name="password" id="password" placeholder="비밀번호" autocomplete="current-password" required>
                     </div>
                     <div class="etcGroup">
                         <div class="field white flex-c flex-row m-b-20">
@@ -106,7 +80,7 @@
             </form>
         </div>
         <div class="footer">
-            <img th:src="@{../static/images/logo/corp.png}" alt="">
+            <img th:src="@{/static/images/logo/corp.png}" alt="">
         </div>
     </div>
 </div>

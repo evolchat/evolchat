@@ -1,9 +1,15 @@
 package com.glossy.evolchat.dto;
 
 import com.glossy.evolchat.model.User;
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserDto {
     private int userId;
     private String username;
@@ -17,7 +23,7 @@ public class UserDto {
     private String country;
     private String region;
     private String gender;
-    private boolean isLocationPublic;
+    private boolean locationPublic;
     private String bankName;
     private String accountNumber;
     private String idCardPicture;

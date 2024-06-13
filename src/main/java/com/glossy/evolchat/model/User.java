@@ -1,19 +1,24 @@
 package com.glossy.evolchat.model;
 
-import lombok.Data;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
 import java.time.LocalDateTime;
 
 @Entity
-@Data
+@Getter
+@Setter
+@ToString(exclude = {"password"}) // password 필드는 toString에서 제외
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int seq;
+    private Integer seq;
 
     @Column(unique = true, nullable = false)
-    private int userId;
+    private Integer userId;
 
     @Column(nullable = false)
     private String username;
@@ -25,7 +30,7 @@ public class User {
     private String email;
 
     @Column(nullable = false)
-    private int roleId;
+    private Integer roleId;
 
     @Column(nullable = false)
     private LocalDateTime createdAt;
@@ -39,6 +44,7 @@ public class User {
     @PrePersist
     protected void onCreate() {
         createdAt = LocalDateTime.now();
+        updatedAt = LocalDateTime.now();
     }
 
     @PreUpdate
@@ -46,7 +52,7 @@ public class User {
         updatedAt = LocalDateTime.now();
     }
 
-    // Additional fields
+    // Additional fields (getter/setter 자동 생성)
     private String profilePicture;
     private String homeBackgroundPicture;
     private String myHomeUrl;

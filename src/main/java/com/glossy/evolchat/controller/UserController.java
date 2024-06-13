@@ -34,8 +34,4 @@ public class UserController {
         userService.deleteUser(id);
     }
 
-    @GetMapping("/login")
-    public String loginPage() {
-        return "login"; // login.html 페이지로 이동
-    }
 }
