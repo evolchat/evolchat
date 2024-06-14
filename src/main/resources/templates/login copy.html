@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+
+    <!-- Typekit script -->
+    <script>
+        (function (d) {
+            var config = {
+                kitId: 'xfr4aba',
+                scriptTimeout: 3000,
+                async: true
+            },
+                h = d.documentElement, t = setTimeout(function () { h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive"; }, config.scriptTimeout), tk = d.createElement("script"), f = false, s = d.getElementsByTagName("script")[0], a; h.className += " wf-loading"; tk.src = 'https://use.typekit.net/' + config.kitId + '.js'; tk.async = true; tk.onload = tk.onreadystatechange = function () { a = this.readyState; if (f || a && a != "complete" && a != "loaded") return; f = true; clearTimeout(t); try { Typekit.load(config) } catch (e) { } }; s.parentNode.insertBefore(tk, s)
+        })(document);
+    </script>
+
+    <!-- CSS link -->
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/plugin/lcdsantos-jQuery-Selectric/selectric.css">
+
+    <!-- JavaScript link -->
+    <script src="../static/plugin/jQuery/jquery-3.7.1.min.js"></script>
+    <script src="../static/plugin/lcdsantos-jQuery-Selectric/src/jquery.selectric.js"></script>
+    <script src="../static/js/login.js"></script>
+</head>
+
+<body>
+<div class="wrapper bc-main vh100">
+    <div class="loading-overlay">
+        <div class="loading-spinner"></div>
+    </div>
+    <div class="login-wrap max1280 flex-c-c assign-wrap">
+        <div class="header m-b-40">
+            <div class="safety grey-3 px17 m-b-40">
+                <p>SAFETY AREA</p>
+            </div>
+            <div class="logo">
+                <img src="../static/images/logo/login_logo.png" alt="logo.png">
+            </div>
+        </div>
+        <div class="content">
+            <form id="loginForm" action="/login" method="post">
+                <div if="param.error" class="error-message">
+                    <p text="error"></p>
+                </div>
+                <div if="param.logout" class="success-message">
+                    <p text="logout"></p>
+                </div>
+                <div class="inputfields">
+                    <div class="field-input m-b-10 flex-c">
+                        <input type="text" name="username" id="id" placeholder="아이디" autocomplete="username" required>
+                    </div>
+                    <div class="field-input flex-c">
+                        <input type="password" name="password" id="password" placeholder="비밀번호" autocomplete="current-password" required>
+                    </div>
+                    <div class="etcGroup">
+                        <div class="field white flex-c flex-row m-tb-20">
+                            <input type="checkbox" name="remember-me" id="remember-me">
+                            <label for="remember-me"></label>
+                            <label class="top opacity60" for="remember-me">
+                                로그인 상태 유지
+                            </label>
+                        </div>
+                        <div class="btns m-b-20">
+                            <button type="submit">
+                                <span class="white">로그인</span>
+                            </button>
+                        </div>
+                        <div class="href px14 flex-c-c flex-sa">
+                            <a class="white opacity60" href="./register.html">회원가입</a>
+                            <a class="white opacity60 " href="./login_find_id.html">아이디 찾기</a>
+                            <a class="white opacity60" href="./login_find_pw.html">비밀번호 찾기</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="footer m-0">
+            <img src="../static/images/logo/corp.png" alt="">
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

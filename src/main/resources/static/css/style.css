@@ -329,7 +329,12 @@ img {
 .p-20 {
     padding: 20px;
 }
-
+.m-0{
+    margin: 0 !important;
+}
+.m-tb-20{
+    margin: 20px 0 !important;
+}
 .m-lr-10 {
     margin: 0 10px;
 }
@@ -1976,6 +1981,7 @@ div.mainContent>div.mainLayer>div>div>div.bottom>div>div>div {
     border-radius: 3px;
     border: 1px solid #454853;
     position: relative;
+    margin: 0 8px 0 0;
 }
 
 .assign-wrap input[type="checkbox"]:checked+label::after {
