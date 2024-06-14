@@ -745,6 +745,18 @@ table {
     height: 36px;
 }
 
+/* svg관련 */
+.input-icon.search{
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+/* svg관련 */
+
+
+
 /* 로고들 */
 .bg-logo {
     background: url('../images/sprites/css_sprites.png') -10px -10px;
@@ -1544,6 +1556,7 @@ header .recentMessages li div {
     background-color: #2C2E33;
     border-radius: 5px;
     padding: 0 15px;
+    position: relative;
 }
 
 .wrapper>.header .header-search input {
@@ -1703,6 +1716,7 @@ div.mainContent {
     min-height: 44px;
     padding: 0 14px;
     border-radius: 5px;
+    position: relative;
 }
 
 .sub-header-search input {
