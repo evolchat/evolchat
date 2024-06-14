@@ -5,11 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>로그인</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/plugin/lcdsantos-jQuery-Selectric/selectric.css">
+    <script src="../static/js/common.js"></script>
     <script th:src="@{/static/js/login.js}"></script>
 </head>
 
 <body>
-<iframe src="./include/common.html"></iframe>
+
 <div class="wrapper bc-main vh100">
     <div class="loading-overlay">
         <div class="loading-spinner"></div>
@@ -65,6 +68,13 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function(){
+    $("#header").load("./include/header.html");
+    $("#nav").load("./include/nav.html");
+    $("#chat").load("./include/chat.html");
+    $("#footer").load("./include/footer.html");
+});
+</script>
 </body>
-
 </html>

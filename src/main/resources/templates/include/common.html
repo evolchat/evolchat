@@ -4,27 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Typekit and jQuery Example</title>
-    <style>
-        #loading-spinner {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 24px;
-            color: #333;
-            z-index: 9999;
-            display: none; /* 초기에는 숨겨둡니다 */
-        }
 
-        .wf-loading #loading-spinner {
-            display: block; /* 폰트 로딩 중일 때 스피너를 표시합니다 */
-        }
-
-        .wf-active #loading-spinner,
-        .wf-inactive #loading-spinner {
-            display: none; /* 폰트 로딩이 끝나면 스피너를 숨깁니다 */
-        }
-    </style>
     <!-- 스타일시트 추가 -->
     <link rel="stylesheet" href="../../static/css/style.css">
     <link rel="stylesheet" href="../../static/plugin/lcdsantos-jQuery-Selectric/selectric.css">
