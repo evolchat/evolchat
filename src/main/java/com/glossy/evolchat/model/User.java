@@ -24,7 +24,7 @@ public class User {
     @Transient
     private String confirmPassword; // 비밀번호 확인을 위한 임시 필드
 
-    @Column(nullable = false)
+    @Column
     private String email;
 
     @Column(nullable = false)

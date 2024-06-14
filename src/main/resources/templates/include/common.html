@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typekit and jQuery Example</title>
+    <style>
+        #loading-spinner {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            color: #333;
+            z-index: 9999;
+            display: none; /* 초기에는 숨겨둡니다 */
+        }
+
+        .wf-loading #loading-spinner {
+            display: block; /* 폰트 로딩 중일 때 스피너를 표시합니다 */
+        }
+
+        .wf-active #loading-spinner,
+        .wf-inactive #loading-spinner {
+            display: none; /* 폰트 로딩이 끝나면 스피너를 숨깁니다 */
+        }
+    </style>
+    <!-- 스타일시트 추가 -->
+    <link rel="stylesheet" href="../../static/css/style.css">
+    <link rel="stylesheet" href="../../static/plugin/lcdsantos-jQuery-Selectric/selectric.css">
+</head>
+<body>
+<div id="loading-spinner">Loading...</div>
+
+<script>
+    (function (d) {
+        var config = {
+            kitId: 'xfr4aba',
+            scriptTimeout: 3000,
+            async: true
+        },
+            h = d.documentElement, t = setTimeout(function () { h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive"; }, config.scriptTimeout), tk = d.createElement("script"), f = false, s = d.getElementsByTagName("script")[0], a; h.className += " wf-loading"; tk.src = 'https://use.typekit.net/' + config.kitId + '.js'; tk.async = true; tk.onload = tk.onreadystatechange = function () { a = this.readyState; if (f || a && a != "complete" && a != "loaded") return; f = true; clearTimeout(t); try { Typekit.load(config) } catch (e) { } }; s.parentNode.insertBefore(tk, s)
+    })(document);
+</script>
+
+<!-- 스크립트 추가 -->
+<script src="../../static/plugin/jQuery/jquery-3.7.1.min.js"></script>
+<script src="../../static/plugin/lcdsantos-jQuery-Selectric/src/jquery.selectric.js"></script>
+</body>
+</html>

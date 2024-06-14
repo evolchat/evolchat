@@ -35,55 +35,55 @@ $(document).ready(function () {
         var isValid = true;
 
         // 닉네임 입력 여부 검사
-        if (nickname === '') {
-            showError($('#nickname'), '닉네임을 입력하세요.');
-            isValid = false;
-        } else {
-            hideError($('#nickname'));
-        }
+        //        if (nickname === '') {
+        //            showError($('#nickname'), '닉네임을 입력하세요.');
+        //            isValid = false;
+        //        } else {
+        //            hideError($('#nickname'));
+        //        }
 
         // 아이디 입력 여부 검사
-        if (username === '') {
-            showError($('#username'), '아이디를 입력하세요.');
-            isValid = false;
-        } else {
-            hideError($('#username'));
-        }
+        //        if (username === '') {
+        //            showError($('#username'), '아이디를 입력하세요.');
+        //            isValid = false;
+        //        } else {
+        //            hideError($('#username'));
+        //        }
 
         // 비밀번호 입력 여부 검사
-        if (password === '') {
-            showError($('#password'), '비밀번호를 입력하세요.');
-            isValid = false;
-        } else {
-            hideError($('#password'));
-        }
+        //        if (password === '') {
+        //            showError($('#password'), '비밀번호를 입력하세요.');
+        //            isValid = false;
+        //        } else {
+        //            hideError($('#password'));
+        //        }
 
         // 비밀번호 확인 입력 여부 및 일치 여부 검사
-        if (confirmPassword === '') {
-            showError($('#confirmPassword'), '비밀번호 확인을 입력하세요.');
-            isValid = false;
-        } else if (password !== confirmPassword) {
-            showError($('#confirmPassword'), '비밀번호가 일치하지 않습니다.');
-            isValid = false;
-        } else {
-            hideError($('#confirmPassword'));
-        }
+        //        if (confirmPassword === '') {
+        //            showError($('#confirmPassword'), '비밀번호 확인을 입력하세요.');
+        //            isValid = false;
+        //        } else if (password !== confirmPassword) {
+        //            showError($('#confirmPassword'), '비밀번호가 일치하지 않습니다.');
+        //            isValid = false;
+        //        } else {
+        //            hideError($('#confirmPassword'));
+        //        }
 
         // 이용약관 동의 체크 여부 검사
-        if (!accept1) {
-            showError($('#accept1').closest('.field'), '이용약관에 동의해야 합니다.');
-            isValid = false;
-        } else {
-            hideError($('#accept1').closest('.field'));
-        }
+        //        if (!accept1) {
+        //            showError($('#accept1').closest('.field'), '이용약관에 동의해야 합니다.');
+        //            isValid = false;
+        //        } else {
+        //            hideError($('#accept1').closest('.field'));
+        //        }
 
         // 개인정보 수집 및 이용 동의 체크 여부 검사
-        if (!accept2) {
-            showError($('#accept2').closest('.field'), '개인정보 수집 및 이용에 동의해야 합니다.');
-            isValid = false;
-        } else {
-            hideError($('#accept2').closest('.field'));
-        }
+        //        if (!accept2) {
+        //            showError($('#accept2').closest('.field'), '개인정보 수집 및 이용에 동의해야 합니다.');
+        //            isValid = false;
+        //        } else {
+        //            hideError($('#accept2').closest('.field'));
+        //        }
 
         // 유효성 검사 통과 여부에 따라 폼 제출 결정
         if (!isValid) {
