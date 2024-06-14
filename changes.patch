@@ -176,13 +176,13 @@ index 1c9fefc..097f913 100644
      </script>
 -    <link rel="stylesheet" href="/css/style.css">
 -<!-- select box -->
--    <script src="/plugin/jQuery/jquery-3.7.1.min.js"></script>
--    <script src="/plugin/lcdsantos-jQuery-Selectric/src/jquery.selectric.js"></script>
+-    <script src="../static/plugin/jQuery/jquery-3.7.1.min.js"></script>
+-    <script src="../static/plugin/lcdsantos-jQuery-Selectric/src/jquery.selectric.js"></script>
 -    <link rel="stylesheet" href="/plugin/lcdsantos-jQuery-Selectric/selectric.css">
 + <link rel="stylesheet" href="/css/style.css">
 + <!-- select box -->
-+     <script src="/plugin/jQuery/jquery-3.7.1.min.js"></script>
-+     <script src="/plugin/lcdsantos-jQuery-Selectric/src/jquery.selectric.js"></script>
++     <script src="../static/plugin/jQuery/jquery-3.7.1.min.js"></script>
++     <script src="../static/plugin/lcdsantos-jQuery-Selectric/src/jquery.selectric.js"></script>
 +     <link rel="stylesheet" href="/plugin/lcdsantos-jQuery-Selectric/selectric.css">
      <!-- select box -->
  </head>

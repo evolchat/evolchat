@@ -5,13 +5,13 @@ diff a/src/main/resources/templates/login.html b/src/main/resources/templates/lo
      </script>
 -    <link rel="stylesheet" href="/css/style.css">
 -<!-- select box -->
--    <script src="/plugin/jQuery/jquery-3.7.1.min.js"></script>
--    <script src="/plugin/lcdsantos-jQuery-Selectric/src/jquery.selectric.js"></script>
+-    <script src="../static/plugin/jQuery/jquery-3.7.1.min.js"></script>
+-    <script src="../static/plugin/lcdsantos-jQuery-Selectric/src/jquery.selectric.js"></script>
 -    <link rel="stylesheet" href="/plugin/lcdsantos-jQuery-Selectric/selectric.css">
 + <link rel="stylesheet" href="/css/style.css">
 + <!-- select box -->
-+     <script src="/plugin/jQuery/jquery-3.7.1.min.js"></script>
-+     <script src="/plugin/lcdsantos-jQuery-Selectric/src/jquery.selectric.js"></script>
++     <script src="../static/plugin/jQuery/jquery-3.7.1.min.js"></script>
++     <script src="../static/plugin/lcdsantos-jQuery-Selectric/src/jquery.selectric.js"></script>
 +     <link rel="stylesheet" href="/plugin/lcdsantos-jQuery-Selectric/selectric.css">
      <!-- select box -->
  </head>
