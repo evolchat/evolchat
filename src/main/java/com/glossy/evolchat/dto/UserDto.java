@@ -11,7 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserDto {
-    private int userId;
+    private Long userId; // Long 타입으로 변경
     private String username;
     private String email;
     private int roleId;

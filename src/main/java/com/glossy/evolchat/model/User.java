@@ -3,34 +3,32 @@ package com.glossy.evolchat.model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 import java.time.LocalDateTime;
 
 @Entity
 @Getter
 @Setter
-@ToString(exclude = {"password"}) // password 필드는 toString에서 제외
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer seq;
+    private Long id;
 
-    @Column(unique = true, nullable = false)
-    private Integer userId;
-
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String username;
 
-    @Column(nullable = false)
+    @Column
     private String password;
 
-    @Column(unique = true, nullable = false)
+    @Transient
+    private String confirmPassword; // 비밀번호 확인을 위한 임시 필드
+
+    @Column(nullable = false)
     private String email;
 
     @Column(nullable = false)
-    private Integer roleId;
+    private int roleId;
 
     @Column(nullable = false)
     private LocalDateTime createdAt;
@@ -40,6 +38,9 @@ public class User {
 
     @Column(nullable = false)
     private boolean isDeleted = false;
+
+    @Column(nullable = false)
+    private int seq = 1; // seq는 1부터 시작하도록 초기값 설정
 
     @PrePersist
     protected void onCreate() {
@@ -52,11 +53,10 @@ public class User {
         updatedAt = LocalDateTime.now();
     }
 
-    // Additional fields (getter/setter 자동 생성)
+    private String nickname;
     private String profilePicture;
     private String homeBackgroundPicture;
     private String myHomeUrl;
-    private String nickname;
     private String todaysMessage;
     private String country;
     private String region;
@@ -66,4 +66,21 @@ public class User {
     private String accountNumber;
     private String idCardPicture;
     private String interests;
+
+    // getter/setter 메서드
+    public Long getUserId() {
+        return id;
+    }
+
+    public void setUserId(Long userId) {
+        this.id = userId;
+    }
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
+    }
 }
