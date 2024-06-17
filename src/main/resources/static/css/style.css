@@ -329,6 +329,9 @@ img {
 .p-20 {
     padding: 20px;
 }
+.p-lr-20{
+    padding: 0 20px  !important;
+}
 .m-0{
     margin: 0 !important;
 }
@@ -2053,7 +2056,12 @@ div.mainContent>div.mainLayer>div>div>div.bottom>div>div>div {
     max-height: 50px;
     min-height: 50px;
 }
-
+.join-wrap .field .input-wrap{
+    background: #232428;
+    border-radius: 5px;
+    overflow: hidden;
+    padding: 0 20px;
+}
 .login-wrap .sns .herf-sns .icon-sns {
     top: 50%;
     transform: translateY(-50%);
