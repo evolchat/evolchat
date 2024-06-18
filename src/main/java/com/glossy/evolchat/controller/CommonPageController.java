@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class CommonPageController {
-
     @GetMapping("/header")
     public String header() {
         return "/include/header";
@@ -25,4 +24,5 @@ public class CommonPageController {
     public String footer() {
         return "/include/footer";
     }
+
 }
