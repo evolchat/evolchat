@@ -8,8 +8,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class CommunityController {
 
     @GetMapping("/community_free")
-    public String home(Model model) {
+    public String community_free(Model model) {
         model.addAttribute("activePage", "community_free");
         return "community_free";
+    }
+
+    @GetMapping("/community_photo")
+    public String community_photo(Model model) {
+        model.addAttribute("activePage", "community_free");
+        return "community_photo";
     }
 }

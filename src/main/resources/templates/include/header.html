@@ -18,11 +18,11 @@
         <div class="white flex-row flex-c px15">
             <div class="items flex-c">
                 <img src="../static/images/svg/header-item-1.svg" alt=""/>
-                <span>JACKPOT</span><span>1,592</span>
+                <span>JACKPOT</span><span id="bettingPoints">0</span>
             </div>
             <div class="items flex-c">
                 <img src="../static/images/svg/header-item-2.svg" alt=""/>
-                <span>1,000,002</span>
+                <span id="goldChip">0</span>
             </div>
             <div class="items flex-c">
                 <img src="../static/images/svg/header-item-3.svg" alt=""/>
@@ -53,5 +53,21 @@
             <div class="items flex-c"><img src="../static/images/profile/user1.png" alt="프로필이미지.png"></div>
         </div>
     </div>
-
 </div>
+<script>
+    $(document).ready(function() {
+        const userId = 1; // Set the userId here
+
+        $.ajax({
+            url: `/user-points/${userId}`,
+            type: 'GET',
+            success: function(response) {
+                $('#bettingPoints').text(response.bbettingPoints);
+                $('#goldChip').text(response.ggoldChip);
+            },
+            error: function() {
+                console.log('Failed to fetch user points');
+            }
+        });
+    });
+</script>

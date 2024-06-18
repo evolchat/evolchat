@@ -39,9 +39,6 @@ public class User {
     @Column(nullable = false)
     private boolean isDeleted = false;
 
-    @Column(nullable = false)
-    private int seq = 1; // seq는 1부터 시작하도록 초기값 설정
-
     @PrePersist
     protected void onCreate() {
         createdAt = LocalDateTime.now();

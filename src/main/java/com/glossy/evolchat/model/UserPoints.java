@@ -1,18 +1,24 @@
 package com.glossy.evolchat.model;
 
-import lombok.Data;
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Data
+@Getter
+@Setter
 public class UserPoints {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int seq;
+    private int id;
 
-    @Column(nullable = false)
-    private int userId;
+    @Column(nullable = false, unique = true)
+    private String username;
 
     @Column(nullable = false)
     private int cCash;
@@ -25,4 +31,15 @@ public class UserPoints {
 
     @Column(nullable = false)
     private int gGoldChip;
+
+    public UserPoints() {
+    }
+
+    public UserPoints(String username, int cCash, int bBettingPoints, int aActivityPoints, int gGoldChip) {
+        this.username = username;
+        this.cCash = cCash;
+        this.bBettingPoints = bBettingPoints;
+        this.aActivityPoints = aActivityPoints;
+        this.gGoldChip = gGoldChip;
+    }
 }
