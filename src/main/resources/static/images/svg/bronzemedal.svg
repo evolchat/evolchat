@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36" height="36" viewBox="0 0 36 36">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#f3d06f"/>
+      <stop offset="1" stop-color="#a1621d"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="1" stop-color="#eac466"/>
+    </linearGradient>
+    <filter id="패스_46157" x="9.801" y="5" width="16.398" height="26" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="1" result="blur"/>
+      <feFlood flood-color="#a1621d"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="그룹_21975" data-name="그룹 21975" transform="translate(-282 -449)">
+    <g id="타원_2193" data-name="타원 2193" transform="translate(282 449)" stroke="rgba(255,255,255,0.2)" stroke-width="2" fill="url(#linear-gradient)">
+      <circle cx="18" cy="18" r="18" stroke="none"/>
+      <circle cx="18" cy="18" r="17" fill="none"/>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 282, 449)" filter="url(#패스_46157)">
+      <path id="패스_46157-2" data-name="패스 46157" d="M30.459,14.856a.3.3,0,0,1,.286-.342l3.544-.344c.2-.028.342.058.342.288a3.543,3.543,0,0,0,.114,1.312.82.82,0,0,0,.856.572.794.794,0,0,0,.858-.6A7.3,7.3,0,0,0,36.545,14a7.5,7.5,0,0,0-.086-1.742c-.142-.456-.514-.6-1.114-.6h-.458a.269.269,0,0,1-.284-.284V8.114a.269.269,0,0,1,.284-.286h.544c.542,0,.886-.144,1.028-.572A6.259,6.259,0,0,0,36.545,5.6a5.229,5.229,0,0,0-.086-1.344.794.794,0,0,0-.858-.6.82.82,0,0,0-.856.572,4.363,4.363,0,0,0-.114,1.314c0,.228-.142.314-.342.286l-3.544-.342a.3.3,0,0,1-.286-.344,6.321,6.321,0,0,1,.286-2.028C31.373,1.17,33.029,0,35.659,0c2.656,0,4.256,1.142,4.912,3.114A7.513,7.513,0,0,1,40.857,5.6,5.629,5.629,0,0,1,40.6,7.656a3.405,3.405,0,0,1-1.574,1.886V9.6a3.168,3.168,0,0,1,1.6,1.886,7.517,7.517,0,0,1,.228,2.57,8.563,8.563,0,0,1-.286,2.828C39.915,18.856,38.315,20,35.659,20c-2.63,0-4.286-1.172-4.914-3.116a6.313,6.313,0,0,1-.286-2.028" transform="translate(-17.66 8)" fill="url(#linear-gradient-2)"/>
+    </g>
+  </g>
+</svg>

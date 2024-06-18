@@ -733,6 +733,10 @@ table {
     color: #fff;
 }
 
+.orange-FBC22B {
+    color: #FBC22B
+}
+
 .orange {
     color: #FFCF40
 }
@@ -1774,7 +1778,11 @@ div.mainContent {
     height: 100%;
     color: #fff;
 }
-
+.sub-header button{
+    width: 92px;
+    height: 44px;
+    border-radius: 5px;
+}
 /* sub-header */
 
 
@@ -2272,6 +2280,7 @@ div.mainContent>div.mainLayer>div>div>div.bottom>div>div>div.count{
     text-align: left;
     display: flex;
     flex-direction: column;
+    padding: 20px;
 }
 
 .photo-item-layer>.photo-layout .text-wrap .v-h {
@@ -2279,21 +2288,23 @@ div.mainContent>div.mainLayer>div>div>div.bottom>div>div>div.count{
 }
 
 .photo-item-layer .text-wrap .top {
-    padding-bottom: 15px;
+    /* padding-bottom: 15px;
     padding-left: 15px;
-    padding-right: 15px;
+    padding-right: 15px; */
 }
 
 .photo-item-layer .text-wrap .bottom {
-    color: #5D5E5E;
-    padding-left: 10px;
-    padding-bottom: 15px;
+    color: #fff;
+    /* padding-left: 10px; */
+    /* padding-bottom: 15px; */
 }
 
 .photo-item-layer .text-wrap .bottom>div {
     margin-right: 10px;
 }
-
+.photo-item-layer .text-wrap .bottom>div img{
+    margin-right: 4px;
+}
 .photo-item-layer .user-layout {
     color: #A7A8A9;
 }

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36" height="36" viewBox="0 0 36 36">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#bfc5cf"/>
+      <stop offset="1" stop-color="#6e7380"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="1" stop-color="#bec4ce"/>
+    </linearGradient>
+    <filter id="패스_46156" x="9.725" y="5" width="16.55" height="26" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="1" result="blur"/>
+      <feFlood flood-color="#6e7380"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="그룹_21974" data-name="그룹 21974" transform="translate(-282 -350)">
+    <g id="타원_2192" data-name="타원 2192" transform="translate(282 350)" stroke="rgba(255,255,255,0.2)" stroke-width="2" fill="url(#linear-gradient)">
+      <circle cx="18" cy="18" r="18" stroke="none"/>
+      <circle cx="18" cy="18" r="17" fill="none"/>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 282, 350)" filter="url(#패스_46156)">
+      <path id="패스_46156-2" data-name="패스 46156" d="M30.916,16.58a.882.882,0,0,1,.146-.522l4.984-7.246A4.662,4.662,0,0,0,37.09,5.478,4.073,4.073,0,0,0,37,4.318a.855.855,0,0,0-.868-.608.89.89,0,0,0-.9.608,5.79,5.79,0,0,0-.088,1.536c0,.232-.144.32-.348.29L31.206,5.8a.3.3,0,0,1-.29-.346,7.125,7.125,0,0,1,.262-2.292C31.786,1.158,33.524,0,36.19,0c2.7,0,4.35,1.188,5.016,3.158a7.97,7.97,0,0,1,.26,2.32,7.515,7.515,0,0,1-1.594,5.1l-3.884,5.536v.028h5.19a.273.273,0,0,1,.288.29V19.71a.273.273,0,0,1-.288.29H31.206a.274.274,0,0,1-.29-.29Z" transform="translate(-18.19 8)" fill="url(#linear-gradient-2)"/>
+    </g>
+  </g>
+</svg>
