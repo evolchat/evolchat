@@ -1,34 +1,34 @@
 <header class="bc-aside">
     <ul class="nav">
-        <li class="grey-1"><a class="" href="#">
+        <li class="grey-1"><a class="nav-link" href="home">
                 <img src="../static/images/svg/nav-item-1.svg" alt=""/>
                 에볼루션
             </a></li>
-        <li class="grey-1"><a class="" href="#">
-            <img src="../static/images/svg/nav-item-2.svg" alt=""/>
-                오토봇
-            </a></li>
-        <li class="grey-1"><a class="" href="openchat.html">
+        <!--        <li class="grey-1"><a class="nav-link" href="#">-->
+        <!--            <img src="../static/images/svg/nav-item-2.svg" alt=""/>-->
+        <!--                오토봇-->
+        <!--            </a></li>-->
+        <li class="grey-1"><a class="nav-link" href="openchat.html">
             <img src="../static/images/svg/nav-item-3.svg" alt=""/>
                 오픈채팅
             </a></li>
-        <li class="grey-1"><a class="active" href="community_free.html">
+        <li class="grey-1"><a class="nav-link" href="community_free.html">
             <img src="../static/images/svg/nav-item-4.svg" alt=""/>
                 커뮤니티
             </a></li>
-        <li class="grey-1"><a class="" href="rank.html">
+        <li class="grey-1"><a class="nav-link" href="rank.html">
             <img src="../static/images/svg/nav-item-5.svg" alt=""/>
                 랭킹
             </a></li>
-        <li class="grey-1"><a class="" href="shopping.html">
+        <li class="grey-1"><a class="nav-link" href="shopping.html">
             <img src="../static/images/svg/nav-item-6.svg" alt=""/>
                 상점
             </a></li>
-        <li class="grey-1"><a class="" href="support_notice.html">
+        <li class="grey-1"><a class="nav-link" href="support_notice.html">
             <img src="../static/images/svg/nav-item-7.svg" alt=""/>
                 고객센터
             </a></li>
-        <li class="grey-1"><a class="" href="messenger_friend.html">
+        <li class="grey-1"><a class="nav-link" href="messenger_friend.html">
             <img src="../static/images/svg/nav-item-8.svg" alt=""/>
                 메신저<span class="notice hidden">3</span>
             </a></li>
@@ -73,3 +73,12 @@
         </li>
     </ul>
 </header>
+<script>
+    const currentPath = window.location.pathname.split("/").pop();
+    $('.nav-link').each(function() {
+    const linkPath = $(this).attr('href');
+    if (linkPath === currentPath) {
+      $(this).addClass('active');
+    }
+    });
+</script>
