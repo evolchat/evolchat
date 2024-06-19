@@ -681,9 +681,14 @@ table {
 .bc-brown {
     background-color: #2e292b;
 }
-
+.bc-gray{
+    background-color: #727681;
+}
 .bc-gray-dark {
     background-color: #35373D;
+}
+.bc-dark-3A3C43 {
+    background-color: #3A3C43;
 }
 
 .bg-r-b {
