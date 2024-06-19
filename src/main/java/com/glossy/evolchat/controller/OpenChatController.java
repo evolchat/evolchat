@@ -10,6 +10,6 @@ public class OpenChatController {
     @GetMapping("/openchat")
     public String openchat(Model model) {
         model.addAttribute("activePage", "openchat");
-        return "openchat";
+        return "index";
     }
 }

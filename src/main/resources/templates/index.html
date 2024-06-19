@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>에볼챗닷컴 : 포토</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/plugin/lcdsantos-jQuery-Selectric/selectric.css">
+    <script src="../static/plugin/jQuery/jquery-3.7.1.min.js"></script>
+    <script src="../static/plugin/lcdsantos-jQuery-Selectric/src/jquery.selectric.js"></script>
+    <script src="../static/js/common.js"></script>
+</head>
+<body th:data-active-page="${activePage}">
+<div class="wrapper bc-black vh100">
+    <div id="header" class="header flex-row bc-header"></div>
+    <section class="container flex-row">
+        <div id="nav"></div>
+        <div id="content-area"></div>
+        <!--  <div id="footer"></div>-->
+        <div id="chat" class="content chatLayer bc-aside"></div>
+    </section>
+</div>
+<script>
+    $(function() {
+        const activePage = $('body').attr('data-active-page');
+        console.log('Active Page:', activePage); // Debugging line
+
+        const loadPageContent = (page) => {
+            $.ajax({
+                url: `/${page}_page`, // URL of the content to load
+                method: 'GET',
+                success: function(data) {
+                    $('#content-area').html(data);
+                    history.pushState(null, null, page);
+                },
+                error: function() {
+                    $('#content-area').html('<p>Error loading content.</p>');
+                }
+            });
+        };
+
+        if (activePage) {
+            loadPageContent(activePage);
+            $('.nav-link[href="' + activePage + '"]').addClass('active');
+        }
+
+        $('.nav-link').on('click', function(e) {
+            e.preventDefault();
+            const page = $(this).attr('href').split("/").pop();
+            loadPageContent(page);
+            $('.nav-link').removeClass('active');
+            $(this).addClass('active');
+        });
+
+        window.onpopstate = function() {
+            const currentPath = window.location.pathname.split("/").pop();
+            loadPageContent(currentPath);
+            $('.nav-link').removeClass('active');
+            $('.nav-link[href="' + currentPath + '"]').addClass('active');
+        };
+    });
+</script>
+</body>
+</html>

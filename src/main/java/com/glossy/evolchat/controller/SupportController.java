@@ -10,18 +10,24 @@ public class SupportController {
     @GetMapping("/support_notice")
     public String support_notice(Model model) {
         model.addAttribute("activePage", "support_notice");
-        return "support_notice";
+        return "index";
     }
 
     @GetMapping("/support_help")
     public String support_help(Model model) {
-        model.addAttribute("activePage", "support_notice");
-        return "support_help";
+        model.addAttribute("activePage", "support_help");
+        return "index";
     }
 
     @GetMapping("/support_support")
     public String support_support(Model model) {
-        model.addAttribute("activePage", "support_notice");
-        return "support_support";
+        model.addAttribute("activePage", "support_support");
+        return "index";
+    }
+
+    @GetMapping("/support_inquiry_write")
+    public String support_inquiry_write(Model model) {
+        model.addAttribute("activePage", "support_inquiry_write");
+        return "index";
     }
 }

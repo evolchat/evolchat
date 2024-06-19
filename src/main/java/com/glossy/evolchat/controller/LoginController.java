@@ -32,7 +32,7 @@ public class LoginController {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth != null && !auth.getName().equals("anonymousUser")) {
-            return "redirect:/home";
+            return "redirect:";
         }
 
         return "login";
@@ -47,7 +47,7 @@ public class LoginController {
 
             SecurityContextHolder.getContext().setAuthentication(authentication);
 
-            return "redirect:/home";
+            return "redirect:";
         } catch (BadCredentialsException e) {
             model.addAttribute("error", "아이디 또는 비밀번호가 잘못되었습니다.");
             return "login";
