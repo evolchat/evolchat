@@ -2350,9 +2350,14 @@ div.mainContent>div.mainLayer>div>div>div.bottom>div>div>div.count {
 /* photo */
 
 /* rank */
+.table-padding {
+    /* border-radius: 10px;
+    border: 1px solid #33353B; */
+    padding: 10px 20px;
+}
 .table-radius {
-    border-radius: 10px;
-    border: 1px solid #33353B;
+  border-radius: 10px;
+   border: 1px solid #33353B;
 }
 
 .rank-table {
@@ -2362,9 +2367,12 @@ div.mainContent>div.mainLayer>div>div>div.bottom>div>div>div.count {
     /* border: 1px solid #35373D;
     border-radius: 10px; */
     border-style: none;
-
+    border-collapse: collapse;
+    border-style: hidden;  
 }
-
+.rank-table thead tr{
+    height: 50px;
+}
 .rank-table tbody tr {
     height: 100px;
 }
@@ -2839,7 +2847,7 @@ div.mainContent.bc-main>div.mainLayer>div>div>div.line>div.top.flex-row>div.left
 /* my_activitypoints */
 
 .mainLayer>div .table-radius {
-    padding: 20px;
+    /* padding: 20px; */
 }
 
 .mypqge-table {
