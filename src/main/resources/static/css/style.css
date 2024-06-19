@@ -476,9 +476,11 @@ table {
     display: flex !important;
     justify-content: space-around;
 }
+
 .flex-grow {
     flex-grow: 1;
 }
+
 .position-r {
     position: relative;
 }
@@ -646,8 +648,8 @@ table {
 }
 
 /* 배경색 정의 */
-/* 
-2024-05-27 기준으로 
+/*
+2024-05-27 기준으로
 상단 해더  #1B1C1E
 푸터 #232428
 왼쪽 사이드 #27292D
@@ -718,6 +720,7 @@ table {
 
 .bc-activate {
     background-color: #8744ff !important;
+    color: #fff;
 }
 
 /* 글자 색 정의 */
@@ -735,6 +738,10 @@ table {
 
 .orange-FBC22B {
     color: #FBC22B
+}
+
+.orange-FFBF00 {
+    color: #FFBF00
 }
 
 .orange {
@@ -765,13 +772,34 @@ table {
     color: #FF4447
 }
 
-.border-l{
-    border-top-left-radius: 5px;
-    border-bottom-left-radius:5px;
+.blue {
+    color: #185CC6
 }
-.border-r{
+
+.border-l {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.border-r {
     border-top-right-radius: 5px;
-    border-bottom-right-radius:5px;
+    border-bottom-right-radius: 5px;
+}
+.border-t {
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+.border-b {
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+.border-t-10 {
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+.border-b-10 {
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
 }
 
 /* 테두리 색 정의 */
@@ -1778,11 +1806,13 @@ div.mainContent {
     height: 100%;
     color: #fff;
 }
-.sub-header button{
+
+.sub-header button {
     width: 92px;
     height: 44px;
     border-radius: 5px;
 }
+
 /* sub-header */
 
 
@@ -1948,9 +1978,11 @@ div.mainContent>div.mainLayer>div>div>div.bottom>div>div>div {
     justify-content: center;
     border: 1px solid #35373D;
 }
-div.mainContent>div.mainLayer>div>div>div.bottom>div>div>div.count{
+
+div.mainContent>div.mainLayer>div>div>div.bottom>div>div>div.count {
     flex-grow: 1;
 }
+
 /* footer */
 .footer {
     text-align: left;
@@ -2302,9 +2334,11 @@ div.mainContent>div.mainLayer>div>div>div.bottom>div>div>div.count{
 .photo-item-layer .text-wrap .bottom>div {
     margin-right: 10px;
 }
-.photo-item-layer .text-wrap .bottom>div img{
+
+.photo-item-layer .text-wrap .bottom>div img {
     margin-right: 4px;
 }
+
 .photo-item-layer .user-layout {
     color: #A7A8A9;
 }
@@ -2325,7 +2359,10 @@ div.mainContent>div.mainLayer>div>div>div.bottom>div>div>div.count{
     width: 100%;
     height: 100%;
     border-collapse: collapse;
-    border-style: hidden;
+    /* border: 1px solid #35373D;
+    border-radius: 10px; */
+    border-style: none;
+
 }
 
 .rank-table tbody tr {
@@ -2336,7 +2373,19 @@ div.mainContent>div.mainLayer>div>div>div.bottom>div>div>div.count{
 .rank-table td {
     vertical-align: middle;
 }
-
+.rank-table tr{
+    border-collapse: collapse;
+    border: 1px solid #35373D;
+}
+.rank-table tbody tr:hover{
+    background-color: #282A2E;
+}
+.rank-table tr:hover td{
+    opacity: 1;
+}
+.rank-table tfoot tr{
+    height: 100px;
+}
 /* rank */
 
 
@@ -2549,13 +2598,15 @@ div.mainContent>div.mainLayer>div>div>div.bottom>div>div>div.count{
     border-radius: 5px;
     overflow: hidden;
 }
-.mainLayer>.item-list .shopping-item-wrap .line .case img{
+
+.mainLayer>.item-list .shopping-item-wrap .line .case img {
     margin-right: 6px;
 }
 
-.shopping-item-wrap .btn-wrap button:nth-of-type(1){
+.shopping-item-wrap .btn-wrap button:nth-of-type(1) {
     margin-right: 8px;
 }
+
 .shopping-item-wrap .btn-wrap button {
     background-color: #35373D;
     display: inline-block;
@@ -2568,17 +2619,19 @@ div.mainContent>div.mainLayer>div>div>div.bottom>div>div>div.count{
     border-radius: 5px;
     font-size: 0.9375 rem;
 }
-div.mainContent.bc-main > div.mainLayer > div > div > div.line > div.top.flex-row > div.left{
+
+div.mainContent.bc-main>div.mainLayer>div>div>div.line>div.top.flex-row>div.left {
     /* background-color: #03c104; */
     height: 120px;
     /* opacity: .5; */
 }
 
 .shopping-item-wrap .btn-wrap .gift.activate {
-    background-color:  #BF9B30;
+    background-color: #BF9B30;
     color: #fff;
     cursor: pointer;
 }
+
 .shopping-item-wrap .btn-wrap .purchase.activate {
     color: #fff;
     cursor: pointer;
@@ -2610,7 +2663,8 @@ div.mainContent.bc-main > div.mainLayer > div > div > div.line > div.top.flex-ro
 .shopping-item-wrap .top .left .text {
     color: #76777B;
 }
-.shopping-item-wrap .top .left .text .red{
+
+.shopping-item-wrap .top .left .text .red {
     margin: 6px 0 0 0;
 }
 
@@ -2805,3 +2859,21 @@ div.mainContent.bc-main > div.mainLayer > div > div > div.line > div.top.flex-ro
 }
 
 /* my_activitypoints */
+
+
+/* pagination */
+.pagination .page{
+    width: 44px;
+    height: 44px;
+    cursor: pointer;
+    color: #CACACE;
+    background-color: transparent;
+}
+.pagination .page.bc-activate{
+ border-radius: 5px;
+}
+.pagination .page:hover{
+    background-color: #35373D;
+    border-radius: 5px;
+}
+/* pagination */
