@@ -349,7 +349,9 @@ img {
 .m-b-5 {
     margin-bottom: 5px;
 }
-
+.m-b-6 {
+    margin-bottom: 6px;
+}
 .m-b-8 {
     margin-bottom: 8px;
 }
@@ -681,12 +683,15 @@ table {
 .bc-brown {
     background-color: #2e292b;
 }
-.bc-gray{
+
+.bc-gray {
     background-color: #727681;
 }
+
 .bc-gray-dark {
     background-color: #35373D;
 }
+
 .bc-dark-3A3C43 {
     background-color: #3A3C43;
 }
@@ -2393,10 +2398,12 @@ div.mainContent>div.mainLayer>div>div>div.bottom>div>div>div.count {
     border-collapse: collapse;
     border-style: hidden;
 }
+
 /* 테이블 공통 */
 .h50px tr {
     height: 50px;
 }
+
 .h60px tr {
     height: 60px;
 }
@@ -2415,7 +2422,8 @@ div.mainContent>div.mainLayer>div>div>div.bottom>div>div>div.count {
     border: 1px solid #35373D;
 }
 
-.rank-table tbody tr:hover {
+.rank-table tbody tr:hover,
+.tr:hover {
     background-color: #282A2E;
 }
 
@@ -2719,12 +2727,22 @@ div.mainContent.bc-main>div.mainLayer>div>div>div.line>div.top.flex-row>div.left
 .user-list-layer .user-list {
     max-height: 72px;
     min-height: 72px;
+    padding: 0 14px;
 }
 
 .user-list-layer .user-list>div {
     margin-right: 8px;
 }
-
+.user-list-layer .user-list>div.profile{
+    max-width: 44px;
+    max-height: 44px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.user-list-layer .user-list>div.profile img{
+    width: 100%;
+    height: 100%;
+}
 .user-list-layer .user {
     flex-grow: 1;
     line-height: 1rem;
@@ -2924,9 +2942,10 @@ div.mainContent.bc-main>div.mainLayer>div>div>div.line>div.top.flex-row>div.left
 
 
 /* support_notice */
-.square{
+.square {
     width: 74px;
     height: 30px;
     margin: 0 auto;
 }
+
 /* support_notice */
