@@ -698,6 +698,14 @@ table {
     background: linear-gradient(#08600b, #0a310e);
 }
 
+.bc-ivory {
+    background-color: #BF9B30;
+}
+
+.bc-blue-2379FF {
+    background-color: #2379FF !important;
+}
+
 .bc-blue {
     background-color: #185cc6 !important;
 }
@@ -776,6 +784,11 @@ table {
     color: #185CC6
 }
 
+/* border-radius-r 이런식으로 이름 수정필요. */
+.border-5 {
+    border-radius: 5px;
+}
+
 .border-l {
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
@@ -785,18 +798,22 @@ table {
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }
+
 .border-t {
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
 }
+
 .border-b {
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
 }
+
 .border-t-10 {
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
 }
+
 .border-b-10 {
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
@@ -2355,9 +2372,10 @@ div.mainContent>div.mainLayer>div>div>div.bottom>div>div>div.count {
     border: 1px solid #33353B; */
     padding: 10px 20px;
 }
+
 .table-radius {
-  border-radius: 10px;
-   border: 1px solid #33353B;
+    border-radius: 10px;
+    border: 1px solid #33353B;
 }
 
 .rank-table {
@@ -2368,12 +2386,17 @@ div.mainContent>div.mainLayer>div>div>div.bottom>div>div>div.count {
     border-radius: 10px; */
     border-style: none;
     border-collapse: collapse;
-    border-style: hidden;  
+    border-style: hidden;
 }
-.rank-table thead tr{
+/* 테이블 공통 */
+.h50px tr {
     height: 50px;
 }
-.rank-table tbody tr {
+.h60px tr {
+    height: 60px;
+}
+
+.h100px tr {
     height: 100px;
 }
 
@@ -2381,19 +2404,24 @@ div.mainContent>div.mainLayer>div>div>div.bottom>div>div>div.count {
 .rank-table td {
     vertical-align: middle;
 }
-.rank-table tr{
+
+.rank-table tr {
     border-collapse: collapse;
     border: 1px solid #35373D;
 }
-.rank-table tbody tr:hover{
+
+.rank-table tbody tr:hover {
     background-color: #282A2E;
 }
-.rank-table tr:hover td{
+
+.rank-table tr:hover td {
     opacity: 1;
 }
-.rank-table tfoot tr{
+
+/* .rank-table tfoot tr {
     height: 100px;
-}
+} */
+
 /* rank */
 
 
@@ -2870,18 +2898,30 @@ div.mainContent.bc-main>div.mainLayer>div>div>div.line>div.top.flex-row>div.left
 
 
 /* pagination */
-.pagination .page{
+.pagination .page {
     width: 44px;
     height: 44px;
     cursor: pointer;
     color: #CACACE;
     background-color: transparent;
 }
-.pagination .page.bc-activate{
- border-radius: 5px;
+
+.pagination .page.bc-activate {
+    border-radius: 5px;
 }
-.pagination .page:hover{
+
+.pagination .page:hover {
     background-color: #35373D;
     border-radius: 5px;
 }
+
 /* pagination */
+
+
+/* support_notice */
+.square{
+    width: 74px;
+    height: 30px;
+    margin: 0 auto;
+}
+/* support_notice */
