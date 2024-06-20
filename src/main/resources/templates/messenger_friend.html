@@ -6,79 +6,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>에볼챗닷컴 : 메신저 - 친구</title>
     <script src="../static/js/messenger_friend.js"></script>
+    <link rel="stylesheet" href="../static/css/page/messenger/blocklists.css">
 </head>
 
 <body>
 
     <div class="wrapper bc-black vh100 ">
-<!--        <div id="header" class="header flex-row bc-header"></div>-->
-        <Section class="container flex-row">
-<!--            <div id="nav" class="bc-aside g-12"></div>-->
-            <div class="wrap bc-footer ">
-                <div class="content">
-                    <div class="mainContent bc-main">
-                        <div class="sub-header flex-row flex-c white opacity60 px15">
-                            <div class="list active"><a href="messenger_friend">친구</a></div>
-                            <div class="list"><a href="messenger_message">메시지</a></div>
-                            <div class="list "><a href="messenger_blocklists">차단 목록</a></div>
-                            <div class="list"><a href="messenger_add_friend">친구 추가하기</a></div>
+        <!--        <div id="header" class="header flex-row bc-header"></div>-->
+
+        <div class="mainContent bc-main">
+            <div class="sub-header flex-row flex-c white opacity60 px15">
+                <div class="list active"><a href="messenger_friend">친구</a></div>
+                <div class="list"><a href="messenger_message">메시지</a></div>
+                <div class="list "><a href="messenger_blocklists">차단 목록</a></div>
+                <div class="list"><a href="messenger_add_friend">친구 추가하기</a></div>
+            </div>
+            <div class="sub-header flex-row flex-c">
+                <div class="sub-header-search bc-footer flex-grow">
+                    <input type="text" placeholder="닉네임 검색">
+                    <img src="../static/images/svg/search.svg" alt="" class="input-icon search" />
+                </div>
+            </div>
+
+            <div class="mainLayer">
+                <div class="user-list-layer  px15 white">
+                    <div class="user-list flex-row flex-c">
+                        <div class="profile"><img src="../static/images/profile/user1.png" alt="#"></div>
+                        <div class="user">
+                            <p class="nickname opacity80">우울한협객</p>
+                            <p class="text opacity60 px14">너희들은 내일만 보고 살지? 내일만 사는 놈은 오늘만 사는 놈한테 죽는다. 난 오늘만
+                                살어!</p>
                         </div>
-                        <div class="sub-header flex-row flex-c">
-                            <div class="sub-header-search bc-footer flex-grow">
-                                <input type="text" placeholder="닉네임 검색">
-                                <img src="../static/images/svg/search.svg" alt=""
-                                    class="input-icon search" />
+                        <div class="btn-wrap flex-row flex-c">
+
+                            <div class="icon flex-c-c"><img src="../static/images/svg/pins.svg" alt=""
+                                    style="height: auto; width: auto;" />
+                                <div class="hidden">고정</div>
                             </div>
-                        </div>
-
-                        <div class="mainLayer">
-                            <div class="user-list-layer  px15 white">
-                                <div class="user-list flex-row flex-c">
-                                    <div class="profile"><img src="../static/images/profile/user1.png" alt="#"></div>
-                                    <div class="user">
-                                        <p class="nickname opacity80">우울한협객</p>
-                                        <p class="text opacity60 px14">너희들은 내일만 보고 살지? 내일만 사는 놈은 오늘만 사는 놈한테 죽는다. 난 오늘만
-                                            살어!</p>
-                                    </div>
-                                    <div class="btn-wrap flex-row flex-c">
-
-                                        <div class="icon flex-c-c"><img src="../static/images/svg/pins.svg" alt=""
-                                                style="height: auto; width: auto;" />
-                                                <div class="hidden">고정</div></div>
-                                        <div class="icon flex-c-c"><img src="../static/images/svg/home.svg" alt=""
-                                                style="height: auto; width: auto;" />
-                                                <div class="hidden">홈피</div></div>
-                                        <div class="icon flex-c-c"><img src="../static/images/svg/chat.svg" alt=""
-                                                style="height: auto; width: auto;" />
-                                                <div class="hidden">메시지보내기</div></div>
-                                        <div class="icon flex-c-c"><img src="../static/images/svg/hyphenation.svg"
-                                                alt="" style="height: auto; width: auto;" />
-                                                <div class="hidden">더보기</div></div>
-
-                                       
-                                        
-                                        
-                                        
-                                    </div>
-                                </div>
-
+                            <div class="icon flex-c-c"><img src="../static/images/svg/home.svg" alt=""
+                                    style="height: auto; width: auto;" />
+                                <div class="hidden">홈피</div>
                             </div>
-
+                            <div class="icon flex-c-c"><img src="../static/images/svg/chat.svg" alt=""
+                                    style="height: auto; width: auto;" />
+                                <div class="hidden">메시지보내기</div>
+                            </div>
+                            <div class="icon flex-c-c"><img src="../static/images/svg/hyphenation.svg" alt=""
+                                    style="height: auto; width: auto;" />
+                                <div class="hidden">더보기</div>
+                            </div>
                         </div>
                     </div>
 
-                    <div id="footer"></div>
                 </div>
 
             </div>
-<!--            <div id="chat" class="content chatLayer bc-aside"></div>-->
-        </Section>
-    </div>
-    <script>
-        $(function () {
-            $('select').selectric();
-        });
-    </script>
+        </div>
+
+        <div id="footer" class=" bc-footer">
+
+        </div>
+        <script>
+            $(function () {
+                $('select').selectric();
+            });
+        </script>
 </body>
 
 </html>
