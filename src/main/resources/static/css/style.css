@@ -345,7 +345,9 @@ img {
 .m-lr-10 {
     margin: 0 10px;
 }
-
+.m-r-4 {
+    margin-right: 4px;
+}
 .m-r-14 {
     margin-right: 14px;
 }
@@ -1936,7 +1938,8 @@ div.mainContent {
 }
 
 .sub-header button {
-    width: 92px;
+    /* width: 92px; */
+    padding: 0 10px;
     height: 44px;
     border-radius: 5px;
 }
