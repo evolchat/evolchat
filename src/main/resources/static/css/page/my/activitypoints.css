@@ -1,0 +1,24 @@
+
+/* my_activitypoints */
+
+.mainLayer>div .table-radius {
+    /* padding: 20px; */
+}
+
+.mypqge-table {
+    width: 100%;
+    height: 100%;
+    border-collapse: collapse;
+    border-style: hidden;
+}
+
+.mypqge-table tbody tr {
+    height: 58px;
+}
+
+.mypqge-table th,
+.mypqge-table td {
+    vertical-align: middle;
+}
+
+/* my_activitypoints */

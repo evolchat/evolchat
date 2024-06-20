@@ -345,6 +345,7 @@ img {
 .m-lr-10 {
     margin: 0 10px;
 }
+
 .m-r-14 {
     margin-right: 14px;
 }
@@ -352,9 +353,11 @@ img {
 .m-b-5 {
     margin-bottom: 5px;
 }
+
 .m-b-6 {
     margin-bottom: 6px;
 }
+
 .m-b-8 {
     margin-bottom: 8px;
 }
@@ -767,6 +770,10 @@ table {
 
 .orange {
     color: #FFCF40
+}
+
+.gray {
+    color: #727681;
 }
 
 .grey-1 {
@@ -1492,6 +1499,86 @@ table {
 }
 
 
+/* 테이블 공통 */
+/* rank */
+.table-padding {
+    /* border-radius: 10px;
+    border: 1px solid #33353B; */
+    padding: 10px 20px;
+}
+
+.table-radius {
+    border-radius: 10px;
+    border: 1px solid #33353B;
+}
+
+.rank-table {
+    width: 100%;
+    height: 100%;
+    border-collapse: collapse;
+    /* border: 1px solid #35373D;
+    border-radius: 10px; */
+    border-style: none;
+    border-collapse: collapse;
+    border-style: hidden;
+}
+
+.h50px tr {
+    height: 50px;
+}
+
+.h60px tr {
+    height: 60px;
+}
+
+.h100px tr {
+    height: 100px;
+}
+
+.rank-table th,
+.rank-table td {
+    vertical-align: middle;
+}
+
+.rank-table tr {
+    border-collapse: collapse;
+    border: 1px solid #35373D;
+}
+
+.rank-table tbody tr:hover,
+.tr:hover {
+    background-color: #282A2E;
+}
+
+.rank-table tr:hover td {
+    opacity: 1;
+}
+
+/* .rank-table tfoot tr {
+    height: 100px;
+} */
+
+/* rank */
+/* pagination */
+.pagination .page {
+    width: 44px;
+    height: 44px;
+    cursor: pointer;
+    color: #CACACE;
+    background-color: transparent;
+}
+
+.pagination .page.bc-activate {
+    border-radius: 5px;
+}
+
+.pagination .page:hover {
+    background-color: #35373D;
+    border-radius: 5px;
+}
+
+/* pagination */
+
 
 
 /* 여기부터 index */
@@ -1894,125 +1981,6 @@ div.chatContent>div.text.grey-1 {
     max-width: 200px;
 }
 
-/* gameLayer */
-div.mainContent {
-    padding-bottom: 80px;
-    position: relative;
-}
-
-div.mainContent>div.header {
-    min-height: 70px;
-    max-width: 800px;
-    min-height: 70px;
-    width: 100%;
-    margin: 0 auto;
-
-}
-
-div.mainContent>div.header>div.options>div {
-    margin: 0 5px;
-}
-
-body>div>section>div.wrap>div>div.mainContent>div.header>div.options>div.icon {
-    border: 1px solid #3f383b;
-    border-radius: 50%;
-    padding: 10px;
-}
-
-div.mainContent>div.header div.options {
-    z-index: 1;
-    position: relative;
-}
-
-div.mainContent>div.header div.item-wrap.flex-row.flex-c>div.bg-game-chips {
-
-    margin: 0 5px;
-}
-
-div.mainContent>div.header .bg {
-    max-width: 800px;
-    width: 100%;
-    background-color: #1b1c1e;
-    border-radius: 10%;
-    position: absolute;
-    height: 200%;
-    max-height: 1500px;
-    /* top: -190%; */
-    top: -1425px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-div.mainContent>div.mainLayer>div>div>div.middle.flex-row.flex-c-c {
-    font-size: 0.8rem;
-}
-
-div.mainContent>div.mainLayer>div>div>div.middle.flex-row.flex-c-c>div:nth-child(2n+1) {
-    width: 30px;
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
-}
-
-div.mainContent>div.mainLayer>div>div>div.middle.flex-row.flex-c-c>div:nth-child(2n) {
-    width: 100px;
-}
-
-div.mainContent>div.mainLayer>div>div>div.middle.flex-row.flex-c-c>div:nth-child(3) {
-    width: 40px;
-}
-
-div.mainContent>div.mainLayer>div>div>div.bottom>div {
-    padding: 10px 0;
-    justify-content: space-between;
-    align-items: center;
-}
-
-div.mainContent>div.mainLayer>div>div>div.top.flex-row>div.title {
-    padding: 15px 10px;
-}
-
-div.mainContent>div.mainLayer>div>div>div.bottom>div>div:nth-child(5)>div::after,
-div.mainContent>div.mainLayer>div>div>div.bottom>div>div:nth-child(6)>div::after {
-    content: '';
-    display: inline-block;
-    border-radius: 10px;
-    width: 5px;
-    height: 5px;
-    border: 1px solid #1d1c1e;
-    position: absolute;
-    background-color: #185cc6;
-    top: 0;
-    left: 0;
-}
-
-div.mainContent>div.mainLayer>div>div>div.bottom>div>div:nth-child(6)>div::after {
-    background-color: #c52123;
-    right: 0;
-    bottom: 0;
-    top: auto;
-}
-
-div.mainContent>div.mainLayer>div>div>div.bottom>div>div {
-    display: flex !important;
-    align-items: center;
-    width: 150px;
-    margin-right: 30px;
-}
-
-div.mainContent>div.mainLayer>div>div>div.bottom>div>div>div {
-    display: flex !important;
-    align-items: center;
-    width: 36px;
-    height: 36px;
-    justify-content: center;
-    border: 1px solid #35373D;
-}
-
-div.mainContent>div.mainLayer>div>div>div.bottom>div>div>div.count {
-    flex-grow: 1;
-}
-
 /* footer */
 .footer {
     text-align: left;
@@ -2063,902 +2031,6 @@ div.mainContent>div.mainLayer>div>div>div.bottom>div>div>div.count {
 }
 
 /* 여기까지 footer */
-
-
-/* join & login */
-.safety {
-    height: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.assign-wrap {
-    max-width: 350px;
-    width: 100%;
-    flex-direction: column;
-}
-
-.assign-wrap .content {
-    width: 100%;
-}
-
-.join-wrap .content {
-    text-align: center;
-}
-
-.assign-wrap .header {
-    text-align: center;
-    width: 100%;
-    margin-bottom: 40px;
-}
-
-.assign-wrap .header .safety {
-    letter-spacing: 0.375rem;
-}
-
-.assign-wrap input[type="text"],
-.assign-wrap input[type="password"],
-.assign-wrap input[type="email"],
-.assign-wrap input[type="tel"] {
-    background-color: #232428;
-    padding: 5px;
-    border: none;
-    height: 100%;
-    width: 100%;
-    border-radius: 10px;
-    color: #fff;
-}
-
-.assign-wrap input[type="checkbox"] {
-    display: none;
-
-}
-
-.assign-wrap input[type="checkbox"]+label {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    border-radius: 3px;
-    border: 1px solid #454853;
-    position: relative;
-    margin: 0 8px 0 0;
-}
-
-.assign-wrap input[type="checkbox"]:checked+label::after {
-    content: '✔';
-    color: #fff;
-    /* font-size: 14px; */
-    font-size: 0.875rem;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.assign-wrap input[type="checkbox"]:checked+label {
-    background-color: #8744FF;
-}
-
-.assign-wrap .field-input {
-    max-width: 350px;
-    height: 42px;
-    /* border: 1px solid #40393c;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px; */
-}
-
-.join-wrap .inputfields {
-    display: inline-block;
-}
-
-.join-wrap .inputfields .phone {
-    width: 100%;
-    border-radius: 5px;
-    height: 100px;
-    padding: 20px 30px;
-}
-
-.assign-wrap .inputfields .field {
-    margin: 10px 0;
-    max-width: 350px;
-}
-
-.assign-wrap .inputfields .field .top {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    /* margin-bottom: 8px; */
-
-}
-
-.join-wrap .field .input {
-    width: 100%;
-
-    max-height: 50px;
-    min-height: 50px;
-}
-
-.join-wrap .field .input-wrap {
-    background: #232428;
-    border-radius: 5px;
-    overflow: hidden;
-    padding: 0 20px;
-}
-
-.login-wrap .sns .herf-sns .icon-sns {
-    top: 50%;
-    transform: translateY(-50%);
-    left: 20px;
-}
-
-.naver {
-    background-color: #06be34;
-}
-
-.kakao {
-    background-color: #f8bb00;
-}
-
-.google {
-    background-color: #4285f4;
-}
-
-.login-btn-activate {
-    background-color: #8744ff !important;
-    color: #FFF !important;
-    border-radius: 5px !important;
-}
-
-.login-btn-disable {
-    background-color: #40393c;
-}
-
-.login-btn-sns {
-    color: #fff;
-    width: 100%;
-    border-radius: 10px;
-    text-align: center;
-    display: inline-block;
-    padding: 10px;
-    margin: 5px 0;
-}
-
-.login-wrap .btns button {
-    color: #a0afbd;
-    width: 100%;
-    border-radius: 10px;
-    text-align: center;
-    display: inline-block;
-    padding: 10px;
-    background-color: #35373D;
-    border: none;
-}
-
-.login-wrap .btns button span {
-    color: #fff;
-    opacity: 20%;
-}
-
-.login-wrap .sns .line {
-    margin: 40px 0;
-    color: #a0afbd;
-    text-align: center;
-}
-
-.login-wrap .sns .herf-sns {
-    width: 100%;
-}
-
-.login-wrap .footer {
-    color: #77828c;
-    text-align: center;
-    margin: 30px 0;
-}
-
-
-/* 계정찾기 부분 */
-.login-wrap input[type="radio"] {
-    float: left;
-}
-
-.login-wrap input[type="radio"]:checked {
-    display: block !important;
-    outline: #03c104;
-}
-
-.login-wrap .content.white input#type1:checked~.type1 {
-    display: block !important;
-}
-
-.login-wrap .content.white input#type2:checked~.type2 {
-    display: block !important;
-}
-
-.login-wrap .content.white input#type3:checked~.type3 {
-    display: block !important;
-}
-
-.login-wrap .line {
-    margin: 30px 0;
-    height: 1px;
-    width: 100%;
-    background-color: #35373D;
-}
-
-.login-wrap label {
-    cursor: pointer;
-}
-
-/* join & login */
-
-/* photo */
-.photo-item-layer {
-    max-width: 360px;
-    width: 360px;
-    padding: 20px;
-    display: inline-block;
-}
-
-.photo-item-layer>.photo-layout {
-    border-radius: 10px;
-    max-height: 320px;
-    width: 100%;
-    height: 320px;
-    overflow: hidden;
-    display: inline-block;
-    position: relative;
-
-}
-
-.photo-item-layer>.photo-layout>.img {
-    width: 100%;
-    height: 100%;
-}
-
-.photo-item-layer>.photo-layout>.img>img {
-    height: 100%;
-    width: 100%;
-    border: 0 none;
-    vertical-align: top;
-    object-fit: cover;
-}
-
-.photo-item-layer>.photo-layout .text-wrap {
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 110px;
-    background: linear-gradient(to bottom,
-            rgba(20, 20, 20, 0) 10%,
-            /* rgba(20, 20, 20, 0.25) 25%, */
-            rgba(20, 20, 20, 0.5) 50%,
-            /* rgba(20, 20, 20, 0.75) 75%, */
-            rgba(20, 20, 20, 1) 100%);
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-}
-
-.photo-item-layer>.photo-layout .text-wrap .v-h {
-    flex-grow: 1;
-}
-
-.photo-item-layer .text-wrap .top {
-    /* padding-bottom: 15px;
-    padding-left: 15px;
-    padding-right: 15px; */
-}
-
-.photo-item-layer .text-wrap .bottom {
-    color: #fff;
-    /* padding-left: 10px; */
-    /* padding-bottom: 15px; */
-}
-
-.photo-item-layer .text-wrap .bottom>div {
-    margin-right: 10px;
-}
-
-.photo-item-layer .text-wrap .bottom>div img {
-    margin-right: 4px;
-}
-
-.photo-item-layer .user-layout {
-    color: #A7A8A9;
-}
-
-.photo-item-layer .user-layout>div {
-    margin-right: 8px;
-}
-
-/* photo */
-
-/* rank */
-.table-padding {
-    /* border-radius: 10px;
-    border: 1px solid #33353B; */
-    padding: 10px 20px;
-}
-
-.table-radius {
-    border-radius: 10px;
-    border: 1px solid #33353B;
-}
-
-.rank-table {
-    width: 100%;
-    height: 100%;
-    border-collapse: collapse;
-    /* border: 1px solid #35373D;
-    border-radius: 10px; */
-    border-style: none;
-    border-collapse: collapse;
-    border-style: hidden;
-}
-
-/* 테이블 공통 */
-.h50px tr {
-    height: 50px;
-}
-
-.h60px tr {
-    height: 60px;
-}
-
-.h100px tr {
-    height: 100px;
-}
-
-.rank-table th,
-.rank-table td {
-    vertical-align: middle;
-}
-
-.rank-table tr {
-    border-collapse: collapse;
-    border: 1px solid #35373D;
-}
-
-.rank-table tbody tr:hover,
-.tr:hover {
-    background-color: #282A2E;
-}
-
-.rank-table tr:hover td {
-    opacity: 1;
-}
-
-/* .rank-table tfoot tr {
-    height: 100px;
-} */
-
-/* rank */
-
-
-/* community free*/
-.post-list {
-    border: 1px solid #35373D;
-    border-radius: 20px;
-    padding: 30px;
-    text-align: left;
-}
-
-.post-list .post {
-    min-height: 170px;
-    max-height: 190px;
-    justify-content: space-between;
-}
-
-.post-list .post .text-wrap {
-    /* max-width: 740px; */
-    max-width: 80%;
-}
-
-.post-list .post .summary {
-    color: #C0C0C4;
-}
-
-.post-list .post .etc {
-    color: #AFB0B1;
-}
-
-.post-list .post .info {
-    color: #78797D;
-}
-
-.post-list .post .img-wrap {
-    max-width: 100px;
-    min-width: 100px;
-    max-height: 100px;
-    min-height: 100px;
-}
-
-.post-list .post .img-wrap img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* community */
-
-
-/* help */
-.search-area .search {
-    margin-top: 40px;
-    margin-bottom: 70px;
-}
-
-.search-area .search .input {
-    max-width: 600px;
-    width: 100%;
-    min-height: 50px;
-    max-height: 50px;
-    background-color: #fff;
-    border-radius: 50px;
-    padding: 15px 25px;
-    text-align: left;
-    display: inline-block;
-    margin: 0 auto;
-}
-
-.search-area .search .input input {
-    width: 100%;
-}
-
-.character-wrap {
-
-    text-align: center;
-    margin: 0 auto;
-    max-width: 360px;
-}
-
-.character-wrap .character {
-    width: 360px;
-    height: 180px;
-    background-image: url("asset/images/Character/body.png");
-}
-
-.character-wrap .character img {
-    position: absolute;
-    top: -36px;
-    right: -36px;
-}
-
-.text-wrap.help {
-    text-align: left;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    padding: 0 40px;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.text-wrap.help .text_set {
-    margin: 50px 0;
-    /* display: inline-block; */
-}
-
-.text-wrap.help .text_set>div {
-    margin: 10px 0;
-}
-
-/* help */
-
-
-
-/* openchat */
-
-.room-layer .room {
-    max-width: 320px;
-    width: 320px;
-    margin: 10px;
-    display: inline-block;
-    line-height: 0;
-    border-radius: 10px;
-    overflow: hidden;
-    text-align: left;
-}
-
-.room-layer .room .photo-layout {
-    max-height: 150px;
-    width: 100%;
-    height: 150px;
-    overflow: hidden;
-    display: inline-block;
-    position: relative;
-
-}
-
-.room-layer .room .photo-layout>.img {
-    width: 100%;
-    height: 100%;
-}
-
-.room-layer .room .photo-layout>.img>img {
-    height: 100%;
-    width: 100%;
-    border: 0 none;
-    vertical-align: top;
-    object-fit: cover;
-}
-
-.room-layer .room .text-wrap {
-    height: 190px;
-    background-color: #232428;
-    max-height: 190px;
-    min-height: 190px;
-    line-height: normal;
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    color: #A8ADBB;
-}
-
-.room-layer .room .text-wrap .v-h {
-    flex-grow: 1;
-}
-
-.room-layer .room .text-wrap .position-a {
-    top: -20px;
-    left: 20px;
-    width: 52px;
-    max-width: 52px;
-    max-height: 52px;
-    height: 52px;
-}
-
-.room-layer .room .text-wrap .position-a img {
-    width: 100%;
-    height: 100%;
-}
-
-/* openchat */
-
-
-
-
-/* shopping */
-.mainLayer>.item-list {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: center;
-}
-
-.mainLayer>.item-list .shopping-item-wrap {
-    max-width: 320px;
-    width: 320px;
-    max-height: 226px;
-    /* height: 226px; */
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    background-color: transparent;
-    margin: 10px;
-}
-
-.mainLayer>.item-list .shopping-item-wrap .line {
-    padding: 20px;
-    border: 1px solid #35373D;
-    border-radius: 5px;
-    overflow: hidden;
-}
-
-.mainLayer>.item-list .shopping-item-wrap .line .case img {
-    margin-right: 6px;
-}
-
-.shopping-item-wrap .btn-wrap button:nth-of-type(1) {
-    margin-right: 8px;
-}
-
-.shopping-item-wrap .btn-wrap button {
-    background-color: #35373D;
-    display: inline-block;
-    border: none;
-    width: 66px;
-    text-align: center;
-    height: 36px;
-    vertical-align: middle;
-    color: #75767A;
-    border-radius: 5px;
-    font-size: 0.9375 rem;
-}
-
-div.mainContent.bc-main>div.mainLayer>div>div>div.line>div.top.flex-row>div.left {
-    /* background-color: #03c104; */
-    height: 120px;
-    /* opacity: .5; */
-}
-
-.shopping-item-wrap .btn-wrap .gift.activate {
-    background-color: #BF9B30;
-    color: #fff;
-    cursor: pointer;
-}
-
-.shopping-item-wrap .btn-wrap .purchase.activate {
-    color: #fff;
-    cursor: pointer;
-    background-color: #8744FF;
-}
-
-.count-btn-wrap .count {
-    color: #fff;
-}
-
-.shopping-item-wrap .top {
-    text-align: left;
-}
-
-.shopping-item-wrap .top .left {
-    max-width: 215px;
-}
-
-.shopping-item-wrap .top .left .type {
-    color: #E7BC11;
-    font-size: 0.875 rem;
-}
-
-.shopping-item-wrap .top .left .name {
-    color: #fff;
-    font-size: 1.0625 rem;
-}
-
-.shopping-item-wrap .top .left .text {
-    color: #76777B;
-}
-
-.shopping-item-wrap .top .left .text .red {
-    margin: 6px 0 0 0;
-}
-
-/* messenger_blocklists */
-
-.user-list-layer {
-    padding: 0 20px;
-    text-align: left;
-}
-
-.user-list-layer .user-list {
-    max-height: 72px;
-    min-height: 72px;
-    padding: 0 14px;
-}
-
-.user-list-layer .user-list>div {
-    margin-right: 8px;
-}
-.user-list-layer .user-list>div.user .bc-ivory{
-    border-radius: 50px;
-    padding: 5px 7px;
-}
-.user-list-layer .user-list>div.profile{
-    /* max-width: 44px;
-    max-height: 44px; */
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    overflow: hidden;
-}
-.user-list-layer .user-list>div.profile.rank{
-    overflow: visible;
-}
-.user-list-layer .user-list>div.profile.rank .position-a{
-    transform: translateY(50%);
-    bottom: 12%;
-}
-.user-list-layer .user-list>div.profile img{
-    width: 100%;
-    height: 100%;
-}
-.user-list-layer .user {
-    flex-grow: 1;
-    line-height: 1rem;
-}
-
-.user-list-layer .btn-wrap .icon {
-    width: 44px;
-    height: 44px;
-    background-color: #2C2E33;
-    border-radius: 5px;
-}
-
-.user-list-layer .btn {
-    border-radius: 5px;
-    background-color: #35373D;
-    color: #ffffff87;
-    padding: 13px 9px;
-}
-.user-list-layer .btn.hyphenation{
-    padding: 0;
-    width: 44px;
-    height: 44px;
-}
-/* messenger_blocklists */
-
-
-/* mypage */
-.mainLayer .mypage>div {
-    width: 100%;
-    text-align: left;
-}
-
-.mainLayer .money-wrap>div {
-    border: 1px solid #35373D;
-    background-color: #303237;
-    width: 100%;
-    min-height: 44px;
-    max-height: 44px;
-}
-
-.mainLayer .money-wrap>div:first-child {
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-}
-
-.mainLayer .money-wrap>div:last-child {
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-}
-
-.information {
-    padding: 40px;
-}
-
-.information button {
-    background-color: #8744FF;
-    color: #fff;
-    min-width: 100px;
-    min-height: 30px;
-    padding: 6px;
-}
-
-.information .infotitle {
-    margin-bottom: 40px;
-}
-
-.information .img-area .profileimg {
-    width: 120px;
-    height: 120px;
-    overflow: hidden;
-    border-radius: 50%;
-}
-
-.information .img-area img {
-    height: 100%;
-    width: 100%;
-    border: 0 none;
-    vertical-align: top;
-    object-fit: cover;
-}
-
-.information .img-area .backgroundimg {
-    width: 400px;
-    height: 120px;
-    overflow: hidden;
-}
-
-.information .img-area .row>div {
-    margin-right: 30px;
-}
-
-.input-area .border {
-    height: 50px;
-    border-radius: 5px;
-    border: 1px solid #3A3C43;
-    display: flex;
-    align-items: center;
-    padding: 10px;
-
-}
-
-.input-area .border input {
-    flex-grow: 1;
-    color: #656B70;
-    background-color: transparent;
-}
-
-.mypage .row {
-    margin-bottom: 40px;
-}
-
-.input-area .field>div:first-child {
-    margin-bottom: 10px;
-}
-
-.information input[type="checkbox"]+label {
-    display: inline-block;
-    min-width: 30px;
-    height: 44px;
-    background-color: #35373D;
-    position: relative;
-    border-radius: 50px;
-    padding: 13px;
-    margin-right: 10px;
-    cursor: pointer;
-}
-
-.information input[type="checkbox"]:checked+label {
-    background-color: #8744FF;
-    color: #fff;
-}
-
-/* mypage */
-
-/* myitem */
-.myitem .use {
-    color: #F23F42;
-}
-
-.myitem .use-btn {
-    background-color: #F23F42;
-    color: #fff;
-}
-
-.myitem .count-btn-wrap {
-    border-radius: 5px;
-}
-
-.myitem button {
-    border-radius: 5px;
-    background-color: #8744FF;
-    color: #fff;
-}
-
-/* myitem */
-
-/* my_activitypoints */
-
-.mainLayer>div .table-radius {
-    /* padding: 20px; */
-}
-
-.mypqge-table {
-    width: 100%;
-    height: 100%;
-    border-collapse: collapse;
-    border-style: hidden;
-}
-
-.mypqge-table tbody tr {
-    height: 58px;
-}
-
-.mypqge-table th,
-.mypqge-table td {
-    vertical-align: middle;
-}
-
-/* my_activitypoints */
-
-
-/* pagination */
-.pagination .page {
-    width: 44px;
-    height: 44px;
-    cursor: pointer;
-    color: #CACACE;
-    background-color: transparent;
-}
-
-.pagination .page.bc-activate {
-    border-radius: 5px;
-}
-
-.pagination .page:hover {
-    background-color: #35373D;
-    border-radius: 5px;
-}
-
-/* pagination */
 
 
 /* support_notice */
