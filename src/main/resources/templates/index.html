@@ -31,6 +31,7 @@
                 method: 'GET',
                 success: function(data) {
                     $('#content-area').html(data);
+                    $("#footer").load("/footer");
                     history.pushState(null, null, page);
                 },
                 error: function() {
