@@ -95,3 +95,24 @@ div.mainContent.bc-main>div.mainLayer>div>div>div.line>div.top.flex-row>div.left
 .shopping-item-wrap .top .left .text .red {
     margin: 6px 0 0 0;
 }
+
+/* 쇼핑 */
+#content-area div.mainLayer .bottom>div>div {
+    display: flex !important;
+    align-items: center;
+    width: 150px;
+    margin-right: 30px;
+}
+
+#content-area div.mainLayer .bottom>div>div>div {
+    display: flex !important;
+    align-items: center;
+    width: 36px;
+    height: 36px;
+    justify-content: center;
+    border: 1px solid #35373D;
+}
+#content-area div.mainLayer .bottom>div>div>div.count {
+    flex-grow: 1;
+}
+/* 셔핑 */
