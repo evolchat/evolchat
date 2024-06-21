@@ -159,6 +159,11 @@ img {
     background-color: #69696978;
 }
 
+html.wf-loading {
+    visibility: hidden;
+}
+
+
 /* 폰트 사이즈 정리 1rem : 16px*/
 .px8 {
     font-size: 0.5rem;
