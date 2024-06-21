@@ -34,7 +34,7 @@ public class SecurityConfig {
                 .formLogin(form -> form
                         .loginPage("/login")
                         .loginProcessingUrl("/login") // 로그인 처리 URL 설정
-                        .defaultSuccessUrl("/", true) // Redirect to root URL upon successful login
+                        .defaultSuccessUrl("/home", true) // Redirect to root URL upon successful login
                         .permitAll()
                 )
                 .logout(logout -> logout

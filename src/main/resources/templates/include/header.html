@@ -1,9 +1,9 @@
 <div class="header flex-row bc-header g-12">
     <div class="wrap flex-row left">
-        <div class="logo flex-row flex-c" onclick="window.location.href = '/';">
+        <div class="logo flex-row flex-c cursor-p" onclick="window.location.href = '/';">
             <img src="../static/images/svg/logo-icon.svg" alt=""/>
             <img src="../static/images/svg/logo-text.svg" alt=""/>
-            <div class="menu-btn-layer">
+            <div class="menu-btn-layer cursor-p">
                 <div class="menu-btn">
                     <div class="line"></div>
                 </div>
@@ -16,38 +16,38 @@
             <img src="../static/images/svg/search.svg" alt="" class="input-icon search"/>
         </div>
         <div class="white flex-row flex-c px15">
-            <div class="items flex-c">
+            <div id="header-item-tooltip-1"  class="items flex-c cursor-p">
                 <img src="../static/images/svg/header-item-1.svg" alt=""/>
                 <span>JACKPOT</span><span id="bettingPoints">0</span>
             </div>
-            <div class="items flex-c">
+            <div id="header-item-tooltip-2"  class="items flex-c cursor-p">
                 <img src="../static/images/svg/header-item-2.svg" alt=""/>
                 <span id="goldChip">0</span>
             </div>
             <div class="items flex-c">
                 <img src="../static/images/svg/header-item-3.svg" alt=""/>
             </div>
-            <div class="items flex-c bc-red-f23f42">
+            <div id="header-item-tooltip-4" class="items flex-c bc-red-f23f42 cursor-p">
                 <img src="../static/images/svg/header-item-4.svg" alt=""/>
             </div>
         </div>
     </div>
     <div class="wrap flex-row right flex-c">
         <div class="info_option flex-row">
-            <div class="items flex-c">
-                <img src="../static/images/svg/header-item-5.svg" alt=""/>
+            <div id="header-item-tooltip-5" class="items flex-c cursor-p">
+                <img src="../static/images/svg/header-item-5.svg" alt="선물함"/>
             </div>
-            <div class="items flex-c">
-                <img src="../static/images/svg/header-item-6.svg" alt=""/>
+            <div id="header-item-tooltip-6" class="items flex-c cursor-p">
+                <img src="../static/images/svg/header-item-6.svg" alt="히스토리"/>
             </div>
-            <div class="items flex-c active">
-                <img src="../static/images/svg/header-item-7.svg" alt=""/>
+            <div id="header-item-tooltip-7" class="items flex-c cursor-p active">
+                <img src="../static/images/svg/header-item-7.svg" alt="채팅방"/>
             </div>
-            <div class="items flex-c">
-                <img src="../static/images/svg/header-item-8.svg" alt=""/>
+            <div id="header-item-tooltip-8" class="items flex-c cursor-p">
+                <img src="../static/images/svg/header-item-8.svg" alt="알림"/>
             </div>
-            <div class="items flex-c">
-                <img src="../static/images/svg/header-item-9.svg" alt=""/>
+            <div id="header-item-tooltip-9" class="items flex-c cursor-p">
+                <img src="../static/images/svg/header-item-9.svg" alt="언어선택"/>
                 
             </div>
             <div class="items flex-c"><img src="../static/images/profile/user1.png" alt="프로필이미지.png"></div>
@@ -69,5 +69,71 @@
                 console.log('Failed to fetch user points');
             }
         });
+
+        $('.nav-link').each(function() {
+            const linkPath = $(this).attr('href');
+            if (linkPath === currentPath) {
+                $(this).addClass('active');
+            }
+        });
+
+        // Toggle menu visibility
+        <!--        const menuBtn = document.getElementById('menu-btn');-->
+        <!--        const bcAside = document.getElementById('bc-aside');-->
+
+        <!--        menuBtn.addEventListener('click', () => {-->
+        <!--            bcAside.classList.toggle('active');-->
+        <!--        });-->
+
+        tippy('#header-item-tooltip-1', {
+            content: 'G 골드칩',
+            placement: 'bottom',
+            animation: 'fade',
+        });
+
+        tippy('#header-item-tooltip-2', {
+            content: 'B 배팅 포인트',
+            placement: 'bottom',
+            animation: 'fade',
+        });
+
+        tippy('#header-item-tooltip-4', {
+            content: '무료충전',
+            placement: 'bottom',
+            animation: 'fade',
+        });
+
+        // Initialize Tippy.js
+        tippy('#header-item-tooltip-5', {
+            content: '선물함',
+            interactive: true,
+            delay: [0,100],
+            animation: 'fade',
+        });
+
+        tippy('#header-item-tooltip-6', {
+            content: '히스토리',
+            placement: 'bottom',
+            animation: 'fade',
+        });
+
+        tippy('#header-item-tooltip-7', {
+            content: '채팅방',
+            placement: 'bottom',
+            animation: 'fade',
+        });
+
+        tippy('#header-item-tooltip-8', {
+            content: '알림',
+            placement: 'bottom',
+            animation: 'fade',
+        });
+
+        tippy('#header-item-tooltip-9', {
+            content: '언어선택',
+            placement: 'bottom',
+            animation: 'fade',
+        });
+
     });
 </script>
