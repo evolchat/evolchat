@@ -115,4 +115,8 @@ div.mainContent.bc-main>div.mainLayer>div>div>div.line>div.top.flex-row>div.left
 #content-area div.mainLayer .bottom>div>div>div.count {
     flex-grow: 1;
 }
+
+.shopping-item-wrap .bottom .btn-wrap {
+    margin-top: 15px;
+}
 /* 셔핑 */

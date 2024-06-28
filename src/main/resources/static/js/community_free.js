@@ -1,9 +1,14 @@
 $(document).ready(function() {
     const postsPerPage = 10; // Number of posts per page
 
-    function fetchPosts(page = 1) {
+    function fetchPosts(page = 1, boardId = null) {
+        let url = `/posts?page=${page}&size=${postsPerPage}`;
+        if (boardId) {
+            url += `&boardId=${boardId}`;
+        }
+
         $.ajax({
-            url: `/posts?page=${page}&size=${postsPerPage}`, // Pass page and size parameters
+            url: url,
             type: 'GET',
             success: function(response, status, xhr) {
                 const postsContainer = $('#posts-container');
@@ -44,7 +49,7 @@ $(document).ready(function() {
                 });
 
                 const totalPages = xhr.getResponseHeader('X-Total-Pages');
-                updatePagination(page, totalPages);
+                updatePagination(page, totalPages, boardId); // Pass boardId to updatePagination
             },
             error: function() {
                 console.log('Failed to fetch posts');
@@ -52,22 +57,68 @@ $(document).ready(function() {
         });
     }
 
-    function updatePagination(currentPage, totalPages) {
+    function updatePagination(currentPage, totalPages, boardId) {
         const paginationContainer = $('#pagination-container');
         paginationContainer.empty(); // Clear existing pagination
 
-        for (let i = 1; i <= totalPages; i++) {
-            const pageDiv = $(`<div class="page flex-c-c" data-page="${i}">${i}</div>`);
+        // Previous button as div element
+        const prevButton = $('<div class="prev-btn page flex-c-c" data-page="prev"><img src="../static/images/svg/prev.svg" alt=""></div>');
+
+        // Next button as div element
+        const nextButton = $('<div class="next-btn page flex-c-c" data-page="next"><img src="../static/images/svg/next.svg" alt=""></div>');
+
+        // Show/hide previous button based on currentPage
+        if (currentPage === 1) {
+            prevButton.hide();
+        } else {
+            prevButton.show();
+        }
+
+        // Show/hide next button based on currentPage and totalPages
+        if (currentPage === totalPages) {
+            nextButton.hide();
+        } else {
+            nextButton.show();
+        }
+
+        paginationContainer.append(prevButton);
+
+        // Show only relevant page numbers
+        const startPage = Math.max(1, currentPage - 2);
+        const endPage = Math.min(totalPages, currentPage + 2);
+
+        for (let i = startPage; i <= endPage; i++) {
+            const pageDiv = $(`<div class="page flex-c-c" data-page="${i}" data-board="${boardId}">${i}</div>`);
             if (i === currentPage) {
                 pageDiv.addClass('bc-activate'); // Add bc-activate class to current page
             }
             paginationContainer.append(pageDiv);
         }
 
-        // Next and Next Two buttons as div elements
-        const nextButton = $('<div class="next-btn page flex-c-c" data-page="next"><img src="../static/images/svg/next.svg" alt=""></div>');
-        const nextTwoButton = $('<div class="next-btn page flex-c-c" data-page="next-two"><img src="../static/images/svg/next-two.svg" alt=""></div>');
         paginationContainer.append(nextButton);
+
+        // Previous two pages button as div element
+        const prevTwoButton = $('<div class="prev-btn page flex-c-c" data-page="prev-two"><img src="../static/images/svg/prev-two.svg" alt=""></div>');
+
+        // Show/hide previous two pages button based on currentPage
+        if (currentPage <= 2) {
+            prevTwoButton.hide();
+        } else {
+            prevTwoButton.show();
+        }
+
+        paginationContainer.prepend(prevTwoButton);
+
+        // Next two pages button as div element
+        const nextTwoButton = $('<div class="next-btn page flex-c-c" data-page="next-two"><img src="../static/images/svg/next-two.svg" alt=""></div>');
+
+        // Show/hide next two pages button based on currentPage and totalPages
+        if (currentPage >= totalPages - 1) {
+            nextTwoButton.hide();
+        } else {
+            nextTwoButton.show();
+        }
+
         paginationContainer.append(nextTwoButton);
 
         attachPaginationEventListeners(); // Ensure event listeners are attached after updating pagination
@@ -76,20 +127,26 @@ $(document).ready(function() {
     function attachPaginationEventListeners() {
         $('.page').click(function() {
             let page = $(this).data('page');
+            const boardId = $(this).data('board'); // Retrieve boardId from data attribute
             const currentPage = parseInt($('.bc-activate').data('page'));
 
             if (page === 'next') {
                 page = currentPage + 1;
+            } else if (page === 'prev') {
+                page = currentPage - 1;
             } else if (page === 'next-two') {
                 page = currentPage + 2;
+            } else if (page === 'prev-two') {
+                page = currentPage - 2;
             } else {
                 page = parseInt(page);
             }
 
-            fetchPosts(page);
+            fetchPosts(page, boardId);
         });
     }
 
-    // Initial fetch
-    fetchPosts();
+    // Initial fetch for boardId = 1 (자유 게시판)
+    const initialBoardId = 1;
+    fetchPosts(1, initialBoardId);
 });

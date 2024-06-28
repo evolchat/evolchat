@@ -17,6 +17,10 @@ public class PostService {
         return postRepository.findAll(pageable);
     }
 
+    public Page<Post> getPostsByBoardId(int boardId, Pageable pageable) {
+        return postRepository.findByBoardId(boardId, pageable);
+    }
+
     public Long getTotalPages(int size) {
         long totalCount = postRepository.count(); // 전체 포스트 수 조회
         return (totalCount + size - 1) / size; // 총 페이지 수 계산

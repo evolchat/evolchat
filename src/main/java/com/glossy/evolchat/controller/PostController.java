@@ -26,9 +26,17 @@ public class PostController {
 
     @GetMapping
     public ResponseEntity<List<PostDto>> getAllPosts(@RequestParam(defaultValue = "1") int page,
-                                                     @RequestParam(defaultValue = "10") int size) {
+                                                     @RequestParam(defaultValue = "20") int size,
+                                                     @RequestParam(required = false) Integer boardId) {
         Pageable pageable = PageRequest.of(page - 1, size); // 페이지 번호를 0부터 시작하도록 수정
-        Page<Post> postsPage = postService.getAllPosts(pageable);
+        Page<Post> postsPage;
+
+        if (boardId != null) {
+            postsPage = postService.getPostsByBoardId(boardId, pageable);
+        } else {
+            postsPage = postService.getAllPosts(pageable);
+        }
+
         List<PostDto> postDtos = postsPage.getContent().stream().map(this::convertToDto).collect(Collectors.toList());
 
         HttpHeaders headers = new HttpHeaders();
