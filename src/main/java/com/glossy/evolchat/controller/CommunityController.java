@@ -7,6 +7,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class CommunityController {
 
+    @GetMapping("/community")
+    public String community(Model model) {
+        model.addAttribute("activePage", "community");
+        return "index";
+    }
+    @GetMapping("/community_detail")
+    public String community_detail(Model model) {
+        model.addAttribute("activePage", "community_detail");
+        return "index";
+    }
     @GetMapping("/community_free")
     public String community_free(Model model) {
         model.addAttribute("activePage", "community_free");

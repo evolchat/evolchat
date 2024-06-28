@@ -1,5 +1,4 @@
 
-/* photo */
 .photo-item-layer {
     max-width: 360px;
     width: 360px;
@@ -80,4 +79,6 @@
     margin-right: 8px;
 }
 
-/* photo */
+.sub-header .bc-activate {
+    margin-left: 15px;
+}

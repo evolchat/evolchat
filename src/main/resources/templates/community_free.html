@@ -38,81 +38,82 @@
                                     <div class="">인기글</div>
                                     <div class="">댓글 많은 글</div>
                                 </div>
-                                <div class="posts">
-                                    <div class="post flex-row tr">
-                                        <div class="text-wrap ">
-                                            <div class="title white m-b-10 px17">
-                                                어제 새벽에 달성한 저의 10배목 인증샷! <span>+3</span>
-                                            </div>
-                                            <div class="summary m-b-18 px15">
-                                                어제 복구할려고 혼자 쌩쇼 하면서 결국 해냈네요! 3시간 30분 정도 걸린 것 같습니다. 다른 고수님들은 이런 경험 많으시겠지만
-                                                전 처음이라서 자랑하고 싶어 이렇게 스샷까지 찍어 올려봅니다!! ^^
-                                            </div>
-                                            <div class="etc">
-                                                <div class="profile flex-row flex-c m-b-8  m-b-8">
-                                                    <img src="../static/images/profile/user1.png" alt="#" class="m-r-6">
-                                                    <div class="nickname px15">고스트라이더</div>
-                                                </div>
-                                                <div class="info px12 flex-c flex-row">
-                                                    <span class="m-r-20">2024.3.13 8:23</span>
-                                                    <span class="flex-c flex-row m-r-20"><img
-                                                            src="../static/images/svg/input-icon-eye.svg" alt=""
-                                                            class="m-r-4">2564</span>
-                                                    <span class="flex-c flex-row"><img
-                                                            src="../static/images/svg/hearts.svg" alt=""
-                                                            class="m-r-4">44</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="img-wrap">
-                                            <img src="../static/images/photo/photo_1.jpg" alt="123123.png">
-                                        </div>
-                                    </div>
-                                    <div class="post tr">
-                                        <div class="title white m-b-10 px17">
-                                            아 x발 어제 5천개 하고 환전신청 했는데 갑자기 로그인이 안댐...<span>+3</span>
-                                        </div>
-                                        <div class="summary m-b-18 px15">
-                                            이게 맞냐? 클로버몽 여기 혹시 이용하시는 분들 있으면 도움좀 부탁드립니다 ㅜㅜ 이새끼들 죽여야 됩니다!
-                                        </div>
-                                        <div class="etc">
-                                            <div class="profile flex-row flex-c m-b-8">
-                                                <img src="../static/images/profile/user1.png" alt="#" class="m-r-6">
-                                                <div class="nickname px15">고스트라이더</div>
-                                            </div>
-                                            <div class="info px12 flex-c flex-row">
-                                                <span class="m-r-20">2024.3.13 8:23</span>
-                                                <span class="flex-c flex-row m-r-20"><img
-                                                        src="../static/images/svg/input-icon-eye.svg" alt=""
-                                                        class="m-r-4">2564</span>
-                                                <span class="flex-c flex-row"><img src="../static/images/svg/hearts.svg"
-                                                        alt="" class="m-r-4">44</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="post tr">
-                                        <div class="title white m-b-10 px17">
-                                            에볼루션이 뭔가요? 바x라? 인가요?<span>+3</span>
-                                        </div>
-                                        <div class="summary m-b-18 px15">
-                                            에볼루션 얘기를 주위에서도 너무 많이 하는데 바카라 할 수 있는 곳 얘기하는게 맞을까요? 혹시 알려주실분?
-                                        </div>
-                                        <div class="etc">
-                                            <div class="profile flex-row flex-c m-b-8">
-                                                <img src="../static/images/profile/user1.png" alt="#" class="m-r-6">
-                                                <div class="nickname px15">고스트라이더</div>
-                                            </div>
-                                            <div class="info px12 flex-c flex-row">
-                                                <span class="m-r-20">2024.3.13 8:23</span>
-                                                <span class="flex-c flex-row m-r-20"><img
-                                                        src="../static/images/svg/input-icon-eye.svg" alt=""
-                                                        class="m-r-4">2564</span>
-                                                <span class="flex-c flex-row"><img src="../static/images/svg/hearts.svg"
-                                                        alt="" class="m-r-4">44</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <div class="posts" id="posts-container"></div>
+<!--                                <div class="posts">-->
+<!--                                    <div class="post flex-row tr">-->
+<!--                                        <div class="text-wrap ">-->
+<!--                                            <div class="title white m-b-10 px17">-->
+<!--                                                어제 새벽에 달성한 저의 10배목 인증샷! <span>+3</span>-->
+<!--                                            </div>-->
+<!--                                            <div class="summary m-b-18 px15">-->
+<!--                                                어제 복구할려고 혼자 쌩쇼 하면서 결국 해냈네요! 3시간 30분 정도 걸린 것 같습니다. 다른 고수님들은 이런 경험 많으시겠지만-->
+<!--                                                전 처음이라서 자랑하고 싶어 이렇게 스샷까지 찍어 올려봅니다!! ^^-->
+<!--                                            </div>-->
+<!--                                            <div class="etc">-->
+<!--                                                <div class="profile flex-row flex-c m-b-8  m-b-8">-->
+<!--                                                    <img src="../static/images/profile/user1.png" alt="#" class="m-r-6">-->
+<!--                                                    <div class="nickname px15">고스트라이더</div>-->
+<!--                                                </div>-->
+<!--                                                <div class="info px12 flex-c flex-row">-->
+<!--                                                    <span class="m-r-20">2024.3.13 8:23</span>-->
+<!--                                                    <span class="flex-c flex-row m-r-20"><img-->
+<!--                                                            src="../static/images/svg/input-icon-eye.svg" alt=""-->
+<!--                                                            class="m-r-4">2564</span>-->
+<!--                                                    <span class="flex-c flex-row"><img-->
+<!--                                                            src="../static/images/svg/hearts.svg" alt=""-->
+<!--                                                            class="m-r-4">44</span>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                        <div class="img-wrap">-->
+<!--                                            <img src="../static/images/photo/photo_1.jpg" alt="123123.png">-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="post tr">-->
+<!--                                        <div class="title white m-b-10 px17">-->
+<!--                                            아 x발 어제 5천개 하고 환전신청 했는데 갑자기 로그인이 안댐...<span>+3</span>-->
+<!--                                        </div>-->
+<!--                                        <div class="summary m-b-18 px15">-->
+<!--                                            이게 맞냐? 클로버몽 여기 혹시 이용하시는 분들 있으면 도움좀 부탁드립니다 ㅜㅜ 이새끼들 죽여야 됩니다!-->
+<!--                                        </div>-->
+<!--                                        <div class="etc">-->
+<!--                                            <div class="profile flex-row flex-c m-b-8">-->
+<!--                                                <img src="../static/images/profile/user1.png" alt="#" class="m-r-6">-->
+<!--                                                <div class="nickname px15">고스트라이더</div>-->
+<!--                                            </div>-->
+<!--                                            <div class="info px12 flex-c flex-row">-->
+<!--                                                <span class="m-r-20">2024.3.13 8:23</span>-->
+<!--                                                <span class="flex-c flex-row m-r-20"><img-->
+<!--                                                        src="../static/images/svg/input-icon-eye.svg" alt=""-->
+<!--                                                        class="m-r-4">2564</span>-->
+<!--                                                <span class="flex-c flex-row"><img src="../static/images/svg/hearts.svg"-->
+<!--                                                        alt="" class="m-r-4">44</span>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="post tr">-->
+<!--                                        <div class="title white m-b-10 px17">-->
+<!--                                            에볼루션이 뭔가요? 바x라? 인가요?<span>+3</span>-->
+<!--                                        </div>-->
+<!--                                        <div class="summary m-b-18 px15">-->
+<!--                                            에볼루션 얘기를 주위에서도 너무 많이 하는데 바카라 할 수 있는 곳 얘기하는게 맞을까요? 혹시 알려주실분?-->
+<!--                                        </div>-->
+<!--                                        <div class="etc">-->
+<!--                                            <div class="profile flex-row flex-c m-b-8">-->
+<!--                                                <img src="../static/images/profile/user1.png" alt="#" class="m-r-6">-->
+<!--                                                <div class="nickname px15">고스트라이더</div>-->
+<!--                                            </div>-->
+<!--                                            <div class="info px12 flex-c flex-row">-->
+<!--                                                <span class="m-r-20">2024.3.13 8:23</span>-->
+<!--                                                <span class="flex-c flex-row m-r-20"><img-->
+<!--                                                        src="../static/images/svg/input-icon-eye.svg" alt=""-->
+<!--                                                        class="m-r-4">2564</span>-->
+<!--                                                <span class="flex-c flex-row"><img src="../static/images/svg/hearts.svg"-->
+<!--                                                        alt="" class="m-r-4">44</span>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
                                 <div class="pagination flex-row flex-c-c">
                                     <div class="page flex-c-c bc-activate">1</div>
                                     <div class="page flex-c-c">2</div>

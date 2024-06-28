@@ -20,6 +20,17 @@ public class AjaxPageController {
     }
 
     //  커뮤니티
+
+    @GetMapping("/community_page")
+    public String community_page() {
+        return "community";
+    }
+
+    @GetMapping("/community_detail_page")
+    public String community_detail_page() {
+        return "community_detail";
+    }
+
     @GetMapping("/community_free_page")
     public String community_free_page() {
         return "community_free";

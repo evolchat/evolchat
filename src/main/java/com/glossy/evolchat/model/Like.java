@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Data
-@Table(name = "`likes`") // 테이블 이름을 `likes`로 지정하고 백틱을 사용합니다.
+@Table(name = "`likes`")
 public class Like {
 
     @Id
