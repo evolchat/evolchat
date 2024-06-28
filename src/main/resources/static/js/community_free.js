@@ -1,9 +1,11 @@
 $(document).ready(function() {
+    const postsPerPage = 10; // Number of posts per page
+
     function fetchPosts(page = 1) {
         $.ajax({
-            url: `/posts?page=${page}`,
+            url: `/posts?page=${page}&size=${postsPerPage}`, // Pass page and size parameters
             type: 'GET',
-            success: function(response) {
+            success: function(response, status, xhr) {
                 const postsContainer = $('#posts-container');
                 postsContainer.empty(); // Clear any existing content
 
@@ -20,7 +22,7 @@ $(document).ready(function() {
                                 <div class="etc">
                                     <div class="profile flex-row flex-c m-b-8">
                                         <img src="../static/images/profile/user1.png" alt="#" class="m-r-6">
-                                        <div class="nickname px15">User ID: ${post.userId}</div>
+                                        <div class="nickname px15">${post.userId}</div>
                                     </div>
                                     <div class="info px12 flex-c flex-row">
                                         <span class="m-r-20">${new Date(post.createdAt).toLocaleString()}</span>
@@ -29,7 +31,7 @@ $(document).ready(function() {
                                                 class="m-r-4">${post.views}</span>
                                         <span class="flex-c flex-row"><img
                                                 src="../static/images/svg/hearts.svg" alt=""
-                                                class="m-r-4">${post.likes}</span>
+                                                class="m-r-4">${post.likeCount}</span>
                                     </div>
                                 </div>
                             </div>
@@ -41,7 +43,8 @@ $(document).ready(function() {
                     postsContainer.append(postHtml);
                 });
 
-                updatePagination(response.currentPage, response.totalPages);
+                const totalPages = xhr.getResponseHeader('X-Total-Pages');
+                updatePagination(page, totalPages);
             },
             error: function() {
                 console.log('Failed to fetch posts');
@@ -54,18 +57,20 @@ $(document).ready(function() {
         paginationContainer.empty(); // Clear existing pagination
 
         for (let i = 1; i <= totalPages; i++) {
-            const pageButton = $(`<div class="page flex-c-c" data-page="${i}">${i}</div>`);
+            const pageDiv = $(`<div class="page flex-c-c" data-page="${i}">${i}</div>`);
             if (i === currentPage) {
-                pageButton.addClass('bc-activate');
+                pageDiv.addClass('bc-activate'); // Add bc-activate class to current page
             }
-            paginationContainer.append(pageButton);
+            paginationContainer.append(pageDiv);
         }
 
-        // Next and Next Two buttons
-        paginationContainer.append('<button class="next-btn page flex-c-c" data-page="next"><img src="../static/images/svg/next.svg" alt=""></button>');
-        paginationContainer.append('<button class="next-btn page flex-c-c" data-page="next-two"><img src="../static/images/svg/next-two.svg" alt=""></button>');
+        // Next and Next Two buttons as div elements
+        const nextButton = $('<div class="next-btn page flex-c-c" data-page="next"><img src="../static/images/svg/next.svg" alt=""></div>');
+        const nextTwoButton = $('<div class="next-btn page flex-c-c" data-page="next-two"><img src="../static/images/svg/next-two.svg" alt=""></div>');
+        paginationContainer.append(nextButton);
+        paginationContainer.append(nextTwoButton);
 
-        attachPaginationEventListeners();
+        attachPaginationEventListeners(); // Ensure event listeners are attached after updating pagination
     }
 
     function attachPaginationEventListeners() {

@@ -2,30 +2,27 @@ package com.glossy.evolchat.service;
 
 import com.glossy.evolchat.model.Post;
 import com.glossy.evolchat.repository.PostRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
+@RequiredArgsConstructor
 public class PostService {
 
-    @Autowired
-    private PostRepository postRepository;
+    private final PostRepository postRepository;
 
-    public List<Post> getAllPosts() {
-        return postRepository.findAll();
+    public Page<Post> getAllPosts(Pageable pageable) {
+        return postRepository.findAll(pageable);
     }
 
-    public Post getPostById(int id) {
-        return postRepository.findById(id).orElse(null);
+    public Long getTotalPages(int size) {
+        long totalCount = postRepository.count(); // 전체 포스트 수 조회
+        return (totalCount + size - 1) / size; // 총 페이지 수 계산
     }
 
-    public Post savePost(Post post) {
-        return postRepository.save(post);
-    }
-
-    public void deletePost(int id) {
-        postRepository.deleteById(id);
+    public Post getPostById(Integer id) {
+        return postRepository.findById(id).orElse(null); // ID로 포스트 조회
     }
 }

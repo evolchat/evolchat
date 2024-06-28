@@ -9,4 +9,7 @@ public class PostDto {
     private int boardId;
     private String title;
     private String content;
+    private long likeCount;
+    private int views;
+    private String createdAt;
 }
