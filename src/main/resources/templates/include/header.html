@@ -2,7 +2,7 @@
     <div class="wrap flex-row left">
         <div class="logo flex-row flex-c cursor-p" onclick="window.location.href = '/';">
             <img src="../static/images/svg/logo-icon.svg" alt=""/>
-            <img src="../static/images/svg/logo-text.svg" alt=""/>
+            <img class="p-l-10" src="../static/images/svg/logo-text.svg" alt=""/>
             <div class="menu-btn-layer cursor-p">
                 <div class="menu-btn">
                     <div class="line"></div>
@@ -18,11 +18,11 @@
         <div class="white flex-row flex-c px15">
             <div id="header-item-tooltip-1"  class="items flex-c cursor-p">
                 <img src="../static/images/svg/header-item-1.svg" alt=""/>
-                <span>JACKPOT</span><span id="bettingPoints">0</span>
+                <span class="p-l-3">JACKPOT</span><span id="bettingPoints">0</span>
             </div>
             <div id="header-item-tooltip-2"  class="items flex-c cursor-p">
                 <img src="../static/images/svg/header-item-2.svg" alt=""/>
-                <span id="goldChip">0</span>
+                <span id="goldChip" class="p-l-3">0</span>
             </div>
             <div class="items flex-c">
                 <img src="../static/images/svg/header-item-3.svg" alt=""/>
@@ -50,7 +50,14 @@
                 <img src="../static/images/svg/header-item-9.svg" alt="언어선택"/>
                 
             </div>
-            <div class="items flex-c"><img src="../static/images/profile/user1.png" alt="프로필이미지.png"></div>
+            <div class="items flex-c dropdown">
+                <button id="profile" class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img class="dropdown-toggle" src="../static/images/profile/user1.png" alt="프로필이미지.png"></button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li><a class="dropdown-item" href="#">내 정보수정</a></li>
+                    <li><a class="dropdown-item" href="#" onclick="logout()">로그아웃</a></li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>
