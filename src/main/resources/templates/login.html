@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>로그인</title>
     <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/page/assign.css"/>
     <link rel="stylesheet" href="../static/plugin/lcdsantos-jQuery-Selectric/selectric.css">
     <script src="../static/plugin/jQuery/jquery-3.7.1.min.js"></script>
     <script src="../static/plugin/lcdsantos-jQuery-Selectric/src/jquery.selectric.js"></script>
     <script src="../static/js/common.js"></script>
     <script th:src="@{/static/js/login.js}"></script>
-    <link rel="stylesheet" href="../static/css/page/assign.css"/>
 </head>
 
 <body>
@@ -21,11 +21,8 @@
         <div class="loading-spinner"></div>
     </div>
     <div class="login-wrap max1280 flex-c-c assign-wrap">
-        <div class="header m-b-40">
-            <div class="safety grey-3 px17 m-b-40">
-                <p>SAFETY AREA</p>
-            </div>
-            <div class="logo">
+        <div class="header m-t-80 m-b-40 m-b-40">
+            <div class="logo m-b-40">
                 <img th:src="@{/static/images/logo/login_logo.png}" alt="logo.png">
             </div>
         </div>
@@ -53,7 +50,7 @@
                             </div>
                         </div>
                         <div class="btns m-b-20">
-                            <button type="submit">
+                            <button id="login-button" type="submit">
                                 <span class="white">로그인</span>
                             </button>
                         </div>

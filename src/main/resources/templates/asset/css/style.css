@@ -1878,10 +1878,6 @@ div.mainContent>div.mainLayer>div>div>div.bottom>div>div>div {
     margin-bottom: 40px;
 }
 
-.assign-wrap .header .safety {
-    letter-spacing: 0.375rem;
-}
-
 .assign-wrap input[type="text"],
 .assign-wrap input[type="password"] {
     background-color: #232428;

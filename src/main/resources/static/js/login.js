@@ -50,4 +50,25 @@ $(document).ready(function () {
     function deleteCookie(name) {
         document.cookie = name + '=; Max-Age=-99999999;';
     }
+
+    // 입력 필드의 내용에 따라 버튼에 클래스 추가
+    function toggleButtonClass() {
+        var username = $('#id').val();
+        var password = $('#password').val();
+        if (username && password) {
+            $('#login-button').addClass('login-bc-activate');
+        } else {
+            $('#login-button').removeClass('login-bc-activate');
+        }
+    }
+
+    // 페이지 로드 시 초기 상태 설정
+    toggleButtonClass();
+
+    // 입력 필드의 내용 변경 시 클래스 토글
+    $('#id, #password').on('input', function () {
+        toggleButtonClass();
+    });
+
+    $('#id').focus()
 });
