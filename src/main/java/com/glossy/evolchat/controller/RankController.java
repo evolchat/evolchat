@@ -9,6 +9,7 @@ public class RankController {
 
     @GetMapping("/rank")
     public String rank(Model model) {
+        model.addAttribute("activeCategory", "rank");
         model.addAttribute("activePage", "rank");
         return "index";
     }

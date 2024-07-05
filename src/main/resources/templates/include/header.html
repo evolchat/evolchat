@@ -40,7 +40,7 @@
             <div id="header-item-tooltip-6" class="items flex-c cursor-p">
                 <img src="../static/images/svg/header-item-6.svg" alt="히스토리"/>
             </div>
-            <div id="header-item-tooltip-7" class="items flex-c cursor-p active">
+            <div id="header-item-tooltip-7" class="items flex-c cursor-p">
                 <img src="../static/images/svg/header-item-7.svg" alt="채팅방"/>
             </div>
             <div id="header-item-tooltip-8" class="items flex-c cursor-p">
@@ -48,7 +48,6 @@
             </div>
             <div id="header-item-tooltip-9" class="items flex-c cursor-p">
                 <img src="../static/images/svg/header-item-9.svg" alt="언어선택"/>
-                
             </div>
             <div class="items flex-c dropdown">
                 <button id="profile" class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -83,14 +82,6 @@
                 $(this).addClass('active');
             }
         });
-
-        // Toggle menu visibility
-        <!--        const menuBtn = document.getElementById('menu-btn');-->
-        <!--        const bcAside = document.getElementById('bc-aside');-->
-
-        <!--        menuBtn.addEventListener('click', () => {-->
-        <!--            bcAside.classList.toggle('active');-->
-        <!--        });-->
 
         tippy('#header-item-tooltip-1', {
             content: 'G 골드칩',
@@ -142,5 +133,28 @@
             animation: 'fade',
         });
 
+        // 페이지 로드 시 chat의 초기 활성화 상태 설정
+        const chatActive = localStorage.getItem('chatActive');
+        if (chatActive === 'true') {
+            $("#chat").show();
+            $("#header-item-tooltip-7").addClass("active");
+        } else {
+            $("#chat").hide();
+            $("#header-item-tooltip-7").removeClass("active");
+        }
+
+        $("#header-item-tooltip-7").click(function() {
+            // #chat 요소의 표시 상태를 애니메이션을 통해 토글
+            $("#chat").slideToggle(300, function() {
+                const chatVisible = $("#chat").is(":visible");
+                if (chatVisible === true) {
+                    $("#header-item-tooltip-7").addClass("active");
+                } else {
+                    $("#header-item-tooltip-7").removeClass("active");
+                }
+                console.log(chatVisible)
+                localStorage.setItem('chatActive', chatVisible.toString());
+            });
+        });
     });
 </script>

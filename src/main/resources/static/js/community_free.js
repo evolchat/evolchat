@@ -14,6 +14,11 @@ $(document).ready(function() {
                 const postsContainer = $('#posts-container');
                 postsContainer.empty(); // Clear any existing content
 
+                if (response.length === 0) {
+                    $('#pagination-container').hide(); // Hide pagination if no posts
+                    return;
+                }
+
                 response.forEach(post => {
                     const postHtml = `
                         <div class="post flex-row tr">
@@ -48,7 +53,7 @@ $(document).ready(function() {
                     postsContainer.append(postHtml);
                 });
 
-                const totalPages = xhr.getResponseHeader('X-Total-Pages');
+                const totalPages = parseInt(xhr.getResponseHeader('X-Total-Pages')) || 1;
                 updatePagination(page, totalPages, boardId); // Pass boardId to updatePagination
             },
             error: function() {
@@ -62,23 +67,23 @@ $(document).ready(function() {
         paginationContainer.empty(); // Clear existing pagination
 
         // Previous button as div element
-        const prevButton = $('<div class="prev-btn page flex-c-c" data-page="prev"><img src="../static/images/svg/prev.svg" alt=""></div>');
+        const prevButton = $('<div class="prev-btn page flex-c-c" data-page="prev" data-board="' + boardId + '"><img src="../static/images/svg/prev.svg" alt=""></div>');
 
         // Next button as div element
-        const nextButton = $('<div class="next-btn page flex-c-c" data-page="next"><img src="../static/images/svg/next.svg" alt=""></div>');
+        const nextButton = $('<div class="next-btn page flex-c-c" data-page="next" data-board="' + boardId + '"><img src="../static/images/svg/next.svg" alt=""></div>');
 
         // Show/hide previous button based on currentPage
         if (currentPage === 1) {
-            prevButton.hide();
+            prevButton.addClass('hidden');
         } else {
-            prevButton.show();
+            prevButton.removeClass('hidden');
         }
 
         // Show/hide next button based on currentPage and totalPages
         if (currentPage === totalPages) {
-            nextButton.hide();
+            nextButton.addClass('hidden');
         } else {
-            nextButton.show();
+            nextButton.removeClass('hidden');
         }
 
         paginationContainer.append(prevButton);
@@ -98,25 +103,25 @@ $(document).ready(function() {
         paginationContainer.append(nextButton);
 
         // Previous two pages button as div element
-        const prevTwoButton = $('<div class="prev-btn page flex-c-c" data-page="prev-two"><img src="../static/images/svg/prev-two.svg" alt=""></div>');
+        const prevTwoButton = $('<div class="prev-btn page flex-c-c" data-page="prev-two" data-board="' + boardId + '"><img src="../static/images/svg/prev-two.svg" alt=""></div>');
 
         // Show/hide previous two pages button based on currentPage
         if (currentPage <= 2) {
-            prevTwoButton.hide();
+            prevTwoButton.addClass('hidden');
         } else {
-            prevTwoButton.show();
+            prevTwoButton.removeClass('hidden');
         }
 
         paginationContainer.prepend(prevTwoButton);
 
         // Next two pages button as div element
-        const nextTwoButton = $('<div class="next-btn page flex-c-c" data-page="next-two"><img src="../static/images/svg/next-two.svg" alt=""></div>');
+        const nextTwoButton = $('<div class="next-btn page flex-c-c" data-page="next-two" data-board="' + boardId + '"><img src="../static/images/svg/next-two.svg" alt=""></div>');
 
         // Show/hide next two pages button based on currentPage and totalPages
         if (currentPage >= totalPages - 1) {
-            nextTwoButton.hide();
+            nextTwoButton.addClass('hidden');
         } else {
-            nextTwoButton.show();
+            nextTwoButton.removeClass('hidden');
         }
 
         paginationContainer.append(nextTwoButton);

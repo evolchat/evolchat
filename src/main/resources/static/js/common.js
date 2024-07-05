@@ -6,5 +6,9 @@ $(document).ready(function(){
 
 function logout() {
     window.location.href = '/logout';
-    alert('정상적으로 로그아웃 하였습니다.');
+    alert('정상적으로 로그아웃 되었습니다.');
+}
+
+function serviceOpen() {
+    alert('서비스 준비 중인 기능입니다!');
 }
