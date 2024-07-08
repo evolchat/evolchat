@@ -7,7 +7,6 @@ import java.time.LocalDateTime;
 @Entity
 @Data
 public class ChatRoom {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int seq;
