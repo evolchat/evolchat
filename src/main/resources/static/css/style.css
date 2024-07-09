@@ -789,6 +789,7 @@ table {
 .bc-activate {
     background-color: #8744ff !important;
     color: #fff;
+    cursor: pointer;
 }
 
 /* 글자 색 정의 */

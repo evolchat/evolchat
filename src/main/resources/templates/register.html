@@ -27,7 +27,7 @@
                 <form th:action="@{/register}" method="post" th:object="${user}">
                     <div class="inputfields px17 flex-column">
                         <!-- 휴대폰 인증 부분 생략 -->
-                        <div class="phone flex-c flex-row white bc-activate ">
+                        <div class="phone flex-c flex-row white bc-activate">
                             <div class="icon"><img src="../static/images/svg/register-top-icon.svg" alt=""></div>
                             <div class="text text-left">
                                 <div class="title px19 m-b-5">휴대폰 인증</div>
@@ -35,6 +35,10 @@
                             </div>
                             <div class="icon"><img src="../static/images/svg/arrow-right.svg" alt=""></div>
                         </div>
+                        <form name="form_chk" method="post">
+                            <input type="hidden" name="m" value="checkplusService">
+                            <input type="hidden" name="EncodeData" th:value="${sEncData}">
+                        </form>
                         <!-- 닉네임 입력 필드 -->
                         <div class="field m-b-20">
                             <div class="top px14 m-b-8">
