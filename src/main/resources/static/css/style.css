@@ -141,7 +141,6 @@ body {
 input[type=text],
 input[type="password"] {
     background-color: transparent;
-    border: none;
     outline: transparent;
     background: 0 0;
     -webkit-appearance: none;
@@ -2056,8 +2055,8 @@ div.chatContent>div.text.grey-1 {
 /* footer */
 .footer {
     text-align: left;
-    max-width: 1080px;
-    margin: 0 auto;
+    max-width: 1440px;
+    margin: 0;
     padding-bottom: 100px;
     padding-left: 40px;
     padding-right: 40px;
@@ -2080,7 +2079,7 @@ div.chatContent>div.text.grey-1 {
 
 .footer .footer-nav {
     justify-content: space-between;
-    margin: 50px 0;
+    margin: 50px 152px 50px 0px;
 }
 
 .footer .footer-nav .nav-list .nav-title {
@@ -2091,7 +2090,7 @@ div.chatContent>div.text.grey-1 {
 
 .footer .footer-nav .nav-list .nav-item {
     font-size: 0.875 rem;
-    margin: 5px 0;
+    margin: 15px 0;
 }
 
 .footer-corp {

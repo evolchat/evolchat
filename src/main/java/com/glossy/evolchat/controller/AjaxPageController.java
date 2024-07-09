@@ -40,6 +40,11 @@ public class AjaxPageController {
         return "community_photo";
     }
 
+    @GetMapping("/community_write_page")
+    public String community_write_page() {
+        return "community_write";
+    }
+
     //  랭킹
     @GetMapping("/rank_page")
     public String rank_page() {
