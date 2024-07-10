@@ -76,13 +76,6 @@
             }
         });
 
-        $('.nav-link').each(function() {
-            const linkPath = $(this).attr('href');
-            if (linkPath === currentPath) {
-                $(this).addClass('active');
-            }
-        });
-
         tippy('#header-item-tooltip-1', {
             content: 'G 골드칩',
             placement: 'bottom',

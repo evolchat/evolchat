@@ -34,18 +34,20 @@
         console.log('Active Page:', activePage); // Debugging line
 
         const loadPageContent = (page) => {
-            $.ajax({
-                url: `/${page}_page`, // URL of the content to load
-                method: 'GET',
-                success: function(data) {
-                    $('#content-area').html(data);
-                    $("#footer").load("/footer");
-                    $('select').selectric();
-                    history.pushState(null, null, page);
-                },
-                error: function() {
-                    $('#content-area').html('<p>Error loading content.</p>');
-                }
+            $('#content-area').fadeOut(300, function() {
+                $.ajax({
+                    url: `/${page}_page`, // URL of the content to load
+                    method: 'GET',
+                    success: function(data) {
+                        $('#content-area').html(data).fadeIn(300);
+                        $("#footer").load("/footer");
+                        $('select').selectric();
+                        history.pushState(null, null, page);
+                    },
+                    error: function() {
+                        $('#content-area').html('<p>Error loading content.</p>').fadeIn(300);
+                    }
+                });
             });
         };
 
@@ -53,14 +55,6 @@
             loadPageContent(activePage);
             $('.nav-link[href="' + activeCategory + '"]').addClass('active');
         }
-
-        $('.nav-link').on('click', function(e) {
-            e.preventDefault();
-            const page = $(this).attr('href').split("/").pop();
-            loadPageContent(page);
-            $('.nav-link').removeClass('active');
-            $(this).addClass('active');
-        });
 
         // 페이지 로드 시 chat의 초기 활성화 상태 설정
         var chatActive = sessionStorage.getItem('chatActive');

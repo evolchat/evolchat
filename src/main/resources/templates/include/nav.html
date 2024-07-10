@@ -74,7 +74,8 @@
     </ul>
 </header>
 <script>
-    const currentPath = window.location.pathname.split("/").pop();
+    const currentPath = $('body').attr('data-active-category');
+
     $('.nav-link').each(function() {
     const linkPath = $(this).attr('href');
     if (linkPath === currentPath) {

@@ -1723,11 +1723,6 @@ section.container>.chatLayer {
     padding: 0 0 20px 0;
 }
 
-.chatLayer {
-    max-width: 360px;
-    width: 100%;
-}
-
 .gameLayout {
     max-height: 217px;
     height: 100%;
@@ -1930,7 +1925,10 @@ body>div>section>div.wrap {
 
 /* chatLayer */
 .chatLayer {
+    width: 100%;
     height: 100%;
+    max-width: 360px;
+
 }
 
 .chatLayer>div {
