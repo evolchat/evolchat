@@ -2,7 +2,7 @@
     width: 100%;
     margin: auto;
     padding: 20px;
-    border-radius: 8px;
+    border-top: 1px solid #2C2E33;
 }
 .title {
     color: white;
@@ -53,10 +53,10 @@
 }
 .toolbar button {
     border: 1px solid #35373D !important;
-    color: #27292D;;
+    background-color: #27292D;;
     font-size: 18px;
     cursor: pointer;
-    padding: 5px 10px;
+    padding: 5px 5px;
     border-radius: 4px;
     width: 36px; /* 고정된 너비로 동일한 크기 유지 */
     height: 36px; /* 고정된 높이로 동일한 크기 유지 */
