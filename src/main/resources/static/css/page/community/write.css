@@ -97,3 +97,50 @@
     border-radius: 7px;
     cursor: pointer;
 }
+.toolbar-btn {
+    padding: 5px 10px;
+    margin: 2px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+.toolbar-btn:hover {
+    background-color: #555;
+}
+.editor {
+    border: 1px solid #ccc;
+    padding: 10px;
+    min-height: 400px;
+    height: auto;
+    overflow-y: auto;
+    color: #fff; /* 에디터 글자색 */
+    resize: vertical;
+    max-width: 100%;
+}
+.emoji-picker {
+    display: none;
+    position: absolute;
+    background-color: #2C2E33;
+    border: 1px solid #35373D;
+    max-height: 150px;
+    overflow-y: auto;
+    z-index: 10;
+}
+.emoji-picker button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    margin: 5px;
+}
+.toolbar-btn input[type="color"] {
+    display: none;
+}
+.toolbar-btn input[type="color"].active {
+    display: inline;
+}
+.color-picker {
+    width: 36px;
+    height: 36px;
+}
