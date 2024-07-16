@@ -36,6 +36,7 @@
 .mypqge-table tbody tr {
     height: 58px;
     border: 1px solid #33353B;
+    font-size: 15px;
 }
 
 .mypqge-table th,

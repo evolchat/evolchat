@@ -1,0 +1,51 @@
+.sub-header-search {
+    margin: 0 15px;
+}
+
+.write_btn {
+    width: 100px;
+}
+
+.mainLayer {
+    color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+}
+
+.video-container {
+    width: 300px;
+    margin: 15px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.video-container .img {
+    width: 100%;
+    border-bottom: 1px solid #444;
+}
+
+.video-details {
+    padding: 15px 15px 15px 3px;
+    text-align: start;
+}
+
+.video-details .mini {
+    margin: -3px;
+}
+
+.video-details h3 {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.video-details p {
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+.video-details .meta {
+    font-size: 12px;
+    color: #888;
+}

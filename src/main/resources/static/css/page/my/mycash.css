@@ -8,6 +8,9 @@
      width: 95%
      background-color: #303237;
  }
+.cash_img {
+    margin-top: -2px;
+}
 
 .cash-charge {
     display: flex;

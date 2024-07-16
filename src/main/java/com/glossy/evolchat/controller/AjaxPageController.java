@@ -40,6 +40,11 @@ public class AjaxPageController {
         return "community_photo";
     }
 
+    @GetMapping("/community_videos_page")
+    public String community_videos_page() {
+        return "community_videos";
+    }
+
     @GetMapping("/community_write_page")
     public String community_write_page() {
         return "community_write";

@@ -31,6 +31,12 @@ public class CommunityController {
         model.addAttribute("activePage", "community_photo");
         return "index";
     }
+    @GetMapping("/community_videos")
+    public String community_videos(Model model) {
+        model.addAttribute("activeCategory", "community_free");
+        model.addAttribute("activePage", "community_videos");
+        return "index";
+    }
     @GetMapping("/community_write")
     public String community_write(Model model) {
         model.addAttribute("activeCategory", "community_free");
