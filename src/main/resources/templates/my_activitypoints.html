@@ -24,10 +24,10 @@
                             <div class="list"><a href="my_bettingpoints">배팅 포인트</a></div>
                             <div class="list active"><a href="my_activitypoints">활동 포인트</a></div>
                             <div class="list"><a href="my_goldchip">골드칩</a></div>
-                            <div class="list"><a href="#">마이홈</a></div>
-                            <div class="list"><a href="#">비빌번호 변경</a></div>
+<!--                            <div class="list"><a href="#">마이홈</a></div>-->
+<!--                            <div class="list"><a href="#">비빌번호 변경</a></div>-->
                         </div>
-                        <div class="sub-header hidden">
+                        <div class="sub-header ">
                             <div class="sub-header-search bc-footer flex-grow">
                                 <input type="text" placeholder="닉네임 검색">
                                 <img src="../static/images/svg/search.svg" alt="" class="input-icon search" />
@@ -36,50 +36,44 @@
                         <div class="mainLayer white">
                             <div class="content-wrap flex-c-c flex-column p-20 mypage">
                                 <div class="etc flex-row">
-                                    <div class="money-wrap g-6" style="margin-right: 20px;">
-                                        <div class="flex-row flex-c">
-                                            <div></div>
-                                            <div>보유 활동 포인트</div>
-                                            <div>20,644</div>
+                                    <div class="money-wrap g-6 jackpot" style="margin-right: 20px;">
+                                        <div class="money flex-row flex-c">
+                                            <div><img src="../static/images/svg/activepoints.svg" alt=""> 보유 활동 포인트</div>
+                                            <div>20644</div>
                                         </div>
                                         <br>
-                                        <div class="flex-row flex-c">
-                                            <div></div>
-                                            <div>게시글</div>
+                                        <div class="money flex-row flex-c">
+                                            <div><img src="../static/images/svg/pen.svg" alt="">&nbsp 게시글</div>
                                             <div>101</div>
                                         </div>
-                                        <div class="flex-row flex-c">
-                                            <div></div>
-                                            <div>댓글</div>
+                                        <div class="money flex-row flex-c">
+                                            <div><img src="../static/images/svg/nav-item-3.svg" alt="">&nbsp 댓글</div>
                                             <div>204</div>
                                         </div>
-                                        <div class="flex-row flex-c">
-                                            <div></div>
-                                            <div>조회수</div>
-                                            <div>2,000</div>
+                                        <div class="money flex-row flex-c">
+                                            <div><img src="../static/images/svg/input-icon-eye.svg" alt="">&nbsp 조회수</div>
+                                            <div>2000</div>
                                         </div>
-                                        <div class="flex-row flex-c">
-                                            <div></div>
-                                            <div>추천</div>
+                                        <div class="money flex-row flex-c">
+                                            <div><img src="../static/images/svg/hearts.svg" alt="">&nbsp 추천</div>
                                             <div>45000</div>
                                         </div>
                                     </div>
-                                    <div class="flex-row g-6">
-                                        <div class="text-wrap  g-6">
-                                            <div class="title">활동 포인트</div>
+                                    <div class="flex-row g-6 jackpot">
+                                        <div class="text-wrap txt">
+                                            <div class="title px22 m-b-18"><img style="margin-top: -5px" src=../static/images/svg/activepoint.svg alt="">&nbsp활동 포인트</div>
                                             <ol>
-                                                <li>활동 포인트 200은 골드칩 1개로 전환이 가능합니다.</li>
-                                                <li>게시글, 댓글, 추천으로 얻은 포인트는 게시물이나 댓글 삭제 시 회수되며, 이를 골다 칩의 전환 목적으로 악용 시 모든 포인트와 골다 칩, 캐시 등이 몰수되며, 활동 정지를 당할 수 있습니다.</li>
-                                                <li>조회수에 의한 활동 포인트 지급은 전체 조회 수가 100씩 올라갈 때마다 지급됩니다.</li>
+                                                <li class="px13 m-b-5">활동 포인트 200은 골드칩 1개로 전환이 가능합니다.</li>
+                                                <li class="px13 m-b-5">게시글, 댓글, 추천으로 얻은 포인트는 게시물이나 댓글 삭제 시 회수되며, 이를 골다 칩의 전환 목적으로 악용 시 모든 포인트와 골다 칩, 캐시 등이 몰수되며, 활동 정지를 당할 수 있습니다.</li>
+                                                <li class="px13 m-b-5">조회수에 의한 활동 포인트 지급은 전체 조회 수가 100씩 올라갈 때마다 지급됩니다.</li>
                                             </ol>
                                             <div class="flex-row flex-c">
-                                                <div>게시글<span>+5</span></div>
-                                                <div>댓글<span>+2</span></div>
-                                                <div>조회수<span>+1</span></div>
-                                                <div>추천<span>+2</span></div>
+                                                <div><img src="../static/images/svg/pen.svg" alt=""> 게시글<span>+5</span></div>
+                                                <div><img src="../static/images/svg/nav-item-3.svg" alt=""> 댓글<span>+2</span></div>
+                                                <div><img src="../static/images/svg/input-icon-eye.svg" alt=""> 조회수<span>+1</span></div>
+                                                <div><img src="../static/images/svg/hearts.svg" alt=""> 추천<span>+2</span></div>
                                             </div>
                                         </div>
-                                        <div class="img"></div>
                                     </div>
                                 </div>
                                 <div class="table-radius">
@@ -133,8 +127,33 @@
                                     </table>
                                 </div>
                             </div>
+                            <tfoot class="h100px">
+                            <tr>
+                                <td colspan='8' class="text-cneter">
+                                    <div class="pagination flex-row flex-c-c">
+                                        <div class="page flex-c-c bc-activate">1</div>
+                                        <div class="page flex-c-c">2</div>
+                                        <div class="page flex-c-c">3</div>
+                                        <div class="page flex-c-c">4</div>
+                                        <div class="page flex-c-c">5</div>
+                                        <div class="page flex-c-c">6</div>
+                                        <div class="page flex-c-c">7</div>
+                                        <div class="page flex-c-c">8</div>
+                                        <div class="page flex-c-c">9</div>
+                                        <div class="page flex-c-c">10</div>
+                                        <button class="next-btn page flex-c-c">
+                                            <img src="../static/images/svg/next.svg" alt="">
+                                        </button>
+                                        <button class="next-btn page flex-c-c">
+                                            <img src="../static/images/svg/next-two.svg" alt="">
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tfoot>
                         </div>
                     </div>
+                    <div id="footer" class=" bc-footer"></div>
                 </div>
             </div>
         </Section>

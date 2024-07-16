@@ -27,6 +27,14 @@ public class MyPageController {
         return "index";
     }
 
+    @GetMapping("/my_bettingpoints")
+    public String my_bettingpoints(Model model) {
+        model.addAttribute("activeCategory", "mypqge");
+        model.addAttribute("activePage", "my_bettingpoints");
+        return "index";
+    }
+
+
     @GetMapping("/my_activitypoints")
     public String my_activitypoints(Model model) {
         model.addAttribute("activeCategory", "mypqge");

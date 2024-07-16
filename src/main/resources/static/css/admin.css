@@ -1032,14 +1032,11 @@ thead th {
     color: #fff;
 }
 
-
 /* 채팅관리 - 테이블 채팅*/
 .table-chat-list .item{
     height: 40px;
     padding: 0 20px;
 }
-
-
 
 /* 광고 관리  */
 .table.manage_banner td img {
@@ -1060,9 +1057,6 @@ thead th {
 } */
 
 .table.manage_banner {}
-
-
-
 
 /* 광고 관리 - 세부 설정*/
 

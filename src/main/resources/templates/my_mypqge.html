@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,9 +7,7 @@
     <script src="../static/js/my_mypqge.js"></script>
     <link rel="stylesheet" href="../static/css/page/my/mypage.css"/>
 </head>
-
 <body>
-
     <div class="wrapper bc-black vh100 ">
 <!--        <div id="header" class="header flex-row bc-header"></div>-->
         <Section class="flex-row">
@@ -20,54 +17,52 @@
                     <div class="mainContent bc-main">
                         <div class="sub-header flex-row flex-c white opacity60 px15">
                             <div class="list active"><a href="#">내정보</a></div>
-                            <div class="list"><a href="#">아이템</a></div>
+                            <div class="list"><a href="">아이템</a></div>
                             <div class="list"><a href="#">캐시</a></div>
                             <div class="list"><a href="#">배팅 포인트</a></div>
                             <div class="list"><a href="#">활동 포인트</a></div>
                             <div class="list"><a href="#">골드칩</a></div>
-                            <div class="list"><a href="#">마이홈</a></div>
-                            <div class="list"><a href="#">비빌번호 변경</a></div>
+<!--                        <div class="list"><a href="#">마이홈</a></div>-->
+<!--                        <div class="list"><a href="#">비빌번호 변경</a></div>-->
                         </div>
                         <div class="sub-header hidden">
                             <div class="sub-header-search bc-footer flex-grow">
                                 <input type="text" placeholder="닉네임 검색">
-                                <img src="../static/images/svg/search.svg" alt=""
-                                    class="input-icon search" />
+                                <img src="../static/images/svg/search.svg" alt="" class="input-icon search" />
                             </div>
                         </div>
-
                         <div class="mainLayer white">
                             <div class="content-wrap flex-c-c flex-column p-20 mypage">
                                 <div class="etc flex-row">
                                     <div class="money-wrap g-6" style="margin-right: 20px;">
-                                        <div class="flex-row flex-c">
+                                        <div class="money flex-row flex-c">
                                             <div></div>
                                             <div>캐시</div>
                                             <div>1,000,000</div>
                                         </div>
-                                        <div class="flex-row flex-c">
+                                        <div class="money flex-row flex-c">
                                             <div></div>
                                             <div>배팅 포인트</div>
                                             <div>1,000,000</div>
                                         </div>
-                                        <div class="flex-row flex-c">
+                                        <div class="money flex-row flex-c">
                                             <div></div>
                                             <div>배팅 수익</div>
                                             <div>-62,000,000</div>
                                         </div>
-                                        <div class="flex-row flex-c">
+                                        <div class="money flex-row flex-c">
                                             <div></div>
                                             <div>활동 포인트</div>
                                             <div>45000</div>
                                         </div>
-                                        <div class="flex-row flex-c">
+                                        <div class="money flex-row flex-c">
                                             <div></div>
                                             <div>골드칩</div>
                                             <div>100</div>
                                         </div>
                                     </div>
                                     <div class="flex-row g-6">
-                                        <div class="text-wrap  g-6">
+                                        <div class="text-wrap g-6 px13">
                                             <div class="title">잭팟의 주인공이 되어보세요.</div>
                                             <ol>
                                                 <li>잭팟 보상으로 지급되는 골드칩은 에볼챗에서 사용하는 가상의 화폐로 현금으로 환전이 가능합니다.</li>
@@ -75,23 +70,19 @@
                                                     회원님에게잭팟 머니가 분배 지급됩니다.</li>
                                                 <li>배팅 참여 인원이 1,000명 이하일 경우에는 잭팟이 이월됩니다.</li>
                                             </ol>
-
                                         </div>
                                         <div class="img-illust illust-5"></div>
                                     </div>
-
                                 </div>
                                 <div class="information flex-column px15">
                                     <div class="infotitle px17">기본 정보</div>
                                     <div class="img-area">
                                         <div class="row  flex-row">
-                                            <div class="profileimg"><img src="../static/images/photo/photo_1.jpg"
+                                            <div class="profileimg"><img src="../static/images/profile/rank-1.svg" alt="프로필.png">
                                                     alt="프로필.png"></div>
                                             <div class="profile">
                                                 <label for="profile">
-                                                    <div class="btn-upload"><img
-                                                        src="../static/images/svg/upload.svg" alt=""
-                                                        style="height: auto; width: auto;" />파일 업로드하기</div>
+                                                    <div class="btn-upload"><img src="../static/images/svg/upload.svg" alt="" style="height: auto; width: auto;" />파일 업로드하기</div>
                                                 </label>
                                                 <input type="file" class="file" name="profile" id="profile">
                                                 <div class="text">
@@ -105,13 +96,11 @@
                                             </div>
                                         </div>
                                         <div class="row flex-row">
-                                            <div class="backgroundimg"><img src="../static/images/photo/images.jpg"
+                                            <div class="backgroundimg"><img src="../static/images/profile/NoPath%20-%20복사본%20(58).png"
                                                     alt="프로필배경.png"></div>
                                             <div class="background">
                                                 <label for="background">
-                                                    <div class="btn-upload"><img
-                                                        src="../static/images/svg/upload.svg" alt=""
-                                                        style="height: auto; width: auto;" />마이홈 배경 업로드</div>
+                                                    <div class="btn-upload"><img src="../static/images/svg/upload.svg" alt="" style="height: auto; width: auto;" />마이홈 배경 업로드</div>
                                                 </label>
                                                 <input type="file" class="file" name="background" id="background">
                                                 <div class="text">
@@ -124,7 +113,6 @@
                                                 <p>미보유</p>
                                             </div>
                                         </div>
-
                                     </div>
                                     <div class="input-area">
                                         <div class="row flex-row">
@@ -142,8 +130,7 @@
                                                     <label for="username">사용자 이름</label>
                                                 </div>
                                                 <div class="border">
-                                                    <input class="input" type="text" id="username" value="홍길동" disabled
-                                                        readonly>
+                                                    <input class="input" type="text" id="username" value="홍길동" disabled readonly>
                                                 </div>
                                             </div>
                                         </div>
@@ -164,8 +151,7 @@
                                                     <label for="url">마이홈 URL</label>
                                                 </div>
                                                 <div class="border">
-                                                    <input class="input" type="text" id="url" value="graycode" disabled
-                                                        readonly>
+                                                    <input class="input" type="text" id="url" value="graycode" disabled readonly>
                                                 </div>
                                             </div>
                                         </div>
@@ -175,8 +161,7 @@
                                                     <label for="phone">휴대폰 번호</label>
                                                 </div>
                                                 <div class="border">
-                                                    <input class="input" type="text" id="phone" value="010-****-**52"
-                                                        disabled readonly>
+                                                    <input class="input" type="text" id="phone" value="010-****-**52" disabled readonly>
                                                     <button>변경하기</button>
                                                 </div>
                                                 <p>
@@ -184,10 +169,7 @@
                                                 </p>
                                             </div>
                                         </div>
-
-
                                     </div>
-
                                 </div>
                                 <div class="information ">
                                     <div class="infotitle px17">추가 정보</div>
@@ -196,9 +178,7 @@
                                             <div class="field">
                                                 <label for="password">오늘의 한마디</label>
                                                 <div class="border">
-                                                    <input class="input" type="text" id="password"
-                                                        value="평생 살 것처럼 꿈을 꾸어라.그리고 내일 죽을 것처럼 오늘을 살아라." readonly
-                                                        disabled>
+                                                    <input class="input" type="text" id="password" value="평생 살 것처럼 꿈을 꾸어라.그리고 내일 죽을 것처럼 오늘을 살아라." readonly disabled>
                                                     <div class="count">39/60</div>
                                                 </div>
                                             </div>
@@ -214,7 +194,6 @@
                                                     <option>대한민국</option>
                                                 </select>
                                             </div>
-
                                             <div class="field">
                                                 <label for="password">지역</label>
                                                 <input class="input" type="text" id="password">
@@ -226,9 +205,7 @@
                                                 <input class="input" type="radio" name="sex" value="2" id="w"><label
                                                     for="w">여성</label>
                                             </div>
-
                                         </div>
-
                                         <div class="row">
                                             <div class="field">
                                                 <label for="password">나의 프로필에 지역 정보를 공개하시겠습니까?</label>
@@ -279,7 +256,6 @@
                                                     style="height: auto; width: auto;" />주민등록증 업로드</div>
                                             </label>
                                             <input type="file" class="file" name="background" id="background">
-
                                         </div>
                                         <div class="row">
                                             <label for="password">관심사</label><span>(최대 5개 선택 가능)</span>
@@ -318,22 +294,15 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
-                        <div class="row information">
+                        <div class=" ow information">
                             <button style="margin-right: 10px;">취소</button><button>확인</button>
-                          </div>
+                        </div>
                     </div>
-
-                
                 </div>
-
             </div>
-
         </Section>
     </div>
-
 </body>
-
 </html>

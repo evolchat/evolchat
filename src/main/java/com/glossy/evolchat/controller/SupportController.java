@@ -28,6 +28,13 @@ public class SupportController {
         return "index";
     }
 
+    @GetMapping("/support_inquiry")
+    public String support_inquiry(Model model) {
+        model.addAttribute("activeCategory", "support_notice");
+        model.addAttribute("activePage", "support_inquiry");
+        return "index";
+    }
+
     @GetMapping("/support_inquiry_write")
     public String support_inquiry_write(Model model) {
         model.addAttribute("activeCategory", "support_notice");

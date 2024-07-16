@@ -725,7 +725,6 @@ table {
     background-color: #2C2E33;
 }
 
-
 .bc-black {
     background-color: #1e2124;
 }
@@ -1718,6 +1717,12 @@ header .recentMessages li div {
 #profile {
     width: 60px;
 }
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 
 section.container>.chatLayer {
     padding: 0 0 20px 0;

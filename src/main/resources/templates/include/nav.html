@@ -23,7 +23,7 @@
         <li class="grey-1"><a class="text-white-50 nav-link" href="shopping">
             <img src="../static/images/svg/nav-item-6.svg" alt=""/>
                 상점
-            </a></li>
+        </a></li>
         <li class="grey-1"><a class="text-white-50 nav-link" href="support_notice">
             <img src="../static/images/svg/nav-item-7.svg" alt=""/>
                 고객센터
@@ -74,12 +74,14 @@
     </ul>
 </header>
 <script>
-    const currentPath = $('body').attr('data-active-category');
+    $(document).ready(function() {
+        const currentPath = $('body').attr('data-active-category');
 
-    $('.nav-link').each(function() {
-    const linkPath = $(this).attr('href');
-    if (linkPath === currentPath) {
-      $(this).addClass('active');
-    }
+        $('.nav-link').each(function() {
+            const linkPath = $(this).attr('href');
+            if (linkPath === currentPath) {
+                $(this).addClass('active');
+            }
+        });
     });
 </script>

@@ -122,10 +122,13 @@ public class AjaxPageController {
     public String my_myitem_page() {
         return "my_myitem";
     }
-
     @GetMapping("/my_mycash_page")
     public String my_mycash_page() {
         return "my_mycash";
+    }
+    @GetMapping("/my_bettingpoints_page")
+    public String my_bettingpoints_page() {
+        return "my_bettingpoints";
     }
     @GetMapping("/my_activitypoints_page")
     public String my_activitypoints_page() {

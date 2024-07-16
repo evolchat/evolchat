@@ -9,6 +9,7 @@ public class ShoppingController {
 
     @GetMapping("/shopping")
     public String shopping(Model model) {
+        model.addAttribute("activeCategory", "shopping");
         model.addAttribute("activePage", "shopping");
         return "index";
     }
