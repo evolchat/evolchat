@@ -2014,6 +2014,7 @@ div.mainContent {
 .chatLayer>div>div.title {
     color: #fff;
     padding: 10px 0;
+    margin-left: 20px;
     /* background-color: #044bb6; */
 }
 

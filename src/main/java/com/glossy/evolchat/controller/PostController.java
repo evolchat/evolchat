@@ -2,7 +2,7 @@ package com.glossy.evolchat.controller;
 
 import com.glossy.evolchat.dto.PostDto;
 import com.glossy.evolchat.model.Post;
-import com.glossy.evolchat.service.LikeService;
+import com.glossy.evolchat.service.PostLikeService;
 import com.glossy.evolchat.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -22,10 +22,10 @@ import java.util.stream.Collectors;
 public class PostController {
 
     private final PostService postService;
-    private final LikeService likeService;
+    private final PostLikeService postLikeService;
 
     @GetMapping
-    public ResponseEntity<List<PostDto>> getAllPosts(@RequestParam(defaultValue = "1") int page,
+    public ResponseEntity<List<PostDto>> getPosts(@RequestParam(defaultValue = "1") int page,
                                                      @RequestParam(defaultValue = "20") int size,
                                                      @RequestParam(required = false) Integer boardId) {
         Pageable pageable = PageRequest.of(page - 1, size); // 페이지 번호를 0부터 시작하도록 수정
@@ -59,7 +59,7 @@ public class PostController {
     }
 
     private PostDto convertToDto(Post post) {
-        long likeCount = likeService.countLikesByPostId(post.getPostId());
+        long likeCount = postLikeService.countLikesByPostId(post.getPostId());
         PostDto postDto = new PostDto();
         postDto.setPostId(post.getPostId());
         postDto.setUserId(post.getUserId());
