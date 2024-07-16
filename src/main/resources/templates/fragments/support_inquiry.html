@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>에볼챗닷컴</title>
+    <script src="../../static/js/support_notice.js"></script>
+</head>
+
+<body>
+
+    <div class="wrapper bc-black vh100 ">
+<!--        <div id="header" class="header flex-row bc-header"></div>-->
+        <Section class="flex-row">
+<!--            <div id="nav" class="bc-aside g-12"></div>-->
+            <div class="wrap bc-footer ">
+                <div class="content">
+                    <div class="mainContent bc-main">
+                        <div class="sub-header flex-row flex-c white opacity60 px15">
+                            <div class="list"><a href="support_notice">공지사항</a></div>
+                            <div class="list"><a href="support_help">도움말</a></div>
+                            <div class="list active"><a href="support_inquiry">문의하기</a></div>
+
+                        </div>
+                        <div class="sub-header flex-row flex-c">
+                            <div class="sub-header-search bc-footer flex-grow">
+                                <input type="text" placeholder="제목, 내용 검색">
+                                <img src="../../static/images/svg/search.svg" alt="" class="input-icon search" />
+                            </div>
+                            <button class="bc-activate white"><img src="../../static/images/svg/pen.svg" alt="" class="hidden">문의글 작성</button>
+                        </div>
+                        <div class="mainLayer">
+                            <div class="table-padding">
+                                <div class="table-radius">
+                                    <table class="rank-table white px14">
+                                        <thead class="h60px">
+                                            <tr>
+                                                <th class="opacity60">상태</th>
+                                                <th class="opacity60">문의내용</th>
+                                                <th class="opacity60">일시</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="h60px">
+                                            <tr>
+                                                <td>
+                                                    <div class="bc-gray border-5 flex-c-c square">답변대기</div>
+                                                </td>
+                                                <td>
+                                                    <div class="text-left"><span class="px15">골드칩 환전 하려고 하는데 어떻게 해야 하나요?</span>
+                                                        <img src="../../static/images/svg/icon-gallery-ivory.svg" alt="">
+                                                        <img src="../../static/images/svg/icon-videoplayer-red.svg" alt="">
+
+                                                    </div>
+                                                </td>
+                                                <td class="opacity60">오전 9:34</td>
+                                                
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="bc-dark-3A3C43  border-5 flex-c-c square">확인전</div>
+                                                </td>
+                                                <td>
+                                                    <div class="text-left"><span class="px15">제 컴퓨터에서 화면이 이상하게 보입니다.</span>
+                                                        <img src="../../static/images/svg/icon-gallery.svg" alt="">
+                                                        <img src="../../static/images/svg/icon-videoplayer.svg" alt="">
+                                                        
+
+                                                    </div>
+                                                </td>
+                                                <td class="opacity60">2024-05-06</td>
+                                                
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="bc-activate border-5 flex-c-c square">답변완료</div>
+                                                </td>
+                                                <td>
+                                                    <div class="text-left"><span class="px15">제 명의의 핸드폰이 없어서 친구껄 사용하고 있는데 제재되나요?</span>
+                                                        <img src="../../static/images/svg/icon-gallery.svg" alt="">
+                                                        <img src="../../static/images/svg/icon-videoplayer.svg" alt="">
+                                                        
+
+                                                    </div>
+                                                </td>
+                                                <td class="opacity60">2024-05-06</td>
+                                                
+                                            </tr>
+                                        </tbody>
+                                        <tfoot class="h100px">
+                                            <tr>
+                                                <td colspan='8' class="text-cneter">
+                                                    <div class="pagination flex-row flex-c-c">
+                                                        <div class="page flex-c-c bc-activate">1</div>
+                                                        <div class="page flex-c-c">2</div>
+                                                        <div class="page flex-c-c">3</div>
+                                                        <div class="page flex-c-c">4</div>
+                                                        <div class="page flex-c-c">5</div>
+                                                        <div class="page flex-c-c">6</div>
+                                                        <div class="page flex-c-c">7</div>
+                                                        <div class="page flex-c-c">8</div>
+                                                        <div class="page flex-c-c">9</div>
+                                                        <div class="page flex-c-c">10</div>
+                                                        <button class="next-btn page flex-c-c">
+                                                            <img src="../../static/images/svg/next.svg" alt="">
+                                                        </button>
+                                                        <button class="next-btn page flex-c-c">
+                                                            <img src="../../static/images/svg/next-two.svg" alt="">
+                                                        </button>
+                                                    </div>
+
+                                                </td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div id="footer" class=" bc-footer" th:insert="include/footer">
+                </div>
+
+            </div>
+
+        </section>
+    </div>
+    
+</body>
+
+</html>

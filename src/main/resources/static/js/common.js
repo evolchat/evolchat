@@ -1,7 +1,7 @@
 $(document).ready(function(){
-    $("#header").load("/header");
-    $("#nav").load("/nav");
-    $("#chat").load("/chat");
+//    $("#header").load("/header");
+//    $("#nav").load("/nav");
+//    $("#chat").load("/chat");
 });
 
 function logout() {

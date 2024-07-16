@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>에볼챗닷컴</title>
+    <script src="../../static/js/my_bettingpoints.js"></script>
+    <link rel="stylesheet" href="../../static/css/page/my/bettingpoints.css"/>
+</head>
+
+<body>
+<div class="wrapper bc-black vh100 ">
+    <!--        <div id="header" class="header flex-row bc-header"></div>-->
+    <Section class="flex-row">
+        <!--            <div id="nav" class="bc-aside g-12"></div>-->
+        <div class="wrap bc-footer ">
+            <div class="content">
+                <div class="mainContent bc-main">
+                    <div class="sub-header flex-row flex-c white opacity60 px15">
+                        <div class="list"><a href="mypqge">내정보</a></div>
+                        <div class="list"><a href="my_myitem">아이템</a></div>
+                        <div class="list"><a href="my_mycash">캐시</a></div>
+                        <div class="list active"><a href="my_bettingpoints">배팅 포인트</a></div>
+                        <div class="list"><a href="my_activitypoints">활동 포인트</a></div>
+                        <div class="list"><a href="my_goldchip">골드칩</a></div>
+<!--                    <div class="list"><a href="#">마이홈</a></div>-->
+<!--                    <div class="list"><a href="#">비빌번호 변경</a></div>-->
+                    </div>
+                    <div class="mainLayer white">
+                        <div class="content-wrap flex-c-c flex-column p-20 mypage">
+                            <div class="etc flex-row">
+                                <div class="money-wrap g-6 jackpot" style="margin-right: 20px;">
+                                    <div class="money flex-row flex-c">
+                                        <div><img src="../../static/images/svg/header-item-2.svg" alt=""> 보유 배팅 포인트</div>
+                                        <div>100</div>
+                                    </div>
+                                    <div class="money flex-row flex-c">
+                                        <div><img src="../../static/images/svg/rolling.svg" alt="">&nbsp 롤링 포인트</div>
+                                        <div>10,000</div>
+                                    </div>
+                                    <div class="money flex-row flex-c">
+                                        <div><img src="../../static/images/svg/winning.svg" alt="">&nbsp 당첨 포인트</div>
+                                        <div>200</div>
+                                    </div>
+                                    <div class="money flex-row flex-c">
+                                        <div><img src="../../static/images/svg/betting.svg" alt="">&nbsp 배팅 수익</div>
+                                        <div>200</div>
+                                    </div>
+                                </div>
+                                <div class="flex-row g-6 jackpot">
+                                    <div class="text-wrap txt">
+                                        <div class="title px22 m-b-18"><img class="chip" src=../../static/images/svg/charge.svg alt="">&nbsp 배팅 포인트 무료충전</div>
+                                        <ol>
+                                            <li class="px13 m-b-5">배팅 포인트는 하루 10번 100만 포인트씩 무료로 충전할 수 있습니다.</li>
+                                            <li class="px13 m-b-5">잔여 배팅 포인트가 10만 이상이면 무료 충전을 할 수 없습니다.</li>
+                                            <li class="px13 m-b-5">롤링 포인트가 1억이 될 때마다 롤링 쿠폰(+100만 배팅 포인트)이 지급되며,<br> 롤링 쿠폰은 언제든 사용이 가능합니다.</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mainLayer">
+                                <div class="table-radius">
+                                    <table class="rank-table white">
+                                        <thead>
+                                        <tr class="text-center">
+                                            <th>게임</th>
+                                            <th>테이블</th>
+                                            <th>배팅</th>
+                                            <th>결과</th>
+                                            <th>배팅포인트</th>
+                                            <th>승/패</th>
+                                            <th>일시</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody class="text-right">
+                                        <tr>
+                                            <td>바카라</td>
+                                            <td>코리아 스피드 바카라A</td>
+                                            <td>플레이어</td>
+                                            <td><div class="num">8</div>
+                                                <div class="bg-card bg-card-clover-item-1"></div>
+                                                <div class="bg-card bg-card-clover-item-13"></div>
+                                                <img src="../../static/images/svg/vs.svg" alt="">
+                                                <div class="bg-card bg-card-heart-item-9"></div>
+                                                <div class="bg-card bg-card-clover-item-12"></div>
+                                                <div class="num">8</div>
+                                            </td>
+                                            <td>50,000</td>
+                                            <td>-50,000</td>
+                                            <td>2024-05-21 23:23:09</td>
+                                        </tr>
+                                        <tr>
+                                            <td>바카라</td>
+                                            <td>코리아 스피드 바카라A</td>
+                                            <td>플레이어</td>
+                                            <td><div class="num">4 </div>
+                                                <div class="bg-card bg-card-clover-item-1 card-rotate-l"></div>
+                                                <div class="bg-card bg-card-clover-item-13"></div>
+                                                <div class="bg-card bg-card-clover-item-13"></div>
+                                                <img src="../../static/images/svg/vs.svg" alt="">
+                                                <div class="bg-card bg-card-clover-item-9"></div>
+                                                <div class="bg-card bg-card-clover-item-13"></div>
+                                                <div class="bg-card bg-card-clover-item-12 card-rotate-r"></div>
+                                                <div class="num"> 1</div>
+                                            </td>
+                                            <td>10,000,000</td>
+                                            <td>-20,000,000</td>
+                                            <td>2024-05-21 23:23:09</td>
+                                        </tr>
+                                        <tr>
+                                            <td>바카라</td>
+                                            <td>코리아 스피드 바카라A</td>
+                                            <td>타이 4</td>
+                                            <td><div class="num"> 4</div>
+                                                <div class="bg-card bg-card-clover-item-1 card-rotate-l"></div>
+                                                <div class="bg-card bg-card-clover-item-13"></div>
+                                                <div class="bg-card bg-card-clover-item-13"></div>
+                                                <img src="../../static/images/svg/vs.svg" alt="">
+                                                <div class="bg-card bg-card-clover-item-9"></div>
+                                                <div class="bg-card bg-card-clover-item-13"></div>
+                                                <div class="bg-card bg-card-clover-item-12 card-rotate-r"></div>
+                                                <div class="num">4 </div></td>
+                                            <td>4 100,000</td>
+                                            <td>-800,000</td>
+                                            <td>2024-05-21 23:23:09</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <tfoot class="h100px">
+                            <tr>
+                                <td colspan='8' class="text-cneter">
+                                    <div class="pagination flex-row flex-c-c">
+                                        <div class="page flex-c-c bc-activate">1</div>
+                                        <div class="page flex-c-c">2</div>
+                                        <div class="page flex-c-c">3</div>
+                                        <div class="page flex-c-c">4</div>
+                                        <div class="page flex-c-c">5</div>
+                                        <div class="page flex-c-c">6</div>
+                                        <div class="page flex-c-c">7</div>
+                                        <div class="page flex-c-c">8</div>
+                                        <div class="page flex-c-c">9</div>
+                                        <div class="page flex-c-c">10</div>
+                                        <button class="next-btn page flex-c-c">
+                                            <img src="../../static/images/svg/next.svg" alt="">
+                                        </button>
+                                        <button class="next-btn page flex-c-c">
+                                            <img src="../../static/images/svg/next-two.svg" alt="">
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tfoot>
+                        </div>
+                    </div>
+                </div>
+            <div id="footer" class=" bc-footer" th:insert="include/footer"></div>
+        </div>
+    </section>
+</div>
+</body>
+</html>

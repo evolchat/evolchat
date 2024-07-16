@@ -11,6 +11,7 @@ public class SupportController {
     public String support_notice(Model model) {
         model.addAttribute("activeCategory", "support_notice");
         model.addAttribute("activePage", "support_notice");
+        model.addAttribute("contentFragment", "fragments/support_notice");
         return "index";
     }
 
@@ -18,6 +19,7 @@ public class SupportController {
     public String support_help(Model model) {
         model.addAttribute("activeCategory", "support_notice");
         model.addAttribute("activePage", "support_help");
+        model.addAttribute("contentFragment", "fragments/support_help");
         return "index";
     }
 
@@ -25,6 +27,7 @@ public class SupportController {
     public String support_support(Model model) {
         model.addAttribute("activeCategory", "support_notice");
         model.addAttribute("activePage", "support_support");
+        model.addAttribute("contentFragment", "fragments/support_support");
         return "index";
     }
 
@@ -32,6 +35,7 @@ public class SupportController {
     public String support_inquiry(Model model) {
         model.addAttribute("activeCategory", "support_notice");
         model.addAttribute("activePage", "support_inquiry");
+        model.addAttribute("contentFragment", "fragments/support_inquiry");
         return "index";
     }
 
@@ -39,6 +43,7 @@ public class SupportController {
     public String support_inquiry_write(Model model) {
         model.addAttribute("activeCategory", "support_notice");
         model.addAttribute("activePage", "support_inquiry_write");
+        model.addAttribute("contentFragment", "fragments/support_inquiry_write");
         return "index";
     }
 }

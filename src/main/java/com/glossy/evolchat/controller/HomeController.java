@@ -6,11 +6,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class HomeController {
-
     @GetMapping("/home")
     public String home(Model model) {
         model.addAttribute("activeCategory", "home");
         model.addAttribute("activePage", "home");
+        model.addAttribute("contentFragment", "fragments/home");
         return "index";
     }
 }

@@ -49,6 +49,7 @@ public class OpenChatController {
     public String openchat(Model model) {
         model.addAttribute("activeCategory", "openchat");
         model.addAttribute("activePage", "openchat");
+        model.addAttribute("contentFragment", "fragments/openchat");
         return "index";
     }
 }

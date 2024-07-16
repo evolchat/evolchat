@@ -11,6 +11,7 @@ public class RankController {
     public String rank(Model model) {
         model.addAttribute("activeCategory", "rank");
         model.addAttribute("activePage", "rank");
+        model.addAttribute("contentFragment", "fragments/rank");
         return "index";
     }
 }

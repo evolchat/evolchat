@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>에볼챗닷컴</title>
+    <script src="../../static/js/home.js"></script>
+    <link rel="stylesheet" href="../../static/css/page/home.css"/>
+</head>
+
+<body>
+    <div class="wrapper bc-black vh100 ">
+<!--        <div id="header" class="header flex-row bc-header"></div>-->
+        <Section class="flex-row">
+<!--            <div id="nav"></div>-->
+            <div class="wrap bc-footer">
+                <div class="content">
+                    <div class="mainContent bc-main">
+                        <div class="header">
+                            <div class="options grey-4  flex-row  flex-c-c">
+                                <div class="icon auto flex-row flex-c">
+                                    <div class="bg-icon-item-1"></div>
+                                    <div class="">오토</div>
+                                </div>
+                                <div class="icon ">
+                                    <div class="bg-icon-item-2 ">
+
+                                    </div>
+                                </div>
+                                <div class="icon">
+                                    <div class="bg-icon-item-3 ">
+
+                                    </div>
+                                </div>
+                                <div class="item-wrap flex-row  flex-c">
+                                    <div class="bg-game-chips bg-game-chips-1"></div>
+                                    <div class="bg-game-chips bg-game-chips-2"></div>
+                                    <div class="bg-game-chips bg-game-chips-3"></div>
+                                    <div class="bg-game-chips bg-game-chips-4"></div>
+                                    <div class="bg-game-chips bg-game-chips-5"></div>
+                                    <div class="bg-game-chips bg-game-chips-6"></div>
+                                </div>
+                                <div class="icon">
+                                    <div class="bg-icon-item-4 ">
+
+                                    </div>
+                                </div>
+                                <div class="icon">
+                                    <span>x</span>
+                                    2
+                                </div>
+                                <div class="icon">
+                                    패턴등록
+                                </div>
+                            </div>
+
+                            <div class="bg">
+
+                            </div>
+
+                        </div>
+                        <div class="mainLayer text-center">
+                            <div class="gameLayer">
+                                <div class="gameLayout white">
+                                    <div class="top flex-row  flex-c">
+                                        <div class="title">코리아 스피드 바카라 A</div><i></i>
+                                        <div class="count"><i></i>582</div>
+                                    </div>
+                                    <div class="middle flex-row flex-c-c">
+                                        <div class="play-btn border-blue bg-b-b left-radius">
+                                            플레이어페어
+                                        </div>
+                                        <div class="play-btn border-blue bg-b-b right-radius position-r flex-c">
+                                            <div class="score position-a">4</div>
+                                            <div class="card-wrap flex-row-reverse">
+                                                <div class="bg-card bg-card-diamond-item-1"></div>
+                                                <div class="bg-card bg-card-diamond-item-2"></div>
+                                                <div class="bg-card bg-card-diamond-item-3 card-rotate-l"></div>
+                                            </div>
+                                        </div>
+                                        <div class="play-btn border-green bg-g-b">타이</div>
+                                        <div class="play-btn border-red bg-r-b left-radius position-r flex-c">
+                                            <div class="score position-a">6</div>
+                                            <div class="card-wrap flex-row flex-c">
+                                                <div class="bg-card bg-card-diamond-item-1"></div>
+                                                <div class="bg-card bg-card-diamond-item-2"></div>
+                                                <div class="bg-card bg-card-diamond-item-3 card-rotate-r"></div>
+                                            </div>
+                                        </div>
+                                        <div class="play-btn border-red bg-r-b right-radius">뱅커페어</div>
+                                    </div>
+                                    <div class="bottom">
+                                        <div class="top flex-row">
+                                            <div class="gameCount"># 53</div>
+                                            <div class="pWin">
+                                                <div class="i-circle bc-blue">P</div><span>23</span>
+                                            </div>
+                                            <div class="bWin">
+                                                <div class="i-circle bc-red">B</div><span>29</span>
+                                            </div>
+                                            <div class="noWin">
+                                                <div class="i-circle bc-green">T</div><span>1</span>
+                                            </div>
+                                            <div class="">
+                                                <div class="i-circle bc-grey"><span class="v-h">P</span></div>
+                                                <span>5</span>
+                                            </div>
+                                            <div class="">
+                                                <div class="i-circle bc-grey"><span class="v-h">B</span></div>
+                                                <span>4</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="gameLayer">
+                                <div class="gameLayout white">
+                                    <div class="top flex-row  flex-c">
+                                        <div class="title">코리아 스피드 바카라 A</div><i></i>
+                                        <div class="count"><i></i>582</div>
+                                    </div>
+                                    <div class="middle flex-row flex-c-c">
+                                        <div class="play-btn border-blue bg-b-b left-radius">
+                                            플레이어페어
+                                        </div>
+                                        <div class="play-btn border-blue bg-b-b right-radius"></div>
+                                        <div class="play-btn border-green bg-g-b">타이</div>
+                                        <div class="play-btn border-red bg-r-b left-radius"></div>
+                                        <div class="play-btn border-red bg-r-b right-radius">뱅커페어</div>
+                                    </div>
+                                    <div class="bottom">
+                                        <div class="top flex-row">
+                                            <div class="gameCount"># 53</div>
+                                            <div class="pWin">
+                                                <div class="i-circle bc-blue">P</div><span>23</span>
+                                            </div>
+                                            <div class="bWin">
+                                                <div class="i-circle bc-red">B</div><span>29</span>
+                                            </div>
+                                            <div class="noWin">
+                                                <div class="i-circle bc-green">T</div><span>1</span>
+                                            </div>
+                                            <div class="">
+                                                <div class="i-circle bc-grey"><span class="v-h">P</span></div>
+                                                <span>5</span>
+                                            </div>
+                                            <div class="">
+                                                <div class="i-circle bc-grey"><span class="v-h">B</span></div>
+                                                <span>4</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="gameLayer">
+                                <div class="gameLayout white">
+                                    <div class="top flex-row  flex-c">
+                                        <div class="title">코리아 스피드 바카라 A</div><i></i>
+                                        <div class="count"><i></i>582</div>
+                                    </div>
+                                    <div class="middle flex-row flex-c-c">
+                                        <div class="play-btn border-blue bg-b-b left-radius">
+                                            플레이어페어
+                                        </div>
+                                        <div class="play-btn border-blue bg-b-b right-radius"></div>
+                                        <div class="play-btn border-green bg-g-b">타이</div>
+                                        <div class="play-btn border-red bg-r-b left-radius"></div>
+                                        <div class="play-btn border-red bg-r-b right-radius">뱅커페어</div>
+                                    </div>
+                                    <div class="bottom">
+                                        <div class="top flex-row">
+                                            <div class="gameCount"># 53</div>
+                                            <div class="pWin">
+                                                <div class="i-circle bc-blue">P</div><span>23</span>
+                                            </div>
+                                            <div class="bWin">
+                                                <div class="i-circle bc-red">B</div><span>29</span>
+                                            </div>
+                                            <div class="noWin">
+                                                <div class="i-circle bc-green">T</div><span>1</span>
+                                            </div>
+                                            <div class="">
+                                                <div class="i-circle bc-grey"><span class="v-h">P</span></div>
+                                                <span>5</span>
+                                            </div>
+                                            <div class="">
+                                                <div class="i-circle bc-grey"><span class="v-h">B</span></div>
+                                                <span>4</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="gameLayer">
+                                <div class="gameLayout white">
+                                    <div class="top flex-row  flㅋex-c">
+                                        <div class="title">코리아 스피드 바카라 A</div><i></i>
+                                        <div class="count"><i></i>582</div>
+                                    </div>
+                                    <div class="middle flex-row flex-c-c">
+                                        <div class="play-btn border-blue bg-b-b left-radius">
+                                            플레이어페어
+                                        </div>
+                                        <div class="play-btn border-blue bg-b-b right-radius"></div>
+                                        <div class="play-btn border-green bg-g-b">타이</div>
+                                        <div class="play-btn border-red bg-r-b left-radius"></div>
+                                        <div class="play-btn border-red bg-r-b right-radius">뱅커페어</div>
+                                    </div>
+                                    <div class="bottom">
+                                        <div class="top flex-row">
+                                            <div class="gameCount"># 53</div>
+                                            <div class="pWin">
+                                                <div class="i-circle bc-blue">P</div><span>23</span>
+                                            </div>
+                                            <div class="bWin">
+                                                <div class="i-circle bc-red">B</div><span>29</span>
+                                            </div>
+                                            <div class="noWin">
+                                                <div class="i-circle bc-green">T</div><span>1</span>
+                                            </div>
+                                            <div class="">
+                                                <div class="i-circle bc-grey"><span class="v-h">P</span></div>
+                                                <span>5</span>
+                                            </div>
+                                            <div class="">
+                                                <div class="i-circle bc-grey"><span class="v-h">B</span></div>
+                                                <span>4</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="gameLayer">
+                                <div class="gameLayout white">
+                                    <div class="top flex-row  flex-c">
+                                        <div class="title">코리아 스피드 바카라 A</div><i></i>
+                                        <div class="count"><i></i>582</div>
+                                    </div>
+                                    <div class="middle flex-row flex-c-c">
+                                        <div class="play-btn border-blue bg-b-b left-radius">
+                                            플레이어페어
+                                        </div>
+                                        <div class="play-btn border-blue bg-b-b right-radius"></div>
+                                        <div class="play-btn border-green bg-g-b">타이</div>
+                                        <div class="play-btn border-red bg-r-b left-radius"></div>
+                                        <div class="play-btn border-red bg-r-b right-radius">뱅커페어</div>
+                                    </div>
+                                    <div class="bottom">
+                                        <div class="top flex-row">
+                                            <div class="gameCount"># 53</div>
+                                            <div class="pWin">
+                                                <div class="i-circle bc-blue">P</div><span>23</span>
+                                            </div>
+                                            <div class="bWin">
+                                                <div class="i-circle bc-red">B</div><span>29</span>
+                                            </div>
+                                            <div class="noWin">
+                                                <div class="i-circle bc-green">T</div><span>1</span>
+                                            </div>
+                                            <div class="">
+                                                <div class="i-circle bc-grey"><span class="v-h">P</span></div>
+                                                <span>5</span>
+                                            </div>
+                                            <div class="">
+                                                <div class="i-circle bc-grey"><span class="v-h">B</span></div>
+                                                <span>4</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="gameLayer">
+                                <div class="gameLayout white">
+                                    <div class="top flex-row  flex-c">
+                                        <div class="title">코리아 스피드 바카라 A</div><i></i>
+                                        <div class="count"><i></i>582</div>
+                                    </div>
+                                    <div class="middle flex-row flex-c-c">
+                                        <div class="play-btn border-blue bg-b-b left-radius">
+                                            플레이어페어
+                                        </div>
+                                        <div class="play-btn border-blue bg-b-b right-radius"></div>
+                                        <div class="play-btn border-green bg-g-b">타이</div>
+                                        <div class="play-btn border-red bg-r-b left-radius"></div>
+                                        <div class="play-btn border-red bg-r-b right-radius">뱅커페어</div>
+                                    </div>
+                                    <div class="bottom">
+                                        <div class="top flex-row">
+                                            <div class="gameCount"># 53</div>
+                                            <div class="pWin">
+                                                <div class="i-circle bc-blue">P</div><span>23</span>
+                                            </div>
+                                            <div class="bWin">
+                                                <div class="i-circle bc-red">B</div><span>29</span>
+                                            </div>
+                                            <div class="noWin">
+                                                <div class="i-circle bc-green">T</div><span>1</span>
+                                            </div>
+                                            <div class="">
+                                                <div class="i-circle bc-grey"><span class="v-h">P</span></div>
+                                                <span>5</span>
+                                            </div>
+                                            <div class="">
+                                                <div class="i-circle bc-grey"><span class="v-h">B</span></div>
+                                                <span>4</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="gameLayer">
+                                <div class="gameLayout white">
+                                    <div class="top flex-row  flex-c">
+                                        <div class="title">코리아 스피드 바카라 A</div><i></i>
+                                        <div class="count"><i></i>582</div>
+                                    </div>
+                                    <div class="middle flex-row flex-c-c">
+                                        <div class="play-btn border-blue bg-b-b left-radius">
+                                            플레이어페어
+                                        </div>
+                                        <div class="play-btn border-blue bg-b-b right-radius"></div>
+                                        <div class="play-btn border-green bg-g-b">타이</div>
+                                        <div class="play-btn border-red bg-r-b left-radius"></div>
+                                        <div class="play-btn border-red bg-r-b right-radius">뱅커페어</div>
+                                    </div>
+                                    <div class="bottom">
+                                        <div class="top flex-row">
+                                            <div class="gameCount"># 53</div>
+                                            <div class="pWin">
+                                                <div class="i-circle bc-blue">P</div><span>23</span>
+                                            </div>
+                                            <div class="bWin">
+                                                <div class="i-circle bc-red">B</div><span>29</span>
+                                            </div>
+                                            <div class="noWin">
+                                                <div class="i-circle bc-green">T</div><span>1</span>
+                                            </div>
+                                            <div class="">
+                                                <div class="i-circle bc-grey"><span class="v-h">P</span></div>
+                                                <span>5</span>
+                                            </div>
+                                            <div class="">
+                                                <div class="i-circle bc-grey"><span class="v-h">B</span></div>
+                                                <span>4</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="gameLayer">
+                                <div class="gameLayout white">
+                                    <div class="top flex-row  flex-c">
+                                        <div class="title">코리아 스피드 바카라 A</div><i></i>
+                                        <div class="count"><i></i>582</div>
+                                    </div>
+                                    <div class="middle flex-row flex-c-c">
+                                        <div class="play-btn border-blue bg-b-b left-radius">
+                                            플레이어페어
+                                        </div>
+                                        <div class="play-btn border-blue bg-b-b right-radius"></div>
+                                        <div class="play-btn border-green bg-g-b">타이</div>
+                                        <div class="play-btn border-red bg-r-b left-radius"></div>
+                                        <div class="play-btn border-red bg-r-b right-radius">뱅커페어</div>
+                                    </div>
+                                    <div class="bottom">
+                                        <div class="top flex-row">
+                                            <div class="gameCount"># 53</div>
+                                            <div class="pWin">
+                                                <div class="i-circle bc-blue">P</div><span>23</span>
+                                            </div>
+                                            <div class="bWin">
+                                                <div class="i-circle bc-red">B</div><span>29</span>
+                                            </div>
+                                            <div class="noWin">
+                                                <div class="i-circle bc-green">T</div><span>1</span>
+                                            </div>
+                                            <div class="">
+                                                <div class="i-circle bc-grey"><span class="v-h">P</span></div>
+                                                <span>5</span>
+                                            </div>
+                                            <div class="">
+                                                <div class="i-circle bc-grey"><span class="v-h">B</span></div>
+                                                <span>4</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="gameLayer">
+                                <div class="gameLayout white">
+                                    <div class="top flex-row  flex-c">
+                                        <div class="title">코리아 스피드 바카라 A</div><i></i>
+                                        <div class="count"><i></i>582</div>
+                                    </div>
+                                    <div class="middle flex-row flex-c-c">
+                                        <div class="play-btn border-blue bg-b-b left-radius">
+                                            플레이어페어
+                                        </div>
+                                        <div class="play-btn border-blue bg-b-b right-radius"></div>
+                                        <div class="play-btn border-green bg-g-b">타이</div>
+                                        <div class="play-btn border-red bg-r-b left-radius"></div>
+                                        <div class="play-btn border-red bg-r-b right-radius">뱅커페어</div>
+                                    </div>
+                                    <div class="bottom">
+                                        <div class="top flex-row">
+                                            <div class="gameCount"># 53</div>
+                                            <div class="pWin">
+                                                <div class="i-circle bc-blue">P</div><span>23</span>
+                                            </div>
+                                            <div class="bWin">
+                                                <div class="i-circle bc-red">B</div><span>29</span>
+                                            </div>
+                                            <div class="noWin">
+                                                <div class="i-circle bc-green">T</div><span>1</span>
+                                            </div>
+                                            <div class="">
+                                                <div class="i-circle bc-grey"><span class="v-h">P</span></div>
+                                                <span>5</span>
+                                            </div>
+                                            <div class="">
+                                                <div class="i-circle bc-grey"><span class="v-h">B</span></div>
+                                                <span>4</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div id="footer" class=" bc-footer" th:insert="include/footer">
+                </div>
+            </div>
+        </section>
+    </div>
+<script>
+        $(function() {
+          $('select').selectric();
+        });
+</script>
+</body>
+
+</html>

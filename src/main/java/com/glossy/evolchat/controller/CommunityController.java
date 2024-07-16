@@ -27,6 +27,7 @@ public class CommunityController {
     public String community_detail(Model model) {
         model.addAttribute("activeCategory", "community_free");
         model.addAttribute("activePage", "community_detail");
+        model.addAttribute("contentFragment", "fragments/community_detail");
         return "index";
     }
 
@@ -34,6 +35,7 @@ public class CommunityController {
     public String community_free(Model model) {
         model.addAttribute("activeCategory", "community_free");
         model.addAttribute("activePage", "community_free");
+        model.addAttribute("contentFragment", "fragments/community_free");
         return "index";
     }
 
@@ -41,6 +43,7 @@ public class CommunityController {
     public String community_photo(Model model) {
         model.addAttribute("activeCategory", "community_free");
         model.addAttribute("activePage", "community_photo");
+        model.addAttribute("contentFragment", "fragments/community_photo");
         return "index";
     }
 
@@ -48,6 +51,7 @@ public class CommunityController {
     public String community_videos(Model model) {
         model.addAttribute("activeCategory", "community_free");
         model.addAttribute("activePage", "community_videos");
+        model.addAttribute("contentFragment", "fragments/community_videos");
         return "index";
     }
 
@@ -55,6 +59,7 @@ public class CommunityController {
     public String community_write(@RequestParam("boardId") int boardId, Model model) {
         model.addAttribute("activeCategory", "community_free");
         model.addAttribute("activePage", "community_write");
+        model.addAttribute("contentFragment", "fragments/community_write");
         model.addAttribute("boardId", boardId);
         return "index";
     }

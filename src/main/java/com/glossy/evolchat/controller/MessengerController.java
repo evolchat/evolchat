@@ -11,6 +11,7 @@ public class MessengerController {
     public String messenger_friend(Model model) {
         model.addAttribute("activeCategory", "messenger_friend");
         model.addAttribute("activePage", "messenger_friend");
+        model.addAttribute("contentFragment", "fragments/messenger_friend");
         return "index";
     }
 
@@ -18,6 +19,7 @@ public class MessengerController {
     public String messenger_message(Model model) {
         model.addAttribute("activeCategory", "messenger_friend");
         model.addAttribute("activePage", "messenger_message");
+        model.addAttribute("contentFragment", "fragments/messenger_message");
         return "index";
     }
 
@@ -25,6 +27,7 @@ public class MessengerController {
     public String messenger_blocklists(Model model) {
         model.addAttribute("activeCategory", "messenger_friend");
         model.addAttribute("activePage", "messenger_blocklists");
+        model.addAttribute("contentFragment", "fragments/messenger_blocklists");
         return "index";
     }
 
@@ -32,6 +35,7 @@ public class MessengerController {
     public String messenger_add_friend(Model model) {
         model.addAttribute("activeCategory", "messenger_friend");
         model.addAttribute("activePage", "messenger_add_friend");
+        model.addAttribute("contentFragment", "fragments/messenger_add_friend");
         return "index";
     }
 }

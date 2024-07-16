@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>에볼챗닷컴</title>
+    <link rel="stylesheet" href="../../static/css/page/community/write.css">
+    <script src="../../static/js/community_write.js"></script>
+</head>
+<body>
+    <div class="wrapper bc-black vh100 ">
+        <section class="flex-row">
+            <div class="wrap bc-footer ">
+                <div class="content">
+                    <div class="mainContent bc-main">
+                        <div class="mainLayer">
+                            <div class="sub-header flex-row flex-c white opacity60 px15">
+                                <div class="list active"><a href="community_free">자유</a></div>
+                                <div class="list"><a href="community_photo">포토</a></div>
+                                <div class="list"><a href="#">동영상</a></div>
+                            </div>
+                            <div class="container">
+                                <div class="tit">
+                                    <span>글작성</span>
+                                    <div class="submit-buttons">
+                                        <button id="save-draft">임시등록</button>
+                                        <button id="submit-post">등록</button>
+                                    </div>
+                                </div>
+                                <form id="post-form" action="/submit_post" method="post">
+                                    <input type="text" class="input-title" name="title" id="title" placeholder="제목을 입력해 주세요.">
+                                    <div class="toolbar-wrapper">
+                                        <div class="toolbar">
+                                            <div class="section">
+                                                <button type="button" class="toolbar-btn" onclick="execCmd('bold')">B</button>
+                                                <button type="button" class="toolbar-btn" onclick="execCmd('italic')"><i>I</i></button>
+                                                <button type="button" class="toolbar-btn" onclick="execCmd('underline')"><u>U</u></button>
+                                                <input class="color-picker" type="color" onchange="execCmd('foreColor', this.value)">
+                                            </div>
+                                            <div class="section">
+                                                <button type="button" class="toolbar-btn" onclick="toggleEmojiPicker()">😊</button>
+                                                <div class="emoji-picker" id="emoji-picker">
+                                                    <button type="button" onclick="insertEmoji('😊')">😊</button>
+                                                    <button type="button" onclick="insertEmoji('😂')">😂</button>
+                                                    <button type="button" onclick="insertEmoji('😍')">😍</button>
+                                                    <button type="button" onclick="insertEmoji('😭')">😭</button>
+                                                    <button type="button" onclick="insertEmoji('😠')">😠</button>
+                                                    <!-- 더 많은 이모티콘 추가 -->
+                                                </div>
+                                                <button type="button" class="toolbar-btn" onclick="document.getElementById('upload-image').click()">📷</button>
+                                                <input type="file" id="upload-image" style="display: none;" onchange="uploadFile('image')">
+                                                <button type="button" class="toolbar-btn" onclick="document.getElementById('upload-video').click()">📹</button>
+                                                <input type="file" id="upload-video" style="display: none;" onchange="uploadFile('video')">
+                                                <button type="button" class="toolbar-btn" onclick="document.getElementById('upload-file').click()">📎</button>
+                                                <input type="file" id="upload-file" style="display: none;" onchange="uploadFile('file')">
+                                            </div>
+                                            <div class="section">
+    <!--                                            <button class="toolbar-btn"></button>-->
+    <!--                                            <button class="toolbar-btn"></button>-->
+                                                <div style="flex-grow: 1;"></div>
+                                            </div>
+                                        </div>
+                                        <div class="editor" name="content" id="content" contenteditable="true"></div>
+                                        <textarea style="display:none;" name="content"></textarea>
+                                        <input type="text" class="input-tags" name="tags" id="tags" placeholder="# 태그를 입력해 주세요 (최대 5개)">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="footer" class="bc-footer"></div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

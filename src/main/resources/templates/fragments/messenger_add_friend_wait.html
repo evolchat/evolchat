@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>에볼챗닷컴</title>
+    <script src="../../static/js/messenger_add_friend_wait.js"></script>
+    <link rel="stylesheet" href="../../static/css/page/messenger/blocklists.css">
+</head>
+
+<body>
+
+    <div class="wrapper bc-black vh100 ">
+<!--        <div id="header" class="header flex-row bc-header"></div>-->
+        <Section class="flex-row">
+<!--            <div id="nav" class="bc-aside g-12"></div>-->
+            <div class="wrap bc-footer ">
+                <div class="content">
+                    <div class="mainContent bc-main">
+                        <div class="sub-header flex-row flex-c white opacity60 px15">
+                            <div class="list"><a href="messenger_friend">친구</a></div>
+                            <div class="list"><a href="messenger_message">메시지</a></div>
+                            <div class="list "><a href="messenger_blocklists">차단 목록</a></div>
+                            <div class="list active"><a href="messenger_add_friend">친구 추가하기</a></div>
+                        </div>
+                        <div class="sub-header flex-row flex-c">
+                            <div class="sub-header-search bc-footer flex-grow">
+                                <input type="text" placeholder="닉네임을 입력하여 친구를 추가할 수 있어요.">
+                            </div>
+                        </div>
+                      
+                        <div class="mainLayer">
+                            <div class="user-list-layer  px15 white">
+                                <div class="user-list flex-row flex-c">
+                                    <div class="profile"><img src="../../static/images/profile/user1.png" alt="#"></div>
+                                    <div class="user">
+                                        <p class="nickname opacity80">우울한협객</p>
+                                        <p class="text opacity60 px14">너희들은 내일만 보고 살지? 내일만 사는 놈은 오늘만 사는 놈한테 죽는다. 난 오늘만 살어!</p>
+                                    </div>
+                                    <button class="btn">친구 요청 취소</button>
+                                </div>
+                                <div class="user-list flex-row flex-c">
+                                    <div class="profile"><img src="../../static/images/profile/user1.png" alt="#"></div>
+                                    <div class="user">
+                                        <p class="nickname opacity80">연기의정신</p>
+                                    </div>
+                                    <button class="btn">친구 요청 취소</button>
+                                </div>
+                                <div class="user-list flex-row flex-c">
+                                    <div class="profile"><img src="../../static/images/profile/user1.png" alt="#"></div>
+                                    <div class="user">
+                                        <p class="nickname opacity80">우울한협객</p>
+                                        <p class="text opacity60 px14">너희들은 내일만 보고 살지? 내일만 사는 놈은 오늘만 사는 놈한테 죽는다. 난 오늘만 살어!</p>
+                                    </div>
+                                    <button class="btn">친구 요청 취소</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div id="footer" class=" bc-footer" th:insert="include/footer">
+                </div>
+
+            </div>
+
+        </section>
+    </div>
+
+</body>
+
+</html>

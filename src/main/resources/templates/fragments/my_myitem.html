@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>에볼챗닷컴</title>
+    <script src="../../static/js/my_myitem.js"></script>
+    <link rel="stylesheet" href="../../static/css/page/my/myitem.css"/>
+</head>
+
+<body>
+    <div class="wrapper bc-black vh100 ">
+<!--        <div id="header" class="header flex-row bc-header"></div>-->
+        <Section class="flex-row">
+<!--            <div id="nav" class="bc-aside g-12"></div>-->
+            <div class="wrap bc-footer ">
+                <div class="content">
+                    <div class="mainContent bc-main myitem">
+                        <div class="sub-header flex-row flex-c white opacity60 px15">
+                            <div class="list"><a href="mypqge">내정보</a></div>
+                            <div class="list active"><a href="my_myitem">아이템</a></div>
+                            <div class="list"><a href="my_mycash">캐시</a></div>
+                            <div class="list"><a href="my_bettingpoints">배팅 포인트</a></div>
+                            <div class="list"><a href="my_activitypoints">활동 포인트</a></div>
+                            <div class="list"><a href="my_goldchip">골드칩</a></div>
+<!--                        <div class="list"><a href="#">마이홈</a></div>-->
+<!--                         div class="list"><a href="#">비빌번호 변경</a></div>-->
+                        </div>
+                        <div class="sub-header ">
+                            <div class="sub-header-search bc-footer flex-grow">
+                                <input type="text" placeholder="상품명,상품 설명 검색">
+                                <img src="../../static/images/svg/search.svg" alt="" class="input-icon search" />
+                            </div>
+                        </div>
+                        <div class="mainLayer">
+                            <div class="item-list">
+                                <div class="shopping-item-wrap">
+                                    <div class="line">
+                                        <div class="top flex-row">
+                                            <div class="left flex-grow">
+                                                <div class="type px14 m-b-8">일회용</div>
+                                                <div class="name px17 m-b-10">닉네임 변경권</div>
+                                                <div class="text px13">프로필을 클릭하여 내정보 메뉴에서 닉네임을 변경하실 수 있습니다.</div>
+                                            </div>
+                                            <div class="right">
+                                                <div class="shopping-item shopping-item-1"></div>
+                                            </div>
+                                        </div>
+                                        <div class="btn-wrap flex-row">
+                                            <button class="gift disabled px15">보유 <span class="orange-FFBF00">3</span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="shopping-item-wrap">
+                                    <div class="line">
+                                        <div class="top flex-row">
+                                            <div class="left flex-grow">
+                                                <div class="type px14 m-b-8">일회용</div>
+                                                <div class="name px17 m-b-10">프로필 사진 등록권</div>
+                                                <div class="text px13">프로필 사진을 등록,변경할 수 있습니다.</div>
+                                            </div>
+                                            <div class="right">
+                                                <div class="shopping-item shopping-item-2"></div>
+                                            </div>
+                                        </div>
+                                        <div class="btn-wrap flex-row">
+                                            <button class="gift disabled px15">보유 <span class="orange-FFBF00">1</span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="shopping-item-wrap">
+                                    <div class="line">
+                                        <div class="top flex-row">
+                                            <div class="left flex-grow">
+                                                <div class="type px14 m-b-8">일회용</div>
+                                                <div class="name px17 m-b-10">프로필 배경 등록권</div>
+                                                <div class="text px13">마이홈 배경 이미지를 등록, 변경할 수 있습니다.</div>
+                                            </div>
+                                            <div class="right">
+                                                <div class="shopping-item shopping-item-3"></div>
+                                            </div>
+                                        </div>
+                                        <div class="btn-wrap flex-row">
+                                            <button class="gift disabled px15">보유 <span class="orange-FFBF00">22</span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="shopping-item-wrap">
+                                    <div class="line">
+                                        <div class="top flex-row">
+                                            <div class="left flex-grow">
+                                                <div class="type px14 m-b-8">일회용</div>
+                                                <div class="name px17 m-b-10">전적 초기화</div>
+                                                <div class="text px13">지난 배팅 내역을 초기화 합니다.</div>
+                                            </div>
+                                            <div class="right">
+                                                <div class="shopping-item shopping-item-14"></div>
+                                            </div>
+                                        </div>
+                                        <div class="btn-wrap flex-row">
+                                            <button class="gift disabled px15">보유 <span class="orange-FFBF00">2</span></button>
+                                            <button class="purchase activate px15">사용하기</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="shopping-item-wrap">
+                                    <div class="line">
+                                        <div class="top flex-row">
+                                            <div class="left flex-grow">
+                                                <div class="type px14 m-b-8">일회용</div>
+                                                <div class="name px17 m-b-10">활동정지 해제</div>
+                                                <div class="text px13">애볼쳇 이용규정을 어겨 활동정지된 상태에서 벗어 날 수 있습니다.
+                                                </div>
+                                            </div>
+                                            <div class="right">
+                                                <div class="shopping-item shopping-item-15"></div>
+                                            </div>
+                                        </div>
+                                        <div class="btn-wrap flex-row">
+                                            <button class="gift disabled px15">보유 <span class="orange-FFBF00">2</span></button>
+                                            <button class="purchase activate px15">사용하기</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="shopping-item-wrap">
+                                    <div class="line">
+                                        <div class="top flex-row">
+                                            <div class="left flex-grow">
+                                                <div class="type px14 m-b-8">1개월</div>
+                                                <div class="name px17 m-b-10">에볼챗 프리미엄 구독권</div>
+                                                <div class="text px13">닉네임, 프로필 사진, 마이홈 배경, 오늘의 한마디, 채팅, 메신저, 채팅 이미지,
+                                                    GIF, 이모티콘 무제한 이용가능</div>
+                                            </div>
+                                            <div class="right">
+                                                <div class="shopping-item shopping-item-13"></div>
+                                            </div>
+                                        </div>
+                                        <div class="btn-wrap flex-row">
+                                            <button class="purchase disabled px15 act">사용중</button>
+                                            <p class="px13 red txt">2024년 5월 30일 19:23:12 만료됨</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="footer" class=" bc-footer" th:insert="include/footer">
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
