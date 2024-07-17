@@ -9,44 +9,44 @@
 </head>
 
 <body>
+    <div id="content-area" class="flex-grow" style="">
+        <div class="wrapper bc-black vh100 ">
+    <!--        <div id="header" class="header flex-row bc-header"></div>-->
+            <Section class="flex-row">
+    <!--            <div id="nav" class="bc-aside g-12"></div>-->
+                <div class="wrap bc-footer ">
+                    <div class="content">
+                        <div class="mainContent bc-main">
+                            <div class="sub-header flex-row flex-c white opacity60 px15">
+                                <div class="list "><a href="support_notice">공지사항</a></div>
+                                <div class="list "><a href="support_help">도움말</a></div>
+                                <div class="list active"><a href="support_inquiry">문의하기</a></div>
+                            </div>
+                            <div class="sub-header flex-row flex-c">
+                                <div class="sub-header-search bc-footer flex-grow">
+                                    <input type="text" placeholder="닉네임 검색">
+                                    <img src="../../static/images/svg/search.svg" alt=""
+                                         class="input-icon search" />
+                                </div>
+                            </div>
 
-    <div class="wrapper bc-black vh100 ">
-<!--        <div id="header" class="header flex-row bc-header"></div>-->
-        <Section class="flex-row">
-<!--            <div id="nav" class="bc-aside g-12"></div>-->
-            <div class="wrap bc-footer ">
-                <div class="content">
-                    <div class="mainContent bc-main">
-                        <div class="sub-header flex-row flex-c white opacity60 px15">
-                            <div class="list "><a href="support_notice">공지사항</a></div>
-                            <div class="list "><a href="support_help">도움말</a></div>
-                            <div class="list active"><a href="support_inquiry">문의하기</a></div>
-                        </div>
-                        <div class="sub-header flex-row flex-c">
-                            <div class="sub-header-search bc-footer flex-grow">
-                                <input type="text" placeholder="닉네임 검색">
-                                <img src="../../static/images/svg/search.svg" alt=""
-                                     class="input-icon search" />
+                            <div class="mainLayer h100">
+                                <div class="content-wrap flex-c-c flex-column h100">
+                                    <!-- <div class="img-illust illust-4 m-b-20"></div> -->
+                                     <img src="../../static/images/svg/illustration-inquiry.svg" alt="">
+                                    <p class="gray px19">차단 친구가 없습니다.</p>
+                                </div>
                             </div>
                         </div>
-                      
-                        <div class="mainLayer h100">
-                            <div class="content-wrap flex-c-c flex-column h100">
-                                <!-- <div class="img-illust illust-4 m-b-20"></div> -->
-                                 <img src="../../static/images/svg/illustration-inquiry.svg" alt="">
-                                <p class="gray px19">차단 친구가 없습니다.</p>
-                            </div>
-                        </div>
+
+                        <div id="footer" class=" bc-footer" th:insert="include/footer">
                     </div>
 
-                    <div id="footer" class=" bc-footer" th:insert="include/footer">
                 </div>
 
-            </div>
-
-        </section>
+            </section>
+        </div>
     </div>
-
 </body>
 
 </html>

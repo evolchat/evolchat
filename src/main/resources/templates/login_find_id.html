@@ -15,85 +15,86 @@
 </head>
 
 <body>
-
-    <div class="wrapper bc-main vh100 ">
-        <div class="login-wrap max1280 flex-c-c assign-wrap">
-            <div class="header m-t-80 m-b-40">
-                <div class="logo"><img src="../static/images/logo/login_logo.png" alt="logo.png"></div>
+    <div id="content-area" class="flex-grow" style="">
+        <div class="wrapper bc-main vh100 ">
+            <div class="login-wrap max1280 flex-c-c assign-wrap">
+                <div class="header m-t-80 m-b-40">
+                    <div class="logo"><img src="../static/images/logo/login_logo.png" alt="logo.png"></div>
+                </div>
+                <div class="content white">
+                    <input type="radio" name="type" id="type1" class="hidden" checked>
+                    <label for="type1">회원정보에 등록된 휴대폰으로 인증</label>
+                    <div class="cb"></div>
+                    <div class="m-b-8"></div>
+                    <div class="type1 hidden">
+                        <div class="description white opacity60">회원정보에 등록한 휴대전화 번호와 입력한 휴대폰 번호가 같아야, 인증번호를 받을 수 있습니다.
+                        </div>
+                        <div class="field">
+                            <div class="top px14">
+                                <label for="nickname">이름</label>
+                            </div>
+                            <input class="input" type="text" id="nickname">
+                        </div>
+                        <div class="field">
+                            <div class="top px14 m-b-8">
+                                <label for="phone">휴대폰 번호</label>
+                            </div>
+                            <select name="" id="">
+                                <option value="+82">+82</option>
+                                <option value="+82">+82</option>
+                                <option value="+82">+82</option>
+                                <option value="+82">+82</option>
+                            </select>
+                            <input class="input" type="tel" id="phone">
+                            <button class="login-btn-activate">인증번호 발송</button>
+                            <input class="input m-b-8" type="text" id="number" placeholder="인증번호 6자리 숫자 입력">
+                            <div class="description white opacity60">인증번호가 오지 않나요?</div>
+                            <div class="log">1588-1588 번호가 스팸 문자로 등록되어 있는 것은 아닌지 확인해주세요. 스팸 문자로 등록되어 있지 않다면, 다시 한 번 '인증번호
+                                받기'를 눌러주세요.</div>
+                        </div>
+                    </div>
+                    <div class="line"></div>
+                    <input type="radio" name="type" id="type2" class="hidden">
+                    <label for="type2">회원정보에 등록된 이메일로 인증</label>
+                    <div class="cb"></div>
+                    <div class="m-b-8"></div>
+                    <div class="type2 hidden">
+                        <div class="description white opacity60">회원정보에 등록한 휴대전화 번호와 입력한 휴대폰 번호가 같아야, 인증번호를 받을 수 있습니다.
+                        </div>
+                        <div class="field m-b-8">
+                            <div class="top px14">
+                                <label for="nickname">이름</label>
+                            </div>
+                            <input class="input" type="text" id="nickname">
+                        </div>
+                        <div class="field">
+                            <div class="top px14">
+                                <label for="phone">이메일 주소</label>
+                            </div>
+                            <input class="input m-b-8" type="email" id="email">
+                            <button class="login-btn-activate">인증번호 발송</button>
+                            <input class="input m-b-8" type="text" id="number" placeholder="인증번호 6자리 숫자 입력">
+                            <div class="description white opacity60">인증번호가 오지 않나요?</div>
+                            <div class="log">1588-1588 번호가 스팸 문자로 등록되어 있는 것은 아닌지 확인해주세요. 스팸 문자로 등록되어 있지 않다면, 다시 한 번 '인증번호
+                                받기'를 눌러주세요.</div>
+                        </div>
+                    </div>
+                    <div class="line"></div>
+                    <input type="radio" name="type" id="type3" class="hidden">
+                    <label for="type3">회원정보에 등록된 이메일로 인증</label>
+                    <div class="cb"></div>
+                    <div class="m-b-8"></div>
+                    <div class="type3 hidden">
+                        <div class="description white opacity60">회원정보에 등록한 휴대전화 번호와 입력한 휴대폰 번호가 같아야, 인증번호를 받을 수 있습니다.
+                        </div>
+                    </div>
+                    <div class="btns flex-row flex-c">
+                        <button class="g-6">이전</button>
+                        <button class="g-6 login-btn-activate">다음</button>
+                    </div>
+                </div>
+                <div class="footer"><img src="../static/images/logo/corp.png" alt=""></div>
             </div>
-            <div class="content white">
-                <input type="radio" name="type" id="type1" class="hidden" checked>
-                <label for="type1">회원정보에 등록된 휴대폰으로 인증</label>
-                <div class="cb"></div>
-                <div class="m-b-8"></div>
-                <div class="type1 hidden">
-                    <div class="description white opacity60">회원정보에 등록한 휴대전화 번호와 입력한 휴대폰 번호가 같아야, 인증번호를 받을 수 있습니다.
-                    </div>
-                    <div class="field">
-                        <div class="top px14">
-                            <label for="nickname">이름</label>
-                        </div>
-                        <input class="input" type="text" id="nickname">
-                    </div>
-                    <div class="field">
-                        <div class="top px14 m-b-8">
-                            <label for="phone">휴대폰 번호</label>
-                        </div>
-                        <select name="" id="">
-                            <option value="+82">+82</option>
-                            <option value="+82">+82</option>
-                            <option value="+82">+82</option>
-                            <option value="+82">+82</option>
-                        </select>
-                        <input class="input" type="tel" id="phone">
-                        <button class="login-btn-activate">인증번호 발송</button>
-                        <input class="input m-b-8" type="text" id="number" placeholder="인증번호 6자리 숫자 입력">
-                        <div class="description white opacity60">인증번호가 오지 않나요?</div>
-                        <div class="log">1588-1588 번호가 스팸 문자로 등록되어 있는 것은 아닌지 확인해주세요. 스팸 문자로 등록되어 있지 않다면, 다시 한 번 '인증번호
-                            받기'를 눌러주세요.</div>
-                    </div>
-                </div>
-                <div class="line"></div>
-                <input type="radio" name="type" id="type2" class="hidden">
-                <label for="type2">회원정보에 등록된 이메일로 인증</label>
-                <div class="cb"></div>
-                <div class="m-b-8"></div>
-                <div class="type2 hidden">
-                    <div class="description white opacity60">회원정보에 등록한 휴대전화 번호와 입력한 휴대폰 번호가 같아야, 인증번호를 받을 수 있습니다.
-                    </div>
-                    <div class="field m-b-8">
-                        <div class="top px14">
-                            <label for="nickname">이름</label>
-                        </div>
-                        <input class="input" type="text" id="nickname">
-                    </div>
-                    <div class="field">
-                        <div class="top px14">
-                            <label for="phone">이메일 주소</label>
-                        </div>
-                        <input class="input m-b-8" type="email" id="email">
-                        <button class="login-btn-activate">인증번호 발송</button>
-                        <input class="input m-b-8" type="text" id="number" placeholder="인증번호 6자리 숫자 입력">
-                        <div class="description white opacity60">인증번호가 오지 않나요?</div>
-                        <div class="log">1588-1588 번호가 스팸 문자로 등록되어 있는 것은 아닌지 확인해주세요. 스팸 문자로 등록되어 있지 않다면, 다시 한 번 '인증번호
-                            받기'를 눌러주세요.</div>
-                    </div>
-                </div>
-                <div class="line"></div>
-                <input type="radio" name="type" id="type3" class="hidden">
-                <label for="type3">회원정보에 등록된 이메일로 인증</label>
-                <div class="cb"></div>
-                <div class="m-b-8"></div>
-                <div class="type3 hidden">
-                    <div class="description white opacity60">회원정보에 등록한 휴대전화 번호와 입력한 휴대폰 번호가 같아야, 인증번호를 받을 수 있습니다.
-                    </div>
-                </div>
-                <div class="btns flex-row flex-c">
-                    <button class="g-6">이전</button>
-                    <button class="g-6 login-btn-activate">다음</button>
-                </div>
-            </div>
-            <div class="footer"><img src="../static/images/logo/corp.png" alt=""></div>
         </div>
     </div>
 </body>

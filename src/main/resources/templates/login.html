@@ -17,58 +17,59 @@
 </head>
 
 <body>
-
-<div class="wrapper bc-main vh100">
-    <div class="loading-overlay">
-        <div class="loading-spinner"></div>
-    </div>
-    <div class="login-wrap max1280 flex-c-c assign-wrap">
-        <div class="header m-t-80 m-b-40 m-b-40">
-            <div class="logo m-b-40">
-                <img th:src="@{/static/images/logo/login_logo.png}" alt="logo.png">
+    <div id="content-area" class="flex-grow" style="">
+        <div class="wrapper bc-main vh100">
+            <div class="loading-overlay">
+                <div class="loading-spinner"></div>
             </div>
-        </div>
-        <div class="content">
-            <form id="loginForm" th:action="@{/login}" method="post">
-                <div th:if="${param.error}" class="error-message">
-                    <p th:text="${error}"></p>
-                </div>
-                <div th:if="${param.logout}" class="success-message">
-                    <p th:text="${logout}"></p>
-                </div>
-                <div class="inputfields">
-                    <div class="field-input m-b-10 flex-c">
-                        <input type="text" name="username" id="id" placeholder="아이디" autocomplete="username" required>
+            <div class="login-wrap max1280 flex-c-c assign-wrap">
+                <div class="header m-t-80 m-b-40 m-b-40">
+                    <div class="logo m-b-40">
+                        <img th:src="@{/static/images/logo/login_logo.png}" alt="logo.png">
                     </div>
-                    <div class="field-input flex-c">
-                        <input type="password" name="password" id="password" placeholder="비밀번호" autocomplete="current-password" required>
-                    </div>
-                    <div class="etcGroup">
-                        <div class="field white flex-c flex-row m-b-20">
-                            <input type="checkbox" name="remember-me" id="remember-me">
-                            <label for="remember-me"></label>
-                            <div class="top opacity60 px14">
-                                로그인 상태 유지
+                </div>
+                <div class="content">
+                    <form id="loginForm" th:action="@{/login}" method="post">
+                        <div th:if="${param.error}" class="error-message">
+                            <p th:text="${error}"></p>
+                        </div>
+                        <div th:if="${param.logout}" class="success-message">
+                            <p th:text="${logout}"></p>
+                        </div>
+                        <div class="inputfields">
+                            <div class="field-input m-b-10 flex-c">
+                                <input type="text" name="username" id="id" placeholder="아이디" autocomplete="username" required>
+                            </div>
+                            <div class="field-input flex-c">
+                                <input type="password" name="password" id="password" placeholder="비밀번호" autocomplete="current-password" required>
+                            </div>
+                            <div class="etcGroup">
+                                <div class="field white flex-c flex-row m-b-20">
+                                    <input type="checkbox" name="remember-me" id="remember-me">
+                                    <label for="remember-me"></label>
+                                    <div class="top opacity60 px14">
+                                        로그인 상태 유지
+                                    </div>
+                                </div>
+                                <div class="btns m-b-20">
+                                    <button id="login-button" type="submit">
+                                        <span class="white">로그인</span>
+                                    </button>
+                                </div>
+                                <div class="href px14 flex-c-c flex-sa">
+                                    <a class="white opacity60" th:href="@{/register}">회원가입</a>
+                                    <a class="white opacity60" th:href="@{/find-id}">아이디 찾기</a>
+                                    <a class="white opacity60" th:href="@{/find-password}">비밀번호 찾기</a>
+                                </div>
                             </div>
                         </div>
-                        <div class="btns m-b-20">
-                            <button id="login-button" type="submit">
-                                <span class="white">로그인</span>
-                            </button>
-                        </div>
-                        <div class="href px14 flex-c-c flex-sa">
-                            <a class="white opacity60" th:href="@{/register}">회원가입</a>
-                            <a class="white opacity60" th:href="@{/find-id}">아이디 찾기</a>
-                            <a class="white opacity60" th:href="@{/find-password}">비밀번호 찾기</a>
-                        </div>
-                    </div>
+                    </form>
                 </div>
-            </form>
-        </div>
-        <div class="footer">
-            <img th:src="@{/static/images/logo/corp.png}" alt="">
+                <div class="footer">
+                    <img th:src="@{/static/images/logo/corp.png}" alt="">
+                </div>
+            </div>
         </div>
     </div>
-</div>
 </body>
 </html>
