@@ -1,0 +1,187 @@
+
+.post-container {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.post-header {
+    align-items: center;
+    color: white;
+}
+
+.post-header .title {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: white;
+}
+
+.post-header .info {
+    font-size: 0.9em;
+    color: #777;
+}
+
+.post-image {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.post-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+.post-content {
+    font-size: 1em;
+    line-height: 1.6;
+    color: white;
+}
+
+.post-content .tags {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.post-content .tags span {
+    background-color: #ddd;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 0.9em;
+}
+
+.post-actions {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.post-actions button {
+    border: none;
+    padding: 10px; 20px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.post-actions button.grey {
+    background-color: #e0e0e0;
+    color: #000;
+}
+
+.post-actions button.red {
+    background-color: #ff6666;
+    color: #fff;
+}
+
+.comments {
+    margin-top: 30px;
+}
+
+.comments .comment {
+    border-top: 1px solid #eee;
+    padding: 10px 0;
+    color: white;
+}
+
+.comments .comment:first-child {
+    border-top: none;
+}
+
+.comments .comment .author {
+    font-weight: bold;
+}
+
+.comments .comment .time {
+    color: #777;
+    font-size: 0.8em;
+}
+
+.photo-item-layer {
+    max-width: 360px;
+    width: 360px;
+    padding: 20px;
+    display: inline-block;
+}
+
+.photo-item-layer>.photo-layout {
+    border-radius: 10px;
+    max-height: 320px;
+    width: 100%;
+    height: 320px;
+    overflow: hidden;
+    display: inline-block;
+    position: relative;
+
+}
+
+.photo-item-layer>.photo-layout>.img {
+    width: 100%;
+    height: 100%;
+}
+
+.photo-item-layer>.photo-layout>.img>img {
+    height: 100%;
+    width: 100%;
+    border: 0 none;
+    vertical-align: top;
+    object-fit: cover;
+}
+
+.photo-item-layer>.photo-layout .text-wrap {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 110px;
+    background: linear-gradient(to bottom,
+            rgba(20, 20, 20, 0) 10%,
+            /* rgba(20, 20, 20, 0.25) 25%, */
+            rgba(20, 20, 20, 0.5) 50%,
+            /* rgba(20, 20, 20, 0.75) 75%, */
+            rgba(20, 20, 20, 1) 100%);
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.photo-item-layer>.photo-layout .text-wrap .v-h {
+    flex-grow: 1;
+}
+
+.photo-item-layer .text-wrap .top {
+    /* padding-bottom: 15px;
+    padding-left: 15px;
+    padding-right: 15px; */
+}
+
+.photo-item-layer .text-wrap .bottom {
+    color: #fff;
+    /* padding-left: 10px; */
+    /* padding-bottom: 15px; */
+}
+
+.photo-item-layer .text-wrap .bottom>div {
+    margin-right: 10px;
+}
+
+.photo-item-layer .text-wrap .bottom>div img {
+    margin-right: 4px;
+}
+
+.photo-item-layer .user-layout {
+    color: #A7A8A9;
+}
+
+.photo-item-layer .user-layout>div {
+    margin-right: 8px;
+}
+
+.sub-header .bc-activate {
+    margin-left: 15px;
+}
+
+.mainLayer {
+    background-color: #2C2E33;
+    margin-bottom: 50px;
+}
