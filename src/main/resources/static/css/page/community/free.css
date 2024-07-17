@@ -8,6 +8,7 @@
 }
 
 .post-list .post {
+    max-width: 65vw;
     min-height: 170px;
     max-height: 190px;
     justify-content: space-between;
@@ -15,7 +16,7 @@
 }
 
 .post-list .post .text-wrap {
-    /* max-width: 740px; */
+ /* max-width: 740px; */
     max-width: 80%;
 }
 
