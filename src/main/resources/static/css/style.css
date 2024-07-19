@@ -136,6 +136,7 @@ body {
     font-family: 'Pretendard-Regular', sans-serif;
     font-weight: 400;
     font-style: normal;
+    background-color: #2C2E33;
 }
 
 input[type=text],
@@ -1650,7 +1651,44 @@ header>p {
     margin-top: 20px;
     margin-bottom: 10px;
 }
-
+#content-area {
+    animation: fadein 1s;
+    -moz-animation: fadein 1s; /* Firefox */
+    -webkit-animation: fadein 1s; /* Safari and Chrome */
+    -o-animation: fadein 1s; /* Opera */
+}
+@keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-moz-keyframes fadein { /* Firefox */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-webkit-keyframes fadein { /* Safari and Chrome */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-o-keyframes fadein { /* Opera */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity: 1;
+    }
+}
 #content-area>div>section>div {
     display: flex;
     width: 100%;

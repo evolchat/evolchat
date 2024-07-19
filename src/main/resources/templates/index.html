@@ -19,16 +19,14 @@
     <script src="https://cdn.jsdelivr.net/npm/stompjs@2.3.3/lib/stomp.min.js"></script>
 </head>
 <body th:data-active-category="${activeCategory}" th:data-active-page="${activePage}" th:data-board-id="${boardId}">
-    <div id="content-area" class="flex-grow" style="">
         <div class="wrapper bc-black vh100">
             <div id="header" class="header flex-row bc-header" th:insert="include/header"></div>
             <Section class="flex-row">
                 <div id="nav" th:insert="include/nav"></div>
-                <div id="content-area" th:replace="${contentFragment}"></div>
+                <div id="content" th:replace="${contentFragment}"></div>
                 <div id="chat" class="content chatLayer bc-aside" th:insert="include/chat"></div>
             </section>
         </div>
-    </div>
 <script>
     $(function() {
         const activeCategory = $('body').attr('data-active-category');
@@ -36,23 +34,6 @@
         console.log('Active Page:', activePage); // Debugging line
 
         $('select').selectric();
-<!--        const loadPageContent = (page) => {-->
-<!--            $('#content-area').fadeOut(300, function() {-->
-<!--                $.ajax({-->
-<!--                    url: `/${page}_page`, // URL of the content to load-->
-<!--                    method: 'GET',-->
-<!--                    success: function(data) {-->
-<!--                        $('#content-area').html(data).fadeIn(300);-->
-<!--                        $("#footer").load("/footer");-->
-<!--                        $('select').selectric();-->
-<!--                        history.pushState(null, null, page);-->
-<!--                    },-->
-<!--                    error: function() {-->
-<!--                        $('#content-area').html('<p>Error loading content.</p>').fadeIn(300);-->
-<!--                    }-->
-<!--                });-->
-<!--            });-->
-<!--        };-->
 
         if (activePage) {
             loadPageContent(activePage);
