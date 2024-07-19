@@ -47,24 +47,39 @@ if (draft) {
     document.getElementById('tags').value = tags;
 }
 
-document.getElementById('save-draft').addEventListener('click', function() {
+function saveDraft() {
     const title = document.getElementById('title').value;
     const content = document.getElementById('content').innerHTML;
     const tags = document.getElementById('tags').value;
     const draft = { title, content, tags };
     localStorage.setItem('postDraft', JSON.stringify(draft));
     alert('임시 저장되었습니다.');
-});
+}
 
-document.getElementById('submit-post').addEventListener('click', function () {
-    const editorContent = document.getElementById('content').innerHTML;
-    document.querySelector('textarea[name="content"]').value = editorContent;
+function submitPost() {
+    const title = document.getElementById('title').value;
+    const content = document.getElementById('content').innerHTML;
+    const tags = document.getElementById('tags').value;
     const boardId = document.body.getAttribute('data-board-id');
-    const boardIdInput = document.createElement('input');
-    boardIdInput.type = 'hidden';
-    boardIdInput.name = 'boardId';
-    boardIdInput.value = boardId;
-    document.getElementById('post-form').appendChild(boardIdInput);
 
-    document.getElementById('post-form').submit();
-});
+    if (!boardId) {
+        alert('게시판 ID가 설정되지 않았습니다.');
+        return;
+    }
+
+    $.ajax({
+        url: '/submit_post',
+        type: 'POST',
+        data: {
+            title: title,
+            content: content,
+            tags: tags,
+            boardId: boardId
+        },
+        success: function(response) {
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            alert('글 작성에 실패했습니다. 다시 시도해 주세요.');
+        }
+    });
+}

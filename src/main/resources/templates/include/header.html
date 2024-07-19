@@ -62,10 +62,8 @@
 </div>
 <script>
     $(document).ready(function() {
-        const userId = 1; // Set the userId here
-
         $.ajax({
-            url: `/user-points/${userId}`,
+            url: `/user-points/current`,
             type: 'GET',
             success: function(response) {
                 $('#bettingPoints').text(response.bbettingPoints);

@@ -15,17 +15,20 @@ public class Post {
     @Column(unique = true, nullable = false)
     private int postId;
 
-    @Column(nullable = false)
-    private int userId;
+    @Column(nullable = false, length = 255)
+    private String userId;
 
     @Column(nullable = false)
     private int boardId;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 255)
     private String title;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String content;
+
+    @Column(nullable = false, columnDefinition = "TEXT")
+    private String tags;
 
     @Column(nullable = false)
     private LocalDateTime createdAt;

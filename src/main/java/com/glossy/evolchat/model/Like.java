@@ -20,7 +20,7 @@ public class Like {
     private int postId;
 
     @Column(name = "user_id", nullable = false)
-    private int userId;
+    private String userId;
 
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;

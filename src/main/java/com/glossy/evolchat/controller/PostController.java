@@ -62,7 +62,7 @@ public class PostController {
         long likeCount = postLikeService.countLikesByPostId(post.getPostId());
         PostDto postDto = new PostDto();
         postDto.setPostId(post.getPostId());
-        postDto.setUserId(post.getUserId());
+        postDto.setUserId(Integer.parseInt(post.getUserId()));
         postDto.setBoardId(post.getBoardId());
         postDto.setTitle(post.getTitle());
         postDto.setContent(post.getContent());

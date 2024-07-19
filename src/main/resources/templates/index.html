@@ -23,7 +23,7 @@
             <div id="header" class="header flex-row bc-header" th:insert="include/header"></div>
             <Section class="flex-row">
                 <div id="nav" th:insert="include/nav"></div>
-                <div id="content" th:replace="${contentFragment}"></div>
+                <div th:replace="${contentFragment}"></div>
                 <div id="chat" class="content chatLayer bc-aside" th:insert="include/chat"></div>
             </section>
         </div>

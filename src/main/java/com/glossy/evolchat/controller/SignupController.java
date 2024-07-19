@@ -34,7 +34,7 @@ public class SignupController {
         }
 
         // 아이디 중복 확인
-        if (userRepository.findByUsername(user.getUsername()) != null) {
+        if (userRepository.findByUsername(user.getUsername()).isPresent()) {
             model.addAttribute("error", "이미 사용중인 아이디입니다.");
             return "signup";
         }

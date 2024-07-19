@@ -25,11 +25,10 @@
                                     <div class="tit">
                                         <span>글작성</span>
                                         <div class="submit-buttons">
-                                            <button id="save-draft">임시등록</button>
-                                            <button id="submit-post">등록</button>
+                                            <button onclick="saveDraft()">임시등록</button>
+                                            <button onclick="submitPost()">등록</button>
                                         </div>
                                     </div>
-                                    <form id="post-form" action="/submit_post" method="post">
                                         <input type="text" class="input-title" name="title" id="title" placeholder="제목을 입력해 주세요.">
                                         <div class="toolbar-wrapper">
                                             <div class="toolbar">
@@ -66,7 +65,6 @@
                                             <textarea style="display:none;" name="content"></textarea>
                                             <input type="text" class="input-tags" name="tags" id="tags" placeholder="# 태그를 입력해 주세요 (최대 5개)">
                                         </div>
-                                    </form>
                                 </div>
                             </div>
                         </div>

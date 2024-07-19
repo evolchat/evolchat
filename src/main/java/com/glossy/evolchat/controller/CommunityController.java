@@ -1,7 +1,10 @@
 package com.glossy.evolchat.controller;
 
 import com.glossy.evolchat.model.Post;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import com.glossy.evolchat.repository.PostRepository;
 import org.springframework.ui.Model;
@@ -72,12 +75,20 @@ public class CommunityController {
             @RequestParam("tags") String tags,
             @RequestParam("boardId") int boardId,
             Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String username = auth.getName();
+
+        if (username == null) {
+            model.addAttribute("error", "로그인 세션이 만료되었습니다.");
+            return "redirect:/login";
+        }
 
         Post post = new Post();
         post.setTitle(title);
         post.setContent(content);
         post.setBoardId(boardId);
-        post.setUserId(1);
+        post.setTags(tags);
+        post.setUserId(username); // 세션에서 가져온 사용자 ID를 사용
         post.setCreatedAt(LocalDateTime.now());
         post.setUpdatedAt(LocalDateTime.now());
 

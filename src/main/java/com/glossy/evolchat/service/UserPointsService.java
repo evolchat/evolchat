@@ -17,6 +17,10 @@ public class UserPointsService {
         return userPointsRepository.findById(id);
     }
 
+    public Optional<UserPoints> getUserPointsByUsername(String username) {
+        return userPointsRepository.findByUsername(username);
+    }
+
     public UserPoints saveUserPoints(UserPoints userPoints) {
         return userPointsRepository.save(userPoints);
     }
