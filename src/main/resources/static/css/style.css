@@ -805,6 +805,10 @@ table {
     color: #fff;
 }
 
+.msg {
+    padding-left: 10px;
+}
+
 .orange-FBC22B {
     color: #FBC22B
 }
@@ -1643,7 +1647,6 @@ table {
 #nav {
     max-width: 240px;
     width: 100%;
-    padding: 0 10px;
 }
 
 /* 최근메시지 영역 */
@@ -1701,6 +1704,7 @@ header>p {
 /* 최근메시지 영역 */
 header>.nav {
     flex-flow: column;
+    padding: 0px 10px;
 }
 
 header>.nav a.active {
