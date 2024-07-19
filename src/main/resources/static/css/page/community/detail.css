@@ -1,3 +1,6 @@
+body {
+    font-family: 'Pretendard-Regular';
+}
 
 .post-container {
     max-width: 1000px;
@@ -21,20 +24,22 @@
 
 .post-header .profile {
     display: flex;
+    justify-content: space-between;
     margin-top: 1rem;
+}
+
+.acc {
+    display: flex;
 }
 
 .post-header .profile .nickname {
     margin: 7px 10px;
 }
 
-.post-header .profile .nickname img {
-    margin-top: 0.2rem;
-}
-
 .post-header .info {
-    font-size: 0.9em;
-    color: #777;
+    font-size: 1.1em;
+    color: white;
+    padding-bottom: 0.3rem;
 }
 
 .post-image {
@@ -63,7 +68,7 @@
     gap: 10px;
 }
 
-.post-content .tags:nth-child(1)  {
+.post-content .tags span:nth-child(1)  {
     background-color: #35373D;
 }
 
@@ -85,9 +90,13 @@
 
 .post-actions button {
     border: none;
-    padding: 15px 40px;
+    padding: 13px 30px;
     border-radius: 30px;
     cursor: pointer;
+}
+
+.post-actions button img {
+    vertical-align: middle;
 }
 
 .post-actions button.grey {
@@ -102,14 +111,34 @@
 
 .post-actions button.gray {
     background-color: #535560;
+    color: white;
 }
+
+.comment .account {
+    display: flex;
+    justify-content: space-between;
+}
+
+.comment .entire {
+    margin-left: 10px;
+}
+
 
 .comments {
     margin-top: 30px;
 }
 
+.comments .tit {
+    color: white;
+}
+
+.comments .comment:nth-of-type(3) {
+    padding: 10px 0px 10px 70px;
+}
+
 .comments .comment {
-    border-top: 1px solid #eee;
+    display: flex;
+    align-items: flex-start;
     padding: 10px 0;
     color: white;
 }
@@ -122,15 +151,127 @@
     font-weight: bold;
 }
 
+.comments .comment .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.comments .tit span {
+    color: yellow;
+}
+
+.comment-input {
+    background-color: #1A1C20;
+    align-items: center;
+    margin: 20px 0;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+}
+
+.comment-input .main {
+    display: flex;
+    justify-content: space-between;
+}
+
+.comment-input .name {
+    margin: 5px 10px;
+    font-weight: bold;
+}
+
+.comment-input textarea {
+    flex-grow: 1;
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    border-radius: 5px;
+    margin-right: 10px;
+    background-color: #1A1C20;
+    color: white;
+    border: none;
+}
+
+.comment-input .text {
+    margin: 5px 10px;
+    white-space: nowrap;
+}
+
+.comment-input img {
+    width: 24px;
+    height: 24px;
+    margin: 5px 10px;
+    cursor: pointer;
+}
+
+.comment-input .send {
+    display: flex;
+    justify-content: space-between;
+}
+
+.comment-input button {
+    padding: 10px 20px;
+    background-color: #35373D;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.profile .options {
+    position: relative;
+    margin-top: 15px;
+     cursor: pointer;
+}
+
+.comments .comment .options {
+    position: relative;
+    cursor: pointer;
+    font-size: 1.2em;
+    color: #777;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translateX(-110%);
+    background-color: #2C2E33;
+    border: 1px solid #35373D;
+    border-radius: 5px;
+    z-index: 10;
+}
+
+.dropdown-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.dropdown-menu ul li {
+    padding: 10px 20px;
+}
+
+.dropdown-menu ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.dropdown-menu ul li:hover {
+    background-color: #35373D;
+}
+
 .comments .comment .time {
     color: #777;
     font-size: 0.8em;
+    margin: 10px 0 0 0
 }
 
 .photo-item-layer {
-    max-width: 360px;
-    width: 360px;
-    padding: 20px;
+    max-width: 317px;
+    width: 317px;
+    padding: 5px;
     display: inline-block;
 }
 
