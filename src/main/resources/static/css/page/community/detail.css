@@ -14,6 +14,22 @@
     font-size: 1.5em;
     font-weight: bold;
     color: white;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #35373D;
+    flex-grow: 1;
+}
+
+.post-header .profile {
+    display: flex;
+    margin-top: 1rem;
+}
+
+.post-header .profile .nickname {
+    margin: 7px 10px;
+}
+
+.post-header .profile .nickname img {
+    margin-top: 0.2rem;
 }
 
 .post-header .info {
@@ -37,16 +53,26 @@
     color: white;
 }
 
+.post-content p {
+    padding-top: 1rem
+}
+
 .post-content .tags {
     margin-top: 20px;
     display: flex;
     gap: 10px;
 }
 
+.post-content .tags:nth-child(1)  {
+    background-color: #35373D;
+}
+
+
 .post-content .tags span {
-    background-color: #ddd;
+    background-color: #2C2E33;
     padding: 5px 10px;
-    border-radius: 3px;
+    border-radius: 15px;
+    border: 1px solid #35373D;
     font-size: 0.9em;
 }
 
@@ -59,8 +85,8 @@
 
 .post-actions button {
     border: none;
-    padding: 10px; 20px;
-    border-radius: 20px;
+    padding: 15px 40px;
+    border-radius: 30px;
     cursor: pointer;
 }
 
@@ -70,8 +96,12 @@
 }
 
 .post-actions button.red {
-    background-color: #ff6666;
+    background-color: #FF4447;
     color: #fff;
+}
+
+.post-actions button.gray {
+    background-color: #535560;
 }
 
 .comments {

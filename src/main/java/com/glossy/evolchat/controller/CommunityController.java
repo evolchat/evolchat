@@ -47,12 +47,6 @@ public class CommunityController {
         return "index";
     }
 
-    @GetMapping("/community_photo_detail")
-    public String community_photo_detail(Model model) {
-        model.addAttribute("activeCategory", "community_free");
-        model.addAttribute("activePage", "community_photo_detail");
-        return "index";
-    }
 
     @GetMapping("/community_videos")
     public String community_videos(Model model) {
