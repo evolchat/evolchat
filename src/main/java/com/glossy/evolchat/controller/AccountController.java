@@ -14,6 +14,6 @@ public class AccountController {
 
     @GetMapping("/find-password")
     public String find_password(Model model) {
-        return "find_password";
+        return "find-password";
     }
 }

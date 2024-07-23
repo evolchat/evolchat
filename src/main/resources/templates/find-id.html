@@ -7,58 +7,85 @@
     <title>로그인</title>
     <link rel="stylesheet" href="../static/css/style.css">
     <link rel="stylesheet" href="../static/plugin/lcdsantos-jQuery-Selectric/selectric.css">
+    <link rel="stylesheet" href="../static/css/page/assign.css"/>
+    <link rel="stylesheet" href="../static/css/page/support/find-id.css">
     <script src="../static/plugin/jQuery/jquery-3.7.1.min.js"></script>
     <script src="../static/plugin/lcdsantos-jQuery-Selectric/src/jquery.selectric.js"></script>
     <script src="../static/js/common.js"></script>
     <script src="../static/js/find-id.js"></script>
-    <link rel="stylesheet" href="../static/css/page/assign.css"/>
 </head>
 
 <body>
     <div id="content-area" class="flex-grow" style="">
-        <div class="wrapper bc-brown vh100 ">
+        <div class="wrapper bc-main vh100 ">
             <div class="login-wrap max1280 flex-c-c assign-wrap">
-                <div class="header"></div>
-                <div class="content">
-                    <form action="/login" method="post">
-                        <div class="inputfields">
-                            <div class="field-input  flex-c">
-                                <input type="text" name="username" id="id" placeholder="아이디" required>
-                            </div>
-                            <div class="field-input  flex-c">
-                                <input type="password" name="password" id="password" placeholder="비밀번호" required>
-                            </div>
-                            <div class="etcGroup">
-                                <div class="field">
-                                    <input type="checkbox" name="remember-me" id="all">
-                                    <label for="all"></label>
-                                    <div class="top">
-                                        로그인 상태 유지
-                                    </div>
-                                </div>
-                                <div class="href">
-                                    <a href="/register">회원가입</a>
-                                    <a href="/find-id">계정정보 찾기</a>
-                                    <a href="/find-password">비밀번호 찾기</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="btns">
-                            <button type="submit">로그인</button>
-                        </div>
-                    </form>
-                    <!-- hjh.20240610 : SNS 주석처리 -->
-                    <!-- <div class="sns">-->
-                    <!--     <p class="line">SNS 로그인</p>-->
-                    <!--     <div class="herf-sns">-->
-                    <!--         <a href="" class="login-btn-sns naver position-r"><span class="icon-sns icon-naver position-a"></span>-->
-                    <!--             <div class="text-center"><span>네이버 로그인</span></div></a>-->
-                    <!--         <a href="" class="login-btn-sns kakao  position-r"><span class="icon-sns icon-kakao position-a"></span><span>카카오 로그인</span></a>-->
-                    <!--         <a href="" class="login-btn-sns google  position-r"><span class="icon-sns icon-google position-a"></span><span>구글 로그인</span></a>-->
-                    <!--     </div>-->
-                    <!-- </div>-->
+                <div class="header m-t-80">
+                    <div class="logo">
+                        <img th:src="@{/static/images/logo/login_logo.png}" alt="logo.png">
+                    </div>
                 </div>
-                <div class="footer">© Graycode All Rights Reserved.</div>
+                <div class="container">
+                    <div class="content">
+                        <div class="option px16" onclick="selectOption('phone_registered')">
+                            <input type="radio" name="auth" id="phone_registered">
+                            <label for="phone_registered">회원정보에 등록된 휴대폰으로 인증</label>
+                            <span class="checkmark"></span>
+                        </div>
+                        <div id="phone_registered_section" class="section">
+                            <p class="px13">회원정보에 등록된 휴대폰 번호와 입력한 휴대폰 번호가 같아야 인증번호를 받을 수 있습니다.</p>
+                            <label for="name_phone">이름</label>
+                            <input class="name_input" type="text" id="name_phone" placeholder="">
+                            <label for="phone_phone">휴대폰 번호</label>
+                            <div class="input-group">
+                                <select>
+                                    <option value="+82">+82</option>
+                                    <option value="+81">+81</option>
+                                    <option value="+61">+61</option>
+                                </select>
+                                <div class="number">
+                                    <input class="px12" type="tel" id="phone_phone" placeholder="">
+                                    <button class="btn_phone px12">인증번호 발송</button>
+                                </div>
+                            </div>
+                            <input type="text" placeholder="인증번호 6자리 숫자 입력">
+                            <p class="px12">인증번호가 오지 않나요?</p>
+                        </div>
+
+                        <div class="option" onclick="selectOption('email_registered')">
+                            <input type="radio" name="auth" id="email_registered">
+                            <label for="email_registered">회원정보에 등록된 이메일로 인증</label>
+                            <span class="checkmark"></span>
+                        </div>
+                        <div id="email_registered_section" class="section">
+                            <p class="px13">회원정보에 등록한 이메일 주소와 입력한 이메일 주소가 같아야 인증번호를 받을 수 있습니다.</p>
+                            <label for="name_email">이름</label>
+                            <input class="name_phone" type="text" id="name_email" placeholder="">
+                            <label for="email_email">이메일 주소</label>
+                            <div class="email_send">
+                                <input type="email" id="email_email" placeholder="">
+                                <button class="btn_email px12">인증번호 발송</button>
+                            </div>
+                            <input type="text" placeholder="인증번호 6자리 숫자 입력">
+                            <p class="px12">인증번호가 오지 않나요?</p>
+                        </div>
+
+                        <div class="option" onclick="selectOption('personal_phone')">
+                            <input type="radio" name="auth" id="personal_phone">
+                            <label for="personal_phone">본인 명의 휴대폰으로 인증</label>
+                            <span class="checkmark"></span>
+                        </div>
+                        <div id="personal_phone_section" class="section">
+                            <p class="px14">내 명의(주민등록번호)의 휴대폰 번호로 인증 후 계정 정보를 재설정 할 수 있습니다.</p>
+                        </div>
+                    </div>
+                    <div class="nav-buttons">
+                        <button id="prevBtn" class="btn disabled">이전</button>
+                        <button id="nextBtn" class="btn">다음</button>
+                    </div>
+                </div>
+                <div class="footer">
+                    <img th:src="@{/static/images/logo/corp.png}" alt="">
+                </div>
             </div>
         </div>
     </div>

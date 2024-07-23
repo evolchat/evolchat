@@ -4,11 +4,16 @@
     max-width: 350px;
     width: 100%;
     flex-direction: column;
+
 }
 
 .assign-wrap .content {
     width: 100%;
 }
+.assign-wrap .content .id {
+    margin-left: 10px;
+}
+
 
 .join-wrap .content {
     text-align: center;
@@ -25,7 +30,7 @@
 .assign-wrap input[type="email"],
 .assign-wrap input[type="tel"] {
     background-color: #232428;
-    padding: 5px;
+    padding: 10px;
     border: none;
     height: 100%;
     width: 100%;
@@ -68,7 +73,9 @@
 
 .assign-wrap .field-input {
     max-width: 350px;
-    height: 42px;
+    height: 50px;
+    background-color: #232428;
+    border-radius: 10px;
     /* border: 1px solid #40393c;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px; */
@@ -157,7 +164,7 @@
     border-radius: 10px;
     text-align: center;
     display: inline-block;
-    padding: 10px;
+    padding: 15px;
     background-color: #35373D;
     border: none;
 }
