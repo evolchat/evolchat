@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>에볼챗닷컴</title>
+    <script src="../../static/js/openchat.js"></script>
+    <link rel="stylesheet" href="../../static/css/page/openchat.css" />
+</head>
+<body>
+<div id="content-area" class="flex-grow" style="">
+    <div class="wrapper bc-black vh100 ">
+        <Section class="flex-row">
+            <div class="wrap bc-footer ">
+                <div class="content">
+                    <div class="mainContent bc-main text-center">
+                        <div class="sub-header flex-row flex-c white opacity60 px15">
+                            <div class="list"><a href="openchat">전체</a></div>
+                            <div class="list"><a href="openchat_evolution">에볼루션</a></div>
+                            <div class="list"><a href="openchat_sports">스포츠</a></div>
+                            <div class="list"><a href="openchat_game">게임</a></div>
+                            <div class="list"><a href="openchat_cryptocurrency">가상화폐</a></div>
+                            <div class="list"><a href="openchat_stock">주식</a></div>
+                            <div class="list"><a href="openchat_amity">친목</a></div>
+                            <div class="list active"><a href="openchat_favorites">즐겨찾기</a></div>
+                        </div>
+                        <div class="sub-header flex-row flex-c">
+                            <div class="sub-header-search bc-footer flex-grow">
+                                <input type="text" placeholder="제목, 소개글, 개설자 닉네임">
+                                <img src="../../static/images/svg/search.svg" alt="" class="input-icon search" />
+                            </div>
+                            <button onclick="location.href='openchat_create'" class="bc-activate white px15"><img src="../../static/images/svg/icon-add.svg" alt="">오픈채팅 개설하기</button>
+                        </div>
+                        <div class="mainLayer">
+                            <div class="room-layer">
+                                <div class="room">
+                                    <div class="photo-layout">
+                                        <div class="img flex-c-c">
+                                            <img src="../../static/images/svg/logo.svg" alt=""
+                                                 style="height: auto; width: auto;" />
+                                        </div>
+                                    </div>
+                                    <div class="text-wrap position-r">
+                                        <div class="position-a">
+                                            <img src="../../static/images/profile/user1.png" alt="#">
+                                        </div>
+                                        <div class="v-h"></div>
+                                        <div class="top">
+                                            <div class="tit-wrap white px17 m-b-10">
+                                                코리아 스피드 바카라 B
+                                            </div>
+                                            <div class="summary px14">
+                                                🤩100출 500마감 프로젝트🤩100출 500마감 프로젝트🤩100출 500마감 프로젝트
+                                            </div>
+                                        </div>
+                                        <div class="v-h"></div>
+                                        <div class="bottom flex-c">
+                                            <img src="../../static/images/svg/people.svg" alt=""
+                                                 style="height: auto; width: auto;" class="m-r-4"/><span
+                                                class="opacity60 px14 m-r-14">582</span>
+                                            <img src="../../static/images/svg/hearts.svg" alt=""
+                                                 style="height: auto; width: auto;" class="m-r-4"/><span
+                                                class="opacity60 px14 m-r-14">485</span>
+                                            <img src="../../static/images/svg/star.svg" alt=""
+                                                 style="height: auto; width: auto;" class="m-r-4"/><span
+                                                class="opacity60 px14 m-r-14">4856</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="room">
+                                    <div class="photo-layout">
+                                        <div class="img">
+                                            <img src="../../static/images/photo/photo_1.jpg" alt="#">
+                                        </div>
+                                    </div>
+                                    <div class="text-wrap position-r">
+                                        <div class="position-a">
+                                            <img src="../../static/images/profile/user1.png" alt="#">
+                                        </div>
+                                        <div class="v-h"></div>
+                                        <div class="top">
+                                            <div class="tit-wrap white px17 m-b-10">
+                                                코리아 스피드 바카라 B
+                                            </div>
+                                            <div class="summary px14">
+                                                🤩100출 500마감 프로젝트🤩100출 500마감 프로젝트🤩100출 500마감 프로젝트
+                                            </div>
+                                        </div>
+                                        <div class="v-h"></div>
+                                        <div class="bottom flex-c">
+                                            <img src="../../static/images/svg/people.svg" alt=""
+                                                 style="height: auto; width: auto;" class="m-r-4"/><span
+                                                class="opacity60 px14 m-r-14">582</span>
+                                            <img src="../../static/images/svg/hearts.svg" alt=""
+                                                 style="height: auto; width: auto;" class="m-r-4"/><span
+                                                class="opacity60 px14 m-r-14">485</span>
+                                            <img src="../../static/images/svg/star.svg" alt=""
+                                                 style="height: auto; width: auto;" class="m-r-4"/><span
+                                                class="opacity60 px14 m-r-14">4856</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="room">
+                                    <div class="photo-layout">
+                                        <div class="img">
+                                            <img src="../../static/images/photo/photo_1.jpg" alt="#">
+                                        </div>
+                                    </div>
+                                    <div class="text-wrap position-r">
+                                        <div class="position-a">
+                                            <img src="../../static/images/profile/user1.png" alt="#">
+                                        </div>
+                                        <div class="v-h"></div>
+                                        <div class="top">
+                                            <div class="tit-wrap white px17 m-b-10">
+                                                코리아 스피드 바카라 B
+                                            </div>
+                                            <div class="summary px14">
+                                                🤩100출 500마감 프로젝트🤩100출 500마감 프로젝트🤩100출 500마감 프로젝트
+                                            </div>
+                                        </div>
+                                        <div class="v-h"></div>
+                                        <div class="bottom flex-c">
+                                            <img src="../../static/images/svg/people.svg" alt=""
+                                                 style="height: auto; width: auto;" class="m-r-4"/><span
+                                                class="opacity60 px14 m-r-14">582</span>
+                                            <img src="../../static/images/svg/hearts.svg" alt=""
+                                                 style="height: auto; width: auto;" class="m-r-4"/><span
+                                                class="opacity60 px14 m-r-14">485</span>
+                                            <img src="../../static/images/svg/star.svg" alt=""
+                                                 style="height: auto; width: auto;" class="m-r-4"/><span
+                                                class="opacity60 px14 m-r-14">4856</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="room">
+                                    <div class="photo-layout">
+                                        <div class="img">
+                                            <img src="../../static/images/photo/photo_1.jpg" alt="#">
+                                        </div>
+                                    </div>
+                                    <div class="text-wrap position-r">
+                                        <div class="position-a">
+                                            <img src="../../static/images/profile/user1.png" alt="#">
+                                        </div>
+                                        <div class="v-h"></div>
+                                        <div class="top">
+                                            <div class="tit-wrap white px17 m-b-10">
+                                                코리아 스피드 바카라 B
+                                            </div>
+                                            <div class="summary px14">
+                                                🤩100출 500마감 프로젝트🤩100출 500마감 프로젝트🤩100출 500마감 프로젝트
+                                            </div>
+                                        </div>
+                                        <div class="v-h"></div>
+                                        <div class="bottom flex-c">
+                                            <img src="../../static/images/svg/people.svg" alt=""
+                                                 style="height: auto; width: auto;" class="m-r-4"/><span
+                                                class="opacity60 px14 m-r-14">582</span>
+                                            <img src="../../static/images/svg/hearts.svg" alt=""
+                                                 style="height: auto; width: auto;" class="m-r-4"/><span
+                                                class="opacity60 px14 m-r-14">485</span>
+                                            <img src="../../static/images/svg/star.svg" alt=""
+                                                 style="height: auto; width: auto;" class="m-r-4"/><span
+                                                class="opacity60 px14 m-r-14">4856</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="room">
+                                    <div class="photo-layout">
+                                        <div class="img">
+                                            <img src="../../static/images/photo/photo_1.jpg" alt="#">
+                                        </div>
+                                    </div>
+                                    <div class="text-wrap position-r">
+                                        <div class="position-a">
+                                            <img src="../../static/images/profile/user1.png" alt="#">
+                                        </div>
+                                        <div class="v-h"></div>
+                                        <div class="top">
+                                            <div class="tit-wrap white px17 m-b-10">
+                                                코리아 스피드 바카라 B
+                                            </div>
+                                            <div class="summary px14">
+                                                🤩100출 500마감 프로젝트🤩100출 500마감 프로젝트🤩100출 500마감 프로젝트
+                                            </div>
+                                        </div>
+                                        <div class="v-h"></div>
+                                        <div class="bottom flex-c">
+                                            <img src="../../static/images/svg/people.svg" alt=""
+                                                 style="height: auto; width: auto;" class="m-r-4"/><span
+                                                class="opacity60 px14 m-r-14">582</span>
+                                            <img src="../../static/images/svg/hearts.svg" alt=""
+                                                 style="height: auto; width: auto;" class="m-r-4"/><span
+                                                class="opacity60 px14 m-r-14">485</span>
+                                            <img src="../../static/images/svg/star.svg" alt=""
+                                                 style="height: auto; width: auto;" class="m-r-4"/><span
+                                                class="opacity60 px14 m-r-14">4856</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="room">
+                                    <div class="photo-layout">
+                                        <div class="img">
+                                            <img src="../../static/images/photo/photo_1.jpg" alt="#">
+                                        </div>
+                                    </div>
+                                    <div class="text-wrap position-r">
+                                        <div class="position-a">
+                                            <img src="../../static/images/profile/user1.png" alt="#">
+                                        </div>
+                                        <div class="v-h"></div>
+                                        <div class="top">
+                                            <div class="tit-wrap white px17 m-b-10">
+                                                코리아 스피드 바카라 B
+                                            </div>
+                                            <div class="summary px14">
+                                                🤩100출 500마감 프로젝트🤩100출 500마감 프로젝트🤩100출 500마감 프로젝트
+                                            </div>
+                                        </div>
+                                        <div class="v-h"></div>
+                                        <div class="bottom flex-c">
+                                            <img src="../../static/images/svg/people.svg" alt=""
+                                                 style="height: auto; width: auto;" class="m-r-4"/><span
+                                                class="opacity60 px14 m-r-14">582</span>
+                                            <img src="../../static/images/svg/hearts.svg" alt=""
+                                                 style="height: auto; width: auto;" class="m-r-4"/><span
+                                                class="opacity60 px14 m-r-14">485</span>
+                                            <img src="../../static/images/svg/star.svg" alt=""
+                                                 style="height: auto; width: auto;" class="m-r-4"/><span
+                                                class="opacity60 px14 m-r-14">4856</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="room">
+                                    <div class="photo-layout">
+                                        <div class="img">
+                                            <img src="../../static/images/photo/photo_1.jpg" alt="#">
+                                        </div>
+                                    </div>
+                                    <div class="text-wrap position-r">
+                                        <div class="position-a">
+                                            <img src="../../static/images/profile/user1.png" alt="#">
+                                        </div>
+                                        <div class="v-h"></div>
+                                        <div class="top">
+                                            <div class="tit-wrap white px17 m-b-10">
+                                                코리아 스피드 바카라 B
+                                            </div>
+                                            <div class="summary px14">
+                                                🤩100출 500마감 프로젝트🤩100출 500마감 프로젝트🤩100출 500마감 프로젝트
+                                            </div>
+                                        </div>
+                                        <div class="v-h"></div>
+                                        <div class="bottom flex-c">
+                                            <img src="../../static/images/svg/people.svg" alt=""
+                                                 style="height: auto; width: auto;" class="m-r-4"/><span
+                                                class="opacity60 px14 m-r-14">582</span>
+                                            <img src="../../static/images/svg/hearts.svg" alt=""
+                                                 style="height: auto; width: auto;" class="m-r-4"/><span
+                                                class="opacity60 px14 m-r-14">485</span>
+                                            <img src="../../static/images/svg/star.svg" alt=""
+                                                 style="height: auto; width: auto;" class="m-r-4"/><span
+                                                class="opacity60 px14 m-r-14">4856</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="room">
+                                    <div class="photo-layout">
+                                        <div class="img">
+                                            <img src="../../static/images/photo/photo_1.jpg" alt="#">
+                                        </div>
+                                    </div>
+                                    <div class="text-wrap position-r">
+                                        <div class="position-a">
+                                            <img src="../../static/images/profile/user1.png" alt="#">
+                                        </div>
+                                        <div class="v-h"></div>
+                                        <div class="top">
+                                            <div class="tit-wrap white px17 m-b-10">
+                                                코리아 스피드 바카라 B
+                                            </div>
+                                            <div class="summary px14">
+                                                🤩100출 500마감 프로젝트🤩100출 500마감 프로젝트🤩100출 500마감 프로젝트
+                                            </div>
+                                        </div>
+                                        <div class="v-h"></div>
+                                        <div class="bottom flex-c">
+                                            <img src="../../static/images/svg/people.svg" alt=""
+                                                 style="height: auto; width: auto;" class="m-r-4"/><span
+                                                class="opacity60 px14 m-r-14">582</span>
+                                            <img src="../../static/images/svg/hearts.svg" alt=""
+                                                 style="height: auto; width: auto;" class="m-r-4"/><span
+                                                class="opacity60 px14 m-r-14">485</span>
+                                            <img src="../../static/images/svg/star.svg" alt=""
+                                                 style="height: auto; width: auto;" class="m-r-4"/><span
+                                                class="opacity60 px14 m-r-14">4856</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="room">
+                                    <div class="photo-layout">
+                                        <div class="img">
+                                            <img src="../../static/images/photo/photo_1.jpg" alt="#">
+                                        </div>
+                                    </div>
+                                    <div class="text-wrap position-r">
+                                        <div class="position-a">
+                                            <img src="../../static/images/profile/user1.png" alt="#">
+                                        </div>
+                                        <div class="v-h"></div>
+                                        <div class="top">
+                                            <div class="tit-wrap white px17 m-b-10">
+                                                코리아 스피드 바카라 B
+                                            </div>
+                                            <div class="summary px14">
+                                                🤩100출 500마감 프로젝트🤩100출 500마감 프로젝트🤩100출 500마감 프로젝트
+                                            </div>
+                                        </div>
+                                        <div class="v-h"></div>
+                                        <div class="bottom flex-c">
+                                            <img src="../../static/images/svg/people.svg" alt=""
+                                                 style="height: auto; width: auto;" class="m-r-4"/><span
+                                                class="opacity60 px14 m-r-14">582</span>
+                                            <img src="../../static/images/svg/hearts.svg" alt=""
+                                                 style="height: auto; width: auto;" class="m-r-4"/><span
+                                                class="opacity60 px14 m-r-14">485</span>
+                                            <img src="../../static/images/svg/star.svg" alt=""
+                                                 style="height: auto; width: auto;" class="m-r-4"/><span
+                                                class="opacity60 px14 m-r-14">4856</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="footer" class=" bc-footer" th:insert="include/footer">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+</body>
+</html>

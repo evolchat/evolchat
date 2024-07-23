@@ -2014,6 +2014,7 @@ div.mainContent {
 }
 
 .sub-header>.list {
+    opacity: 0.5;
     padding: 12px 6px;
     margin: 0 4px;
 }
@@ -2021,7 +2022,7 @@ div.mainContent {
 .sub-header>.active {
     opacity: 1;
     border-radius: 5px;
-    background-color: #3A3C43;
+    background-color: #404040;
 }
 
 .sub-header-search {

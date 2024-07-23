@@ -52,4 +52,60 @@ public class OpenChatController {
         model.addAttribute("contentFragment", "fragments/openchat");
         return "index";
     }
+    @GetMapping("/openchat_evolution")
+    public String openchat_evolution(Model model) {
+        model.addAttribute("activeCategory", "openchat");
+        model.addAttribute("activePage", "openchat_evolution");
+        model.addAttribute("contentFragment", "fragments/openchat_evolution");
+        return "index";
+    }
+    @GetMapping("/openchat_sports")
+    public String openchat_sports(Model model) {
+        model.addAttribute("activeCategory", "openchat");
+        model.addAttribute("activePage", "openchat_sports");
+        model.addAttribute("contentFragment", "fragments/openchat_sports");
+        return "index";
+    }
+    @GetMapping("/openchat_game")
+    public String openchat_game(Model model) {
+        model.addAttribute("activeCategory", "openchat");
+        model.addAttribute("activePage", "openchat_game");
+        model.addAttribute("contentFragment", "fragments/openchat_game");
+        return "index";
+    }
+    @GetMapping("/openchat_cryptocurrency")
+    public String openchat_cryptocurrency(Model model) {
+        model.addAttribute("activeCategory", "openchat");
+        model.addAttribute("activePage", "openchat_cryptocurrency");
+        model.addAttribute("contentFragment", "fragments/openchat_cryptocurrency");
+        return "index";
+    }
+    @GetMapping("/openchat_stock")
+    public String openchat_stock(Model model) {
+        model.addAttribute("activeCategory", "openchat");
+        model.addAttribute("activePage", "openchat_stock");
+        model.addAttribute("contentFragment", "fragments/openchat_stock");
+        return "index";
+    }
+    @GetMapping("/openchat_amity")
+    public String openchat_amity(Model model) {
+        model.addAttribute("activeCategory", "openchat");
+        model.addAttribute("activePage", "openchat_amity");
+        model.addAttribute("contentFragment", "fragments/openchat_amity");
+        return "index";
+    }
+    @GetMapping("/openchat_favorites")
+    public String openchat_favorites(Model model) {
+        model.addAttribute("activeCategory", "openchat");
+        model.addAttribute("activePage", "openchat_favorites");
+        model.addAttribute("contentFragment", "fragments/openchat_favorites");
+        return "index";
+    }
+    @GetMapping("/openchat_create")
+    public String openchat_create(Model model) {
+        model.addAttribute("activeCategory", "openchat");
+        model.addAttribute("activePage", "openchat_create");
+        model.addAttribute("contentFragment", "fragments/openchat_create");
+        return "index";
+    }
 }
