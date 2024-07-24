@@ -1184,8 +1184,6 @@ table {
     background-position: -45px -368px;
 }
 
-
-
 .shopping-item {
     background: url('../images/sprites/shopping_sprites.png');
     width: 80px;
@@ -1217,11 +1215,11 @@ table {
 }
 
 .shopping-item-7 {
-    background-position: -200px -515px;
+    background-position: -200px -512px;
 }
 
 .shopping-item-8 {
-    background-position: -540px -515px;
+    background-position: -540px -512px;
 }
 
 .shopping-item-9 {
@@ -1229,7 +1227,7 @@ table {
 }
 
 .shopping-item-10 {
-    background-position: -200px 590px;
+    background-position: -200px 592px;
 }
 
 .shopping-item-11 {

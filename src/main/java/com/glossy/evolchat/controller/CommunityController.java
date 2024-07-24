@@ -117,6 +117,7 @@ public class CommunityController {
         return "index";
     }
 
+
     @PostMapping("/submit_post")
     @ResponseBody
     public ResponseEntity<?> submitPost(
