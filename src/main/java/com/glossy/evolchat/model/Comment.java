@@ -1,8 +1,8 @@
 package com.glossy.evolchat.model;
 
+import jakarta.persistence.*;
 import lombok.Data;
 
-import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
@@ -13,14 +13,15 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int seq;
 
-    private int commentId;
+    @ManyToOne
+    @JoinColumn(name = "post_id", nullable = false)
+    private Post post; // 게시물과의 관계 설정
 
-    @Column(nullable = false)
-    private int postId;
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user; // 사용자와의 관계 설정
 
-    @Column(nullable = false)
-    private int userId;
-
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String content;
 
     @Column(nullable = false)
@@ -28,4 +29,15 @@ public class Comment {
 
     @Column(nullable = false)
     private LocalDateTime updatedAt;
+
+    @PrePersist
+    protected void onCreate() {
+        createdAt = LocalDateTime.now();
+        updatedAt = createdAt;
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        updatedAt = LocalDateTime.now();
+    }
 }

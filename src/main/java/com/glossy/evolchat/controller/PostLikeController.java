@@ -1,6 +1,6 @@
 package com.glossy.evolchat.controller;
 
-import com.glossy.evolchat.model.Like;
+import com.glossy.evolchat.model.PostLike;
 import com.glossy.evolchat.service.PostLikeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,18 +15,18 @@ public class PostLikeController {
     private PostLikeService postLikeService;
 
     @GetMapping
-    public List<Like> getAllLikes() {
+    public List<PostLike> getAllLikes() {
         return postLikeService.getAllLikes();
     }
 
     @GetMapping("/{id}")
-    public Like getLikeById(@PathVariable int id) {
+    public PostLike getLikeById(@PathVariable int id) {
         return postLikeService.getLikeById(id);
     }
 
     @PostMapping
-    public Like createLike(@RequestBody Like like) {
-        return postLikeService.saveLike(like);
+    public PostLike createLike(@RequestBody PostLike postLike) {
+        return postLikeService.saveLike(postLike);
     }
 
     @DeleteMapping("/{id}")

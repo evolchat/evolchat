@@ -62,6 +62,11 @@ function submitPost() {
     const tags = document.getElementById('tags').value;
     const boardId = document.body.getAttribute('data-board-id');
 
+    if (!title || !content.trim()) {
+        alert('제목과 본문을 모두 입력해주세요.');
+        return;
+    }
+
     if (!boardId) {
         alert('게시판 ID가 설정되지 않았습니다.');
         return;
@@ -77,6 +82,9 @@ function submitPost() {
             boardId: boardId
         },
         success: function(response) {
+            alert('글 등록에 성공했습니다.');
+            // 글 등록 후 원하는 페이지로 이동
+            window.location.href = '/community_free'; // 예시로 게시글 목록 페이지로 이동
         },
         error: function(jqXHR, textStatus, errorThrown) {
             alert('글 작성에 실패했습니다. 다시 시도해 주세요.');

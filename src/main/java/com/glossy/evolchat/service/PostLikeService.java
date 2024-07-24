@@ -1,8 +1,8 @@
 package com.glossy.evolchat.service;
 
+import com.glossy.evolchat.model.PostLike;
 import com.glossy.evolchat.repository.PostLikeRepository;
 
-import com.glossy.evolchat.model.Like;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,19 +17,20 @@ public class PostLikeService {
         return postLikeRepository.countByPostId(postId);
     }
 
-    public List<Like> getAllLikes() {
+    public List<PostLike> getAllLikes() {
         return postLikeRepository.findAll();
     }
 
-    public Like getLikeById(int id) {
+    public PostLike getLikeById(int id) {
         return postLikeRepository.findById(id).orElse(null);
     }
 
-    public Like saveLike(Like like) {
-        return postLikeRepository.save(like);
+    public PostLike saveLike(PostLike postLike) {
+        return postLikeRepository.save(postLike);
     }
 
     public void deleteLike(int id) {
         postLikeRepository.deleteById(id);
     }
+
 }

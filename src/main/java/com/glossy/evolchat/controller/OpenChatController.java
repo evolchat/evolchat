@@ -1,6 +1,5 @@
 package com.glossy.evolchat.controller;
 
-import com.glossy.evolchat.dto.PostDto;
 import com.glossy.evolchat.model.Post;
 import com.glossy.evolchat.service.PostLikeService;
 import com.glossy.evolchat.service.PostService;

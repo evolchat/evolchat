@@ -5,362 +5,147 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>에볼챗닷컴</title>
-    <script src="../static/js/detail.js"></script>
-    <link rel="stylesheet" href="../static/css/page/community/detail.css" />
+    <script src="../static/js/community_detail.js"></script>
+    <link rel="stylesheet" href="../static/css/page/community/community_detail.css" />
 </head>
 
 <body>
-    <div id="content-area" class="flex-grow" style="">
-        <div class="wrapper bc-black vh100 ">
-            <!--        <div id="header" class="header flex-row bc-header"></div>-->
-            <section class="flex-row">
-                <!--            <div id="nav"></div>-->
-                <div class="wrap bc-footer ">
-                    <div class="content">
-                        <div class="mainContent bc-main">
-                            <div class="sub-header flex-row flex-c white opacity60 px15">
-                                <div class="list active"><a href="community_free">자유</a></div>
-                                <div class="list "><a href="community_photo">포토</a></div>
-                                <!--                            <div class="list "><a href="#">유머</a></div>-->
-                                <div class="list"><a href="community_videos">동영상</a></div>
-                                <!--                            <div class="list"><a href="#">노하우</a></div>-->
-                                <!--                            <div class="list"><a href="#">신고게시판</a></div>-->
-                            </div>
-                            <div class="mainLayer">
-                                <div class="post-container">
-                                    <div class="post-header">
-                                        <div class="title">아이유 펩시 광고 화보! 너무 매력적인데?</div>
-                                        <div class="profile">
-                                            <div class="acc">
-                                                <img src="../static/images/svg/ghost.svg" alt="#">
-                                                <div class="nickname">
-                                                    <div>
-                                                        <div class="info">고스트라이더</div>
-                                                        <div class="px14"> 2024.3.13 18:23 <img src="../static/images/svg/input-icon-eye.svg" alt=""> 2564 <img src="../static/images/svg/hearts.svg" alt=""> 44</div>
+<div id="content-area" class="flex-grow" style="">
+    <div class="wrapper bc-black vh100">
+        <section class="flex-row">
+            <div class="wrap bc-footer">
+                <div class="content">
+                    <div class="mainContent bc-main">
+                        <div class="sub-header flex-row flex-c white opacity60 px15">
+                            <div class="list" th:classappend="${activePage == 'community_free'} ? 'active' : ''"><a href="community_free">자유</a></div>
+                            <div class="list" th:classappend="${activePage == 'community_photo'} ? 'active' : ''"><a href="community_photo">포토</a></div>
+                            <div class="list" th:classappend="${activePage == 'community_videos'} ? 'active' : ''"><a href="community_videos">동영상</a></div>
+                        </div>
+                        <div class="mainLayer">
+                            <div class="post-container">
+                                <div class="post-header">
+                                    <div class="title" th:text="${post.title}">아이유 펩시 광고 화보! 너무 매력적인데?</div>
+                                    <div class="profile">
+                                        <div class="acc">
+                                            <img src="../static/images/svg/ghost.svg" alt="#">
+                                            <div class="nickname">
+                                                <div>
+                                                    <div class="info" th:text="${authorNickname}">고스트라이더</div>
+                                                    <div class="px14">
+                                                        <div th:text="${formattedDate}">2024.05.18 00:48</div>
+                                                        <img src="../static/images/svg/input-icon-eye.svg" alt="">
+                                                        <span th:text="${post.views}">2564</span>
+                                                        <img src="../static/images/svg/hearts.svg" alt="">
+                                                        <span th:text="${postLikeCount}">44</span>
                                                     </div>
-                                                </div>
-                                            </div>
-                                            <div class="options">
-                                                <img src="../../static/images/svg/hyphenation.svg" alt="">
-                                                <div class="dropdown-menu">
-                                                    <ul>
-                                                        <li><a href="#">댓글 삭제</a></li>
-                                                        <li><a href="#">댓글 수정</a></li>
-                                                        <li><a href="#">신고하기</a></li>
-                                                    </ul>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="post-image">
-                                        <img src="../static/images/photo/photo_3.jpg" alt="아이유 펩시 광고">
-                                    </div>
-                                    <div class="post-content">
-                                        <p>이정후는 이날 샌프란시스코가 0-0으로 팽팽히 맞선 1회초 2사 만루 상황에서 신시내티 타자 제이머 칸텔라리오의 홈런성 타구를 쫓아가 공을 잡으려고 점프했다. 하지만 포구하지 못한 채 펜스에 강하게 부딪힌 뒤 쓰러졌다.</p>
-                                        <p>이정후는 어깨 통증을 호소하면서 더는 게임을 뛸 수 없었다. 샌프란시스코도 선수 보호 차원에서 이정후를 곧바로 타일러 피츠제럴드와 교체했다.</p>
-                                        <div class="tags">
-                                            <span>아이유</span>
-                                            <span>더미텍스트</span>
-                                            <span>펩시</span>
-                                        </div>
-                                    </div>
-                                    <div class="post-actions">
-                                        <button class="gray"><img src="../static/images/svg/hearts-line.svg " alt=""> &nbsp 좋아요 &nbsp 8</button>
-                                        <button class="red"><img src="../static/images/svg/heart.svg" alt=""> &nbsp 좋아요 &nbsp 69</button>
-                                    </div>
-                                    <div class="comments">
-                                        <div class="tit">댓글 <span>2</span></div>
-                                        <div class="comment">
-                                            <img src="../static/images/svg/Ali.svg" alt="">
-                                            <div class="entire">
-                                                <div class="account">
-                                                    <div class="author">알리 <img src="../static/images/svg/rank-1.svg" alt="#"></div>
-                                                    <div class="options">
-                                                        <img src="../../static/images/svg/hyphenation.svg" alt="">
-                                                        <div class="dropdown-menu">
-                                                            <ul>
-                                                                <li><a href="#">댓글 삭제</a></li>
-                                                                <li><a href="#">댓글 수정</a></li>
-                                                                <li><a href="#">신고하기</a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="content">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised
-                                                    <br> words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
-                                                    <br> hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true
-                                                    <br> generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum
-                                                    <br> which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
-                                                </div>
-                                                <div class="time">오후 07:02 <span>답글쓰기</span></div>
+                                        <div class="options">
+                                            <img src="../static/images/svg/hyphenation.svg" alt="">
+                                            <div class="dropdown-menu">
+                                                <ul>
+                                                    <li><a href="#">댓글 삭제</a></li>
+                                                    <li><a href="#">댓글 수정</a></li>
+                                                    <li><a href="#">신고하기</a></li>
+                                                </ul>
                                             </div>
                                         </div>
-                                        <div class="comment">
-                                            <img src="../static/images/svg/julien.svg" alt="">
-                                            <div class="entire">
-                                                <div class="account">
-                                                    <div class="author">줄리엔</div>
-                                                    <div class="options">
-                                                        <img src="../../static/images/svg/hyphenation.svg" alt="">
-                                                        <div class="dropdown-menu">
-                                                            <ul>
-                                                                <li><a href="#">댓글 삭제</a></li>
-                                                                <li><a href="#">댓글 수정</a></li>
-                                                                <li><a href="#">신고하기</a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="content">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised
-                                                    <br> words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
-                                                    <br> hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true
-                                                    <br> generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum
-                                                    <br> which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
-                                                </div>
-                                                <div class="time">2024.05.18 00:48 <span>답글쓰기</span></div>
-                                            </div>
-                                        </div>
-                                        <div class="comment">
-                                            <img src="../static/images/svg/Ali.svg" alt="">
-                                            <div class="entire">
-                                                <div class="account">
-                                                    <div class="author">알리<img src="../static/images/svg/rank-1.svg" alt="#"></div>
-                                                    <div class="options">
-                                                        <img src="../../static/images/svg/hyphenation.svg" alt="">
-                                                        <div class="dropdown-menu">
-                                                            <ul>
-                                                                <li><a href="#">댓글 삭제</a></li>
-                                                                <li><a href="#">댓글 수정</a></li>
-                                                                <li><a href="#">신고하기</a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="content">아이유는 언제나 답이고 진리다. 어서 다른 사진도 좀&emsp;&emsp;&emsp;&emsp;&emsp;
-                                                    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-                                                    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-                                                    &emsp;&emsp;&emsp;
-                                                </div>
-                                                <div class="time">2024.05.18 00:48 <span>답글쓰기</span></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="comment-input">
-                                        <div class="main">
-                                            <div class="name">우울한협객</div>
-                                            <div class="text">0/1000</div>
-                                        </div>
-                                        <textarea placeholder="댓글을 남겨주세요 :)"></textarea>
-                                        <div class="send">
-                                            <div class="icon">
-                                                <img src="../static/images/svg/photo.svg" alt="">
-                                                <img src="../static/images/svg/chat-icon-2.svg" alt="">
-                                                <img src="../static/images/svg/chat-icon-3.svg" alt="">
-                                            </div>
-                                            <button>댓글 등록</button>
-                                        </div>
-                                    </div>
-                                    <div class="mainLayer text-center">
-                                        <a href="community_detail">
-                                            <div class="photo-item-layer">
-                                                <div class="photo-layout m-b-10">
-                                                    <div class="img">
-                                                        <img src="../static/images/photo/photo_1.jpg" alt="#">
-                                                    </div>
-                                                    <div class="text-wrap position-a">
-                                                        <div class="v-h"></div>
-                                                        <div class="top px17">
-                                                            <div class="tit-wrap white m-b-10">
-                                                                아이유가 이번에 컨셉을 아주 제대로 잡은 것 같아 보인다!
-                                                                <span class="count orange-FBC22B">+19</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="bottom  flex-row px12 opacity60 ">
-                                                            <div class="datetime">2024.4.13 8:23</div>
-                                                            <div class="view flex-row flex-c"><img src="../static/images/svg/input-icon-eye.svg"
-                                                                                                   alt="" />2564</div>
-                                                            <div class="like flex-row flex-c"><img src="../static/images/svg/hearts.svg" alt="" />44
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="user-layout flex-row flex-c">
-                                                    <div class="profile">
-                                                        <img src="../static/images/profile/user1.png" alt="#">
-                                                    </div>
-                                                    <div class="nickname white px15 opacity80">고스트라이더</div>
-                                                    <div class="rank"><img src="../static/images/svg/rank-1.svg" alt="#"></div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a href="community_detail">
-                                            <div class="photo-item-layer">
-                                                <div class="photo-layout m-b-10">
-                                                    <div class="img">
-                                                        <img src="../static/images/photo/photo_2.jpg" alt="#">
-                                                    </div>
-                                                    <div class="text-wrap position-a">
-                                                        <div class="v-h"></div>
-                                                        <div class="top px17">
-                                                            <div class="tit-wrap white m-b-10">
-                                                                박은빈 '화이트데이 사탕 주고픈 연예인' 1위
-                                                                <span class="count orange-FBC22B">+19</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="bottom  flex-row px12 opacity60 ">
-                                                            <div class="datetime">2024.4.13 8:23</div>
-                                                            <div class="view flex-row flex-c"><img src="../static/images/svg/input-icon-eye.svg"
-                                                                                                   alt="" />2564</div>
-                                                            <div class="like flex-row flex-c"><img src="../static/images/svg/hearts.svg" alt="" />44
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="user-layout flex-row flex-c">
-                                                    <div class="profile">
-                                                        <img src="../static/images/profile/user1.png" alt="#">
-                                                    </div>
-                                                    <div class="nickname white px15 opacity80">고스트라이더</div>
-                                                    <div class="rank"><img src="../static/images/svg/rank-1.svg" alt="#"></div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a href="community_detail">
-                                            <div class="photo-item-layer">
-                                                <div class="photo-layout m-b-10">
-                                                    <div class="img">
-                                                        <img src="../static/images/photo/photo_1.jpg" alt="#">
-                                                    </div>
-                                                    <div class="text-wrap position-a">
-                                                        <div class="v-h"></div>
-                                                        <div class="top px17">
-                                                            <div class="tit-wrap white m-b-10">
-                                                                우리는 타짜가 될 수 있을까?
-                                                                <span class="count orange-FBC22B">+19</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="bottom  flex-row px12 opacity60 ">
-                                                            <div class="datetime">2024.4.13 8:23</div>
-                                                            <div class="view flex-row flex-c"><img src="../static/images/svg/input-icon-eye.svg"
-                                                                                                   alt="" />2564</div>
-                                                            <div class="like flex-row flex-c"><img src="../static/images/svg/hearts.svg" alt="" />44
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="user-layout flex-row flex-c">
-                                                    <div class="profile">
-                                                        <img src="../static/images/profile/user1.png" alt="#">
-                                                    </div>
-                                                    <div class="nickname white px15 opacity80">고스트라이더</div>
-                                                    <div class="rank"><img src="../static/images/svg/rank-1.svg" alt="#"></div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a href="community_detail">
-                                            <div class="photo-item-layer">
-                                                <div class="photo-layout m-b-10">
-                                                    <div class="img">
-                                                        <img src="../static/images/photo/photo_2.jpg" alt="#">
-                                                    </div>
-                                                    <div class="text-wrap position-a">
-                                                        <div class="v-h"></div>
-                                                        <div class="top px17">
-                                                            <div class="tit-wrap white m-b-10">
-                                                                박은빈 '화이트데이 사탕 주고픈 연예인' 1위
-                                                                <span class="count orange-FBC22B">+19</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="bottom  flex-row px12 opacity60 ">
-                                                            <div class="datetime">2024.4.13 8:23</div>
-                                                            <div class="view flex-row flex-c"><img src="../static/images/svg/input-icon-eye.svg"
-                                                                                                   alt="" />2564</div>
-                                                            <div class="like flex-row flex-c"><img src="../static/images/svg/hearts.svg" alt="" />44
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="user-layout flex-row flex-c">
-                                                    <div class="profile">
-                                                        <img src="../static/images/profile/user1.png" alt="#">
-                                                    </div>
-                                                    <div class="nickname white px15 opacity80">고스트라이더</div>
-                                                    <div class="rank"><img src="../static/images/svg/rank-1.svg" alt="#"></div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a href="community_detail">
-                                            <div class="photo-item-layer">
-                                                <div class="photo-layout m-b-10">
-                                                    <div class="img">
-                                                        <img src="../static/images/photo/photo_1.jpg" alt="#">
-                                                    </div>
-                                                    <div class="text-wrap position-a">
-                                                        <div class="v-h"></div>
-                                                        <div class="top px17">
-                                                            <div class="tit-wrap white m-b-10">
-                                                                아이유가 이번에 컨셉을 아주 제대로 잡은 것 같아 보인다!
-                                                                <span class="count orange-FBC22B">+19</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="bottom  flex-row px12 opacity60 ">
-                                                            <div class="datetime">2024.4.13 8:23</div>
-                                                            <div class="view flex-row flex-c"><img src="../static/images/svg/input-icon-eye.svg"
-                                                                                                   alt="" />2564</div>
-                                                            <div class="like flex-row flex-c"><img src="../static/images/svg/hearts.svg" alt="" />44
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="user-layout flex-row flex-c">
-                                                    <div class="profile">
-                                                        <img src="../static/images/profile/user1.png" alt="#">
-                                                    </div>
-                                                    <div class="nickname white px15 opacity80">고스트라이더</div>
-                                                    <div class="rank"><img src="../static/images/svg/rank-1.svg" alt="#"></div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a href="community_detail">
-                                            <div class="photo-item-layer">
-                                                <div class="photo-layout m-b-10">
-                                                    <div class="img">
-                                                        <img src="../static/images/photo/photo_2.jpg" alt="#">
-                                                    </div>
-                                                    <div class="text-wrap position-a">
-                                                        <div class="v-h"></div>
-                                                        <div class="top px17">
-                                                            <div class="tit-wrap white m-b-10">
-                                                                박은빈 '화이트데이 사탕 주고픈 연예인' 1위
-                                                                <span class="count orange-FBC22B">+19</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="bottom  flex-row px12 opacity60 ">
-                                                            <div class="datetime">2024.4.13 8:23</div>
-                                                            <div class="view flex-row flex-c"><img src="../static/images/svg/input-icon-eye.svg"
-                                                                                                   alt="" />2564</div>
-                                                            <div class="like flex-row flex-c"><img src="../static/images/svg/hearts.svg" alt="" />44
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="user-layout flex-row flex-c">
-                                                    <div class="profile">
-                                                        <img src="../static/images/profile/user1.png" alt="#">
-                                                    </div>
-                                                    <div class="nickname white px15 opacity80">고스트라이더</div>
-                                                    <div class="rank"><img src="../static/images/svg/rank-1.svg" alt="#"></div>
-                                                </div>
-                                            </div>
-                                        </a>
                                     </div>
                                 </div>
+                                <div class="post-content">
+                                    <p th:text="${post.content}">이정후는 어깨 통증을 호소하면서 더는 게임을 뛸 수 없었다. 샌프란시스코도 선수 보호 차원에서 이정후를 곧바로 타일러 피츠제럴드와 교체했다.</p>
+                                    <div class="tags">
+                                        <span th:each="tag : ${post.tags}" th:text="${tag}">아이유</span>
+                                    </div>
+                                </div>
+                                <div class="post-actions">
+                                    <button id="dislike-button" class="gray" th:style="${isLiked} ? 'display: block;' : 'display: none;'" >
+                                        <img src="../static/images/svg/hearts-line.svg" alt=""> &nbsp 좋아요 &nbsp <span id="dislike-count" th:text="${postLikeCount}">8</span>
+                                    </button>
+                                    <button id="like-button" class="red" th:style="${!isLiked} ? 'display: block;' : 'display: none;'" >
+                                        <img src="../static/images/svg/heart.svg" alt=""> &nbsp 좋아요 &nbsp <span id="like-count" th:text="${postLikeCount}">69</span>
+                                    </button>
+                                </div>
+                                <div class="comments">
+                                    <div class="tit">댓글 <span th:text="${post.commentCount}">2</span></div>
+                                    <!-- 댓글 목록 -->
+                                    <div class="comment" th:each="comment : ${comments}">
+                                        <img th:src="@{${comment.author.imageUrl}}" alt="">
+                                        <div class="entire">
+                                            <div class="account">
+                                                <div class="author" th:text="${comment.author.name}">알리</div>
+                                                <div class="options">
+                                                    <img src="../static/images/svg/hyphenation.svg" alt="">
+                                                    <div class="dropdown-menu">
+                                                        <ul>
+                                                            <li><a href="#">댓글 삭제</a></li>
+                                                            <li><a href="#">댓글 수정</a></li>
+                                                            <li><a href="#">신고하기</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="content" th:text="${comment.content}">There are many variations of passages of Lorem Ipsum available...</div>
+                                            <div class="time" th:text="${#dates.format(comment.createdAt, 'yyyy.MM.dd HH:mm')}">2024.05.18 00:48</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="comment-input">
+                                    <div class="main">
+                                        <div class="name" th:text="${user.nickname}">우울한협객</div>
+                                        <div class="text">0/1000</div>
+                                    </div>
+                                    <textarea placeholder="댓글을 남겨주세요 :)"></textarea>
+                                    <div class="send">
+                                        <div class="icon">
+                                            <img src="../static/images/svg/photo.svg" alt="">
+                                            <img src="../static/images/svg/chat-icon-2.svg" alt="">
+                                            <img src="../static/images/svg/chat-icon-3.svg" alt="">
+                                        </div>
+                                        <button>댓글 등록</button>
+                                    </div>
+                                </div>
+                                <div class="mainLayer text-center">
+                                    <a href="community_detail">
+                                        <div class="photo-item-layer">
+                                            <div class="photo-layout m-b-10">
+                                                <div class="img">
+                                                    <img src="../static/images/photo/photo_1.jpg" alt="#">
+                                                </div>
+                                                <div class="text-wrap position-a">
+                                                    <div class="v-h"></div>
+                                                    <div class="top px17">
+                                                        <div class="tit-wrap white m-b-10">
+                                                            아이유가 이번에 컨셉을 아주 제대로 잡은 것 같아 보인다!
+                                                            <span class="count orange-FBC22B">+19</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="bottom  flex-row px12 opacity60 ">
+                                                        <div class="datetime">2024.4.13 8:23</div>
+                                                        <div class="view flex-row flex-c"><img src="../static/images/svg/input-icon-eye.svg" alt="" />2564</div>
+                                                        <div class="postLike flex-row flex-c"><img src="../static/images/svg/hearts.svg" alt="" />44</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="user-layout flex-row flex-c">
+                                                <div class="profile">
+                                                    <img src="../static/images/profile/user1.png" alt="#">
+                                                </div>
+                                                <div class="nickname white px15 opacity80">고스트라이더</div>
+                                                <div class="rank"><img src="../static/images/svg/rank-1.svg" alt="#"></div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <!-- 반복되는 항목들에 대한 동일한 구조를 아래에 추가 -->
+                                </div>
                             </div>
-                        <div id="footer" class=" bc-footer" th:insert="include/footer"></div>
+                        </div>
+                        <div id="footer" class="bc-footer" th:insert="include/footer"></div>
                     </div>
                 </div>
-            </section>
-        </div>
+        </section>
     </div>
+</div>
 </body>
 </html>

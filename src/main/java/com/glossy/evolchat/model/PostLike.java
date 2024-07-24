@@ -6,15 +6,11 @@ import java.time.LocalDateTime;
 
 @Entity
 @Data
-@Table(name = "`post_likes`")
-public class Like {
-
+@Table(name = "post_likes")
+public class PostLike {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int seq;
-
-    @Column(name = "like_id", unique = true, nullable = false)
-    private int likeId;
 
     @Column(name = "post_id", nullable = false)
     private int postId;
@@ -22,7 +18,7 @@ public class Like {
     @Column(name = "user_id", nullable = false)
     private String userId;
 
-    @Column(name = "created_at", nullable = false)
+    @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
     @PrePersist

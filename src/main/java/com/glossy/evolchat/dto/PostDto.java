@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class PostDto {
     private int postId;
-    private int userId;
+    private String userId;
     private int boardId;
     private String title;
     private String content;

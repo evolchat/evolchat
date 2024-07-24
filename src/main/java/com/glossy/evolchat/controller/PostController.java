@@ -45,24 +45,11 @@ public class PostController {
         return new ResponseEntity<>(postDtos, headers, HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<PostDto> getPostById(@PathVariable("id") Integer id) {
-        if (id == null) {
-            return ResponseEntity.badRequest().build();
-        }
-        Post post = postService.getPostById(id);
-        if (post == null) {
-            return ResponseEntity.notFound().build();
-        }
-        PostDto postDto = convertToDto(post);
-        return ResponseEntity.ok(postDto);
-    }
-
     private PostDto convertToDto(Post post) {
         long likeCount = postLikeService.countLikesByPostId(post.getPostId());
         PostDto postDto = new PostDto();
         postDto.setPostId(post.getPostId());
-        postDto.setUserId(Integer.parseInt(post.getUserId()));
+        postDto.setUserId(post.getUserId());
         postDto.setBoardId(post.getBoardId());
         postDto.setTitle(post.getTitle());
         postDto.setContent(post.getContent());

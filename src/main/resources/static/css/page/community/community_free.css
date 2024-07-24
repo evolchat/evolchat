@@ -13,6 +13,7 @@
     max-height: 190px;
     justify-content: space-between;
     padding: 30px;
+    cursor: pointer;
 }
 
 .post-list .post .text-wrap {

@@ -3,6 +3,7 @@ package com.glossy.evolchat.model;
 import lombok.Data;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Data
@@ -10,9 +11,6 @@ public class Post {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int seq;
-
-    @Column(unique = true, nullable = false)
     private int postId;
 
     @Column(nullable = false, length = 255)
@@ -42,9 +40,16 @@ public class Post {
     @Column(nullable = false)
     private int views = 0;
 
+    @Column(name = "comment_count")
+    private int commentCount; // 댓글 개수를 저장하는 필드
+
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Comment> comments; // 댓글 목록
+
     @PrePersist
     protected void onCreate() {
         createdAt = LocalDateTime.now();
+        updatedAt = createdAt;
     }
 
     @PreUpdate

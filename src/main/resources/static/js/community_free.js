@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    const postsPerPage = 10; // Number of posts per page
+    const postsPerPage = 10; // 페이지당 게시물 수
 
     function fetchPosts(page = 1, boardId = null) {
         let url = `/posts?page=${page}&size=${postsPerPage}`;
@@ -12,16 +12,16 @@ $(document).ready(function() {
             type: 'GET',
             success: function(response, status, xhr) {
                 const postsContainer = $('#posts-container');
-                postsContainer.empty(); // Clear any existing content
+                postsContainer.empty(); // 기존 콘텐츠 제거
 
                 if (response.length === 0) {
-                    $('#pagination-container').hide(); // Hide pagination if no posts
+                    $('#pagination-container').hide(); // 게시물이 없으면 페이지네이션 숨기기
                     return;
                 }
 
                 response.forEach(post => {
                     const postHtml = `
-                        <div class="post flex-row tr">
+                        <div class="post flex-row tr" data-post-id="${post.postId}">
                             <div class="text-wrap">
                                 <div class="title white m-b-10 px17">
                                     ${post.title} <span>+3</span>
@@ -54,32 +54,32 @@ $(document).ready(function() {
                 });
 
                 const totalPages = parseInt(xhr.getResponseHeader('X-Total-Pages')) || 1;
-                updatePagination(page, totalPages, boardId); // Pass boardId to updatePagination
+                updatePagination(page, totalPages, boardId); // boardId 전달
             },
             error: function() {
-                console.log('Failed to fetch posts');
+                console.log('게시물을 가져오는 데 실패했습니다.');
             }
         });
     }
 
     function updatePagination(currentPage, totalPages, boardId) {
         const paginationContainer = $('#pagination-container');
-        paginationContainer.empty(); // Clear existing pagination
+        paginationContainer.empty(); // 기존 페이지네이션 제거
 
-        // Previous button as div element
+        // 이전 버튼
         const prevButton = $('<div class="prev-btn page flex-c-c" data-page="prev" data-board="' + boardId + '"><img src="../static/images/svg/prev.svg" alt=""></div>');
 
-        // Next button as div element
+        // 다음 버튼
         const nextButton = $('<div class="next-btn page flex-c-c" data-page="next" data-board="' + boardId + '"><img src="../static/images/svg/next.svg" alt=""></div>');
 
-        // Show/hide previous button based on currentPage
+        // 현재 페이지에 따라 이전 버튼 표시 여부 설정
         if (currentPage === 1) {
             prevButton.addClass('hidden');
         } else {
             prevButton.removeClass('hidden');
         }
 
-        // Show/hide next button based on currentPage and totalPages
+        // 현재 페이지와 총 페이지 수에 따라 다음 버튼 표시 여부 설정
         if (currentPage === totalPages) {
             nextButton.addClass('hidden');
         } else {
@@ -88,24 +88,24 @@ $(document).ready(function() {
 
         paginationContainer.append(prevButton);
 
-        // Show only relevant page numbers
+        // 관련 페이지 번호만 표시
         const startPage = Math.max(1, currentPage - 2);
         const endPage = Math.min(totalPages, currentPage + 2);
 
         for (let i = startPage; i <= endPage; i++) {
             const pageDiv = $(`<div class="page flex-c-c" data-page="${i}" data-board="${boardId}">${i}</div>`);
             if (i === currentPage) {
-                pageDiv.addClass('bc-activate'); // Add bc-activate class to current page
+                pageDiv.addClass('bc-activate'); // 현재 페이지에 bc-activate 클래스 추가
             }
             paginationContainer.append(pageDiv);
         }
 
         paginationContainer.append(nextButton);
 
-        // Previous two pages button as div element
+        // 이전 두 페이지 버튼
         const prevTwoButton = $('<div class="prev-btn page flex-c-c" data-page="prev-two" data-board="' + boardId + '"><img src="../static/images/svg/prev-two.svg" alt=""></div>');
 
-        // Show/hide previous two pages button based on currentPage
+        // 현재 페이지에 따라 이전 두 페이지 버튼 표시 여부 설정
         if (currentPage <= 2) {
             prevTwoButton.addClass('hidden');
         } else {
@@ -114,10 +114,10 @@ $(document).ready(function() {
 
         paginationContainer.prepend(prevTwoButton);
 
-        // Next two pages button as div element
+        // 다음 두 페이지 버튼
         const nextTwoButton = $('<div class="next-btn page flex-c-c" data-page="next-two" data-board="' + boardId + '"><img src="../static/images/svg/next-two.svg" alt=""></div>');
 
-        // Show/hide next two pages button based on currentPage and totalPages
+        // 현재 페이지와 총 페이지 수에 따라 다음 두 페이지 버튼 표시 여부 설정
         if (currentPage >= totalPages - 1) {
             nextTwoButton.addClass('hidden');
         } else {
@@ -126,13 +126,13 @@ $(document).ready(function() {
 
         paginationContainer.append(nextTwoButton);
 
-        attachPaginationEventListeners(); // Ensure event listeners are attached after updating pagination
+        attachPaginationEventListeners(); // 페이지네이션 이벤트 리스너 부착
     }
 
     function attachPaginationEventListeners() {
-        $('.page').click(function() {
+        $('.page').off('click').on('click', function() { // 중복 바인딩 방지
             let page = $(this).data('page');
-            const boardId = $(this).data('board'); // Retrieve boardId from data attribute
+            const boardId = $(this).data('board'); // 데이터 속성에서 boardId 가져오기
             const currentPage = parseInt($('.bc-activate').data('page'));
 
             if (page === 'next') {
@@ -151,7 +151,15 @@ $(document).ready(function() {
         });
     }
 
-    // Initial fetch for boardId = 1 (자유 게시판)
-    const initialBoardId = 1;
+    // 초기 게시물 가져오기
+    const initialBoardId = 1; // 자유 게시판
     fetchPosts(1, initialBoardId);
+
+    // 게시물 클릭 이벤트 추가
+    $('#posts-container').on('click', '.post', function() {
+        const postId = $(this).data('post-id');
+        if (postId) {
+            window.location.href = `/community_detail?postId=${postId}`;
+        }
+    });
 });
