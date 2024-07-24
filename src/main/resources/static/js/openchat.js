@@ -30,41 +30,47 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-    const titleInput = document.querySelector('.input input[type="text"]:nth-child(1)');
-    const descriptionInput = document.querySelector('.input input[type="text"]:nth-child(2)');
-    const openButton = document.getElementById('open');
+document.addEventListener('DOMContentLoaded', function() {
+    const inputs = document.querySelectorAll('.upload-area input[type="text"]');
+    const checkboxes = document.querySelectorAll('.agreement .sub-checkbox');
     const agreeAll = document.getElementById('agreeAll');
-    const subCheckboxes = document.querySelectorAll('.sub-checkbox');
+    const openButton = document.getElementById('open');
 
-    function checkInputsAndCheckboxes() {
-        const inputsFilled = titleInput.value.trim() !== '' && descriptionInput.value.trim() !== '';
-        const allCheckboxesChecked = agreeAll.checked && [...subCheckboxes].every(cb => cb.checked);
+    function updateOpenButtonState() {
+        const allInputsFilled = Array.from(inputs).every(input => input.value.trim() !== "");
+        const allCheckboxesChecked = Array.from(checkboxes).every(checkbox => checkbox.checked);
 
-        if (inputsFilled && allCheckboxesChecked) {
+        if (allInputsFilled && allCheckboxesChecked) {
             openButton.classList.add('create-active');
         } else {
             openButton.classList.remove('create-active');
         }
     }
 
-    titleInput.addEventListener('input', checkInputsAndCheckboxes);
-    descriptionInput.addEventListener('input', checkInputsAndCheckboxes);
-    agreeAll.addEventListener('change', () => {
-        subCheckboxes.forEach(checkbox => {
-            checkbox.checked = agreeAll.checked;
-        });
-        checkInputsAndCheckboxes();
+    inputs.forEach(input => {
+        input.addEventListener('input', updateOpenButtonState);
     });
 
-    subCheckboxes.forEach(checkbox => {
-        checkbox.addEventListener('change', () => {
-            if ([...subCheckboxes].every(cb => cb.checked)) {
-                agreeAll.checked = true;
-            } else {
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', updateOpenButtonState);
+    });
+
+    agreeAll.addEventListener('change', function() {
+        checkboxes.forEach(checkbox => {
+            checkbox.checked = agreeAll.checked;
+        });
+        updateOpenButtonState();
+    });
+
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            if (!this.checked) {
                 agreeAll.checked = false;
+            } else {
+                const allChecked = Array.from(checkboxes).every(checkbox => checkbox.checked);
+                agreeAll.checked = allChecked;
             }
-            checkInputsAndCheckboxes();
+            updateOpenButtonState();
         });
     });
 });
