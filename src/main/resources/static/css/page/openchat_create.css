@@ -1,0 +1,180 @@
+.contain {
+    width: 640px;
+    background-color: #232428;
+    border-radius: 5px;
+    margin: 25px auto;
+    position: relative;
+}
+
+.profil {
+    position: absolute;
+    top: 34%;
+    left: 3%;
+}
+
+.head {
+    width: 640px;
+    height: 268px;
+    text-align: center;
+    color: #eee;
+    background-color: #202020
+}
+
+.head h1 {
+    margin-bottom: 30px;
+}
+
+.bg {
+    margin: 50px auto 30px;
+}
+
+
+.upload-area {
+    text-align: center;
+    margin-bottom: 20px;
+    background: #232428;
+}
+
+.upload-area img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+}
+
+.tags {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0px 20px 120px;
+    color: #eee;
+}
+
+
+.tag {
+    background-color: #555;
+    border-radius: 15px;
+    padding: 5px 10px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.tag.active {
+    background-color: #8a2be2;
+}
+
+
+.upload-area input[type="text"],
+textarea {
+    width: 88%;
+    padding: 17px 0 70px;
+    margin: 35px;
+    border: none;
+    border-radius: 5px;
+    color: #eee;
+    font-size: 2rem;
+}
+
+input[type="text"] {
+    height: 30px;
+}
+
+textarea {
+    height: 60px;
+    resize: none;
+}
+.all_agree {
+    margin-left: 20px;
+}
+
+.agreement {
+    width: 640px;
+    border-radius: 10px;
+    display: inline-block;
+    text-align: left;
+    color: #eee;
+    opacity: 0.5;
+    margin-bottom: 30px;
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+input[type="checkbox"] + label::before {
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    vertical-align: middle;
+    background-color: transparent;
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="gray" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check"><polyline points="20 6 9 17 4 12"></polyline></svg>');
+    background-size: 14px 14px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+input[type="checkbox"]:checked + label::before {
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check"><polyline points="20 6 9 17 4 12"></polyline></svg>');
+}
+
+/* Style for checked checkboxes */
+input[type="checkbox"]:checked + label {
+    color: inherit; /* Keep the text color unchanged */
+}
+
+
+.agreement input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.agreement label {
+    cursor: pointer;
+    margin-bottom: 8px;
+}
+
+.agreement ul {
+    margin: 0;
+    padding-left: 20px;
+    list-style: none;
+    color: #909090;
+}
+
+.agreement ul li {
+    margin-bottom: 10px;
+}
+
+.agreement ul li input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.agreement input[type="checkbox"]:checked + label,
+.agreement ul li input[type="checkbox"]:checked + label {
+    color: #eee;
+    opacity: 1;
+}
+
+.buttons {
+    width: 640px;
+    margin: 0 auto;
+}
+
+button {
+    width: 170px;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #eee;
+}
+
+button.prev {
+    background-color: #555;
+}
+
+button.create {
+    background-color: #555
+}
+
+button.create-active {
+    background-color: #8a2be2;
+}

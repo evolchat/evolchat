@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>에볼챗닷컴</title>
+    <script src="../../static/js/openchat.js"></script>
+    <link rel="stylesheet" href="../../static/css/page/openchat.css" />
+    <link rel="stylesheet" href="../../static/css/page/openchat_create.css">
+</head>
+<body>
+<div id="content-area" class="flex-grow" style="">
+    <div class="wrapper bc-black vh100 ">
+        <Section class="flex-row">
+            <div class="wrap bc-footer ">
+                <div class="content">
+                    <div class="mainContent bc-main text-center">
+                        <div class="sub-header flex-row flex-c white opacity60 px15">
+                            <div class="list active"><a href="openchat">전체</a></div>
+                            <div class="list"><a href="openchat_evolution">에볼루션</a></div>
+                            <div class="list"><a href="openchat_sports">스포츠</a></div>
+                            <div class="list"><a href="openchat_game">게임</a></div>
+                            <div class="list"><a href="openchat_cryptocurrency">가상화폐</a></div>
+                            <div class="list"><a href="openchat_stock">주식</a></div>
+                            <div class="list"><a href="openchat_amity">친목</a></div>
+                            <div class="list"><a href="openchat_favorites">즐겨찾기</a></div>
+                        </div>
+                        <div class="contain">
+                            <div class="head">
+                                <img class="bg" src="../../static/images/svg/background.svg" alt="Avatar">
+                                <h1>채팅 배경 등록하기</h1>
+                                <p>이미지를 이곳에 드래그하거나 클릭하여 업로드해 주세요.</p>
+                            </div>
+                            <img class="profil" src="../../static/images/svg/profile.svg" alt="">
+                            <div class="upload-area">
+                                <div class="tags">
+                                    <span class="tag active">에볼루션</span>
+                                    <span class="tag">스포츠</span>
+                                    <span class="tag">게임</span>
+                                    <span class="tag">가상화폐</span>
+                                    <span class="tag">주식</span>
+                                    <span class="tag">친목</span>
+                                </div>
+                                <input type="text" placeholder="제목을 입력해 주세요." maxlength="20">
+                                <input type="text" style="font-size:1.4rem !important;" placeholder="소개글을 입력해 주세요." maxlength="80">
+                            </div>
+                        </div>
+                        <div class="agreement">
+                            <input class="all_agree" type="checkbox" id="agreeAll">
+                            <label for="agreeAll">오픈채팅 개설 동의</label>
+                            <ul class="px13">
+                                <li><input type="checkbox" class="sub-checkbox" id="agree1"> <label for="agree1">오픈채팅방 개설시 보유하신 오픈채팅 개설권 1개가 소모 됩니다.</label></li>
+                                <li><input type="checkbox" class="sub-checkbox" id="agree2"> <label for="agree2">불법적인 프로그램 유포나 성인을 유포시 경고없이 오픈채팅이 폐쇄되거나 불이익을 받을 수 있습니다.</label></li>
+                                <li><input type="checkbox" class="sub-checkbox" id="agree3"> <label for="agree3">개설 시간을 기준으로 24시간 후 개설된 채팅방은 자동으로 소멸됩니다.<br> &emsp;&emsp;(단, 소멸된 방장 권한으로 오픈채팅 개설권을 사용하여 오픈채팅 유지시간을 24시간 추가적으로 연장 할 수 있습니다.)</label></li>
+                            </ul>
+                        </div>
+                        <div class="buttons">
+                            <button class="prev">이전</button>
+                            <button id="open" class="create">개설하기</button>
+                        </div>
+                    </div>
+                    <div id="footer" class=" bc-footer" th:insert="include/footer">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+</body>
+</html>
