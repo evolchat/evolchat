@@ -40,6 +40,12 @@
     margin: 10px 0;
 }
 
+.no-posts {
+    text-align: center;
+    color: #fff;
+    margin: 140px;~
+}
+
 .video-details p {
     font-size: 14px;
     margin: 5px 0;

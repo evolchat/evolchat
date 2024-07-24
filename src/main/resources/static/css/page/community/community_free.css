@@ -8,7 +8,6 @@
 }
 
 .post-list .post {
-    max-width: 65vw;
     min-height: 170px;
     max-height: 190px;
     justify-content: space-between;
@@ -26,7 +25,11 @@
     max-height: 90px;
     overflow: hidden;
 }
-
+.no-posts {
+    text-align: center;
+    color: #fff;
+    margin: 140px;~
+}
 .post-list .post .etc {
     color: #AFB0B1;
 }

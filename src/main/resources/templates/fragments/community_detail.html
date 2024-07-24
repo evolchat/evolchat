@@ -24,13 +24,13 @@
                         <div class="mainLayer">
                             <div class="post-container">
                                 <div class="post-header">
-                                    <div class="title" th:text="${post.title}">아이유 펩시 광고 화보! 너무 매력적인데?</div>
+                                    <div class="title" th:text="${post.title}"></div>
                                     <div class="profile">
                                         <div class="acc">
                                             <img src="../static/images/svg/ghost.svg" alt="#">
                                             <div class="nickname">
                                                 <div>
-                                                    <div class="info" th:text="${authorNickname}">고스트라이더</div>
+                                                    <div class="info" th:text="${authorNickname}"></div>
                                                     <div class="px14">
                                                         <div th:text="${formattedDate}">2024.05.18 00:48</div>
                                                         <img src="../static/images/svg/input-icon-eye.svg" alt="">
@@ -54,9 +54,9 @@
                                     </div>
                                 </div>
                                 <div class="post-content">
-                                    <p th:text="${post.content}">이정후는 어깨 통증을 호소하면서 더는 게임을 뛸 수 없었다. 샌프란시스코도 선수 보호 차원에서 이정후를 곧바로 타일러 피츠제럴드와 교체했다.</p>
+                                    <p th:text="${post.content}"></p>
                                     <div class="tags">
-                                        <span th:each="tag : ${post.tags}" th:text="${tag}">아이유</span>
+                                        <span th:each="tag : ${post.tags}" th:text="${tag}"></span>
                                     </div>
                                 </div>
                                 <div class="post-actions">

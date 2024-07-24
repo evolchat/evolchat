@@ -50,7 +50,11 @@
 .photo-item-layer>.photo-layout .text-wrap .v-h {
     flex-grow: 1;
 }
-
+.no-posts {
+    text-align: center;
+    color: #fff;
+    margin: 140px;~
+}
 .photo-item-layer .text-wrap .top {
     /* padding-bottom: 15px;
     padding-left: 15px;

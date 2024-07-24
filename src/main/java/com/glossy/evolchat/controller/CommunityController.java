@@ -111,7 +111,13 @@ public class CommunityController {
     @GetMapping("/community_write")
     public String community_write(@RequestParam("boardId") int boardId, Model model) {
         model.addAttribute("activeCategory", "community_free");
-        model.addAttribute("activePage", "community_write");
+        if(boardId == 1){
+            model.addAttribute("activePage", "community_free");
+        } else if(boardId == 2){
+            model.addAttribute("activePage", "community_photo");
+        } else if(boardId == 3){
+            model.addAttribute("activePage", "community_videos");
+        }
         model.addAttribute("contentFragment", "fragments/community_write");
         model.addAttribute("boardId", boardId);
         return "index";

@@ -15,9 +15,12 @@ $(document).ready(function() {
                 postsContainer.empty(); // 기존 콘텐츠 제거
 
                 if (response.length === 0) {
-                    $('#pagination-container').hide(); // 게시물이 없으면 페이지네이션 숨기기
+                    postsContainer.append('<div class="no-posts">검색 결과가 없습니다.</div>'); // 게시물이 없으면 메시지 표시
+                    $('#pagination-container').hide(); // 페이지네이션 숨기기
                     return;
                 }
+
+                $('#pagination-container').show(); // 게시물이 있을 때는 페이지네이션 표시
 
                 response.forEach(post => {
                     const postHtml = `
@@ -46,7 +49,7 @@ $(document).ready(function() {
                                 </div>
                             </div>
                             <div class="img-wrap">
-                                <img src="../static/images/photo/photo_1.jpg" alt="123123.png">
+                                <img src="${post.imageUrl || '../../static/images/svg/logo.svg'}" alt="#" onerror="this.src='../../static/images/svg/logo.svg'">
                             </div>
                         </div>
                     `;

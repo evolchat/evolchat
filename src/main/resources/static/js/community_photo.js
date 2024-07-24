@@ -1,85 +1,93 @@
 $(document).ready(function() {
-    const postsPerPage = 10; // Number of posts per page
+    const postsPerPage = 10; // 페이지당 게시물 수
 
-    function fetchPosts(page = 1, boardId = null) {
-        let url = `/posts?page=${page}&size=${postsPerPage}`;
-        if (boardId) {
-            url += `&boardId=${boardId}`;
-        }
-
+    // 게시물과 페이지네이션을 가져오는 함수
+    function fetchPosts(page = 1) {
         $.ajax({
-            url: url,
+            url: `/posts?page=${page}&size=${postsPerPage}`, // API 요청 URL
             type: 'GET',
             success: function(response, status, xhr) {
-                const postsContainer = $('#posts-container');
-                postsContainer.empty(); // Clear any existing content
+                const postsContainer = $('.mainLayer');
+                postsContainer.empty(); // 기존 게시물 항목 제거
 
                 if (response.length === 0) {
-                    $('#pagination-container').hide(); // Hide pagination if no posts
+                    postsContainer.append('<div class="no-posts">게시물이 없습니다.</div>'); // 게시물이 없으면 메시지 표시
+                    $('#pagination-container').hide(); // 페이지네이션 숨기기
                     return;
                 }
 
+                $('#pagination-container').show(); // 게시물이 있을 때 페이지네이션 표시
+
                 response.forEach(post => {
                     const postHtml = `
-                        <div class="post flex-row tr">
-                            <div class="text-wrap">
-                                <div class="title white m-b-10 px17">
-                                    ${post.title} <span>+3</span>
+                        <a href="community_detail?postId=${post.postId}">
+                            <div class="photo-item-layer">
+                                <div class="photo-layout m-b-10">
+                                    <div class="img">
+                                        <img src="${post.imageUrl || '../../static/images/svg/logo.svg'}" alt="#" onerror="this.src='../../static/images/svg/logo.svg'">
+                                    </div>
+                                    <div class="text-wrap position-a">
+                                        <div class="v-h"></div>
+                                        <div class="top px17">
+                                            <div class="tit-wrap white m-b-10">
+                                                ${post.title}
+                                                <span class="count orange-FBC22B">+${post.likes}</span>
+                                            </div>
+                                        </div>
+                                        <div class="bottom flex-row px12 opacity60">
+                                            <div class="datetime">${new Date(post.createdAt).toLocaleString()}</div>
+                                            <div class="view flex-row flex-c">
+                                                <img src="../../static/images/svg/input-icon-eye.svg" alt="" />${post.views}
+                                            </div>
+                                            <div class="postLike flex-row flex-c">
+                                                <img src="../../static/images/svg/hearts.svg" alt="" />${post.likeCount}
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="summary m-b-18 px15">
-                                    ${post.content}
-                                </div>
-                                <div class="etc">
+                                <div class="user-layout flex-row flex-c">
                                     <div class="profile flex-row flex-c m-b-8">
                                         <img src="../static/images/profile/user1.png" alt="#" class="m-r-6">
-                                        <div class="nickname px15">${post.userId}</div>
                                     </div>
-                                    <div class="info px12 flex-c flex-row">
-                                        <span class="m-r-20">${new Date(post.createdAt).toLocaleString()}</span>
-                                        <span class="flex-c flex-row m-r-20"><img
-                                                src="../static/images/svg/input-icon-eye.svg" alt=""
-                                                class="m-r-4">${post.views}</span>
-                                        <span class="flex-c flex-row"><img
-                                                src="../static/images/svg/hearts.svg" alt=""
-                                                class="m-r-4">${post.likeCount}</span>
+                                    <div class="nickname white px15 opacity80">${post.userId}</div>
+                                    <div class="rank">
+                                        <img src="../../static/images/svg/rank-1.svg" alt="#">
                                     </div>
                                 </div>
                             </div>
-                            <div class="img-wrap">
-                                <img src="../static/images/photo/photo_1.jpg" alt="123123.png">
-                            </div>
-                        </div>
+                        </a>
                     `;
                     postsContainer.append(postHtml);
                 });
 
                 const totalPages = parseInt(xhr.getResponseHeader('X-Total-Pages')) || 1;
-                updatePagination(page, totalPages, boardId); // Pass boardId to updatePagination
+                updatePagination(page, totalPages); // 페이지네이션 업데이트
             },
             error: function() {
-                console.log('Failed to fetch posts');
+                console.log('게시물을 가져오는 데 실패했습니다.');
             }
         });
     }
 
-    function updatePagination(currentPage, totalPages, boardId) {
+    // 페이지네이션을 업데이트하는 함수
+    function updatePagination(currentPage, totalPages) {
         const paginationContainer = $('#pagination-container');
-        paginationContainer.empty(); // Clear existing pagination
+        paginationContainer.empty(); // 기존 페이지네이션 제거
 
-        // Previous button as div element
-        const prevButton = $('<div class="prev-btn page flex-c-c" data-page="prev" data-board="' + boardId + '"><img src="../static/images/svg/prev.svg" alt=""></div>');
+        // 이전 버튼
+        const prevButton = $('<div class="prev-btn page flex-c-c" data-page="prev"><img src="../../static/images/svg/prev.svg" alt=""></div>');
 
-        // Next button as div element
-        const nextButton = $('<div class="next-btn page flex-c-c" data-page="next" data-board="' + boardId + '"><img src="../static/images/svg/next.svg" alt=""></div>');
+        // 다음 버튼
+        const nextButton = $('<div class="next-btn page flex-c-c" data-page="next"><img src="../../static/images/svg/next.svg" alt=""></div>');
 
-        // Show/hide previous button based on currentPage
+        // 현재 페이지에 따라 이전 버튼 표시 여부 설정
         if (currentPage === 1) {
             prevButton.addClass('hidden');
         } else {
             prevButton.removeClass('hidden');
         }
 
-        // Show/hide next button based on currentPage and totalPages
+        // 현재 페이지와 총 페이지 수에 따라 다음 버튼 표시 여부 설정
         if (currentPage === totalPages) {
             nextButton.addClass('hidden');
         } else {
@@ -88,70 +96,46 @@ $(document).ready(function() {
 
         paginationContainer.append(prevButton);
 
-        // Show only relevant page numbers
+        // 현재 페이지에 대한 페이지 번호만 표시
         const startPage = Math.max(1, currentPage - 2);
         const endPage = Math.min(totalPages, currentPage + 2);
 
         for (let i = startPage; i <= endPage; i++) {
-            const pageDiv = $(`<div class="page flex-c-c" data-page="${i}" data-board="${boardId}">${i}</div>`);
+            const pageDiv = $(`<div class="page flex-c-c" data-page="${i}">${i}</div>`);
             if (i === currentPage) {
-                pageDiv.addClass('bc-activate'); // Add bc-activate class to current page
+                pageDiv.addClass('bc-activate'); // 현재 페이지에 bc-activate 클래스 추가
             }
             paginationContainer.append(pageDiv);
         }
 
         paginationContainer.append(nextButton);
 
-        // Previous two pages button as div element
-        const prevTwoButton = $('<div class="prev-btn page flex-c-c" data-page="prev-two" data-board="' + boardId + '"><img src="../static/images/svg/prev-two.svg" alt=""></div>');
-
-        // Show/hide previous two pages button based on currentPage
-        if (currentPage <= 2) {
-            prevTwoButton.addClass('hidden');
-        } else {
-            prevTwoButton.removeClass('hidden');
-        }
-
-        paginationContainer.prepend(prevTwoButton);
-
-        // Next two pages button as div element
-        const nextTwoButton = $('<div class="next-btn page flex-c-c" data-page="next-two" data-board="' + boardId + '"><img src="../static/images/svg/next-two.svg" alt=""></div>');
-
-        // Show/hide next two pages button based on currentPage and totalPages
-        if (currentPage >= totalPages - 1) {
-            nextTwoButton.addClass('hidden');
-        } else {
-            nextTwoButton.removeClass('hidden');
-        }
-
-        paginationContainer.append(nextTwoButton);
-
-        attachPaginationEventListeners(); // Ensure event listeners are attached after updating pagination
+        attachPaginationEventListeners(); // 페이지네이션 이벤트 리스너 부착
     }
 
+    // 페이지네이션 클릭 이벤트 리스너 부착
     function attachPaginationEventListeners() {
-        $('.page').click(function() {
-            let page = $(this).data('page');
-            const boardId = $(this).data('board'); // Retrieve boardId from data attribute
-            const currentPage = parseInt($('.bc-activate').data('page'));
-
+        $('.page').off('click').on('click', function() { // 중복 바인딩 방지
+            const page = $(this).data('page');
             if (page === 'next') {
-                page = currentPage + 1;
+                fetchPosts(currentPage + 1);
             } else if (page === 'prev') {
-                page = currentPage - 1;
-            } else if (page === 'next-two') {
-                page = currentPage + 2;
-            } else if (page === 'prev-two') {
-                page = currentPage - 2;
+                fetchPosts(currentPage - 1);
             } else {
-                page = parseInt(page);
+                fetchPosts(parseInt(page));
             }
-
-            fetchPosts(page, boardId);
         });
     }
 
-    // Initial fetch for boardId = 1 (자유 게시판)
-    const initialBoardId = 1;
-    fetchPosts(1, initialBoardId);
+    // 초기 게시물 가져오기
+    let currentPage = 1;
+    fetchPosts(currentPage);
+
+    // 게시물 클릭 이벤트 추가
+    $('.mainLayer').on('click', '.photo-item-layer', function() {
+        const postId = $(this).closest('a').attr('href').split('?postId=')[1];
+        if (postId) {
+            window.location.href = `/community_detail?postId=${postId}`;
+        }
+    });
 });
