@@ -28,11 +28,17 @@ public class UserDto {
     private String accountNumber;
     private String idCardPicture;
     private String interests;
+    private int bettingWins;
+    private int bettingLosses;
+    private int bettingProfit;
+    private String winRate;
+    private int maxWinningStreak;
+    private int activeDays;
 
     // User 객체를 UserDto로 변환하는 정적 메서드
     public static UserDto fromUser(User user) {
         UserDto userDto = new UserDto();
-        userDto.setUserId(user.getUserId());
+        userDto.setUserId(user.getId());
         userDto.setUsername(user.getUsername());
         userDto.setEmail(user.getEmail());
         userDto.setRoleId(user.getRoleId());

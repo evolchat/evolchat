@@ -47,7 +47,7 @@ $(document).ready(function() {
                                 </div>
                                 <div class="user-layout flex-row flex-c">
                                     <div class="profile flex-row flex-c m-b-8">
-                                        <img src="${post.profileImageUrl || '../static/images/profile/user1.png'}" alt="${post.userAlt}" class="m-r-6">
+                                        <img src="${post.profileImageUrl || '../static/images/profile/default.png'}" alt="${post.userAlt}" class="m-r-6">
                                     </div>
                                     <div class="nickname white px15 opacity80">${post.userId}</div>
                                     <div class="rank">

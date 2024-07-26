@@ -64,17 +64,16 @@ public class User {
     private String idCardPicture;
     private String interests;
 
-    // getter/setter 메서드
-    public Long getUserId() {
-        return id;
-    }
+    private int bettingProfit;
+    private int bettingWins;
+    private int bettingLosses;
+    private int maxWinningStreak;
 
-    public void setUserId(Long userId) {
-        this.id = userId;
-    }
+    @Transient
+    private String winRate; // 승률을 위한 임시 필드
 
-    public String getConfirmPassword() {
-        return confirmPassword;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public void setConfirmPassword(String confirmPassword) {

@@ -34,7 +34,7 @@ $(document).ready(function() {
                                 </div>
                                 <div class="etc">
                                     <div class="profile flex-row flex-c m-b-8">
-                                        <img src="../static/images/profile/user1.png" alt="#" class="m-r-6">
+                                        <img src="../static/images/profile/default.png" alt="#" class="m-r-6">
                                         <div class="nickname px15">${post.userId}</div>
                                     </div>
                                     <div class="info px12 flex-c flex-row">
