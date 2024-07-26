@@ -84,7 +84,13 @@ function submitPost() {
         success: function(response) {
             alert('글 등록에 성공했습니다.');
             // 글 등록 후 원하는 페이지로 이동
-            window.location.href = '/community_free'; // 예시로 게시글 목록 페이지로 이동
+            if (boardId==1) {
+                window.location.href = '/community_free'; // 예시로 게시글 목록 페이지로 이동
+            } else if (boardId==2) {
+                window.location.href = '/community_photo'; // 예시로 게시글 목록 페이지로 이동
+            } else if (boardId==3) {
+                window.location.href = '/community_videos'; // 예시로 게시글 목록 페이지로 이동
+            }
         },
         error: function(jqXHR, textStatus, errorThrown) {
             alert('글 작성에 실패했습니다. 다시 시도해 주세요.');

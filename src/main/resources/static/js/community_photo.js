@@ -4,7 +4,7 @@ $(document).ready(function() {
     // 게시물과 페이지네이션을 가져오는 함수
     function fetchPosts(page = 1) {
         $.ajax({
-            url: `/posts?page=${page}&size=${postsPerPage}`, // API 요청 URL
+            url: `/posts?page=${page}&size=${postsPerPage}&boardId=2`, // boardId=2인 게시물 요청
             type: 'GET',
             success: function(response, status, xhr) {
                 const postsContainer = $('.mainLayer');
@@ -31,7 +31,7 @@ $(document).ready(function() {
                                         <div class="top px17">
                                             <div class="tit-wrap white m-b-10">
                                                 ${post.title}
-                                                <span class="count orange-FBC22B">+${post.likes}</span>
+                                                <span class="count orange-FBC22B">+${post.likeCount}</span>
                                             </div>
                                         </div>
                                         <div class="bottom flex-row px12 opacity60">
@@ -47,7 +47,7 @@ $(document).ready(function() {
                                 </div>
                                 <div class="user-layout flex-row flex-c">
                                     <div class="profile flex-row flex-c m-b-8">
-                                        <img src="../static/images/profile/user1.png" alt="#" class="m-r-6">
+                                        <img src="${post.profileImageUrl || '../static/images/profile/user1.png'}" alt="${post.userAlt}" class="m-r-6">
                                     </div>
                                     <div class="nickname white px15 opacity80">${post.userId}</div>
                                     <div class="rank">

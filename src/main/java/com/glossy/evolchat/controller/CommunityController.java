@@ -91,7 +91,6 @@ public class CommunityController {
         model.addAttribute("contentFragment", "fragments/community_free");
         return "index";
     }
-
     @GetMapping("/community_photo")
     public String community_photo(Model model) {
         model.addAttribute("activeCategory", "community_free");
