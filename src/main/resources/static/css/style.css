@@ -358,6 +358,10 @@ html.wf-loading {
     margin: 0 !important;
 }
 
+.m-t-10 {
+    margin-top: 10px !important;
+}
+
 .m-t-80 {
     margin-top: 80px !important;
 }
@@ -367,7 +371,7 @@ html.wf-loading {
 }
 
 .m-l-10 {
-    margin-left: 10 !important;
+    margin-left: 10px !important;
 }
 
 .m-lr-10 {
@@ -380,6 +384,10 @@ html.wf-loading {
 
 .m-r-6 {
     margin-right: 6px;
+}
+
+.m-r-10 {
+    margin-right: 10px;
 }
 
 .m-r-14 {
@@ -2158,8 +2166,45 @@ div.chatContent>div.text.grey-1 {
 }
 
 /* support_notice */
-img.profile-img {
+img.profile-img-24 {
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+}
+
+img.profile-img-30 {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+}
+
+img.profile-img-32 {
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+}
+
+img.profile-img-36 {
+    height: 36px;
+    width: 36px;
+    border-radius: 50%;
+}
+
+img.profile-img-44 {
+    height: 44px;
+    width: 44px;
+    border-radius: 50%;
+}
+
+img.profile-img-52 {
     height: 52px;
     width: 52px;
+    border-radius: 50%;
+}
+
+
+img.profile-img-60 {
+    height: 60px;
+    width: 60px;
     border-radius: 50%;
 }

@@ -89,3 +89,8 @@
 .sub-header .bc-activate {
     margin-left: 15px;
 }
+
+.profile .nickname {
+    color: #fff;
+    margin-bottom: 5px;
+}

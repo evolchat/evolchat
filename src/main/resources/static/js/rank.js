@@ -22,17 +22,17 @@ $(document).ready(function() {
 
                     // 메달 이미지 URL 또는 숫자를 가져오기
                     const medalOrText = getMedalOrText(rank);
-                    const profileImage = user.profilePicture ? user.profilePicture : '../../static/images/profile/rank-1.svg';
+                    const profileImage = user.profilePicture ? user.profilePicture : '../../static/images/profile/default.png';
 
                     const userHtml = `
                         <tr class="px15">
                             <td>
                                 ${typeof medalOrText === 'number' ? medalOrText : `<img src="${medalOrText}" alt="#">`}
                             </td>
-                            <td><img src="${profileImage}" alt="#"></td>
+                            <td><img class="profile-img-60" src="${profileImage}" alt="#"></td>
                             <td class="opacity80 px17 text-left">${user.nickname}</td>
                             <td class="text-center">${user.bettingProfit}</td>
-                            <td><span class="orange-FFBF00">${user.bettingWins}승</span><span class="blue">${user.bettingLosses}패</span></td>
+                            <td><span class="orange-FFBF00">${user.bettingWins}승</span><span class="blue">&nbsp${user.bettingLosses}패</span></td>
                             <td class="opacity60">${user.winRate}</td>
                             <td class="opacity60">${user.maxWinningStreak}연승</td>
                             <td class="opacity60">${user.activeDays}일</td>
