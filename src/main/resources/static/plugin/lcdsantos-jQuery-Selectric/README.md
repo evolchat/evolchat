@@ -285,7 +285,7 @@ $('select').selectric({
 
 ## Events:
 
-All events are called on original element, first argument is the original element too. And can be bound postLike this:
+All events are called on original element, first argument is the original element too. And can be bound communityPostLike this:
 
 ```js
 $('select').on('eventname', function(element) {

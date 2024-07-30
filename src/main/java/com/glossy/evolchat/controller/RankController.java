@@ -4,6 +4,7 @@ import com.glossy.evolchat.dto.UserDto;
 import com.glossy.evolchat.model.User;
 import com.glossy.evolchat.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -24,6 +25,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class RankController {
 
+    @Autowired
     private final UserService userService;
 
     @GetMapping("/rank")

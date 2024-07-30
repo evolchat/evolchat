@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Data
-public class Comment {
+public class CommunityComment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,7 +15,7 @@ public class Comment {
 
     @ManyToOne
     @JoinColumn(name = "post_id", nullable = false)
-    private Post post; // 게시물과의 관계 설정
+    private CommunityPost communityPost; // 게시물과의 관계 설정
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)

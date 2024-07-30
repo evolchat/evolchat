@@ -6,8 +6,8 @@ import java.time.LocalDateTime;
 
 @Entity
 @Data
-@Table(name = "post_likes")
-public class PostLike {
+@Table(name = "community_post_likes")
+public class CommunityPostLike {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int seq;

@@ -2,7 +2,7 @@ $(document).ready(function() {
     const postsPerPage = 10; // 페이지당 게시물 수
 
     function fetchPosts(page = 1, boardId = null) {
-        let url = `/posts?page=${page}&size=${postsPerPage}`;
+        let url = `/community-posts?page=${page}&size=${postsPerPage}`;
         if (boardId) {
             url += `&boardId=${boardId}`;
         }

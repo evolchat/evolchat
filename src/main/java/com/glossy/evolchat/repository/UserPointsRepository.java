@@ -9,4 +9,5 @@ import java.util.Optional;
 @Repository
 public interface UserPointsRepository extends JpaRepository<UserPoints, Integer> {
     Optional<UserPoints> findByUsername(String username);
+
 }

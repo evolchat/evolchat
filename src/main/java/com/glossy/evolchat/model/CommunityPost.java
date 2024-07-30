@@ -7,7 +7,7 @@ import java.util.List;
 
 @Entity
 @Data
-public class Post {
+public class CommunityPost {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,8 +43,8 @@ public class Post {
     @Column(name = "comment_count")
     private int commentCount; // 댓글 개수를 저장하는 필드
 
-    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Comment> comments; // 댓글 목록
+    @OneToMany(mappedBy = "communityPost", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<CommunityComment> communityComments; // 댓글 목록
 
     @PrePersist
     protected void onCreate() {

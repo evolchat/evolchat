@@ -124,7 +124,7 @@
     "no-floating-decimal": "error",
     "no-implicit-globals": "error",
     "no-implied-eval": "error",
-    "no-inline-comments": "off",
+    "no-inline-communityComments": "off",
     "no-inner-declarations": [
       "error",
       "functions"
@@ -183,7 +183,7 @@
     "no-useless-constructor": "error",
     "no-var": "off",
     "no-void": "error",
-    "no-warning-comments": "error",
+    "no-warning-communityComments": "error",
     "no-whitespace-before-property": "error",
     "no-with": "error",
     "object-curly-spacing": [

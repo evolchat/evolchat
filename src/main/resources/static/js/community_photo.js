@@ -4,7 +4,7 @@ $(document).ready(function() {
     // 게시물과 페이지네이션을 가져오는 함수
     function fetchPosts(page = 1) {
         $.ajax({
-            url: `/posts?page=${page}&size=${postsPerPage}&boardId=2`, // boardId=2인 게시물 요청
+            url: `/community-posts?page=${page}&size=${postsPerPage}&boardId=2`, // boardId=2인 게시물 요청
             type: 'GET',
             success: function(response, status, xhr) {
                 const postsContainer = $('.mainLayer');

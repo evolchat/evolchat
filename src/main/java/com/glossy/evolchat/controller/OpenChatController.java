@@ -1,21 +1,8 @@
 package com.glossy.evolchat.controller;
 
-import com.glossy.evolchat.model.Post;
-import com.glossy.evolchat.service.PostLikeService;
-import com.glossy.evolchat.service.PostService;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Controller
 public class OpenChatController {

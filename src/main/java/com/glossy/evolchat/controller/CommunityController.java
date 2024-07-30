@@ -1,19 +1,16 @@
 package com.glossy.evolchat.controller;
 
-import com.glossy.evolchat.model.Comment;
-import com.glossy.evolchat.model.Post;
+import com.glossy.evolchat.model.CommunityComment;
+import com.glossy.evolchat.model.CommunityPost;
 import com.glossy.evolchat.model.User;
-import com.glossy.evolchat.repository.CommentRepository;
-import com.glossy.evolchat.repository.PostLikeRepository;
-import com.glossy.evolchat.repository.PostRepository;
+import com.glossy.evolchat.repository.CommunityCommentRepository;
+import com.glossy.evolchat.repository.CommunityPostLikeRepository;
+import com.glossy.evolchat.repository.CommunityPostRepository;
 import com.glossy.evolchat.repository.UserRepository;
-import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,16 +28,16 @@ import java.util.Optional;
 public class CommunityController {
 
     @Autowired
-    private PostRepository postRepository;
+    private CommunityPostRepository communityPostRepository;
 
     @Autowired
-    private CommentRepository commentRepository;
+    private CommunityCommentRepository communityCommentRepository;
 
     @Autowired
     private UserRepository userRepository;
 
     @Autowired
-    private PostLikeRepository postLikeRepository;
+    private CommunityPostLikeRepository communityPostLikeRepository;
 
     @GetMapping("/community")
     public String community(Model model) {
@@ -51,22 +48,24 @@ public class CommunityController {
 
     @GetMapping("/community_detail")
     public String communityDetail(@RequestParam("postId") int postId, @AuthenticationPrincipal UserDetails userDetails, Model model) {
-        Optional<Post> postOptional = postRepository.findById(postId);
+        Optional<CommunityPost> postOptional = communityPostRepository.findById(postId);
         if (postOptional.isPresent()) {
-            Post post = postOptional.get();
-            List<Comment> comments = commentRepository.findByPostPostId(postId);
+            CommunityPost communityPost = postOptional.get();
 
-            Optional<User> authorOptional = userRepository.findByUsername(post.getUserId());
+            // CommunityPost 객체를 전달하여 댓글 조회
+            List<CommunityComment> communityComments = communityCommentRepository.findByCommunityPost(communityPost);
+
+            Optional<User> authorOptional = userRepository.findByUsername(communityPost.getUserId());
             String authorNickname = authorOptional.map(User::getNickname).orElse("Unknown");
 
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm");
-            String formattedDate = post.getCreatedAt().format(formatter);
+            String formattedDate = communityPost.getCreatedAt().format(formatter);
 
-            boolean isLiked = postLikeRepository.findByPostIdAndUserId(postId, userDetails.getUsername()).isPresent();
-            long postLikeCount = postLikeRepository.countByPostId(postId);
+            boolean isLiked = communityPostLikeRepository.findByPostIdAndUserId(postId, userDetails.getUsername()).isPresent();
+            long postLikeCount = communityPostLikeRepository.countByPostId(postId);
 
-            model.addAttribute("post", post);
-            model.addAttribute("comments", comments != null ? comments : List.of());
+            model.addAttribute("communityPost", communityPost);
+            model.addAttribute("comments", communityComments != null ? communityComments : List.of());
             model.addAttribute("authorNickname", authorNickname);
             model.addAttribute("formattedDate", formattedDate);
             model.addAttribute("isLiked", isLiked);
@@ -129,25 +128,26 @@ public class CommunityController {
             @RequestParam("title") String title,
             @RequestParam("content") String content,
             @RequestParam("tags") String tags,
-            @RequestParam("boardId") int boardId) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String username = auth.getName();
+            @RequestParam("boardId") int boardId,
+            @AuthenticationPrincipal UserDetails userDetails) {
+
+        String username = userDetails.getUsername();
 
         if (username == null) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("로그인 세션이 만료되었습니다.");
         }
 
-        Post post = new Post();
-        post.setTitle(title);
-        post.setContent(content);
-        post.setBoardId(boardId);
-        post.setTags(tags);
-        post.setUserId(username);
-        post.setCreatedAt(LocalDateTime.now());
-        post.setUpdatedAt(LocalDateTime.now());
+        CommunityPost communityPost = new CommunityPost();
+        communityPost.setTitle(title);
+        communityPost.setContent(content);
+        communityPost.setBoardId(boardId);
+        communityPost.setTags(tags);
+        communityPost.setUserId(username);
+        communityPost.setCreatedAt(LocalDateTime.now());
+        communityPost.setUpdatedAt(LocalDateTime.now());
 
-        postRepository.save(post);
+        communityPostRepository.save(communityPost);
 
-        return ResponseEntity.ok(post);
+        return ResponseEntity.ok(communityPost);
     }
 }

@@ -3,7 +3,7 @@ package com.glossy.evolchat.dto;
 import lombok.Data;
 
 @Data
-public class PostDto {
+public class CommunityPostDto {
     private int postId;
     private String userId;
     private int boardId;

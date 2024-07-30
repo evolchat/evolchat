@@ -22,9 +22,9 @@
                             <div class="list" th:classappend="${activePage == 'community_videos'} ? 'active' : ''"><a href="community_videos">동영상</a></div>
                         </div>
                         <div class="mainLayer">
-                            <div class="post-container">
-                                <div class="post-header">
-                                    <div class="title" th:text="${post.title}"></div>
+                            <div class="communityPost-container">
+                                <div class="communityPost-header">
+                                    <div class="title" th:text="${communityPost.title}"></div>
                                     <div class="profile">
                                         <div class="acc">
                                             <img src="../static/images/svg/ghost.svg" alt="#">
@@ -34,7 +34,7 @@
                                                     <div class="px14">
                                                         <div th:text="${formattedDate}">2024.05.18 00:48</div>
                                                         <img src="../static/images/svg/input-icon-eye.svg" alt="">
-                                                        <span th:text="${post.views}">2564</span>
+                                                        <span th:text="${communityPost.views}">2564</span>
                                                         <img src="../static/images/svg/hearts.svg" alt="">
                                                         <span th:text="${postLikeCount}">44</span>
                                                     </div>
@@ -53,13 +53,13 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="post-content">
-                                    <p th:text="${post.content}"></p>
-                                    <div class="tags">
-                                        <span th:each="tag : ${post.tags}" th:text="${tag}"></span>
+                                <div class="communityPost-content">
+                                    <p th:text="${communityPost.content}"></p>
+                                    <div class="tags" th:if="${!#lists.isEmpty(communityPost.tags)}">
+                                        <span th:each="tag : ${communityPost.tags}" th:text="${tag}"></span>
                                     </div>
                                 </div>
-                                <div class="post-actions">
+                                <div class="communityPost-actions">
                                     <button id="dislike-button" class="gray" th:style="${isLiked} ? 'display: block;' : 'display: none;'" >
                                         <img src="../static/images/svg/hearts-line.svg" alt=""> &nbsp 좋아요 &nbsp <span id="dislike-count" th:text="${postLikeCount}">8</span>
                                     </button>
@@ -67,8 +67,8 @@
                                         <img src="../static/images/svg/heart.svg" alt=""> &nbsp 좋아요 &nbsp <span id="like-count" th:text="${postLikeCount}">69</span>
                                     </button>
                                 </div>
-                                <div class="comments">
-                                    <div class="tit">댓글 <span th:text="${post.commentCount}">2</span></div>
+                                <div class="communityComments">
+                                    <div class="tit">댓글 <span th:text="${communityPost.commentCount}">2</span></div>
                                     <!-- 댓글 목록 -->
                                     <div class="comment" th:each="comment : ${comments}">
                                         <img th:src="@{${comment.author.imageUrl}}" alt="">
@@ -124,7 +124,7 @@
                                                     <div class="bottom  flex-row px12 opacity60 ">
                                                         <div class="datetime">2024.4.13 8:23</div>
                                                         <div class="view flex-row flex-c"><img src="../static/images/svg/input-icon-eye.svg" alt="" />2564</div>
-                                                        <div class="postLike flex-row flex-c"><img src="../static/images/svg/hearts.svg" alt="" />44</div>
+                                                        <div class="communityPostLike flex-row flex-c"><img src="../static/images/svg/hearts.svg" alt="" />44</div>
                                                     </div>
                                                 </div>
                                             </div>

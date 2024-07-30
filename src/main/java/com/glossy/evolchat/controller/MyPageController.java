@@ -1,16 +1,49 @@
 package com.glossy.evolchat.controller;
 
+import com.glossy.evolchat.model.User;
+import com.glossy.evolchat.model.UserPoints;
+import com.glossy.evolchat.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.Optional; // Add this import
+
 @Controller
 public class MyPageController {
+    @Autowired
+    private UserService userService; // Assume a UserService that fetches user data
+
     @GetMapping("/my_pqge")
-    public String my_pqge(Model model) {
+    public String myPqge(Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String username = auth.getName();
+
+        if (username != null) {
+            User user = userService.getUserByUsername(username);
+            if (user != null) {
+                model.addAttribute("user", user);
+                Optional<UserPoints> userPointsOptional = userService.getUserPointsByUsername(username);
+                if (userPointsOptional.isPresent()) {
+                    model.addAttribute("userPoints", userPointsOptional.get());
+                } else {
+                    model.addAttribute("userPoints", new UserPoints()); // Handle the case where UserPoints is not found
+                    model.addAttribute("error", "User points not found.");
+                }
+            } else {
+                model.addAttribute("error", "User not found.");
+            }
+        } else {
+            model.addAttribute("error", "User not authenticated.");
+        }
+
         model.addAttribute("activeCategory", "my_pqge");
         model.addAttribute("activePage", "my_pqge");
         model.addAttribute("contentFragment", "fragments/my_pqge");
+
         return "index";
     }
 
