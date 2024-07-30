@@ -1,9 +1,9 @@
 <div class="header flex-row bc-header g-12">
     <div class="wrap flex-row left">
-        <div class="logo flex-row flex-c cursor-p" onclick="window.location.href = '/';">
+        <div class="logo flex-row flex-c cursor-p">
             <img src="../static/images/svg/logo-icon.svg" alt=""/>
             <img class="p-l-10" src="../static/images/svg/logo-text.svg" alt=""/>
-            <div class="menu-btn-layer cursor-p">
+            <div id="nav_button" class="menu-btn-layer cursor-p">
                 <div class="menu-btn">
                     <div class="line"></div>
                 </div>
@@ -60,6 +60,7 @@
         </div>
     </div>
 </div>
+
 <script>
     $(document).ready(function() {
         $.ajax({
@@ -124,6 +125,44 @@
             animation: 'fade',
         });
 
+        const currentPath = $('body').attr('data-active-category');
+        let isNavExpanded = JSON.parse(localStorage.getItem('isNavExpanded')) || true;
+        let isInitialNavVisible = JSON.parse(localStorage.getItem('isInitialNavVisible')) || true;
+
+        // 페이지 로드 시 상태 복원
+        if (!isNavExpanded) {
+            $("#nav").css("width", "55px");
+        }
+
+        if (isInitialNavVisible) {
+            $("#initialNav").show();
+            $("#newNav").hide();
+        } else {
+            $("#initialNav").hide();
+            $("#newNav").show();
+        }
+
+        $('.nav-link').each(function() {
+            const linkPath = $(this).attr('href');
+            if (linkPath === currentPath) {
+                $(this).addClass('active');
+            }
+        });
+
+        $("#nav_button").click(function() {
+            $("#initialNav").toggle();
+            $("#newNav").toggle();
+            if (isNavExpanded) {
+                $("#nav").css("width", "55px");
+            } else {
+                $("#nav").css("width", "");
+            }
+            isNavExpanded = !isNavExpanded; // 상태 토글
+            isInitialNavVisible = !isInitialNavVisible; // 네비게이션 상태 토글
+            localStorage.setItem('isNavExpanded', isNavExpanded); // 상태 저장
+            localStorage.setItem('isInitialNavVisible', isInitialNavVisible); // 네비게이션 상태 저장
+        });
+
         // 페이지 로드 시 chat의 초기 활성화 상태 설정
         const chatActive = localStorage.getItem('chatActive');
         if (chatActive === 'true') {
@@ -143,9 +182,11 @@
                 } else {
                     $("#header-item-tooltip-7").removeClass("active");
                 }
-                console.log(chatVisible)
+                console.log(chatVisible);
                 localStorage.setItem('chatActive', chatVisible.toString());
             });
         });
+
+
     });
 </script>
