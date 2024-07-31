@@ -2208,9 +2208,14 @@ img.profile-img-52 {
     border-radius: 50%;
 }
 
-
 img.profile-img-60 {
     height: 60px;
     width: 60px;
     border-radius: 50%;
+}
+
+.no-posts {
+    text-align: center;
+    color: #fff;
+    margin: 140px;~
 }

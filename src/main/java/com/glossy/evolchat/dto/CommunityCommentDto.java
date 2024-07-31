@@ -3,7 +3,7 @@ package com.glossy.evolchat.dto;
 import lombok.Data;
 
 @Data
-public class CommentDto {
+public class CommunityCommentDto {
     private int commentId;
     private int postId;
     private int userId;

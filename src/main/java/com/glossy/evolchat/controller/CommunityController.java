@@ -39,13 +39,6 @@ public class CommunityController {
     @Autowired
     private CommunityPostLikeRepository communityPostLikeRepository;
 
-    @GetMapping("/community")
-    public String community(Model model) {
-        model.addAttribute("activeCategory", "community_free");
-        model.addAttribute("activePage", "community");
-        return "index";
-    }
-
     @GetMapping("/community_detail")
     public String communityDetail(@RequestParam("postId") int postId, @AuthenticationPrincipal UserDetails userDetails, Model model) {
         Optional<CommunityPost> postOptional = communityPostRepository.findById(postId);
