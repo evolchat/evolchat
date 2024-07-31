@@ -1,29 +1,23 @@
 package com.glossy.evolchat.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import jakarta.persistence.*;
-import java.time.LocalDateTime;
+import lombok.NoArgsConstructor;
 
-@Entity
+import jakarta.persistence.*;
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
 public class ChatRoom {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int seq;
+    private Long id;
 
-    @Column(unique = true, nullable = false)
-    private int chatRoomId;
-
-    private String roomName;
-
-    @Column(nullable = false)
-    private boolean isPrivate = false;
-
-    @Column(nullable = false)
-    private LocalDateTime createdAt;
-
-    @PrePersist
-    protected void onCreate() {
-        createdAt = LocalDateTime.now();
-    }
+    private String name;
+    private String description;
+    private int messagesCount;
+    private int usersCount;
+    private int viewsCount;
 }

@@ -1,76 +1,51 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const tags = document.querySelectorAll('.tag');
+    function loadChatRooms() {
+        fetch('/chatrooms')
+            .then(response => response.json())
+            .then(chatRooms => {
+                const roomLayer = document.querySelector('.room-layer');
+                roomLayer.innerHTML = ''; // Clear existing rooms
 
-    tags.forEach(tag => {
-        tag.addEventListener('click', () => {
-            tags.forEach(t => t.classList.remove('active'));
-            tag.classList.add('active');
-        });
-    });
-});
+                chatRooms.forEach(room => {
+                    const roomElement = document.createElement('div');
+                    roomElement.className = 'room';
 
-document.addEventListener('DOMContentLoaded', () => {
-    const agreeAll = document.getElementById('agreeAll');
-    const subCheckboxes = document.querySelectorAll('.sub-checkbox');
+                    roomElement.innerHTML = `
+                        <div class="photo-layout">
+                            <div class="img">
+                                <img src="../../static/images/photo/photo_1.jpg" alt="#">
+                            </div>
+                        </div>
+                        <div class="text-wrap position-r">
+                            <div class="position-a">
+                                <img class="profile-img-52" src="../../static/images/profile/default.png" alt="#">
+                            </div>
+                            <div class="v-h"></div>
+                            <div class="top">
+                                <div class="tit-wrap white px17 m-b-10">
+                                    ${room.name}
+                                </div>
+                                <div class="summary px14">
+                                    ${room.description}
+                                </div>
+                            </div>
+                            <div class="v-h"></div>
+                            <div class="bottom flex-c">
+                                <img src="../../static/images/svg/people.svg" alt="" style="height: auto; width: auto;" class="m-r-4"/>
+                                <span class="opacity60 px14 m-r-14">${room.participants}</span>
+                                <img src="../../static/images/svg/hearts.svg" alt="" style="height: auto; width: auto;" class="m-r-4"/>
+                                <span class="opacity60 px14 m-r-14">${room.likes}</span>
+                                <img src="../../static/images/svg/star.svg" alt="" style="height: auto; width: auto;" class="m-r-4"/>
+                                <span class="opacity60 px14 m-r-14">${room.stars}</span>
+                            </div>
+                        </div>
+                    `;
 
-    agreeAll.addEventListener('change', () => {
-        subCheckboxes.forEach(checkbox => {
-            checkbox.checked = agreeAll.checked;
-        });
-    });
-
-    subCheckboxes.forEach(checkbox => {
-        checkbox.addEventListener('change', () => {
-            if ([...subCheckboxes].every(cb => cb.checked)) {
-                agreeAll.checked = true;
-            } else {
-                agreeAll.checked = false;
-            }
-        });
-    });
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-    const inputs = document.querySelectorAll('.upload-area input[type="text"]');
-    const checkboxes = document.querySelectorAll('.agreement .sub-checkbox');
-    const agreeAll = document.getElementById('agreeAll');
-    const openButton = document.getElementById('open');
-
-    function updateOpenButtonState() {
-        const allInputsFilled = Array.from(inputs).every(input => input.value.trim() !== "");
-        const allCheckboxesChecked = Array.from(checkboxes).every(checkbox => checkbox.checked);
-
-        if (allInputsFilled && allCheckboxesChecked) {
-            openButton.classList.add('create-active');
-        } else {
-            openButton.classList.remove('create-active');
-        }
+                    roomLayer.appendChild(roomElement);
+                });
+            })
+            .catch(error => console.error('Error loading chat rooms:', error));
     }
 
-    inputs.forEach(input => {
-        input.addEventListener('input', updateOpenButtonState);
-    });
-
-    checkboxes.forEach(checkbox => {
-        checkbox.addEventListener('change', updateOpenButtonState);
-    });
-
-    agreeAll.addEventListener('change', function() {
-        checkboxes.forEach(checkbox => {
-            checkbox.checked = agreeAll.checked;
-        });
-        updateOpenButtonState();
-    });
-
-    checkboxes.forEach(checkbox => {
-        checkbox.addEventListener('change', function() {
-            if (!this.checked) {
-                agreeAll.checked = false;
-            } else {
-                const allChecked = Array.from(checkboxes).every(checkbox => checkbox.checked);
-                agreeAll.checked = allChecked;
-            }
-            updateOpenButtonState();
-        });
-    });
+    loadChatRooms(); // Load chat rooms on page load
 });

@@ -2,32 +2,18 @@ package com.glossy.evolchat.model;
 
 import lombok.Data;
 import jakarta.persistence.*;
-import java.time.LocalDateTime;
 
-@Entity
 @Data
+@Entity
 public class ChatMessage {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int seq;
+    private Long id;
 
-    @Column(unique = true, nullable = false)
-    private int messageId;
+    private String chatRoomId;
+    private String sender;
+    private String content;
 
-    @Column(nullable = false)
-    private int chatRoomId;
-
-    @Column(nullable = false)
-    private int userId;
-
-    private String message;
-
-    @Column(nullable = false)
-    private LocalDateTime sentAt;
-
-    @PrePersist
-    protected void onCreate() {
-        sentAt = LocalDateTime.now();
-    }
+    // 기타 필요한 필드와 메서드
 }

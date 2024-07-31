@@ -1,35 +1,40 @@
 package com.glossy.evolchat.service;
 
 import com.glossy.evolchat.model.ChatRoom;
-import com.glossy.evolchat.repository.ChatRoomRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ChatRoomService {
 
-    @Autowired
-    private ChatRoomRepository chatRoomRepository;
+    private final List<ChatRoom> chatRooms = new ArrayList<>();
 
-    public List<ChatRoom> findAll() {
-        return chatRoomRepository.findAll();
+    // Initialize with some dummy data
+    public ChatRoomService() {
+        for (int i = 1; i <= 20; i++) {
+            chatRooms.add(new ChatRoom(
+                    null,  // id will be auto-generated
+                    "코리아 스피드 바카라 " + i,
+                    "🤩100출 500마감 프로젝트🤩100출 500마감 프로젝트🤩100출 500마감 프로젝트",
+                    582, 485, 4856
+            ));
+        }
     }
 
-    public Optional<ChatRoom> findById(int id) {
-        return chatRoomRepository.findById(id);
+    public List<ChatRoom> getChatRooms() {
+        return chatRooms;
     }
 
-    public ChatRoom createChatRoom(String roomName, boolean isPrivate) {
-        ChatRoom chatRoom = new ChatRoom();
-        chatRoom.setRoomName(roomName);
-        chatRoom.setPrivate(isPrivate);
-        return chatRoomRepository.save(chatRoom);
-    }
-
-    public void deleteChatRoom(int id) {
-        chatRoomRepository.deleteById(id);
+    public ChatRoom createChatRoom(String name) {
+        ChatRoom newRoom = new ChatRoom(
+                null,  // id will be auto-generated
+                name,
+                "새로 개설된 채팅방입니다.",
+                0, 0, 0
+        );
+        chatRooms.add(newRoom);
+        return newRoom;
     }
 }
