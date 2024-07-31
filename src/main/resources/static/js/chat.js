@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log('DOMContentLoaded event fired'); // DOMContentLoaded 이벤트 확인
+    const socket = new SockJS('/chat');
 
-    const socket = new SockJS('http://localhost:8080/chat');
     const stompClient = Stomp.over(socket);
 
     stompClient.connect({}, (frame) => {

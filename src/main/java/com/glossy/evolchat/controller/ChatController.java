@@ -24,7 +24,7 @@ public class ChatController {
 
     @GetMapping("/history")
     public List<ChatMessage> getChatHistory() {
-        return chatMessageService.getAllMessages();
+        return chatMessageService.getRecentMessages(50);
     }
 
     @MessageMapping("/send") // 클라이언트에서 /app/send로 메시지를 보내면

@@ -15,7 +15,7 @@ public class CorsConfig {
         CorsConfiguration config = new CorsConfiguration();
 
         // 특정 origin을 허용할 경우
-        config.addAllowedOrigin("http://localhost:8080");
+        config.addAllowedOrigin("*");
 //        config.addAllowedOrigin("https://example.com");
 
         // 모든 HTTP 메서드를 허용할 경우
