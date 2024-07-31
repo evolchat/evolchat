@@ -1,11 +1,9 @@
 $(document).ready(function() {
     const postsPerPage = 10; // 페이지당 게시물 수
+    let currentBoardId = 1; // 초기 boardId 값 설정
 
-    function fetchPosts(page = 1, boardId = null) {
-        let url = `/community-posts?page=${page}&size=${postsPerPage}`;
-        if (boardId) {
-            url += `&boardId=${boardId}`;
-        }
+    function fetchPosts(page = 1, boardId = currentBoardId, searchQuery = '') {
+        let url = `/community-posts?page=${page}&size=${postsPerPage}&boardId=${boardId}&search=${encodeURIComponent(searchQuery)}`;
 
         $.ajax({
             url: url,
@@ -150,13 +148,30 @@ $(document).ready(function() {
                 page = parseInt(page);
             }
 
-            fetchPosts(page, boardId);
+            fetchPosts(page, boardId, $('#search-input').val());
         });
     }
 
+    function handleSearch() {
+        const searchQuery = $('#search-input').val();
+        fetchPosts(1, currentBoardId, searchQuery); // 첫 페이지부터 검색
+    }
+
     // 초기 게시물 가져오기
-    const initialBoardId = 1; // 자유 게시판
-    fetchPosts(1, initialBoardId);
+    fetchPosts(1, currentBoardId);
+
+    // 검색 버튼 클릭 이벤트
+    $('#search-button').on('click', function() {
+        handleSearch();
+    });
+
+    // 검색 입력 필드에서 Enter 키 눌렀을 때
+    $('#search-input').on('keypress', function(event) {
+        if (event.which === 13) { // Enter 키 코드
+            event.preventDefault();
+            handleSearch();
+        }
+    });
 
     // 게시물 클릭 이벤트 추가
     $('#posts-container').on('click', '.post', function() {

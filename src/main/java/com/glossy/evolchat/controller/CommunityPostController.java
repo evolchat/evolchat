@@ -45,6 +45,16 @@ public class CommunityPostController {
         return new ResponseEntity<>(communityPostDtos, headers, HttpStatus.OK);
     }
 
+    @GetMapping("/community-posts")
+    public Page<CommunityPost> getCommunityPosts(
+            @RequestParam(defaultValue = "1") int page,
+            @RequestParam(defaultValue = "10") int size,
+            @RequestParam int boardId,
+            @RequestParam(required = false, defaultValue = "") String search) {
+
+        return communityPostService.getPosts(page, size, boardId, search);
+    }
+
     private CommunityPostDto convertToDto(CommunityPost communityPost) {
         long likeCount = communityPostLikeService.countLikesByPostId(communityPost.getPostId());
         CommunityPostDto communityPostDto = new CommunityPostDto();

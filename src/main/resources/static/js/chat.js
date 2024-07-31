@@ -1,7 +1,57 @@
-document.addEventListener('DOMContentLoaded', () => {
-    console.log('DOMContentLoaded event fired'); // DOMContentLoaded 이벤트 확인
-    const socket = new SockJS('/chat');
+$(function() {
+    const activeCategory = $('body').attr('data-active-category');
+    const activePage = $('body').attr('data-active-page');
+    console.log('Active Page:', activePage); // Debugging line
 
+    $('select').selectric();
+
+    if (activePage) {
+        loadPageContent(activePage);
+        $('.nav-link[href="' + activeCategory + '"]').addClass('active');
+    }
+
+    // 페이지 로드 시 chat의 초기 활성화 상태 설정
+    var chatActive = sessionStorage.getItem('chatActive');
+    if (chatActive === 'true') {
+        $("#chat").show();
+        $("#header-item-tooltip-7").addClass("active");
+    } else {
+        $("#chat").hide();
+        $("#header-item-tooltip-7").removeClass("active");
+    }
+
+    $("#header-item-tooltip-7").click(function() {
+        $("#chat").toggle();
+        chatCheckActive();
+    });
+
+    function chatCheckActive() {
+        var isActive = $("#header-item-tooltip-7").hasClass("active");
+        if (isActive) {
+            $("#chat").show();
+            sessionStorage.setItem('chatActive', 'true'); // 활성화 상태 저장
+        } else {
+            $("#chat").hide();
+            sessionStorage.setItem('chatActive', 'false'); // 비활성화 상태 저장
+        }
+    }
+
+    window.onpopstate = function() {
+        const currentPath = window.location.pathname.split("/").pop();
+        loadPageContent(currentPath);
+        $('.nav-link').removeClass('active');
+        $('.nav-link[href="' + activeCategory + '"]').addClass('active');
+    };
+});
+
+let chatInitialized = false; // 채팅 초기화 여부 플래그
+
+function initializeChat() {
+    if (chatInitialized) return; // 이미 초기화된 경우 리턴
+
+    chatInitialized = true; // 초기화 플래그 설정
+
+    const socket = new SockJS('/chat');
     const stompClient = Stomp.over(socket);
 
     stompClient.connect({}, (frame) => {
@@ -129,4 +179,9 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .catch(error => console.error('Error loading chat history:', error));
     }
+}
+
+// 페이지 로드 시 채팅 초기화
+$(document).ready(function() {
+    initializeChat(); // 페이지가 처음 로드될 때 채팅 초기화
 });
