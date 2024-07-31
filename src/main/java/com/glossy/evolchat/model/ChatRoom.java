@@ -17,7 +17,8 @@ public class ChatRoom {
 
     private String name;
     private String description;
-    private int messagesCount;
-    private int usersCount;
-    private int viewsCount;
+    private int participants; // 참가자 수
+    private int likes;        // 좋아요 수
+    private int stars;        // 별점 수
+
 }

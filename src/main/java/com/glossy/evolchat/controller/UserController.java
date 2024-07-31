@@ -41,20 +41,13 @@ public class UserController {
     }
 
     @GetMapping("/current")
-    public ResponseEntity<UserPoints> getUserPointsByUsername(@AuthenticationPrincipal Authentication authentication) {
-        String username = authentication.getName();
+    public ResponseEntity<User> getCurrentUserInfo() {
+        User user = userService.getCurrentAuthenticatedUser();
 
-        if (username == null) {
+        if (user == null) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
         }
 
-        Optional<UserPoints> userPointsOptional = userService.getUserPointsByUsername(username);
-
-        if (userPointsOptional.isEmpty()) {
-            return ResponseEntity.notFound().build();
-        }
-
-        UserPoints userPoints = userPointsOptional.get();
-        return ResponseEntity.ok(userPoints);
+        return ResponseEntity.ok(user); // User 객체가 닉네임을 포함하고 있어야 함
     }
 }

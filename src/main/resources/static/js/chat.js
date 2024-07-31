@@ -1,87 +1,117 @@
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOMContentLoaded event fired'); // DOMContentLoaded 이벤트 확인
+
     const socket = new SockJS('http://localhost:8080/chat');
     const stompClient = Stomp.over(socket);
 
-    // Load chat rooms
-    function loadChatRooms() {
-        fetch('/chat/rooms')
-            .then(response => response.json())
-            .then(data => {
-                const roomList = document.getElementById('roomList');
-                roomList.innerHTML = '';
-                for (const [id, room] of Object.entries(data)) {
-                    const roomElement = document.createElement('li');
-                    roomElement.textContent = room.name;
-                    roomElement.addEventListener('click', () => joinChatRoom(id));
-                    roomList.appendChild(roomElement);
+    stompClient.connect({}, (frame) => {
+        console.log('Connected to server:', frame); // 서버와의 연결 확인
+
+        // Subscribe to the chat messages
+        stompClient.subscribe('/topic/chat', (message) => {
+            if (message.body) {
+                const chatMessage = JSON.parse(message.body);
+                displayMessage(chatMessage.sender, chatMessage.content);
+            }
+        });
+
+        // Set up the send message button
+        const sendMessageButton = document.getElementById('sendMessageButton');
+        if (sendMessageButton) {
+            sendMessageButton.addEventListener('click', sendMessage);
+        } else {
+            console.error('Send message button not found'); // 버튼 확인
+        }
+
+        // Set up the Enter key for sending messages
+        const messageInput = document.getElementById('messageInput');
+        if (messageInput) {
+            messageInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault(); // Prevent default behavior (new line in textarea)
+                    sendMessage();
                 }
             });
-    }
-
-    // Create new chat room
-    document.getElementById('createRoomButton').addEventListener('click', () => {
-        const roomName = prompt('Enter room name:');
-        if (roomName) {
-            fetch('/chat/rooms', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: new URLSearchParams({ name: roomName })
-            })
-            .then(response => response.json())
-            .then(data => {
-                alert('Room created: ' + data.name);
-                loadChatRooms();
-            });
+        } else {
+            console.error('Message input not found'); // 입력 필드 확인
         }
+
+        // Load previous chat history (if applicable)
+        loadChatHistory();
+    }, (error) => {
+        console.error('STOMP connection error:', error); // 연결 실패 시 에러 로그
     });
 
-    // Join a chat room
-    function joinChatRoom(roomId) {
-        stompClient.connect({}, (frame) => {
-            console.log('Connected: ' + frame);
-            stompClient.subscribe(`/chat/${roomId}`, (message) => {
-                if (message.body) {
-                    const chatMessage = JSON.parse(message.body);
-                    displayMessage(chatMessage.sender, chatMessage.content);
-                }
-            });
-
-            // Handle message sending
-            document.getElementById('sendMessageButton').addEventListener('click', () => {
-                const input = document.getElementById('messageInput');
-                const message = input.value.trim();
-                if (message !== '') {
-                    const chatMessage = {
-                        sender: '사용자', // 실제 사용자 이름으로 대체
-                        content: message
-                    };
-                    stompClient.send(`/app/chat/${roomId}`, {}, JSON.stringify(chatMessage));
-                    input.value = '';
-                }
-            });
-        });
+    // Function to get the current username
+    async function getCurrentUsername() {
+        try {
+            const response = await fetch('/users/current');
+            if (response.ok) {
+                const user = await response.json();
+                return user.nickname || 'Unknown'; // 닉네임 필드가 있는 경우 반환
+            } else {
+                console.error('Failed to get username');
+                return 'Unknown';
+            }
+        } catch (error) {
+            console.error('Error fetching username:', error);
+            return 'Unknown';
+        }
     }
 
-    // Display message
+    // Function to send a message
+    async function sendMessage() {
+        const input = document.getElementById('messageInput');
+        const message = input ? input.value.trim() : '';
+        if (message !== '') {
+            const sender = await getCurrentUsername(); // 사용자 이름 가져오기
+            const chatMessage = {
+                sender: sender,
+                content: message
+            };
+            console.log('Sending message:', chatMessage); // 전송할 메시지 로그
+            stompClient.send('/app/send', {}, JSON.stringify(chatMessage));
+            if (input) {
+                input.value = ''; // Clear the input field
+            }
+            console.log('Message sent'); // 메시지 전송 후 로그
+        }
+    }
+
+    // Function to display a chat message
     function displayMessage(nickname, message) {
         const chatLayer = document.querySelector('.chatingLayer');
-        const messageElement = document.createElement('div');
-        messageElement.classList.add('chatLayout', 'flex-row');
-        messageElement.innerHTML = `
-            <div class="profile"><img class="profile-img-44" src="../static/images/profile/default.png" alt="#"></div>
-            <div class="chatContent">
-                <div class="top flex-row flex-c">
-                    <div class="nickname grey-4">${nickname}</div>
-                    <div class="time grey-1">${new Date().toLocaleTimeString()}</div>
+        if (chatLayer) {
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('chatLayout', 'flex-row');
+            messageElement.innerHTML = `
+                <div class="profile"><img class="profile-img-44" src="../static/images/profile/default.png" alt="#"></div>
+                <div class="chatContent">
+                    <div class="top flex-row flex-c">
+                        <div class="nickname grey-4">${nickname}</div>
+                        <div class="time grey-1 m-l-10">${new Date().toLocaleTimeString()}</div>
+                    </div>
+                    <div class="bottom white opacity80 bc-gray-dark">
+                        <div class="text">${message}</div>
+                    </div>
                 </div>
-                <div class="bottom white opacity80 bc-gray-dark">
-                    <div class="text">${message}</div>
-                </div>
-            </div>
-        `;
-        chatLayer.appendChild(messageElement);
-        chatLayer.scrollTop = chatLayer.scrollHeight;
+            `;
+            chatLayer.appendChild(messageElement);
+            chatLayer.scrollTop = chatLayer.scrollHeight; // Scroll to the bottom
+        } else {
+            console.error('Chat layer not found'); // 채팅 레이어 확인
+        }
     }
 
-    loadChatRooms(); // Load chat rooms on page load
+    // Function to load previous chat history (if applicable)
+    function loadChatHistory() {
+        fetch('/chat/history')
+            .then(response => response.json())
+            .then(messages => {
+                messages.forEach(msg => {
+                    displayMessage(msg.sender, msg.content);
+                });
+            })
+            .catch(error => console.error('Error loading chat history:', error));
+    }
 });

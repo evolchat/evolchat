@@ -52,4 +52,13 @@ public class UserService {
     public User getUserByUsername(String username) {
         return userRepository.findByUsername(username).orElse(null);
     }
+
+    public User getCurrentAuthenticatedUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.isAuthenticated()) {
+            String username = authentication.getName();
+            return getUserByUsername(username);
+        }
+        return null;
+    }
 }

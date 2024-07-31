@@ -4,7 +4,13 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(response => response.json())
             .then(chatRooms => {
                 const roomLayer = document.querySelector('.room-layer');
-                roomLayer.innerHTML = ''; // Clear existing rooms
+                roomLayer.innerHTML = ''; // 기존 채팅방 내용 지우기
+
+                if (chatRooms.length === 0) {
+                    roomLayer.innerHTML = '<div class="no-rooms">오픈채팅방이 없습니다.</div>'; // 데이터가 없을 경우 메시지 표시
+                    document.querySelector('#pagination-container').style.display = 'none'; // 페이지네이션 숨기기
+                    return;
+                }
 
                 chatRooms.forEach(room => {
                     const roomElement = document.createElement('div');
@@ -47,5 +53,5 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(error => console.error('Error loading chat rooms:', error));
     }
 
-    loadChatRooms(); // Load chat rooms on page load
+    loadChatRooms(); // 페이지 로드 시 채팅방 목록 불러오기
 });
