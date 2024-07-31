@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Message input not found'); // 입력 필드 확인
         }
 
-        // Load previous chat history (if applicable)
+        // Load previous chat history and scroll to the bottom
         loadChatHistory();
     }, (error) => {
         console.error('STOMP connection error:', error); // 연결 실패 시 에러 로그
@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Function to display a chat message
     function displayMessage(nickname, message) {
-        const chatLayer = document.querySelector('.chatingLayer');
+        const chatLayer = document.querySelector('#chatingLayer');
         if (chatLayer) {
             const messageElement = document.createElement('div');
             messageElement.classList.add('chatLayout', 'flex-row');
@@ -97,13 +97,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `;
             chatLayer.appendChild(messageElement);
-            chatLayer.scrollTop = chatLayer.scrollHeight; // Scroll to the bottom
+
+            // Smooth scroll to the bottom
+            scrollToBottom(chatLayer);
         } else {
             console.error('Chat layer not found'); // 채팅 레이어 확인
         }
     }
 
-    // Function to load previous chat history (if applicable)
+    // Function to scroll to the bottom of the chat layer
+    function scrollToBottom(element) {
+        element.scroll({
+            top: element.scrollHeight,
+            behavior: 'smooth'
+        });
+    }
+
+    // Function to load previous chat history and scroll to the bottom
     function loadChatHistory() {
         fetch('/chat/history')
             .then(response => response.json())
@@ -111,6 +121,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 messages.forEach(msg => {
                     displayMessage(msg.sender, msg.content);
                 });
+                // Ensure scroll to bottom after loading history
+                const chatLayer = document.querySelector('#chatingLayer');
+                if (chatLayer) {
+                    scrollToBottom(chatLayer);
+                }
             })
             .catch(error => console.error('Error loading chat history:', error));
     }

@@ -2066,6 +2066,11 @@ div.mainContent {
     padding: 0 20px;
 }
 
+#chatingLayer {
+    overflow-y: auto;
+    scroll-behavior: smooth; /* 스크롤 애니메이션 */
+}
+
 .chatLayer>div>div.title {
     color: #fff;
     padding: 10px 0;
