@@ -7,6 +7,10 @@
 .mainLayer .mypage>div {
     width: 100%;
     text-align: left;
+    align-items: center;
+}
+.information.flex-column.px15 {
+    padding-right: 110px;
 }
 .mainLayer .money-wrap>div {
     border: 1px solid #35373D;
@@ -28,6 +32,7 @@
 }
 .jackpot{
     width: 100%;
+    height: 230px;
     margin-left: 10px;
     border: 1px solid #35373D;
     background-color: #303237;
@@ -49,11 +54,13 @@
 .privacy {
     width: 465px !important;
 }
+
 .information {
     border: 1px solid #35373D;
     margin-top: 30px;
     padding: 40px;
     display: flex;
+    flex-direction: column;
 }
 
 .information button {
@@ -79,6 +86,7 @@
 
 .information .infotitle {
     margin-bottom: 40px;
+    margin-right: 870px;
 }
 
 .information .img-area .profileimg {
@@ -141,6 +149,10 @@
     color: #656B70;
     background-color: transparent;
 }
+.img-area {
+    margin-right: 110px;
+}
+
 .g12 {
     margin-bottom: 10px;
 }
@@ -223,6 +235,7 @@ label {
 .check{
     display:flex;
     justify-content: center;
+    flex-direction: row;
 }
 .bank{
     width: 90%;

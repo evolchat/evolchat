@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>에볼챗닷컴</title>
+    <link rel="stylesheet" href="../../static/css/page/support/write.css">
     <script src="../../static/js/support_support_write.js"></script>
 </head>
 
@@ -22,22 +23,13 @@
                                 <div class="list "><a href="support_help">도움말</a></div>
                                 <div class="list active"><a href="support_inquiry">문의하기</a></div>
                             </div>
-                            <div class="sub-header flex-row flex-c">
-                                <div class="sub-header-search bc-footer flex-grow">
-                                    <input type="text" placeholder="닉네임 검색">
-                                    <img src="../../static/images/svg/search.svg" alt=""
-                                         class="input-icon search" />
-                                </div>
-                            </div>
-
                             <div class="mainLayer ">
-                                <div class="content-head">
-                                    <div class="title">문의글 작성</div>
-                                    <div class="btn">
-                                        <div class="btn">임시등록</div>
-                                        <button class="btn disabled">등록</button>
+                                <div class="tit">
+                                    <span>문의글 작성</span>
+                                    <div class="submit-buttons">
+                                        <button onclick="saveDraft()">임시등록</button>
+                                        <button onclick="submitPost()">등록</button>
                                     </div>
-
                                 </div>
                                 <div class="content-wrap">
                                     <div class="select-box">
@@ -50,14 +42,45 @@
                                         </select>
                                     </div>
                                 </div>
+                                <input type="text" class="input-title" name="title" id="title" placeholder="제목을 입력해 주세요.">
+                                <div class="toolbar-wrapper">
+                                    <div class="toolbar">
+                                        <div class="section">
+                                            <button type="button" class="toolbar-btn" onclick="execCmd('bold')">B</button>
+                                            <button type="button" class="toolbar-btn" onclick="execCmd('italic')"><i>I</i></button>
+                                            <button type="button" class="toolbar-btn" onclick="execCmd('underline')"><u>U</u></button>
+                                            <input class="color-picker" type="color" onchange="execCmd('foreColor', this.value)">
+                                        </div>
+                                        <div class="section">
+                                            <button type="button" class="toolbar-btn" onclick="toggleEmojiPicker()">😊</button>
+                                            <div class="emoji-picker" id="emoji-picker">
+                                                <button type="button" onclick="insertEmoji('😊')">😊</button>
+                                                <button type="button" onclick="insertEmoji('😂')">😂</button>
+                                                <button type="button" onclick="insertEmoji('😍')">😍</button>
+                                                <button type="button" onclick="insertEmoji('😭')">😭</button>
+                                                <button type="button" onclick="insertEmoji('😠')">😠</button>
+                                                <!-- 더 많은 이모티콘 추가 -->
+                                            </div>
+                                            <button type="button" class="toolbar-btn" onclick="document.getElementById('upload-image').click()">📷</button>
+                                            <input type="file" id="upload-image" style="display: none;" onchange="uploadFile('image')">
+                                            <button type="button" class="toolbar-btn" onclick="document.getElementById('upload-video').click()">📹</button>
+                                            <input type="file" id="upload-video" style="display: none;" onchange="uploadFile('video')">
+                                            <button type="button" class="toolbar-btn" onclick="document.getElementById('upload-file').click()">📎</button>
+                                            <input type="file" id="upload-file" style="display: none;" onchange="uploadFile('file')">
+                                        </div>
+                                        <div class="section">
+                                            <!--                                            <button class="toolbar-btn"></button>-->
+                                            <!--                                            <button class="toolbar-btn"></button>-->
+                                            <div style="flex-grow: 1;"></div>
+                                        </div>
+                                    </div>
+                                    <div class="editor" name="content" id="content" contenteditable="true"></div>
+                                </div>
                             </div>
                         </div>
-
                         <div id="footer" class=" bc-footer" th:insert="include/footer">
                     </div>
-
                 </div>
-
             </section>
         </div>
     </div>

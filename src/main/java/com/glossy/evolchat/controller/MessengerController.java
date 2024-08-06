@@ -38,4 +38,14 @@ public class MessengerController {
         model.addAttribute("contentFragment", "fragments/messenger_add_friend");
         return "index";
     }
+
+    @GetMapping("/messenger_add_friend_wait")
+    public String messenger_add_friend_wait(Model model) {
+        model.addAttribute("activeCategory", "messenger_friend");
+        model.addAttribute("activePage", "messenger_add_friend_wait");
+        model.addAttribute("contentFragment", "fragments/messenger_add_friend_wait");
+        return "index";
+    }
+
+
 }
