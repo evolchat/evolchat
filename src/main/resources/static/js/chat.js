@@ -150,12 +150,15 @@ function initializeChat() {
 
             // Smooth scroll to the bottom
             scrollToBottom(chatLayer);
+
+            // Update message count
+            const currentCount = parseInt(document.querySelector('.title span').textContent);
+            updateMessageCount(currentCount + 1);
         } else {
             console.error('Chat layer not found'); // 채팅 레이어 확인
         }
     }
 
-    // Function to scroll to the bottom of the chat layer
     function scrollToBottom(element) {
         element.scroll({
             top: element.scrollHeight,
@@ -171,6 +174,7 @@ function initializeChat() {
                 messages.forEach(msg => {
                     displayMessage(msg.sender, msg.content);
                 });
+                updateMessageCount(messages.length);
                 // Ensure scroll to bottom after loading history
                 const chatLayer = document.querySelector('#chatingLayer');
                 if (chatLayer) {
@@ -178,6 +182,10 @@ function initializeChat() {
                 }
             })
             .catch(error => console.error('Error loading chat history:', error));
+    }
+
+    function updateMessageCount(count) {
+        document.querySelector('.title span').textContent = count;
     }
 }
 
