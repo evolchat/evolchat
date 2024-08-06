@@ -1,8 +1,13 @@
 $(document).ready(function() {
     const postsPerPage = 10; // 페이지당 게시물 수
+    let currentPage = 1; // 현재 페이지 번호
+    let totalPages = 1; // 총 페이지 수
 
     // 게시물과 페이지네이션을 가져오는 함수
     function fetchPosts(page = 1) {
+        // 페이지 번호가 1 이하로 설정되지 않도록 보장
+        page = Math.max(page, 1);
+
         $.ajax({
             url: `/community-posts?page=${page}&size=${postsPerPage}&boardId=2`, // boardId=2인 게시물 요청
             type: 'GET',
@@ -48,7 +53,6 @@ $(document).ready(function() {
                                 <div class="user-layout flex-row flex-c">
                                     <div class="profile flex-row flex-c m-b-8">
                                         <img class="profile-img-30 m-t-10" src="${post.profileImageUrl || '../static/images/profile/default.png'}" alt="${post.userAlt}" class="m-r-6">
-
                                     </div>
                                     <div class="nickname white px15 opacity80">${post.userId}</div>
                                     <div class="rank">
@@ -61,8 +65,9 @@ $(document).ready(function() {
                     postsContainer.append(postHtml);
                 });
 
-                const totalPages = parseInt(xhr.getResponseHeader('X-Total-Pages')) || 1;
-                updatePagination(page, totalPages); // 페이지네이션 업데이트
+                totalPages = parseInt(xhr.getResponseHeader('X-Total-Pages')) || 1; // 총 페이지 수 업데이트
+                currentPage = page; // 현재 페이지 업데이트
+                updatePagination(); // 페이지네이션 업데이트
             },
             error: function() {
                 console.log('게시물을 가져오는 데 실패했습니다.');
@@ -71,33 +76,23 @@ $(document).ready(function() {
     }
 
     // 페이지네이션을 업데이트하는 함수
-    function updatePagination(currentPage, totalPages) {
+    function updatePagination() {
         const paginationContainer = $('#pagination-container');
         paginationContainer.empty(); // 기존 페이지네이션 제거
 
+        // 이전 두 페이지 버튼
+        if (currentPage > 3) {
+            const prevTwoButton = $('<div class="prev-btn page flex-c-c" data-page="prev-two"><img src="../../static/images/svg/prev-two.svg" alt="맨 처음 페이지"></div>');
+            paginationContainer.append(prevTwoButton);
+        }
+
         // 이전 버튼
-        const prevButton = $('<div class="prev-btn page flex-c-c" data-page="prev"><img src="../../static/images/svg/prev.svg" alt=""></div>');
-
-        // 다음 버튼
-        const nextButton = $('<div class="next-btn page flex-c-c" data-page="next"><img src="../../static/images/svg/next.svg" alt=""></div>');
-
-        // 현재 페이지에 따라 이전 버튼 표시 여부 설정
-        if (currentPage === 1) {
-            prevButton.addClass('hidden');
-        } else {
-            prevButton.removeClass('hidden');
+        if (currentPage > 1) {
+            const prevButton = $('<div class="prev-btn page flex-c-c" data-page="prev"><img src="../../static/images/svg/prev.svg" alt="이전 페이지"></div>');
+            paginationContainer.append(prevButton);
         }
 
-        // 현재 페이지와 총 페이지 수에 따라 다음 버튼 표시 여부 설정
-        if (currentPage === totalPages) {
-            nextButton.addClass('hidden');
-        } else {
-            nextButton.removeClass('hidden');
-        }
-
-        paginationContainer.append(prevButton);
-
-        // 현재 페이지에 대한 페이지 번호만 표시
+        // 페이지 번호 버튼
         const startPage = Math.max(1, currentPage - 2);
         const endPage = Math.min(totalPages, currentPage + 2);
 
@@ -109,7 +104,17 @@ $(document).ready(function() {
             paginationContainer.append(pageDiv);
         }
 
-        paginationContainer.append(nextButton);
+        // 다음 버튼
+        if (currentPage < totalPages) {
+            const nextButton = $('<div class="next-btn page flex-c-c" data-page="next"><img src="../../static/images/svg/next.svg" alt="다음 페이지"></div>');
+            paginationContainer.append(nextButton);
+        }
+
+        // 다음 두 페이지 버튼
+        if (currentPage < totalPages - 2) {
+            const nextTwoButton = $('<div class="next-btn page flex-c-c" data-page="next-two"><img src="../../static/images/svg/next-two.svg" alt="맨 마지막 페이지"></div>');
+            paginationContainer.append(nextTwoButton);
+        }
 
         attachPaginationEventListeners(); // 페이지네이션 이벤트 리스너 부착
     }
@@ -119,9 +124,17 @@ $(document).ready(function() {
         $('.page').off('click').on('click', function() { // 중복 바인딩 방지
             const page = $(this).data('page');
             if (page === 'next') {
-                fetchPosts(currentPage + 1);
+                if (currentPage < totalPages) {
+                    fetchPosts(currentPage + 1);
+                }
             } else if (page === 'prev') {
-                fetchPosts(currentPage - 1);
+                if (currentPage > 1) {
+                    fetchPosts(currentPage - 1);
+                }
+            } else if (page === 'next-two') {
+                fetchPosts(totalPages);
+            } else if (page === 'prev-two') {
+                fetchPosts(1);
             } else {
                 fetchPosts(parseInt(page));
             }
@@ -129,7 +142,6 @@ $(document).ready(function() {
     }
 
     // 초기 게시물 가져오기
-    let currentPage = 1;
     fetchPosts(currentPage);
 
     // 게시물 클릭 이벤트 추가

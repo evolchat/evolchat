@@ -9,124 +9,56 @@
 </head>
 
 <body>
-    <div id="content-area" class="flex-grow" style="">
-        <div class="wrapper bc-black vh100 ">
-    <!--        <div id="header" class="header flex-row bc-header"></div>-->
-            <Section class="flex-row">
-    <!--            <div id="nav" class="bc-aside g-12"></div>-->
-                <div class="wrap bc-footer ">
-                    <div class="content">
-                        <div class="mainContent bc-main">
-                            <div class="sub-header flex-row flex-c white opacity60 px15">
-                                <div class="list active"><a href="support_notice">공지사항</a></div>
-                                <div class="list "><a href="support_help">도움말</a></div>
-                                <div class="list "><a href="support_inquiry">문의하기</a></div>
-
-                            </div>
-                            <div class="sub-header flex-row flex-c">
-                                <div class="sub-header-search bc-footer flex-grow">
-                                    <input type="text" placeholder="닉네임 검색">
-                                    <img src="../../static/images/svg/search.svg" alt="" class="input-icon search" />
-                                </div>
-                            </div>
-                            <div class="mainLayer">
-                                <div class="table-padding">
-                                    <div class="table-radius">
-                                        <table class="rank-table white px14">
-                                            <thead class="h50px">
-                                                <tr>
-                                                    <th class="opacity60 text-center">분류</th>
-                                                    <th class="opacity60 text-center">제목</th>
-                                                    <th class="opacity60">일시</th>
-                                                    <th class="opacity60">조회</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody class="h60px">
-                                                <tr>
-                                                    <td>
-                                                        <div class="bc-red-f23f42 border-5 flex-c-c square">공지</div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="text-left"><span class="px15">골드칩(도네이션용 가상화폐) 사용
-                                                                설명서</span>
-                                                            <img src="../../static/images/svg/icon-gallery.svg" alt="">
-                                                            <img src="../../static/images/svg/icon-videoplayer.svg" alt="">
-                                                            <img src="../../static/images/svg/icon-folder.svg" alt="">
-
-                                                        </div>
-                                                    </td>
-                                                    <td class="opacity60">2024-05-06</td>
-                                                    <td class="opacity60">2564</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="bc-blue-2379FF border-5 flex-c-c square">업데이트</div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="text-left"><span class="px15">에볼루션 서비스에 크레이지 타임이 추가
-                                                                되었습니다.</span>
-                                                            <img src="../../static/images/svg/icon-gallery.svg" alt="">
-                                                            <img src="../../static/images/svg/icon-videoplayer.svg" alt="">
-                                                            <img src="../../static/images/svg/icon-folder.svg" alt="">
-
-                                                        </div>
-                                                    </td>
-                                                    <td class="opacity60">2024-05-06</td>
-                                                    <td class="opacity60">2564</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="bc-ivory border-5 flex-c-c square">이벤트</div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="text-left"><span class="px15">골드칩(도네이션용 가상화폐) 사용
-                                                                설명서</span>
-                                                            <img src="../../static/images/svg/icon-gallery.svg" alt="">
-                                                            <img src="../../static/images/svg/icon-videoplayer.svg" alt="">
-                                                            <img src="../../static/images/svg/icon-folder.svg" alt="">
-
-                                                        </div>
-                                                    </td>
-                                                    <td class="opacity60">2024-05-06</td>
-                                                    <td class="opacity60">2564</td>
-                                                </tr>
-                                            </tbody>
-                                            <tfoot class="h100px">
-                                                <tr>
-                                                    <td colspan='8' class="text-cneter">
-                                                        <div class="pagination flex-row flex-c-c">
-                                                            <div class="page flex-c-c bc-activate">1</div>
-                                                            <div class="page flex-c-c">2</div>
-                                                            <div class="page flex-c-c">3</div>
-                                                            <div class="page flex-c-c">4</div>
-                                                            <div class="page flex-c-c">5</div>
-                                                            <div class="page flex-c-c">6</div>
-                                                            <div class="page flex-c-c">7</div>
-                                                            <div class="page flex-c-c">8</div>
-                                                            <div class="page flex-c-c">9</div>
-                                                            <div class="page flex-c-c">10</div>
-                                                            <button class="next-btn page flex-c-c">
-                                                                <img src="../../static/images/svg/next.svg" alt="">
-                                                            </button>
-                                                            <button class="next-btn page flex-c-c">
-                                                                <img src="../../static/images/svg/next-two.svg" alt="">
-                                                            </button>
-                                                        </div>
-
-                                                    </td>
-                                                </tr>
-                                            </tfoot>
-                                        </table>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="footer" class=" bc-footer" th:insert="include/footer">
+<div id="content-area" class="flex-grow" style="">
+    <div class="wrapper bc-black vh100">
+        <!-- <div id="header" class="header flex-row bc-header"></div> -->
+        <section class="flex-row">
+            <!-- <div id="nav" class="bc-aside g-12"></div> -->
+            <div class="wrap bc-footer">
+                <div class="content">
+                    <div class="mainContent bc-main">
+                        <div class="sub-header flex-row flex-c white opacity60 px15">
+                            <div class="list active"><a href="support_notice">공지사항</a></div>
+                            <div class="list"><a href="support_help">도움말</a></div>
+                            <div class="list"><a href="support_inquiry">문의하기</a></div>
+                        </div>
+                        <div class="sub-header flex-row flex-c">
+                            <div class="sub-header-search bc-footer flex-grow">
+                                <input type="text" placeholder="닉네임 검색">
+                                <img src="../../static/images/svg/search.svg" alt="" class="input-icon search" />
                             </div>
                         </div>
+                        <div class="mainLayer">
+                            <div class="table-padding">
+                                <div class="table-radius">
+                                    <table class="rank-table white px14">
+                                        <thead class="h50px">
+                                        <tr>
+                                            <th class="opacity60 text-center">분류</th>
+                                            <th class="opacity60 text-center">제목</th>
+                                            <th class="opacity60">일시</th>
+                                            <th class="opacity60">조회</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody class="h60px"></tbody>
+                                        <tfoot class="h100px">
+                                        <tr>
+                                            <td colspan='8' class="text-center">
+                                                <div class="pagination flex-row flex-c-c">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="footer" class="bc-footer" th:insert="include/footer"></div>
+                    </div>
                 </div>
-            </section>
-        </div>
+        </section>
     </div>
+</div>
+</div>
 </body>
 </html>

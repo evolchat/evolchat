@@ -25,7 +25,7 @@ public class CommunityPostController {
     private final CommunityPostLikeService communityPostLikeService;
 
     @GetMapping
-    public ResponseEntity<List<CommunityPostDto>> getPosts(@RequestParam(defaultValue = "1") int page,
+    public ResponseEntity<List<CommunityPostDto>> getCommunityPosts(@RequestParam(defaultValue = "1") int page,
                                                            @RequestParam(defaultValue = "20") int size,
                                                            @RequestParam(required = false) Integer boardId) {
         Pageable pageable = PageRequest.of(page - 1, size); // 페이지 번호를 0부터 시작하도록 수정
@@ -43,16 +43,6 @@ public class CommunityPostController {
         headers.add("X-Total-Pages", String.valueOf(postsPage.getTotalPages())); // 전체 페이지 수를 HTTP 헤더에 추가
 
         return new ResponseEntity<>(communityPostDtos, headers, HttpStatus.OK);
-    }
-
-    @GetMapping("/community-posts")
-    public Page<CommunityPost> getCommunityPosts(
-            @RequestParam(defaultValue = "1") int page,
-            @RequestParam(defaultValue = "10") int size,
-            @RequestParam int boardId,
-            @RequestParam(required = false, defaultValue = "") String search) {
-
-        return communityPostService.getPosts(page, size, boardId, search);
     }
 
     private CommunityPostDto convertToDto(CommunityPost communityPost) {

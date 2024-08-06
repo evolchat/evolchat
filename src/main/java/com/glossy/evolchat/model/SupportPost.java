@@ -20,6 +20,9 @@ public class SupportPost {
     @Column(nullable = false)
     private int boardId;
 
+    @Column(nullable = false)
+    private Integer detailedCategory;
+
     @Column(nullable = false, length = 255)
     private String title;
 

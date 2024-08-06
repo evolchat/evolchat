@@ -71,4 +71,19 @@ $(document).ready(function () {
     });
 
     $('#id').focus()
+
+    const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('sessionExpired')) {
+            Swal.fire({
+                title: '다른 환경에서 로그인하여 로그아웃 되었습니다.',
+                text: "다시 로그인 해 주세요.",
+                icon: 'error',
+                reverseButtons: true,
+                iconColor: '#FF4C4C',
+                color: '#FFFFFF',
+                background: '#35373D',
+                confirmButtonColor: '#8744FF',
+                confirmButtonText: '확인'
+            });
+        }
 });

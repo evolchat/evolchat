@@ -7,9 +7,9 @@ public class SupportPostDto {
     private int postId;
     private String userId;
     private int boardId;
+    private int detailedCategory;
     private String title;
     private String content;
-    private long likeCount;
     private int views;
     private String createdAt;
 }

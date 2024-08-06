@@ -1,5 +1,7 @@
 $(document).ready(function() {
     const usersPerPage = 10; // 페이지당 사용자 수
+    let currentPage = 1; // 현재 페이지
+    let totalPages = 1; // 총 페이지 수
 
     function fetchRankedUsers(page = 1) {
         $.ajax({
@@ -19,8 +21,6 @@ $(document).ready(function() {
 
                 response.forEach((user, index) => {
                     const rank = (page - 1) * usersPerPage + index + 1;
-
-                    // 메달 이미지 URL 또는 숫자를 가져오기
                     const medalOrText = getMedalOrText(rank);
                     const profileImage = user.profilePicture ? user.profilePicture : '../../static/images/profile/default.png';
 
@@ -41,8 +41,9 @@ $(document).ready(function() {
                     usersContainer.append(userHtml);
                 });
 
-                const totalPages = parseInt(xhr.getResponseHeader('X-Total-Pages')) || 1;
-                updatePagination(page, totalPages);
+                totalPages = parseInt(xhr.getResponseHeader('X-Total-Pages')) || 1;
+                currentPage = page; // 현재 페이지 업데이트
+                updatePagination(); // 페이지네이션 업데이트
             },
             error: function() {
                 console.log('사용자 데이터를 가져오는 데 실패했습니다.');
@@ -54,44 +55,46 @@ $(document).ready(function() {
         if (rank === 1) return '../../static/images/svg/goldmedal.svg';
         if (rank === 2) return '../../static/images/svg/silvermedal.svg';
         if (rank === 3) return '../../static/images/svg/bronzemedal.svg';
-
-        // 숫자를 직접 반환하여 HTML에서 텍스트로 표시
         return rank;
     }
 
-    function updatePagination(currentPage, totalPages) {
+    function updatePagination() {
         const paginationContainer = $('#pagination-container');
         paginationContainer.empty(); // 기존 페이지네이션 제거
 
+        // '맨 앞으로' 버튼
+        if (currentPage > 1) {
+            const firstButton = $('<div class="first-btn page flex-c-c"><img src="../../static/images/svg/prev-two.svg" alt="맨 처음 페이지"></div>');
+            paginationContainer.append(firstButton);
+        }
+
         // 이전 버튼
-        const prevButton = $('<div class="prev-btn page flex-c-c"><img src="../../static/images/svg/prev.svg" alt=""></div>');
-
-        // 다음 버튼
-        const nextButton = $('<div class="next-btn page flex-c-c"><img src="../../static/images/svg/next.svg" alt=""></div>');
-
-        if (currentPage === 1) {
-            prevButton.addClass('hidden');
-        } else {
-            prevButton.removeClass('hidden');
+        if (currentPage > 1) {
+            const prevButton = $('<div class="prev-btn page flex-c-c"><img src="../../static/images/svg/prev.svg" alt="이전 페이지"></div>');
+            paginationContainer.append(prevButton);
         }
 
-        if (currentPage === totalPages) {
-            nextButton.addClass('hidden');
-        } else {
-            nextButton.removeClass('hidden');
-        }
-
-        paginationContainer.append(prevButton);
-
-        const startPage = Math.max(1, currentPage - 2);
-        const endPage = Math.min(totalPages, currentPage + 2);
+        // 페이지 번호 버튼
+        const paginationRange = 5; // 페이지 번호 버튼 개수
+        const startPage = Math.max(1, currentPage - Math.floor(paginationRange / 2));
+        const endPage = Math.min(totalPages, startPage + paginationRange - 1);
 
         for (let i = startPage; i <= endPage; i++) {
             const pageDiv = $(`<div class="page flex-c-c ${i === currentPage ? 'bc-activate' : ''}" data-page="${i}">${i}</div>`);
             paginationContainer.append(pageDiv);
         }
 
-        paginationContainer.append(nextButton);
+        // 다음 버튼
+        if (currentPage < totalPages) {
+            const nextButton = $('<div class="next-btn page flex-c-c"><img src="../../static/images/svg/next.svg" alt="다음 페이지"></div>');
+            paginationContainer.append(nextButton);
+        }
+
+        // '맨 뒤로' 버튼
+        if (currentPage < totalPages - 2) {
+            const lastButton = $('<div class="last-btn page flex-c-c"><img src="../../static/images/svg/next-two.svg" alt="맨 마지막 페이지"></div>');
+            paginationContainer.append(lastButton);
+        }
 
         attachPaginationEventListeners(); // 페이지네이션 이벤트 리스너 부착
     }
@@ -99,7 +102,33 @@ $(document).ready(function() {
     function attachPaginationEventListeners() {
         $('.page').off('click').on('click', function() {
             const page = $(this).data('page');
-            fetchRankedUsers(page);
+            if (page && page !== currentPage) {
+                fetchRankedUsers(page);697
+            }
+        });
+
+        $('.prev-btn').off('click').on('click', function() {
+            if (currentPage > 1) {
+                fetchRankedUsers(currentPage - 1);
+            }
+        });
+
+        $('.next-btn').off('click').on('click', function() {
+            if (currentPage < totalPages) {
+                fetchRankedUsers(currentPage + 1);
+            }
+        });
+
+        $('.first-btn').off('click').on('click', function() {
+            if (currentPage > 1) {
+                fetchRankedUsers(1); // 첫 페이지로 이동
+            }
+        });
+
+        $('.last-btn').off('click').on('click', function() {
+            if (currentPage < totalPages) {
+                fetchRankedUsers(totalPages); // 마지막 페이지로 이동
+            }
         });
     }
 

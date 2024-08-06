@@ -100,11 +100,29 @@ function initializeChat() {
                 const user = await response.json();
                 return user.nickname || 'Unknown'; // 닉네임 필드가 있는 경우 반환
             } else {
-                console.error('Failed to get username');
+                Swal.fire({
+                    title: '회원님의 이름을 가지고 오지 못 했습니다.',
+                    icon: 'error',
+                    reverseButtons: true,
+                    iconColor: '#FF4C4C',
+                    color: '#FFFFFF',
+                    background: '#35373D',
+                    confirmButtonColor: '#8744FF',
+                    confirmButtonText: '확인'
+                });
                 return 'Unknown';
             }
         } catch (error) {
-            console.error('Error fetching username:', error);
+            Swal.fire({
+                title: '회원님의 이름을 가지고 오지 못 했습니다.',
+                icon: 'error',
+                reverseButtons: true,
+                iconColor: '#FF4C4C',
+                color: '#FFFFFF',
+                background: '#35373D',
+                confirmButtonColor: '#8744FF',
+                confirmButtonText: '확인'
+            });
             return 'Unknown';
         }
     }
@@ -185,7 +203,7 @@ function initializeChat() {
     }
 
     function updateMessageCount(count) {
-        document.querySelector('.title span').textContent = count;
+        document.querySelector('#messageCount').textContent = count;
     }
 }
 
