@@ -3,9 +3,10 @@ $(document).ready(function() {
     let currentBoardId = 1; // 초기 boardId 값 설정
     let currentPage = 1; // 현재 페이지
     let totalPages = 1; // 총 페이지 수
+    let currentSort = 'latest'; // 현재 정렬 기준 (최신글)
 
-    function fetchPosts(page = 1, boardId = currentBoardId, searchQuery = '') {
-        let url = `/community-posts?page=${page}&size=${postsPerPage}&boardId=${boardId}&search=${encodeURIComponent(searchQuery)}`;
+    function fetchPosts(page = 1, boardId = currentBoardId, searchQuery = '', sort = currentSort) {
+        let url = `/community-posts?page=${page}&size=${postsPerPage}&boardId=${boardId}&search=${encodeURIComponent(searchQuery)}&sort=${sort}`;
 
         $.ajax({
             url: url,
@@ -128,7 +129,7 @@ $(document).ready(function() {
             // page 값이 유효한지 확인
             if (!isNaN(page) && page > 0 && page <= totalPages) {
                 currentPage = page; // currentPage 업데이트
-                fetchPosts(currentPage, boardId, $('#search-input').val());
+                fetchPosts(currentPage, currentBoardId, $('#search-input').val(), currentSort);
             } else {
                 console.error('Invalid page value:', page); // 오류 로그 출력
             }
@@ -137,7 +138,7 @@ $(document).ready(function() {
 
     function handleSearch() {
         const searchQuery = $('#search-input').val();
-        fetchPosts(1, currentBoardId, searchQuery); // 첫 페이지부터 검색
+        fetchPosts(1, currentBoardId, searchQuery, currentSort); // 첫 페이지부터 검색
     }
 
     // 초기 게시물 가져오기
@@ -162,5 +163,34 @@ $(document).ready(function() {
         if (postId) {
             window.location.href = `/community_detail?postId=${postId}`;
         }
+    });
+
+    // 정렬 버튼 클릭 이벤트 추가
+    $('#sort-latest').on('click', function() {
+        currentSort = 'latest'; // 정렬 기준을 최신글로 설정
+        fetchPosts(1, currentBoardId, $('#search-input').val(), currentSort);
+        updateActiveClass($(this));
+    });
+
+    $('#sort-popular').on('click', function() {
+        currentSort = 'popular'; // 정렬 기준을 인기글로 설정
+        fetchPosts(1, currentBoardId, $('#search-input').val(), currentSort);
+        updateActiveClass($(this));
+    });
+
+    $('#sort-most-comments').on('click', function() {
+        currentSort = 'most-comments'; // 정렬 기준을 댓글 많은 글로 설정
+        fetchPosts(1, currentBoardId, $('#search-input').val(), currentSort);
+        updateActiveClass($(this));
+    });
+
+    // 활성화된 정렬 버튼 스타일 업데이트
+    function updateActiveClass(activeElement) {
+        $('.sorting div').removeClass('white active');
+        activeElement.addClass('white active');
+    }
+
+    $('.sorting div').on('click', function() {
+        updateActiveClass($(this));
     });
 });

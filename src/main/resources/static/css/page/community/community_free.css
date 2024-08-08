@@ -68,9 +68,17 @@
 .th > div{
     margin-right: 15px;
 }
-.th::before{
-    content: '✓';
+
+.th div::before {
+    content: '';
     display: inline-block;
+    width: 0;
+    height: 0;
+    margin-right: 8px;
+}
+
+.white.active::before {
+    content: '✓';
     width: auto;
     height: auto;
     color: #fff;
@@ -79,6 +87,7 @@
 .tr{
     border: 1px solid #35373D;
 }
+
 .pagination{
     height: 100px;
     border: 1px solid #35373D;
@@ -93,4 +102,43 @@
 .profile .nickname {
     color: #fff;
     margin-bottom: 5px;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+}
+
+.checkbox-container input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none; /* Safari와 Chrome에서 기본 체크박스 스타일 제거 */
+    background-color: #1F1F1F; /* 배경색 */
+    border: 2px solid #35373D; /* 테두리 색상 */
+    border-radius: 5px; /* 둥근 모서리 */
+    width: 20px; /* 체크박스 크기 */
+    height: 20px; /* 체크박스 크기 */
+    cursor: pointer; /* 포인터 커서 */
+    position: relative; /* 상대적 위치 설정 */
+    transition: background-color 0.3s, border-color 0.3s; /* 부드러운 색상 전환 */
+}
+
+/* 체크된 상태 */
+.checkbox-container input[type="checkbox"]:checked {
+    background-color: #FFD01A; /* 체크된 상태의 배경색 */
+    border-color: #FFD01A; /* 체크된 상태의 테두리 색상 */
+}
+
+/* 체크 표시 */
+.checkbox-container input[type="checkbox"]:checked::after {
+    content: '\2713'; /* 체크 표시 기호 */
+    color: #1F1F1F; /* 체크 표시 색상 */
+    font-size: 16px; /* 체크 표시 크기 */
+    position: absolute; /* 절대적 위치 */
+    top: 50%; /* 중앙 정렬 */
+    left: 50%; /* 중앙 정렬 */
+    transform: translate(-50%, -50%); /* 중앙 정렬 */
+}
+
+.sort-btn {
+    cursor: pointer;
 }
