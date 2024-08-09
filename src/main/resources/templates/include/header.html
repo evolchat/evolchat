@@ -149,28 +149,44 @@
             }
         });
 
+        // 페이지 로드 시 newNav의 초기 활성화 상태 설정
+        const newNavActive = localStorage.getItem('newNavActive');
+        if (newNavActive === 'true') {
+            $("#newNav").show();
+            $("#initialNav").hide();
+            $("#nav").css("width", "55px");
+        } else {
+            $("#newNav").hide();
+            $("#initialNav").show();
+            $("#nav").css("width", "");
+        }
+
         $("#nav_button").click(function() {
             $("#initialNav").toggle();
             $("#newNav").toggle();
-            if (isNavExpanded) {
+            if ($("#newNav").is(":visible")) {
                 $("#nav").css("width", "55px");
             } else {
                 $("#nav").css("width", "");
             }
-            isNavExpanded = !isNavExpanded; // 상태 토글
+            isNavExpanded = $("#newNav").is(":visible") ? false : true; // 상태 설정
             isInitialNavVisible = !isInitialNavVisible; // 네비게이션 상태 토글
             localStorage.setItem('isNavExpanded', isNavExpanded); // 상태 저장
             localStorage.setItem('isInitialNavVisible', isInitialNavVisible); // 네비게이션 상태 저장
+
+            // #newNav 상태 저장
+            const newNavVisible = $("#newNav").is(":visible");
+            localStorage.setItem('newNavActive', newNavVisible.toString());
         });
 
         // 페이지 로드 시 chat의 초기 활성화 상태 설정
         const chatActive = localStorage.getItem('chatActive');
         if (chatActive === 'true') {
             $("#chat").show();
-            $("#header-item-tooltip-7").addClass("active");
+            $("#header-item-tooltip-7").addClass('active');
         } else {
             $("#chat").hide();
-            $("#header-item-tooltip-7").removeClass("active");
+            $("#header-item-tooltip-7").removeClass('active');
         }
 
         $("#header-item-tooltip-7").click(function() {
@@ -178,13 +194,21 @@
             $("#chat").slideToggle(300, function() {
                 const chatVisible = $("#chat").is(":visible");
                 if (chatVisible === true) {
-                    $("#header-item-tooltip-7").addClass("active");
+                    $("#header-item-tooltip-7").addClass('active');
                 } else {
-                    $("#header-item-tooltip-7").removeClass("active");
+                    $("#header-item-tooltip-7").removeClass('active');
                 }
-                console.log(chatVisible);
                 localStorage.setItem('chatActive', chatVisible.toString());
             });
         });
+
+        // 페이지 로드 시 nav의 초기 활성화 상태 설정
+        const navExpanded = JSON.parse(localStorage.getItem('isNavExpanded'));
+        if (navExpanded === false) {
+            $("#nav").css("width", "55px");
+        } else {
+            $("#nav").css("width", "");
+        }
+
     });
 </script>

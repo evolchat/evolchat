@@ -256,25 +256,25 @@
                                                 <span>(최대 5개 선택 가능)</span>
                                             </div>
                                             <div class="row select">
-                                                <input class="input hidden" type="checkbox" name="interests" id="interest-1">
+                                                <input class="input hidden interest-checkbox" type="checkbox" name="interests" id="interest-1">
                                                 <label for="interest-1">바카라</label>
-                                                <input class="input hidden" type="checkbox" name="interests" id="interest-2">
+                                                <input class="input hidden interest-checkbox" type="checkbox" name="interests" id="interest-2">
                                                 <label for="interest-2">식보</label>
-                                                <input class="input hidden" type="checkbox" name="interests" id="interest-3">
+                                                <input class="input hidden interest-checkbox" type="checkbox" name="interests" id="interest-3">
                                                 <label for="interest-3">룰렛</label>
-                                                <input class="input hidden" type="checkbox" name="interests" id="interest-4">
+                                                <input class="input hidden interest-checkbox" type="checkbox" name="interests" id="interest-4">
                                                 <label for="interest-4">게임 쇼</label>
-                                                <input class="input hidden" type="checkbox" name="interests" id="interest-5">
+                                                <input class="input hidden interest-checkbox" type="checkbox" name="interests" id="interest-5">
                                                 <label for="interest-5">스포츠</label>
-                                                <input class="input hidden" type="checkbox" name="interests" id="interest-6">
+                                                <input class="input hidden interest-checkbox" type="checkbox" name="interests" id="interest-6">
                                                 <label for="interest-6">게임</label>
-                                                <input class="input hidden" type="checkbox" name="interests" id="interest-7">
+                                                <input class="input hidden interest-checkbox" type="checkbox" name="interests" id="interest-7">
                                                 <label for="interest-7">가상화폐</label>
-                                                <input class="input hidden" type="checkbox" name="interests" id="interest-8">
+                                                <input class="input hidden interest-checkbox" type="checkbox" name="interests" id="interest-8">
                                                 <label for="interest-8">주식</label>
-                                                <input class="input hidden" type="checkbox" name="interests" id="interest-9">
+                                                <input class="input hidden interest-checkbox" type="checkbox" name="interests" id="interest-9">
                                                 <label for="interest-9">친목</label>
-                                                <input class="input hidden" type="checkbox" name="interests" id="interest-10">
+                                                <input class="input hidden interest-checkbox" type="checkbox" name="interests" id="interest-10">
                                                 <label for="interest-10">중고거래</label>
                                             </div>
                                         </div>
@@ -291,6 +291,26 @@
         </section>
     </div>
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        // Select all checkboxes with the class 'interest-checkbox'
+        const checkboxes = document.querySelectorAll('.interest-checkbox');
+
+        // Add event listener to each checkbox
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                // Count the number of checked checkboxes
+                const checkedCount = document.querySelectorAll('.interest-checkbox:checked').length;
+
+                // If more than 5 checkboxes are checked, uncheck the current one
+                if (checkedCount > 5) {
+                    this.checked = false;
+                    alert('최대 5개까지만 선택할 수 있습니다.');
+                }
+            });
+        });
+    });
+</script>
 </body>
 
 </html>
