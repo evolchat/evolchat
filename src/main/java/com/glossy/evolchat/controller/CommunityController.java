@@ -1,5 +1,6 @@
 package com.glossy.evolchat.controller;
 
+import com.glossy.evolchat.dto.CommunityCommentDto;
 import com.glossy.evolchat.model.CommunityComment;
 import com.glossy.evolchat.model.CommunityPost;
 import com.glossy.evolchat.model.User;
@@ -23,6 +24,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Controller
 public class CommunityController {
@@ -48,6 +50,21 @@ public class CommunityController {
             // CommunityPost 객체를 전달하여 댓글 조회
             List<CommunityComment> communityComments = communityCommentRepository.findByCommunityPost(communityPost);
 
+            // 댓글 DTO 리스트 생성
+            List<CommunityCommentDto> commentDtos = communityComments.stream().map(comment -> {
+                CommunityCommentDto dto = new CommunityCommentDto();
+                dto.setId(comment.getId());
+                dto.setPostId(communityPost.getPostId());
+                dto.setContent(comment.getContent());
+                dto.setCreatedAt(communityPost.getCreatedAt());
+                dto.setUpdatedAt(communityPost.getUpdatedAt());
+
+                // 댓글 작성자의 닉네임 조회
+                dto.setUserNickname(comment.getUser().getNickname());
+
+                return dto;
+            }).collect(Collectors.toList());
+
             Optional<User> authorOptional = userRepository.findByUsername(communityPost.getUserId());
             String authorNickname = authorOptional.map(User::getNickname).orElse("Unknown");
 
@@ -58,7 +75,7 @@ public class CommunityController {
             long postLikeCount = communityPostLikeRepository.countByPostId(postId);
 
             model.addAttribute("communityPost", communityPost);
-            model.addAttribute("comments", communityComments != null ? communityComments : List.of());
+            model.addAttribute("comments", commentDtos); // 변경된 부분: DTO 리스트 전달
             model.addAttribute("authorNickname", authorNickname);
             model.addAttribute("formattedDate", formattedDate);
             model.addAttribute("isLiked", isLiked);
@@ -75,6 +92,7 @@ public class CommunityController {
         }
         return "index";
     }
+
 
     @GetMapping("/community_free")
     public String community_free(Model model) {
@@ -112,35 +130,5 @@ public class CommunityController {
         model.addAttribute("contentFragment", "fragments/community_write");
         model.addAttribute("boardId", boardId);
         return "index";
-    }
-
-
-    @PostMapping("/submit_post")
-    @ResponseBody
-    public ResponseEntity<?> submitPost(
-            @RequestParam("title") String title,
-            @RequestParam("content") String content,
-            @RequestParam("tags") String tags,
-            @RequestParam("boardId") int boardId,
-            @AuthenticationPrincipal UserDetails userDetails) {
-
-        String username = userDetails.getUsername();
-
-        if (username == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("로그인 세션이 만료되었습니다.");
-        }
-
-        CommunityPost communityPost = new CommunityPost();
-        communityPost.setTitle(title);
-        communityPost.setContent(content);
-        communityPost.setBoardId(boardId);
-        communityPost.setTags(tags);
-        communityPost.setUserId(username);
-        communityPost.setCreatedAt(LocalDateTime.now());
-        communityPost.setUpdatedAt(LocalDateTime.now());
-
-        communityPostRepository.save(communityPost);
-
-        return ResponseEntity.ok(communityPost);
     }
 }

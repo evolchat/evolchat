@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const postId = /* Add postId here */;
+    // Get postId from URL query parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const postId = urlParams.get('postId');
 
     // 댓글 등록
     document.getElementById('post-comment-button').addEventListener('click', function() {
@@ -9,18 +11,29 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        fetch('/api/comments', {
+        fetch('/comments', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 postId: postId,
-                userId: /* Add userId here */,
                 content: content
+                // userId is not included here, the server-side will handle it
             })
         }).then(response => {
             if (response.ok) {
+                Swal.fire({
+                    title: '댓글 등록 완료!',
+                    text: '댓글이 저장되었습니다.',
+                    icon: 'success',
+                    reverseButtons: true,
+                    iconColor: '#8744FF',
+                    color: '#FFFFFF',
+                    background: '#35373D',
+                    confirmButtonColor: '#8744FF',
+                    confirmButtonText: '확인'
+                });
                 location.reload(); // 댓글을 추가한 후 페이지를 새로 고침
             } else {
                 alert('댓글 등록에 실패했습니다.');
@@ -36,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
             event.preventDefault();
             const commentId = event.target.getAttribute('data-id');
             if (confirm('이 댓글을 삭제하시겠습니까?')) {
-                fetch(`/api/comments/${commentId}`, {
+                fetch(`/comments/${commentId}`, {
                     method: 'DELETE'
                 }).then(response => {
                     if (response.ok) {
@@ -51,14 +64,14 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // 댓글 수정 (추가적인 구현 필요)
+    // 댓글 수정
     document.querySelectorAll('.edit-comment').forEach(button => {
         button.addEventListener('click', function(event) {
             event.preventDefault();
             const commentId = event.target.getAttribute('data-id');
             const newContent = prompt('댓글 내용을 입력하세요:');
             if (newContent && newContent.trim() !== '') {
-                fetch(`/api/comments/${commentId}`, {
+                fetch(`/comments/${commentId}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json'
@@ -77,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-
+    // 좋아요 및 싫어요 처리
     const likeButton = document.getElementById("like-button");
     const dislikeButton = document.getElementById("dislike-button");
     const likeCount = document.getElementById("like-count");
@@ -91,7 +104,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     function toggleLike(isLiked) {
-        const postId = /* get the post ID from the page context */;
         fetch(`/toggleLike?postId=${postId}`, {
             method: 'POST',
             headers: {

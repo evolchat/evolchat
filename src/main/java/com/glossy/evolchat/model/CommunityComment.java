@@ -2,7 +2,6 @@ package com.glossy.evolchat.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
-
 import java.time.LocalDateTime;
 
 @Entity
@@ -11,15 +10,15 @@ public class CommunityComment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int seq;
+    private int id; // Ensure this is the only AUTO_INCREMENT column
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST) // CascadeType.PERSIST to ensure CommunityPost is saved
     @JoinColumn(name = "post_id", nullable = false)
-    private CommunityPost communityPost; // 게시물과의 관계 설정
+    private CommunityPost communityPost;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST) // CascadeType.PERSIST to ensure User is saved
     @JoinColumn(name = "user_id", nullable = false)
-    private User user; // 사용자와의 관계 설정
+    private User user;
 
     @Column(nullable = false, columnDefinition = "TEXT")
     private String content;

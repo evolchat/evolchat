@@ -9,5 +9,6 @@ import java.util.List;
 
 @Repository
 public interface CommunityCommentRepository extends JpaRepository<CommunityComment, Integer> {
-    List<CommunityComment> findByCommunityPost(CommunityPost post);
+    // Find comments by CommunityPost entity
+    List<CommunityComment> findByCommunityPost(CommunityPost communityPost);
 }

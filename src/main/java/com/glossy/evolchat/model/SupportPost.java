@@ -44,9 +44,6 @@ public class SupportPost {
     @Column(nullable = false)
     private int views = 0;
 
-    @Column(name = "comment_count")
-    private int commentCount; // 댓글 개수를 저장하는 필드
-
     @OneToMany(mappedBy = "supportPost", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<SupportComment> supportComments; // 댓글 목록
 

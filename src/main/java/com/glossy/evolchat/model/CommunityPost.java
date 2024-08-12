@@ -2,11 +2,16 @@ package com.glossy.evolchat.model;
 
 import lombok.Data;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
 @Data
+@Getter
+@Setter
 public class CommunityPost {
 
     @Id
@@ -39,9 +44,6 @@ public class CommunityPost {
 
     @Column(nullable = false)
     private int views = 0;
-
-    @Column(name = "comment_count")
-    private int commentCount; // 댓글 개수를 저장하는 필드
 
     @OneToMany(mappedBy = "communityPost", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<CommunityComment> communityComments; // 댓글 목록

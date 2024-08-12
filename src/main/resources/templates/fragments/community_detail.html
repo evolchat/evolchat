@@ -68,26 +68,28 @@
                                     </button>
                                 </div>
                                 <div class="communityComments">
-                                    <div class="tit">댓글 <span th:text="${communityPost.commentCount}">2</span></div>
+<!--                                    <div class="tit">댓글 <span th:text="${communityPost.commentCount}">2</span></div>-->
+                                    <div class="tit">댓글 <span>2</span></div>
                                     <!-- 댓글 목록 -->
                                     <div class="comment" th:each="comment : ${comments}">
-                                        <img th:src="@{${comment.author.imageUrl}}" alt="">
+                                        <img class="profile-img-48" src="../../static/images/profile/default.png" alt="#">
+<!--                                        <img th:src="@{${comment.author.imageUrl}}" alt="">-->
                                         <div class="entire">
                                             <div class="account">
-                                                <div class="author" th:text="${comment.author.name}">알리</div>
+                                                <div class="author" th:text="${comment.userNickname}">알리</div> <!-- 수정된 부분 -->
                                                 <div class="options">
-                                                    <img src="../static/images/svg/hyphenation.svg" alt="">
-                                                    <div class="dropdown-menu">
-                                                        <ul>
-                                                            <li><a href="#">댓글 삭제</a></li>
-                                                            <li><a href="#">댓글 수정</a></li>
-                                                            <li><a href="#">신고하기</a></li>
+                                                    <div class="dropdown">
+                                                        <img src="../static/images/svg/hyphenation.svg" alt="Options" id="dropdownCommentButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                                        <ul class="dropdown-menu" aria-labelledby="dropdownCommentButton">
+                                                            <li><a class="dropdown-item" href="#" onclick="deleteComment()">댓글 삭제</a></li>
+                                                            <li><a class="dropdown-item" href="#" onclick="editComment()">댓글 수정</a></li>
+                                                            <li><a class="dropdown-item" href="#" onclick="reportComment()">신고하기</a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="content" th:text="${comment.content}">There are many variations of passages of Lorem Ipsum available...</div>
-                                            <div class="time" th:text="${#dates.format(comment.createdAt, 'yyyy.MM.dd HH:mm')}">2024.05.18 00:48</div>
+                                            <span th:text="${#temporals.format(comment.createdAt, 'yyyy.MM.dd HH:mm')}"></span>
                                         </div>
                                     </div>
                                 </div>
@@ -96,14 +98,14 @@
                                         <div class="name" th:text="${user.nickname}">우울한협객</div>
                                         <div class="text">0/1000</div>
                                     </div>
-                                    <textarea placeholder="댓글을 남겨주세요 :)"></textarea>
+                                    <textarea id="comment-text" placeholder="댓글을 남겨주세요 :)"></textarea>
                                     <div class="send">
                                         <div class="icon">
                                             <img src="../static/images/svg/photo.svg" alt="">
                                             <img src="../static/images/svg/chat-icon-2.svg" alt="">
                                             <img src="../static/images/svg/chat-icon-3.svg" alt="">
                                         </div>
-                                        <button>댓글 등록</button>
+                                        <button id="post-comment-button">댓글 등록</button>
                                     </div>
                                 </div>
                                 <div class="mainLayer text-center">

@@ -141,7 +141,7 @@ function submitPost() {
         if (result.isConfirmed) {
             // 사용자 확인 후 글 등록 요청
             $.ajax({
-                url: '/submit_post',
+                url: '/community-posts/submit_post',
                 type: 'POST',
                 data: {
                     title: title,
