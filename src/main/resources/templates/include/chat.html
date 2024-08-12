@@ -2,10 +2,14 @@
 <div class="content chatLayer bc-aside">
     <div class="chat">
         <div class="title">
-            <p>전체 채팅<span id="messageCount" class="m-l-10">0</span></p>
+            <p id="totalChatTab" class="tab active">전체 채팅<span id="messageCount" class="m-l-10">48,504</span></p>
+            <p id="tableChatTab" class="tab">테이블 채팅</p>
         </div>
         <div id="chatingLayer" class="content">
-            <div class="chatingLayer"></div>
+            <div id="totalChatContent" class="chatingLayer">
+            </div>
+            <div id="tableChatContent" class="chatingLayer" style="display:none;">
+            </div>
         </div>
         <div class="chatInsert bc-gray-dark">
             <img src="../static/images/svg/chat-icon-1.svg" alt=""/>

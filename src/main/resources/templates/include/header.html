@@ -125,61 +125,59 @@
             animation: 'fade',
         });
 
-        const currentPath = $('body').attr('data-active-category');
-        let isNavExpanded = JSON.parse(localStorage.getItem('isNavExpanded')) || true;
-        let isInitialNavVisible = JSON.parse(localStorage.getItem('isInitialNavVisible')) || true;
+        let isInitialNavVisible = JSON.parse(localStorage.getItem('isInitialNavVisible')) || false;
+        let isNavExpanded = JSON.parse(localStorage.getItem('isNavExpanded')) || !isInitialNavVisible;
 
-        // 페이지 로드 시 상태 복원
-        if (!isNavExpanded) {
-            $("#nav").css("width", "55px");
-        }
-
+        // Restore the state on page load
         if (isInitialNavVisible) {
-            $("#initialNav").show();
-            $("#newNav").hide();
+            $("#initialNav").css({ display: "block", width: "100%" });
+            $("#newNav").css({ display: "none", width: "25%" });
+            $("#nav").css("width", "100%");
         } else {
-            $("#initialNav").hide();
-            $("#newNav").show();
+            $("#initialNav").css({ display: "none", width: "100%" });
+            $("#newNav").css({ display: "block", width: "25%" });
+            $("#nav").css("width", "55px");
         }
 
         $('.nav-link').each(function() {
             const linkPath = $(this).attr('href');
-            if (linkPath === currentPath) {
+            if (linkPath === $('body').attr('data-active-category')) {
                 $(this).addClass('active');
             }
         });
 
-        // 페이지 로드 시 newNav의 초기 활성화 상태 설정
-        const newNavActive = localStorage.getItem('newNavActive');
-        if (newNavActive === 'true') {
-            $("#newNav").show();
-            $("#initialNav").hide();
-            $("#nav").css("width", "55px");
-        } else {
-            $("#newNav").hide();
-            $("#initialNav").show();
-            $("#nav").css("width", "");
-        }
-
         $("#nav_button").click(function() {
-            $("#initialNav").toggle();
-            $("#newNav").toggle();
             if ($("#newNav").is(":visible")) {
-                $("#nav").css("width", "55px");
-            } else {
-                $("#nav").css("width", "");
-            }
-            isNavExpanded = $("#newNav").is(":visible") ? false : true; // 상태 설정
-            isInitialNavVisible = !isInitialNavVisible; // 네비게이션 상태 토글
-            localStorage.setItem('isNavExpanded', isNavExpanded); // 상태 저장
-            localStorage.setItem('isInitialNavVisible', isInitialNavVisible); // 네비게이션 상태 저장
+                // Transition from newNav to initialNav with text appearing in place after layout expansion
+                $("#newNav").animate({ width: "0%" }, 200, function() {
+                    $(this).css("display", "none");
+                    $("#initialNav").css({ display: "block", width: "0%" });
 
-            // #newNav 상태 저장
-            const newNavVisible = $("#newNav").is(":visible");
-            localStorage.setItem('newNavActive', newNavVisible.toString());
+                    // Hide text initially by setting visibility to hidden
+                    $("#initialNav").children().css("visibility", "hidden");
+
+                    $("#initialNav").animate({ width: "100%" }, 200, function() {
+                        // Show text after layout expansion by setting visibility to visible
+                        $("#initialNav").children().css("visibility", "visible");
+                    });
+
+                    $("#nav").animate({ width: "100%" }, 200);
+                    localStorage.setItem('isInitialNavVisible', true);
+                    localStorage.setItem('isNavExpanded', true);
+                });
+            } else {
+                // Transition from initialNav to newNav
+                $("#initialNav").animate({ width: "0%" }, 200, function() {
+                    $(this).css("display", "none");
+                    $("#newNav").css({ display: "block", width: "0%" }).animate({ width: "25%" }, 200);
+                    $("#nav").animate({ width: "55px" }, 200);
+                    localStorage.setItem('isInitialNavVisible', false);
+                    localStorage.setItem('isNavExpanded', false);
+                });
+            }
         });
 
-        // 페이지 로드 시 chat의 초기 활성화 상태 설정
+        // Handle chat visibility persistence
         const chatActive = localStorage.getItem('chatActive');
         if (chatActive === 'true') {
             $("#chat").show();
@@ -190,25 +188,15 @@
         }
 
         $("#header-item-tooltip-7").click(function() {
-            // #chat 요소의 표시 상태를 애니메이션을 통해 토글
-            $("#chat").slideToggle(300, function() {
+            $("#chat").slideToggle(400, function() {
                 const chatVisible = $("#chat").is(":visible");
-                if (chatVisible === true) {
+                localStorage.setItem('chatActive', chatVisible.toString());
+                if (chatVisible) {
                     $("#header-item-tooltip-7").addClass('active');
                 } else {
                     $("#header-item-tooltip-7").removeClass('active');
                 }
-                localStorage.setItem('chatActive', chatVisible.toString());
             });
         });
-
-        // 페이지 로드 시 nav의 초기 활성화 상태 설정
-        const navExpanded = JSON.parse(localStorage.getItem('isNavExpanded'));
-        if (navExpanded === false) {
-            $("#nav").css("width", "55px");
-        } else {
-            $("#nav").css("width", "");
-        }
-
     });
 </script>
