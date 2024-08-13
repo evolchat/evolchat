@@ -165,15 +165,28 @@ document.addEventListener('DOMContentLoaded', function() {
     const likeCount = document.getElementById("like-count");
 
     likeButton.addEventListener("click", function() {
-        toggleLike(true);
+        updateLikeCount(true);
     });
 
     dislikeButton.addEventListener("click", function() {
-        toggleLike(false);
+        updateLikeCount(false);
     });
 
-    function toggleLike(isLiked) {
-        fetch(`/toggleLike?postId=${postId}`, {
+    function updateLikeCount(isLiked) {
+        // 현재 좋아요 수를 화면에서 즉시 업데이트
+        let currentCount = parseInt(likeCount.textContent);
+        if (isLiked) {
+            likeButton.style.display = "none";
+            dislikeButton.style.display = "block";
+            likeCount.textContent = currentCount + 1; // 화면에서 즉시 좋아요 수를 1 증가
+        } else {
+            likeButton.style.display = "block";
+            dislikeButton.style.display = "none";
+            likeCount.textContent = currentCount - 1; // 화면에서 즉시 좋아요 수를 1 감소
+        }
+
+        // 서버와 동기화
+        fetch(`/likes/toggle?postId=${postId}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'

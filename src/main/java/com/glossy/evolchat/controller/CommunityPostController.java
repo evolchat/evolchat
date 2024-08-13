@@ -82,7 +82,7 @@ public class CommunityPostController {
     }
 
     private CommunityPostDto convertToDto(CommunityPost communityPost) {
-        long likeCount = communityPostLikeService.countLikesByPostId(communityPost.getPostId());
+        int likeCount = communityPostLikeService.getLikeCountByPostId(communityPost.getPostId());
         CommunityPostDto communityPostDto = new CommunityPostDto();
         communityPostDto.setPostId(communityPost.getPostId());
         communityPostDto.setUserId(communityPost.getUserId());

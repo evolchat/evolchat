@@ -60,11 +60,11 @@
                                     </div>
                                 </div>
                                 <div class="post-actions">
-                                    <button id="dislike-button" class="gray" th:style="${isLiked} ? 'display: block;' : 'display: none;'" >
-                                        <img src="../static/images/svg/hearts-line.svg" alt=""> &nbsp 좋아요 &nbsp <span id="dislike-count" th:text="${postLikeCount}">8</span>
+                                    <button id="dislike-button" class="red" th:style="${isLiked} ? 'display: block;' : 'display: none;'" >
+                                        <img src="../static/images/svg/heart.svg" alt=""> &nbsp 좋아요 &nbsp <span id="dislike-count" th:text="${postLikeCount}">8</span>
                                     </button>
-                                    <button id="like-button" class="red" th:style="${!isLiked} ? 'display: block;' : 'display: none;'" >
-                                        <img src="../static/images/svg/heart.svg" alt=""> &nbsp 좋아요 &nbsp <span id="like-count" th:text="${postLikeCount}">69</span>
+                                    <button id="like-button" class="gray" th:style="${!isLiked} ? 'display: block;' : 'display: none;'" >
+                                        <img src="../static/images/svg/hearts-line.svg" alt=""> &nbsp 좋아요 &nbsp <span id="like-count" th:text="${postLikeCount}">69</span>
                                     </button>
                                 </div>
                                 <div class="communityComments">
