@@ -357,3 +357,7 @@ body {
     background-color: #2C2E33;
     margin-bottom: 50px;
 }
+
+.options {
+    cursor: pointer;
+}

@@ -8,10 +8,13 @@ import com.glossy.evolchat.repository.CommunityCommentRepository;
 import com.glossy.evolchat.repository.CommunityPostLikeRepository;
 import com.glossy.evolchat.repository.CommunityPostRepository;
 import com.glossy.evolchat.repository.UserRepository;
+import com.glossy.evolchat.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,6 +44,9 @@ public class CommunityController {
     @Autowired
     private CommunityPostLikeRepository communityPostLikeRepository;
 
+    @Autowired
+    private UserService userService;
+
     @GetMapping("/community_detail")
     public String communityDetail(@RequestParam("postId") int postId, @AuthenticationPrincipal UserDetails userDetails, Model model) {
         Optional<CommunityPost> postOptional = communityPostRepository.findById(postId);
@@ -65,6 +71,7 @@ public class CommunityController {
                 return dto;
             }).collect(Collectors.toList());
 
+            int commentCount = commentDtos.size();
             Optional<User> authorOptional = userRepository.findByUsername(communityPost.getUserId());
             String authorNickname = authorOptional.map(User::getNickname).orElse("Unknown");
 
@@ -73,6 +80,9 @@ public class CommunityController {
 
             boolean isLiked = communityPostLikeRepository.findByPostIdAndUserId(postId, userDetails.getUsername()).isPresent();
             long postLikeCount = communityPostLikeRepository.countByPostId(postId);
+
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+            User currentUser = userService.getUserByUsername(auth.getName());
 
             model.addAttribute("communityPost", communityPost);
             model.addAttribute("comments", commentDtos); // 변경된 부분: DTO 리스트 전달
@@ -83,6 +93,8 @@ public class CommunityController {
             model.addAttribute("activeCategory", "community_free");
             model.addAttribute("activePage", "community_detail");
             model.addAttribute("contentFragment", "fragments/community_detail");
+            model.addAttribute("currentUserId", currentUser.getId() - 1);
+            model.addAttribute("commentCount", commentCount);
 
             // 사용자 정보를 모델에 추가
             Optional<User> currentUserOptional = userRepository.findByUsername(userDetails.getUsername());

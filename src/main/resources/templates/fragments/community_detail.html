@@ -32,11 +32,11 @@
                                                 <div>
                                                     <div class="info" th:text="${authorNickname}"></div>
                                                     <div class="px14">
-                                                        <div th:text="${formattedDate}">2024.05.18 00:48</div>
+                                                        <div th:text="${formattedDate}">0000.00.00 00:00</div>
                                                         <img src="../static/images/svg/input-icon-eye.svg" alt="">
-                                                        <span th:text="${communityPost.views}">2564</span>
+                                                        <span th:text="${communityPost.views}">0</span>
                                                         <img src="../static/images/svg/hearts.svg" alt="">
-                                                        <span th:text="${postLikeCount}">44</span>
+                                                        <span th:text="${postLikeCount}">0</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -69,21 +69,28 @@
                                 </div>
                                 <div class="communityComments">
 <!--                                    <div class="tit">댓글 <span th:text="${communityPost.commentCount}">2</span></div>-->
-                                    <div class="tit">댓글 <span>2</span></div>
+                                    <div class="tit">댓글 <span th:text="${commentCount}">0</span></div>
                                     <!-- 댓글 목록 -->
                                     <div class="comment" th:each="comment : ${comments}">
                                         <img class="profile-img-48" src="../../static/images/profile/default.png" alt="#">
-<!--                                        <img th:src="@{${comment.author.imageUrl}}" alt="">-->
                                         <div class="entire">
                                             <div class="account">
-                                                <div class="author" th:text="${comment.userNickname}">알리</div> <!-- 수정된 부분 -->
+                                                <div class="author" th:text="${comment.userNickname}">알리</div>
                                                 <div class="options">
                                                     <div class="dropdown">
                                                         <img src="../static/images/svg/hyphenation.svg" alt="Options" id="dropdownCommentButton" data-bs-toggle="dropdown" aria-expanded="false">
                                                         <ul class="dropdown-menu" aria-labelledby="dropdownCommentButton">
-                                                            <li><a class="dropdown-item" href="#" onclick="deleteComment()">댓글 삭제</a></li>
-                                                            <li><a class="dropdown-item" href="#" onclick="editComment()">댓글 수정</a></li>
-                                                            <li><a class="dropdown-item" href="#" onclick="reportComment()">신고하기</a></li>
+                                                            <!-- 현재 사용자와 댓글 작성자가 같으면 수정, 삭제 메뉴를 보여줍니다 -->
+                                                            <li th:if="${comment.userId == currentUserId}">
+                                                                <a class="dropdown-item edit-comment" th:attr="data-id=${comment.id}" href="#">댓글 수정</a>
+                                                            </li>
+                                                            <li th:if="${comment.userId == currentUserId}">
+                                                                <a class="dropdown-item delete-comment" th:attr="data-id=${comment.id}" href="#">댓글 삭제</a>
+                                                            </li>
+                                                            <!-- 신고하기 메뉴는 항상 보여줍니다 -->
+                                                            <li>
+                                                                <a class="dropdown-item" href="#">신고하기</a>
+                                                            </li>
                                                         </ul>
                                                     </div>
                                                 </div>

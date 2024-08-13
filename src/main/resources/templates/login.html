@@ -32,10 +32,10 @@
                 </div>
                 <div class="content">
                     <form id="loginForm" th:action="@{/login}" method="post">
-                        <div th:if="${param.error}" class="error-message">
+                        <div th:if="${param.error}" class="error-message m-b-10 white">
                             <p th:text="${error}"></p>
                         </div>
-                        <div th:if="${param.logout}" class="success-message">
+                        <div th:if="${param.logout}" class="success-message m-b-10 white">
                             <p th:text="${logout}"></p>
                         </div>
                         <div class="inputfields">

@@ -65,7 +65,6 @@ public class RankController {
         userDto.setActiveDays(calculateActiveDays(user.getCreatedAt()));
         return userDto;
     }
-
     private String calculateWinRate(User user) {
         if (user.getBettingWins() + user.getBettingLosses() > 0) {
             double winRate = (double) user.getBettingWins() * 100 / (user.getBettingWins() + user.getBettingLosses());
@@ -73,7 +72,6 @@ public class RankController {
         }
         return "0.00%";
     }
-
     private int calculateActiveDays(LocalDateTime createdAt) {
         LocalDateTime now = LocalDateTime.now();
         return Period.between(createdAt.toLocalDate(), now.toLocalDate()).getDays();

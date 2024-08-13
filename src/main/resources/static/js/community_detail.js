@@ -7,7 +7,15 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('post-comment-button').addEventListener('click', function() {
         const content = document.getElementById('comment-text').value;
         if (content.trim() === '') {
-            alert('댓글 내용을 입력해주세요.');
+            Swal.fire({
+                title: '댓글 내용을 입력해주세요.',
+                icon: 'warning',
+                iconColor: '#FFA500',
+                color: '#FFFFFF',
+                background: '#35373D',
+                confirmButtonColor: '#8744FF',
+                confirmButtonText: '확인',
+            });
             return;
         }
 
@@ -19,7 +27,6 @@ document.addEventListener('DOMContentLoaded', function() {
             body: JSON.stringify({
                 postId: postId,
                 content: content
-                // userId is not included here, the server-side will handle it
             })
         }).then(response => {
             if (response.ok) {
@@ -33,10 +40,22 @@ document.addEventListener('DOMContentLoaded', function() {
                     background: '#35373D',
                     confirmButtonColor: '#8744FF',
                     confirmButtonText: '확인'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        location.reload(); // 댓글을 추가한 후 페이지를 새로 고침
+                    }
                 });
-                location.reload(); // 댓글을 추가한 후 페이지를 새로 고침
             } else {
-                alert('댓글 등록에 실패했습니다.');
+                Swal.fire({
+                    title: '댓글 등록 실패',
+                    text: '댓글 등록에 실패했습니다.',
+                    icon: 'error',
+                    iconColor: '#FF0000',
+                    color: '#FFFFFF',
+                    background: '#35373D',
+                    confirmButtonColor: '#8744FF',
+                    confirmButtonText: '확인',
+                });
             }
         }).catch(error => {
             console.error('댓글 등록 중 오류 발생:', error);
@@ -48,19 +67,42 @@ document.addEventListener('DOMContentLoaded', function() {
         button.addEventListener('click', function(event) {
             event.preventDefault();
             const commentId = event.target.getAttribute('data-id');
-            if (confirm('이 댓글을 삭제하시겠습니까?')) {
-                fetch(`/comments/${commentId}`, {
-                    method: 'DELETE'
-                }).then(response => {
-                    if (response.ok) {
-                        location.reload(); // 댓글 삭제 후 페이지를 새로 고침
-                    } else {
-                        alert('댓글 삭제에 실패했습니다.');
-                    }
-                }).catch(error => {
-                    console.error('댓글 삭제 중 오류 발생:', error);
-                });
-            }
+            Swal.fire({
+                title: '이 댓글을 삭제하시겠습니까?',
+                icon: 'warning',
+                showCancelButton: true,
+                reverseButtons: true,
+                iconColor: '#8744FF',
+                color: '#FFFFFF',
+                background: '#35373D',
+                confirmButtonColor: '#8744FF',
+                cancelButtonColor: '#535560',
+                confirmButtonText: '삭제',
+                cancelButtonText: '취소',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    fetch(`/comments/${commentId}`, {
+                        method: 'DELETE'
+                    }).then(response => {
+                        if (response.ok) {
+                            location.reload(); // 댓글 삭제 후 페이지를 새로 고침
+                        } else {
+                            Swal.fire({
+                                title: '댓글 삭제 실패',
+                                text: '댓글 삭제에 실패했습니다.',
+                                icon: 'error',
+                                iconColor: '#FF0000',
+                                color: '#FFFFFF',
+                                background: '#35373D',
+                                confirmButtonColor: '#8744FF',
+                                confirmButtonText: '확인',
+                            });
+                        }
+                    }).catch(error => {
+                        console.error('댓글 삭제 중 오류 발생:', error);
+                    });
+                }
+            });
         });
     });
 
@@ -69,24 +111,51 @@ document.addEventListener('DOMContentLoaded', function() {
         button.addEventListener('click', function(event) {
             event.preventDefault();
             const commentId = event.target.getAttribute('data-id');
-            const newContent = prompt('댓글 내용을 입력하세요:');
-            if (newContent && newContent.trim() !== '') {
-                fetch(`/comments/${commentId}`, {
-                    method: 'PUT',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ content: newContent })
-                }).then(response => {
-                    if (response.ok) {
-                        location.reload(); // 댓글 수정 후 페이지를 새로 고침
-                    } else {
-                        alert('댓글 수정에 실패했습니다.');
-                    }
-                }).catch(error => {
-                    console.error('댓글 수정 중 오류 발생:', error);
-                });
-            }
+            Swal.fire({
+                title: '댓글 내용을 입력하세요:',
+                input: 'textarea',
+                inputPlaceholder: '댓글 내용을 입력하세요...',
+                inputAttributes: {
+                    'aria-label': '댓글 내용'
+                },
+                icon: 'info',
+                reverseButtons: true,
+                iconColor: '#8744FF',
+                color: '#FFFFFF',
+                background: '#35373D',
+                confirmButtonColor: '#8744FF',
+                cancelButtonColor: '#535560',
+                confirmButtonText: '수정',
+                cancelButtonText: '취소',
+                showCancelButton: true,
+            }).then((result) => {
+                if (result.isConfirmed && result.value.trim() !== '') {
+                    fetch(`/comments/${commentId}`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ content: result.value })
+                    }).then(response => {
+                        if (response.ok) {
+                            location.reload(); // 댓글 수정 후 페이지를 새로 고침
+                        } else {
+                            Swal.fire({
+                                title: '댓글 수정 실패',
+                                text: '댓글 수정에 실패했습니다.',
+                                icon: 'error',
+                                iconColor: '#FF0000',
+                                color: '#FFFFFF',
+                                background: '#35373D',
+                                confirmButtonColor: '#8744FF',
+                                confirmButtonText: '확인',
+                            });
+                        }
+                    }).catch(error => {
+                        console.error('댓글 수정 중 오류 발생:', error);
+                    });
+                }
+            });
         });
     });
 
@@ -123,7 +192,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 likeCount.textContent = data.likeCount;
             } else {
-                console.error('Error toggling like:', data.message);
+                Swal.fire({
+                    title: '좋아요 처리 오류',
+                    text: data.message,
+                    icon: 'error',
+                    iconColor: '#FF0000',
+                    color: '#FFFFFF',
+                    background: '#35373D',
+                    confirmButtonColor: '#8744FF',
+                    confirmButtonText: '확인',
+                });
             }
         })
         .catch(error => {

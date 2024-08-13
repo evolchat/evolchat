@@ -15,10 +15,8 @@ public class CommunityCommentDto {
     private int postId;
     private int userId;
     private String content;
-
     @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private LocalDateTime createdAt;
-
     @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private LocalDateTime updatedAt;
     private String userNickname;

@@ -77,12 +77,19 @@ public class CommunityCommentController {
 
     // 댓글 수정
     @PutMapping("/{commentId}")
-    public ResponseEntity<Void> updateComment(@PathVariable int commentId, @RequestBody CommunityComment comment) {
-        boolean success = communityCommentService.updateComment(commentId, comment);
+    public ResponseEntity<Void> updateComment(@PathVariable int commentId, @RequestBody CommunityCommentDto commentRequest) {
+        CommunityComment existingComment = communityCommentService.getCommentById(commentId);
+        if (existingComment == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        existingComment.setContent(commentRequest.getContent());
+
+        boolean success = communityCommentService.updateComment(existingComment);
         if (success) {
             return new ResponseEntity<>(HttpStatus.OK);
         } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
 }
