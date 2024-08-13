@@ -6,6 +6,8 @@
             <div id="nav_button" class="menu-btn-layer cursor-p">
                 <div class="menu-btn">
                     <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
                 </div>
             </div>
         </div>
@@ -198,5 +200,8 @@
                 }
             });
         });
+    });
+    document.getElementById('nav_button').addEventListener('click', function() {
+        this.classList.toggle('active');
     });
 </script>

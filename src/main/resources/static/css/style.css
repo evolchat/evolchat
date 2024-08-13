@@ -1894,6 +1894,7 @@ section.container>.chatLayer {
     height: 36px;
     width: 36px;
     padding: 10px;
+    cursor: pointer;
 }
 
 .wrapper>.header .menu-btn-layer .menu-btn {
@@ -1906,6 +1907,8 @@ section.container>.chatLayer {
     align-items: center;
     flex-direction: column;
     justify-content: space-around;
+    position: relative;
+    transition: transform 0.5s ease;
 
 }
 
@@ -1913,24 +1916,31 @@ section.container>.chatLayer {
     width: 100%;
     height: 2px;
     background-color: #fff;
+    transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
-.wrapper>.header .menu-btn-layer .menu-btn::after {
-    width: 100%;
-    height: 2px;
-    background-color: #fff;
-    /* position: absolute; */
-    content: '';
-    display: inline-block;
+.wrapper>.header .menu-btn-layer .menu-btn.active .line:nth-child(1) {
+    transform: rotate(45deg) translate(3.5px, 3.5px);
 }
 
-.wrapper>.header .menu-btn-layer .menu-btn::before {
-    width: 100%;
-    height: 2px;
-    background-color: #fff;
-    /* position: absolute; */
-    content: '';
-    display: inline-block;
+.wrapper>.header .menu-btn-layer .menu-btn.active .line:nth-child(2) {
+    opacity: 0;
+}
+
+.wrapper>.header .menu-btn-layer .menu-btn.active .line:nth-child(3) {
+    transform: rotate(-45deg) translate(3.5px, -3.5px);
+}
+
+.wrapper>.header .menu-btn-layer .menu-btn:hover .line:nth-child(1) {
+    transform: rotate(45deg) translate(3.5px, 3.5px);
+}
+
+.wrapper>.header .menu-btn-layer .menu-btn:hover .line:nth-child(2) {
+    opacity: 0;
+}
+
+.wrapper>.header .menu-btn-layer .menu-btn:hover .line:nth-child(3) {
+    transform: rotate(-45deg) translate(3.5px, -3.5px);
 }
 
 .wrapper>.header .menu {
@@ -2094,13 +2104,13 @@ div.mainContent {
     cursor: pointer;
     background-color: #333;
     transition: background-color 0.3s, color 0.3s;
-    line-height: 1.5; /* 텍스트 라인 높이를 조정합니다 */
+    line-height: 1.5;
 }
 
 .chatLayer>div>div.title p.active {
     color: #fff;
-    background-color: #7d55ff;
-    border-bottom: 2px solid #7d55ff;
+    background-image: linear-gradient(to bottom, #7d55ff, #4a34a4); 
+    border-bottom: 2px solid #4a34a4;
 }
 
 .chatLayer>div>div.title span {
