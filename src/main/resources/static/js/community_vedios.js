@@ -1,15 +1,17 @@
 $(document).ready(function() {
     const postsPerPage = 10; // 페이지당 게시물 수
-    let currentPage = 1; // 현재 페이지 번호
+    let currentBoardId = 3; // 초기 boardId 값 설정
+    let currentPage = 1; // 현재 페이지
     let totalPages = 1; // 총 페이지 수
+    let currentSort = 'latest'; // 현재 정렬 기준 (최신글)
 
-    // 게시물과 페이지네이션을 가져오는 함수
-    function fetchPosts(page = 1) {
+    function fetchPosts(page = 1, boardId = currentBoardId, searchQuery = '', sort = currentSort) {
         $.ajax({
-            url: `/community-posts?page=${page}&size=${postsPerPage}&boardId=3`, // boardId=3인 게시물 요청
+            url: `/community-posts?page=${page}&size=${postsPerPage}&boardId=${boardId}&search=${encodeURIComponent(searchQuery)}&sort=${sort}`, // boardId=3인 게시물 요청
             type: 'GET',
             success: function(response, status, xhr) {
                 const postsContainer = $('.mainLayer');
+
                 postsContainer.empty(); // 기존 게시물 항목 제거
 
                 if (response.length === 0) {
@@ -21,12 +23,15 @@ $(document).ready(function() {
                 $('#pagination-container').show(); // 게시물이 있을 때 페이지네이션 표시
 
                 response.forEach(post => {
+                    const commentCountHtml = post.commentCount > 0 ? `<span class="count orange-FBC22B">+${post.commentCount}</span>` : '';
+                    console.log(post)
                     const postHtml = `
                         <a href="community_detail?postId=${post.postId}">
                             <div class="video-container">
                                 <img class="img" src="${post.imageUrl || '../../static/images/svg/logo.svg'}" alt="Video Thumbnail">
                                 <div class="video-details">
-                                    <h3>${post.title}</h3>
+                                    <div class="tit-wrap white m-b-10">${post.title}${commentCountHtml}</div>
+
                                     <p><img class="mini" src="${post.profileImageUrl || '../../static/images/svg/minister.svg'}" alt=""> &nbsp ${post.userId}</p>
                                     <p class="meta">${new Date(post.createdAt).toLocaleString()} &nbsp &nbsp <img src="../../static/images/svg/input-icon-eye.svg" alt="">${post.views} &nbsp &nbsp <img src="../../static/images/svg/hearts.svg" alt="">${post.likeCount}</p>
                                 </div>

@@ -163,6 +163,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const likeButton = document.getElementById("like-button");
     const dislikeButton = document.getElementById("dislike-button");
     const likeCount = document.getElementById("like-count");
+    const dislikeCount = document.getElementById("dislike-count");
 
     likeButton.addEventListener("click", function() {
         updateLikeCount(true);
@@ -179,10 +180,12 @@ document.addEventListener('DOMContentLoaded', function() {
             likeButton.style.display = "none";
             dislikeButton.style.display = "block";
             likeCount.textContent = currentCount + 1; // 화면에서 즉시 좋아요 수를 1 증가
+            dislikeCount.textContent = currentCount + 1; // 화면에서 즉시 좋아요 수를 1 증가
         } else {
             likeButton.style.display = "block";
             dislikeButton.style.display = "none";
             likeCount.textContent = currentCount - 1; // 화면에서 즉시 좋아요 수를 1 감소
+            dislikeCount.textContent = currentCount - 1; // 화면에서 즉시 좋아요 수를 1 감소
         }
 
         // 서버와 동기화

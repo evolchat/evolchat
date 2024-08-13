@@ -1,15 +1,15 @@
 $(document).ready(function() {
     const postsPerPage = 10; // 페이지당 게시물 수
-    let currentPage = 1; // 현재 페이지 번호
+    let currentBoardId = 2; // 초기 boardId 값 설정
+    let currentPage = 1; // 현재 페이지
     let totalPages = 1; // 총 페이지 수
+    let currentSort = 'latest'; // 현재 정렬 기준 (최신글)
 
-    // 게시물과 페이지네이션을 가져오는 함수
-    function fetchPosts(page = 1) {
-        // 페이지 번호가 1 이하로 설정되지 않도록 보장
+    function fetchPosts(page = 1, boardId = currentBoardId, searchQuery = '', sort = currentSort) {
         page = Math.max(page, 1);
 
         $.ajax({
-            url: `/community-posts?page=${page}&size=${postsPerPage}&boardId=2`, // boardId=2인 게시물 요청
+            url: `/community-posts?page=${page}&size=${postsPerPage}&boardId=${boardId}&search=${encodeURIComponent(searchQuery)}&sort=${sort}`, // boardId=2인 게시물 요청
             type: 'GET',
             success: function(response, status, xhr) {
                 const postsContainer = $('.mainLayer');
@@ -24,6 +24,9 @@ $(document).ready(function() {
                 $('#pagination-container').show(); // 게시물이 있을 때 페이지네이션 표시
 
                 response.forEach(post => {
+                    // 댓글 수 처리
+                    const commentCountHtml = post.commentCount > 0 ? `<span class="count orange-FBC22B">+${post.commentCount}</span>` : '';
+
                     const postHtml = `
                         <a href="community_detail?postId=${post.postId}">
                             <div class="photo-item-layer">
@@ -36,7 +39,7 @@ $(document).ready(function() {
                                         <div class="top px17">
                                             <div class="tit-wrap white m-b-10">
                                                 ${post.title}
-                                                <span class="count orange-FBC22B">+${post.likeCount}</span>
+                                                ${commentCountHtml}
                                             </div>
                                         </div>
                                         <div class="bottom flex-row px12 opacity60">

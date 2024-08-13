@@ -1,8 +1,10 @@
 package com.glossy.evolchat.controller;
 
 import com.glossy.evolchat.dto.CommunityPostDto;
+import com.glossy.evolchat.model.CommunityComment;
 import com.glossy.evolchat.model.CommunityPost;
 import com.glossy.evolchat.repository.CommunityPostRepository;
+import com.glossy.evolchat.service.CommunityCommentService;
 import com.glossy.evolchat.service.CommunityPostLikeService;
 import com.glossy.evolchat.service.CommunityPostService;
 import lombok.RequiredArgsConstructor;
@@ -30,6 +32,7 @@ public class CommunityPostController {
     private CommunityPostRepository communityPostRepository;
     private final CommunityPostService communityPostService;
     private final CommunityPostLikeService communityPostLikeService;
+    private final CommunityCommentService communityCommentService;
 
     @GetMapping
     public ResponseEntity<List<CommunityPostDto>> getCommunityPosts(@RequestParam(defaultValue = "1") int page,
@@ -83,6 +86,8 @@ public class CommunityPostController {
 
     private CommunityPostDto convertToDto(CommunityPost communityPost) {
         int likeCount = communityPostLikeService.getLikeCountByPostId(communityPost.getPostId());
+        List<CommunityComment> comment = communityCommentService.getCommentsByPost(communityPost);
+
         CommunityPostDto communityPostDto = new CommunityPostDto();
         communityPostDto.setPostId(communityPost.getPostId());
         communityPostDto.setUserId(communityPost.getUserId());
@@ -90,6 +95,7 @@ public class CommunityPostController {
         communityPostDto.setTitle(communityPost.getTitle());
         communityPostDto.setContent(communityPost.getContent());
         communityPostDto.setLikeCount(likeCount);
+        communityPostDto.setCommentCount(comment.toArray().length);
         communityPostDto.setViews(communityPost.getViews());
         communityPostDto.setCreatedAt(communityPost.getCreatedAt().toString());
         return communityPostDto;

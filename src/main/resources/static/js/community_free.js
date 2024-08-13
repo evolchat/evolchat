@@ -24,11 +24,14 @@ $(document).ready(function() {
                 $('#pagination-container').show(); // 게시물이 있을 때는 페이지네이션 표시
 
                 response.forEach(post => {
+                    // 댓글 개수 처리
+                    const commentCountHtml = post.commentCount > 0 ? `<span>+${post.commentCount}</span>` : '';
+
                     const postHtml = `
                         <div class="post flex-row tr" data-post-id="${post.postId}">
                             <div class="text-wrap">
                                 <div class="title white m-b-10 px17">
-                                    ${post.title} <span>+3</span>
+                                    ${post.title} ${commentCountHtml}
                                 </div>
                                 <div class="summary m-b-18 px15">
                                     ${post.content}

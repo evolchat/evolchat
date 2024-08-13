@@ -10,6 +10,8 @@ public class CommunityPostDto {
     private String title;
     private String content;
     private long likeCount;
+
+    private long commentCount;
     private int views;
     private String createdAt;
 }

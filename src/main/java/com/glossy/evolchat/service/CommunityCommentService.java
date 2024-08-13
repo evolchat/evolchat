@@ -50,5 +50,4 @@ public class CommunityCommentService {
             return false;
         }
     }
-
 }
