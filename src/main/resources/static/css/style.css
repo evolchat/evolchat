@@ -1828,6 +1828,7 @@ section.container>.chatLayer {
 .wrapper>.header .left {
     max-width: 240px;
     width: 100%;
+    align-items: center;
     /* padding: 0 10px; */
 }
 
@@ -2100,7 +2101,7 @@ div.mainContent {
 
 .chatLayer>div>div.title p.active {
     color: #fff;
-    background-color: #7d55ff;
+    background: linear-gradient(to bottom, rgba(163, 100, 255, 0.1), rgba(125, 85, 255, 0.5));
     border-bottom: 2px solid #7d55ff;
 }
 
@@ -2189,7 +2190,7 @@ div.chatContent>div.text.grey-1 {
 }
 
 .footer-corp>div {
-    margin: 10px 0;
+    margin: 12px 0;
 }
 
 /* 여기까지 footer */
