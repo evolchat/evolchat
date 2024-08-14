@@ -59,6 +59,7 @@ body {
     min-height: 400px;
 }
 
+
 .post-content p {
     padding-top: 1rem
 }
@@ -115,18 +116,42 @@ body {
     color: white;
 }
 
+.comment {
+    display: flex;
+    align-items: center; /* Align items vertically centered */
+    margin-bottom: 15px; /* Add space between comments */
+}
+
+.comment img {
+    align-self: flex-start;
+}
+
 .comment .account {
     display: flex;
     justify-content: space-between;
+    align-items: center; /* Align items vertically centered */
+    width: 100%; /* Ensure the account section takes full width */
 }
 
 .comment .entire {
     margin-left: 10px;
+    color: white;
+    flex-grow: 1;
+    line-height: 1.4;
+}
+
+.entire span {
+    font-size: 0.7em;
 }
 
 
 .comments {
     margin-top: 30px;
+}
+
+.tit {
+    color: white;
+    margin-bottom: 30px;
 }
 
 .comments .tit {
@@ -238,7 +263,7 @@ body {
     top: 0%;
     left: 50%;
     transform: translateX(-110%);
-    background-color: #2C2E33;
+    background-color: #f8f9fa;
     border: 1px solid #35373D;
     border-radius: 5px;
     z-index: 10;
@@ -261,6 +286,10 @@ body {
 
 .dropdown-menu ul li:hover {
     background-color: #35373D;
+}
+
+.dropdown-item {
+    color: #212529;
 }
 
 .comments .comment .time {

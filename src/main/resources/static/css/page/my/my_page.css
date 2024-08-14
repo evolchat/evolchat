@@ -276,6 +276,7 @@ label {
             cursor: pointer;
             position: relative;
             margin-right: 5px;
+            top: 5px;
         }
 
         input[type="radio"]:checked {

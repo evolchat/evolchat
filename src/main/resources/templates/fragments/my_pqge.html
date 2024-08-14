@@ -134,8 +134,7 @@
                                                     <label for="nickname">닉네임</label>
                                                 </div>
                                                 <div class="border word">
-                                                    <input class="input" type="text" id="nickname" th:value="${user.nickname}" placeholder="그레이코드">
-                                                    <div class="count">5/12</div>
+                                                    <input class="input" type="text" id="nickname" th:value="${user.nickname}" placeholder="그레이코드" maxlength="12">
                                                 </div>
                                             </div>
                                         </div>
@@ -171,8 +170,7 @@
                                             <div class="field">
                                                 <label for="todaysMessage">오늘의 한마디</label>
                                                 <div class="border word">
-                                                    <input class="input" type="text" id="todaysMessage" th:value="${user.todaysMessage}" placeholder="평생 살 것처럼 꿈을 꾸어라. 그리고 내일 죽을 것처럼 오늘을 살아라">
-                                                    <div class="count">39/60</div>
+                                                    <input class="input" type="text" id="todaysMessage" th:value="${user.todaysMessage}" placeholder="평생 살 것처럼 꿈을 꾸어라. 그리고 내일 죽을 것처럼 오늘을 살아라" maxlength="60">
                                                 </div>
                                             </div>
                                         </div>

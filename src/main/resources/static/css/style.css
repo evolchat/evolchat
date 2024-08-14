@@ -1894,6 +1894,7 @@ section.container>.chatLayer {
     height: 36px;
     width: 36px;
     padding: 10px;
+    margin-left: 11px;
 }
 
 .wrapper>.header .menu-btn-layer .menu-btn {
