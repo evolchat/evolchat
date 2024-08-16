@@ -49,19 +49,8 @@ public class CommunityPostController {
             @RequestParam(required = false) Integer boardId,
             @RequestParam(defaultValue = "latest") String sort) {
 
-        Pageable pageable;
-        switch (sort) {
-            case "popular":
-                pageable = PageRequest.of(page - 1, size, Sort.by(Sort.Order.desc("views")));
-                break;
-            case "most-comments":
-                pageable = PageRequest.of(page - 1, size, Sort.by(Sort.Order.desc("createdAt"))); // 댓글 많은 글 기준 정렬은 별도로 처리
-                break;
-            case "latest":
-            default:
-                pageable = PageRequest.of(page - 1, size, Sort.by(Sort.Order.desc("createdAt")));
-                break;
-        }
+        // 기본 정렬: 생성일자 기준
+        Pageable pageable = PageRequest.of(page - 1, size, Sort.by(Sort.Order.desc("createdAt")));
 
         Page<CommunityPost> postsPage;
         if (boardId != null) {
@@ -70,12 +59,28 @@ public class CommunityPostController {
             postsPage = communityPostService.getAllPosts(pageable);
         }
 
+        // 댓글 수와 좋아요 수를 먼저 계산
         List<CommunityPostDto> communityPostDtos = postsPage.getContent().stream().map(post -> {
             int likeCount = communityPostLikeService.getLikeCountByPostId(post.getPostId());
             List<CommunityComment> comments = communityCommentService.getCommentsByPost(post);
             int commentCount = comments.size();
             return convertToDto(post, likeCount, commentCount);
         }).collect(Collectors.toList());
+
+        // 정렬 적용
+        switch (sort) {
+            case "popular":
+                communityPostDtos.sort((p1, p2) -> Integer.compare((int) p2.getLikeCount(), (int) p1.getLikeCount()));
+                break;
+            case "most-comments":
+                communityPostDtos.sort((p1, p2) -> Integer.compare((int) p2.getCommentCount(), (int) p1.getCommentCount()));
+                break;
+            case "latest":
+            default:
+                // 최신 글 기준 정렬은 기본 정렬
+                communityPostDtos.sort((p1, p2) -> p2.getCreatedAt().compareTo(p1.getCreatedAt()));
+                break;
+        }
 
         HttpHeaders headers = new HttpHeaders();
         headers.add("X-Total-Pages", String.valueOf(postsPage.getTotalPages()));
