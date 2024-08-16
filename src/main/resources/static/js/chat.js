@@ -1,8 +1,6 @@
 $(function() {
     const activeCategory = $('body').attr('data-active-category');
     const activePage = $('body').attr('data-active-page');
-    console.log('Active Page:', activePage); // Debugging line
-
     $('select').selectric();
 
     if (activePage) {
@@ -55,9 +53,6 @@ function initializeChat() {
     const stompClient = Stomp.over(socket);
 
     stompClient.connect({}, (frame) => {
-        console.log('Connected to server:', frame); // 서버와의 연결 확인
-
-        // Subscribe to the chat messages
         stompClient.subscribe('/topic/chat', (message) => {
             if (message.body) {
                 const chatMessage = JSON.parse(message.body);
@@ -137,19 +132,17 @@ function initializeChat() {
                 sender: sender,
                 content: message
             };
-            console.log('Sending message:', chatMessage); // 전송할 메시지 로그
             stompClient.send('/app/send', {}, JSON.stringify(chatMessage));
             if (input) {
                 input.value = ''; // Clear the input field
             }
-            console.log('Message sent'); // 메시지 전송 후 로그
         }
     }
 
     // Function to display a chat message
     function displayMessage(nickname, message) {
-        const chatLayer = document.querySelector('#totalChatContent'); // 전체 채팅에만 표시
-        if (chatLayer) {
+        const totalChatContent = document.querySelector('#totalChatContent'); // 전체 채팅에만 표시
+        if (totalChatContent) {
             const messageElement = document.createElement('div');
             messageElement.classList.add('chatLayout', 'flex-row');
             messageElement.innerHTML = `
@@ -164,10 +157,10 @@ function initializeChat() {
                     </div>
                 </div>
             `;
-            chatLayer.appendChild(messageElement);
+            totalChatContent.appendChild(messageElement);
 
-            // Smooth scroll to the bottom
-            scrollToBottom(chatLayer);
+            const chatingLayer = document.querySelector('#chatingLayer'); // 전체 채팅에만 표시
+            scrollToBottom(chatingLayer);
 
             // Update message count
             const currentCount = parseInt(document.querySelector('.title span').textContent);

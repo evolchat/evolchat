@@ -31,39 +31,12 @@
     $(function() {
         const activeCategory = $('body').attr('data-active-category');
         const activePage = $('body').attr('data-active-page');
-        console.log('Active Page:', activePage); // Debugging line
 
         $('select').selectric();
 
         if (activePage) {
             loadPageContent(activePage);
             $('.nav-link[href="' + activeCategory + '"]').addClass('active');
-        }
-
-        // 페이지 로드 시 chat의 초기 활성화 상태 설정
-        var chatActive = sessionStorage.getItem('chatActive');
-        if (chatActive === 'true') {
-            $("#chat").show();
-            $("#header-item-tooltip-7").addClass("active");
-        } else {
-            $("#chat").hide();
-            $("#header-item-tooltip-7").removeClass("active");
-        }
-
-        $("#header-item-tooltip-7").click(function() {
-            $("#chat").toggle();
-            chatCheckActive();
-        });
-
-        function chatCheckActive() {
-            var isActive = $("#header-item-tooltip-7").hasClass("active");
-            if (isActive) {
-                $("#chat").show();
-                sessionStorage.setItem('chatActive', 'true'); // 활성화 상태 저장
-            } else {
-                $("#chat").hide();
-                sessionStorage.setItem('chatActive', 'false'); // 비활성화 상태 저장
-            }
         }
 
         window.onpopstate = function() {

@@ -24,7 +24,6 @@ $(document).ready(function() {
 
                 response.forEach(post => {
                     const commentCountHtml = post.commentCount > 0 ? `<span class="count orange-FBC22B">+${post.commentCount}</span>` : '';
-                    console.log(post)
                     const postHtml = `
                         <a href="community_detail?postId=${post.postId}">
                             <div class="video-container">
