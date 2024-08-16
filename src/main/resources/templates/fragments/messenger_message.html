@@ -22,7 +22,7 @@
                                 <div class="list"><a href="messenger_friend">친구</a></div>
                                 <div class="list active"><a href="messenger_message">메시지</a></div>
                                 <div class="list "><a href="messenger_blocklists">차단 목록</a></div>
-                                <div class="list "><a href="messenger_add_friend_wait">친구 추가하기</a></div>
+                                <div class="list "><a href="messenger_add_friend_wait"><img src="../../static/images/svg/icon-add.svg" alt="#">친구 추가하기</a></div>
                             </div>
                             <div class="sub-header flex-row flex-c">
                                 <div class="sub-header-search bc-footer flex-grow">
@@ -92,6 +92,24 @@
             </section>
         </div>
     </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+    // Apply Tippy.js to all hyphenation buttons in the user list
+    document.querySelectorAll('.mainLayer .btn.flex-c-c.hyphenation').forEach(function (btn) {
+        tippy(btn, {
+            content: '기타', // '기타'라는 텍스트를 툴팁 내용으로 설정
+            placement: 'top',
+            animation: 'fade',
+            onShow(instance) {
+                // 툴팁의 루트 요소에 접근하여 스타일을 직접 변경
+                instance.popper.querySelector('.tippy-box').style.backgroundColor = '#000000'; // 배경색 설정
+                instance.popper.querySelector('.tippy-box').style.color = 'white'; // 텍스트 색상 설정
+                instance.popper.querySelector('.tippy-arrow').style.color = '#000000'; // 화살표 색상 설정
+            }
+        });
+    });
+});
+</script>
 </body>
 
 </html>

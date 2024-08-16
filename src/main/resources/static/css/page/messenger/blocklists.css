@@ -49,6 +49,7 @@
     height: 44px;
     background-color: #2C2E33;
     border-radius: 5px;
+    margin-right: 5px;
 }
 
 .user-list-layer .btn {
@@ -57,9 +58,32 @@
     color: #ffffff87;
     padding: 8px 9px;
 }
+
+.user-list-layer .hyphenation {
+    background-color: #2C2E33 !important;
+}
+
 .user-list-layer .btn.hyphenation{
     padding: 0;
     width: 44px;
     height: 44px;
+
 }
+
+
+.search {
+    display: flex;
+}
+
+.search .btn {
+    width: 145px;
+    margin-top: 2px;
+    padding: 0px 10px;
+    height: 40px;
+    border-radius: 5px;
+    border-radius: 5px;
+    background-color: #35373D;
+    color: #ffffff87;
+    padding: 8px 9px;
+   }
 /* messenger_blocklists */

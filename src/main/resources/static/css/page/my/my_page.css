@@ -236,6 +236,7 @@ label {
     display:flex;
     justify-content: center;
     flex-direction: row;
+    border: none;
 }
 .bank{
     width: 90%;
@@ -251,9 +252,11 @@ label {
 }
 .resident_registration_certificate {
     text-align: center;
-    padding: 20px 30px;
+    padding: 15px 25px;
     background-color: #303237;
     color: #707070;
+    border-radius: 10px;
+    line-height: 1.2;
 }
 .check button {
     border-radius: 5px;
@@ -264,38 +267,52 @@ label {
     background-color: transparent !important;
     border: 1px solid #35373D;
 }
- input[type="radio"] {
-            appearance: none;
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            width: 20px;
-            height: 20px;
-            border: 2px solid #999;
-            border-radius: 50%;
-            outline: none;
-            cursor: pointer;
-            position: relative;
-            margin-right: 5px;
-            top: 5px;
-        }
 
-        input[type="radio"]:checked {
-            border-color: purple;
-        }
+.field {
+    position: relative;
+    margin-bottom: 10px;
+}
 
-        input[type="radio"]:checked::after {
-            content: '';
-            display: block;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            border: 5px solid purple;
-            background: white;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
+.input {
+    position: relative;
+    margin-right: 5px;
+}
+
+/* 기본 라디오 버튼 스타일 */
+input[type="radio"] {
+     appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 20px;  /* 크기를 더 크게 설정 */
+    height: 20px;
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    background-color: #232428; /* 배경 색상 추가 */
+    top: -5px;
+}
+
+/* 라디오 버튼 선택 시 스타일 */
+input[type="radio"]:checked {
+    border-color: #6b34c9;  /* 선택된 테두리 색상 */
+    background-color: #6b34c9; /* 선택된 배경 색상 */
+}
+
+/* 선택된 라디오 버튼의 내부 스타일 */
+input[type="radio"]:checked::after {
+    content: '';
+    display: block;
+    width: 10px;  /* 내부 원 크기 */
+    height: 10px;
+    border-radius: 50%;
+    background: #232428; /* 내부 원 색상 (배경 색상과 동일) */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    }
+}
 
 
 

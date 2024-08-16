@@ -2033,7 +2033,7 @@ div.mainContent {
 }
 
 .sub-header>.list {
-    opacity: 0.5;
+    opacity: 0.3;
     padding: 12px 6px;
     margin: 0 4px;
 }
@@ -2171,7 +2171,7 @@ div.chatContent>div.text.grey-1 {
 
 .footer .footer-nav {
     justify-content: space-between;
-    margin: 50px 152px 50px 0px;
+    max-width: 1250px;
 }
 
 .footer .footer-nav .nav-list .nav-title {
