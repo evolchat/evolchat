@@ -12,12 +12,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.HtmlUtils;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -30,27 +32,53 @@ public class CommunityPostController {
 
     @Autowired
     private CommunityPostRepository communityPostRepository;
-    private final CommunityPostService communityPostService;
-    private final CommunityPostLikeService communityPostLikeService;
-    private final CommunityCommentService communityCommentService;
+
+    @Autowired
+    private CommunityPostService communityPostService;
+
+    @Autowired
+    private CommunityPostLikeService communityPostLikeService;
+
+    @Autowired
+    private CommunityCommentService communityCommentService;
 
     @GetMapping
-    public ResponseEntity<List<CommunityPostDto>> getCommunityPosts(@RequestParam(defaultValue = "1") int page,
-                                                           @RequestParam(defaultValue = "20") int size,
-                                                           @RequestParam(required = false) Integer boardId) {
-        Pageable pageable = PageRequest.of(page - 1, size); // 페이지 번호를 0부터 시작하도록 수정
-        Page<CommunityPost> postsPage;
+    public ResponseEntity<List<CommunityPostDto>> getCommunityPosts(
+            @RequestParam(defaultValue = "1") int page,
+            @RequestParam(defaultValue = "20") int size,
+            @RequestParam(required = false) Integer boardId,
+            @RequestParam(defaultValue = "latest") String sort) {
 
+        Pageable pageable;
+        switch (sort) {
+            case "popular":
+                pageable = PageRequest.of(page - 1, size, Sort.by(Sort.Order.desc("views")));
+                break;
+            case "most-comments":
+                pageable = PageRequest.of(page - 1, size, Sort.by(Sort.Order.desc("createdAt"))); // 댓글 많은 글 기준 정렬은 별도로 처리
+                break;
+            case "latest":
+            default:
+                pageable = PageRequest.of(page - 1, size, Sort.by(Sort.Order.desc("createdAt")));
+                break;
+        }
+
+        Page<CommunityPost> postsPage;
         if (boardId != null) {
             postsPage = communityPostService.getPostsByBoardId(boardId, pageable);
         } else {
             postsPage = communityPostService.getAllPosts(pageable);
         }
 
-        List<CommunityPostDto> communityPostDtos = postsPage.getContent().stream().map(this::convertToDto).collect(Collectors.toList());
+        List<CommunityPostDto> communityPostDtos = postsPage.getContent().stream().map(post -> {
+            int likeCount = communityPostLikeService.getLikeCountByPostId(post.getPostId());
+            List<CommunityComment> comments = communityCommentService.getCommentsByPost(post);
+            int commentCount = comments.size();
+            return convertToDto(post, likeCount, commentCount);
+        }).collect(Collectors.toList());
 
         HttpHeaders headers = new HttpHeaders();
-        headers.add("X-Total-Pages", String.valueOf(postsPage.getTotalPages())); // 전체 페이지 수를 HTTP 헤더에 추가
+        headers.add("X-Total-Pages", String.valueOf(postsPage.getTotalPages()));
 
         return new ResponseEntity<>(communityPostDtos, headers, HttpStatus.OK);
     }
@@ -84,10 +112,7 @@ public class CommunityPostController {
         return ResponseEntity.ok(communityPost);
     }
 
-    private CommunityPostDto convertToDto(CommunityPost communityPost) {
-        int likeCount = communityPostLikeService.getLikeCountByPostId(communityPost.getPostId());
-        List<CommunityComment> comment = communityCommentService.getCommentsByPost(communityPost);
-
+    private CommunityPostDto convertToDto(CommunityPost communityPost, int likeCount, int commentCount) {
         CommunityPostDto communityPostDto = new CommunityPostDto();
         communityPostDto.setPostId(communityPost.getPostId());
         communityPostDto.setUserId(communityPost.getUserId());
@@ -95,7 +120,7 @@ public class CommunityPostController {
         communityPostDto.setTitle(communityPost.getTitle());
         communityPostDto.setContent(communityPost.getContent());
         communityPostDto.setLikeCount(likeCount);
-        communityPostDto.setCommentCount(comment.toArray().length);
+        communityPostDto.setCommentCount(commentCount);
         communityPostDto.setViews(communityPost.getViews());
         communityPostDto.setCreatedAt(communityPost.getCreatedAt().toString());
         return communityPostDto;
