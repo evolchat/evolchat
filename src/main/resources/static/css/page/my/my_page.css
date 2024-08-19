@@ -290,7 +290,7 @@ input[type="radio"] {
     cursor: pointer;
     position: relative;
     background-color: #232428; /* 배경 색상 추가 */
-    top: -5px;
+    top: 5px;
 }
 
 /* 라디오 버튼 선택 시 스타일 */
