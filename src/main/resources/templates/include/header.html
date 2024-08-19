@@ -6,8 +6,6 @@
             <div id="nav_button" class="menu-btn-layer cursor-p">
                 <div class="menu-btn">
                     <div class="line"></div>
-                    <div class="line"></div>
-                    <div class="line"></div>
                 </div>
             </div>
         </div>
@@ -199,34 +197,6 @@
                     $("#header-item-tooltip-7").removeClass('active');
                 }
             });
-        });
-        $("#nav_button").click(function() {
-            $(".menu-btn").toggleClass('active');  // 햄버거 메뉴 버튼에 active 클래스 추가/제거
-
-            if ($("#newNav").is(":visible")) {
-                $("#newNav").animate({ width: "0%" }, 200, function() {
-                    $(this).css("display", "none");
-                    $("#initialNav").css({ display: "block", width: "0%" });
-
-                    $("#initialNav").children().css("visibility", "hidden");
-
-                    $("#initialNav").animate({ width: "100%" }, 200, function() {
-                        $("#initialNav").children().css("visibility", "visible");
-                    });
-
-                    $("#nav").animate({ width: "100%" }, 200);
-                    localStorage.setItem('isInitialNavVisible', true);
-                    localStorage.setItem('isNavExpanded', true);
-                });
-            } else {
-                $("#initialNav").animate({ width: "0%" }, 200, function() {
-                    $(this).css("display", "none");
-                    $("#newNav").css({ display: "block", width: "0%" }).animate({ width: "25%" }, 200);
-                    $("#nav").animate({ width: "55px" }, 200);
-                    localStorage.setItem('isInitialNavVisible', false);
-                    localStorage.setItem('isNavExpanded', false);
-                });
-            }
         });
     });
 </script>
