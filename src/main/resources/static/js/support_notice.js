@@ -54,13 +54,13 @@ $(document).ready(function () {
     function updateTable(posts) {
         tableBody.empty();
         posts.forEach(post => {
-            const row = $('<tr>');
+            const row = $(`<tr class="pointer post-title" data-post-id=${post.postId}>`);
 
             // 분류
             const categoryCell = $(`<td><div class="bc-${getCategoryColor(post.detailedCategory)} border-5 flex-c-c square">${getCategoryLabel(post.detailedCategory)}</div></td>`);
             row.append(categoryCell);
 
-            // 제목
+            // 제목 (클릭 이벤트 추가)
             const titleCell = $(`
                 <td>
                     <div class="text-left">
@@ -82,6 +82,14 @@ $(document).ready(function () {
             row.append(viewsCell);
 
             tableBody.append(row);
+        });
+
+        // 게시물 클릭 시 상세 페이지로 이동하는 이벤트 추가
+        tableBody.on('click', '.post-title', function () {
+            const postId = $(this).data('post-id');
+            if (postId) {
+                window.location.href = `/support_notice_detail?boardId=1&postId=${postId}`;
+            }
         });
     }
 

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>에볼챗닷컴</title>
+    <script src="../static/js/support_notice_detail.js"></script>
+    <link rel="stylesheet" href="../static/css/page/support/support_notice_detail.css" />
+</head>
+
+<body>
+<div id="content-area" class="flex-grow" style="">
+    <div class="wrapper bc-black vh100">
+        <section class="flex-row">
+            <div class="wrap bc-footer">
+                <div class="content">
+                    <div class="mainContent bc-main">
+                        <div class="sub-header flex-row flex-c white opacity60 px15">
+                            <div class="list" th:classappend="${activePage == 'support_notice'} ? 'active' : ''"><a href="support_notice">공지사항</a></div>
+                            <div class="list" th:classappend="${activePage == 'support_help'} ? 'active' : ''"><a href="support_help">도움말</a></div>
+                            <div class="list" th:classappend="${activePage == 'support_inquiry'} ? 'active' : ''"><a href="support_inquiry">문의하기</a></div>
+                        </div>
+                        <div class="mainLayer">
+                            <div class="post-container">
+                                <div class="post-header">
+                                    <div class="title" th:text="${supportPost.title}"></div>
+                                    <div class="profile">
+                                        <div class="acc">
+                                            <img src="../static/images/svg/ghost.svg" alt="#">
+                                            <div class="nickname">
+                                                <div>
+                                                    <div class="info" th:text="${authorNickname}"></div>
+                                                    <div class="px14">
+                                                        <div th:text="${formattedDate}">0000.00.00 00:00</div>
+                                                        <img src="../static/images/svg/input-icon-eye.svg" alt="">
+                                                        <span th:text="${supportPost.views}">0</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="options">
+                                            <img src="../static/images/svg/hyphenation.svg" alt="">
+                                            <div class="dropdown-menu">
+                                                <ul>
+                                                    <li><a href="#">댓글 삭제</a></li>
+                                                    <li><a href="#">댓글 수정</a></li>
+                                                    <li><a href="#">신고하기</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="post-content">
+                                    <p th:utext="${supportPost.content}"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="footer" class="bc-footer" th:insert="include/footer"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+</body>
+</html>

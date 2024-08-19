@@ -28,7 +28,7 @@ $(document).ready(function() {
                     const commentCountHtml = post.commentCount > 0 ? `<span class="count orange-FBC22B">+${post.commentCount}</span>` : '';
 
                     const postHtml = `
-                        <a href="community_detail?postId=${post.postId}">
+                        <a href="community_detail?boardId=2&postId=${post.postId}">
                             <div class="photo-item-layer">
                                 <div class="photo-layout m-b-10">
                                     <div class="img">
@@ -167,12 +167,4 @@ $(document).ready(function() {
 
     // 초기 게시물 가져오기
     fetchPosts(currentPage);
-
-    // 게시물 클릭 이벤트 추가
-    $('.mainLayer').on('click', '.photo-item-layer', function() {
-        const postId = $(this).closest('a').attr('href').split('?postId=')[1];
-        if (postId) {
-            window.location.href = `/community_detail?postId=${postId}`;
-        }
-    });
 });

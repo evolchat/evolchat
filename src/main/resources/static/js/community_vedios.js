@@ -25,7 +25,7 @@ $(document).ready(function() {
                 response.forEach(post => {
                     const commentCountHtml = post.commentCount > 0 ? `<span class="count orange-FBC22B">+${post.commentCount}</span>` : '';
                     const postHtml = `
-                        <a href="community_detail?postId=${post.postId}">
+                        <a href="community_detail?boardId=3&postId=${post.postId}">
                             <div class="video-container">
                                 <img class="img" src="${post.imageUrl || '../../static/images/svg/logo.svg'}" alt="Video Thumbnail">
                                 <div class="video-details">
@@ -139,12 +139,4 @@ $(document).ready(function() {
 
     // 초기 게시물 가져오기
     fetchPosts(currentPage);
-
-    // 게시물 클릭 이벤트 추가
-    $('.mainLayer').on('click', '.video-container', function() {
-        const postId = $(this).closest('a').attr('href').split('?postId=')[1];
-        if (postId) {
-            window.location.href = `/community_detail?postId=${postId}`;
-        }
-    });
 });

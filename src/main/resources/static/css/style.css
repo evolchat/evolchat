@@ -2257,3 +2257,7 @@ img.profile-img-60 {
     color: #fff;
     margin: 140px;~
 }
+
+.pointer {
+    cursor: pointer;
+}

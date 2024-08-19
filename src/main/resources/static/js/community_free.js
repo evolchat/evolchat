@@ -164,7 +164,7 @@ $(document).ready(function() {
     $('#posts-container').on('click', '.post', function() {
         const postId = $(this).data('post-id');
         if (postId) {
-            window.location.href = `/community_detail?postId=${postId}`;
+            window.location.href = `/community_detail?boardId=1&postId=${postId}`;
         }
     });
 

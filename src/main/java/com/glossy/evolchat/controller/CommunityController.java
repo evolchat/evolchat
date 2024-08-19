@@ -48,7 +48,7 @@ public class CommunityController {
     private UserService userService;
 
     @GetMapping("/community_detail")
-    public String communityDetail(@RequestParam("postId") int postId, @AuthenticationPrincipal UserDetails userDetails, Model model) {
+    public String communityDetail(@RequestParam("postId") int postId, @RequestParam("boardId") int boardId, @AuthenticationPrincipal UserDetails userDetails, Model model) {
         Optional<CommunityPost> postOptional = communityPostRepository.findById(postId);
         if (postOptional.isPresent()) {
             CommunityPost communityPost = postOptional.get();
@@ -91,7 +91,15 @@ public class CommunityController {
             model.addAttribute("isLiked", isLiked);
             model.addAttribute("postLikeCount", postLikeCount);
             model.addAttribute("activeCategory", "community_free");
-            model.addAttribute("activePage", "community_detail");
+
+            if(boardId == 1){
+                model.addAttribute("activePage", "community_free");
+            } else if(boardId == 2){
+                model.addAttribute("activePage", "community_photo");
+            } else if(boardId == 3){
+                model.addAttribute("activePage", "community_videos");
+            }
+
             model.addAttribute("contentFragment", "fragments/community_detail");
             model.addAttribute("currentUserId", currentUser.getId() - 1);
             model.addAttribute("commentCount", commentCount);

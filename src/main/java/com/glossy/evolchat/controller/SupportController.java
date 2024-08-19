@@ -28,8 +28,8 @@ public class SupportController {
     @Autowired
     private UserRepository userRepository;
 
-    @GetMapping("/support_detail")
-    public String supportDetail(@RequestParam("postId") int postId, @AuthenticationPrincipal UserDetails userDetails, Model model) {
+    @GetMapping("/support_notice_detail")
+    public String supportDetail(@RequestParam("postId") int postId, @RequestParam("boardId") int boardId, @AuthenticationPrincipal UserDetails userDetails, Model model) {
         Optional<SupportPost> postOptional = supportPostRepository.findById(postId);
         if (postOptional.isPresent()) {
             SupportPost supportPost = postOptional.get();
@@ -47,9 +47,15 @@ public class SupportController {
             model.addAttribute("comments", supportComments != null ? supportComments : List.of());
             model.addAttribute("authorNickname", authorNickname);
             model.addAttribute("formattedDate", formattedDate);
-            model.addAttribute("activeCategory", "support_free");
-            model.addAttribute("activePage", "support_detail");
-            model.addAttribute("contentFragment", "fragments/support_detail");
+            model.addAttribute("activeCategory", "support_notice");
+            if(boardId == 1){
+                model.addAttribute("activePage", "support_notice");
+            } else if(boardId == 2){
+                model.addAttribute("activePage", "support_help");
+            } else if(boardId == 3){
+                model.addAttribute("activePage", "support_inquiry");
+            }
+            model.addAttribute("contentFragment", "fragments/support_notice_detail");
 
             // 사용자 정보를 모델에 추가
             Optional<User> currentUserOptional = userRepository.findByUsername(userDetails.getUsername());
