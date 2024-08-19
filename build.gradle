@@ -37,6 +37,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-websocket'  // WebSocket 지원
 	implementation 'org.webjars:sockjs-client:1.5.1'  // SockJS 클라이언트
 	implementation 'org.webjars:stomp-websocket:2.3.3'  // STOMP 클라이언트
+	implementation 'org.jsoup:jsoup:1.16.1'
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
 	annotationProcessor 'org.projectlombok:lombok'

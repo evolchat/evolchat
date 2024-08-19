@@ -113,7 +113,6 @@ public class CommunityController {
         return "index";
     }
 
-
     @GetMapping("/community_free")
     public String community_free(Model model) {
         model.addAttribute("activeCategory", "community_free");

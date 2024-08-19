@@ -20,9 +20,14 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.HtmlUtils;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 @RestController
@@ -131,11 +136,50 @@ public class CommunityPostController {
         communityPostDto.setUserId(communityPost.getUserId());
         communityPostDto.setBoardId(communityPost.getBoardId());
         communityPostDto.setTitle(communityPost.getTitle());
-        communityPostDto.setContent(communityPost.getContent());
+
+        // Remove images and truncate text to 100 characters
+        String truncatedContent = truncateContent(communityPost.getContent());
+        communityPostDto.setContent(truncatedContent);
+
         communityPostDto.setLikeCount(likeCount);
         communityPostDto.setCommentCount(commentCount);
         communityPostDto.setViews(communityPost.getViews());
         communityPostDto.setCreatedAt(communityPost.getCreatedAt().toString());
+
+        // 첫 번째 Base64 이미지를 추출하여 imageUrl에 설정
+        String imageUrl = extractFirstBase64Image(communityPost.getContent());
+        if (imageUrl != null) {
+            communityPostDto.setImageUrl(imageUrl);
+        } else {
+            // 기본 이미지 설정
+            communityPostDto.setImageUrl("../../static/images/svg/logo.svg");
+        }
+
         return communityPostDto;
+    }
+
+    private String extractFirstBase64Image(String content) {
+        // Base64 이미지 URL 추출을 위한 정규식 패턴
+        String base64ImagePattern = "<img\\s+[^>]*src\\s*=\\s*\"(data:image/[^;]+;base64,[^\"]+)\"[^>]*>";
+        Pattern pattern = Pattern.compile(base64ImagePattern);
+        Matcher matcher = pattern.matcher(content);
+
+        if (matcher.find()) {
+            return matcher.group(1); // 첫 번째 Base64 이미지 반환
+        }
+
+        return null;
+    }
+
+    private String truncateContent(String content) {
+        Document document = Jsoup.parse(content);
+        // Remove all images
+        document.select("img").remove();
+        // Get the text content and truncate it to 100 characters
+        String text = document.text();
+        if (text.length() > 100) {
+            return text.substring(0, 100) + "...";
+        }
+        return text;
     }
 }
