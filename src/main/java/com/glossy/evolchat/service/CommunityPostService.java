@@ -39,4 +39,12 @@ public class CommunityPostService {
     public CommunityPost getPostById(Integer id) {
         return communityPostRepository.findById(id).orElse(null); // ID로 포스트 조회
     }
+
+    public Page<CommunityPost> getPostsByBoardIdAndSearch(int boardId, String search, Pageable pageable) {
+        return communityPostRepository.findByBoardIdAndTitleContainingOrContentContainingOrTagsContaining(boardId, search, pageable);
+    }
+
+    public Page<CommunityPost> getAllPostsBySearch(String search, Pageable pageable) {
+        return communityPostRepository.findByTitleContainingOrContentContainingOrTagsContaining(search, search, search, pageable);
+    }
 }

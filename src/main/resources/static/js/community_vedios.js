@@ -116,6 +116,27 @@ $(document).ready(function() {
         });
     }
 
+    function handleSearch() {
+        const searchQuery = $('#search-input').val();
+        fetchPosts(1, currentBoardId, searchQuery, currentSort); // 첫 페이지부터 검색
+    }
+
+    // 초기 게시물 가져오기
+    fetchPosts(1, currentBoardId);
+
+    // 검색 버튼 클릭 이벤트
+    $('#search-button').on('click', function() {
+        handleSearch();
+    });
+
+    // 검색 입력 필드에서 Enter 키 눌렀을 때
+    $('#search-input').on('keypress', function(event) {
+        if (event.which === 13) { // Enter 키 코드
+            event.preventDefault();
+            handleSearch();
+        }
+    });
+
     // 초기 게시물 가져오기
     fetchPosts(currentPage);
 
