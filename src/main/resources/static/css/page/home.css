@@ -26,6 +26,7 @@ body>div>section>div.wrap>div>div.mainContent>div.header>div.options>div.icon {
 div.mainContent>div.header div.options {
     z-index: 1;
     position: relative;
+    margin-top: 14px;
 }
 
 div.mainContent>div.header div.item-wrap.flex-row.flex-c>div.bg-game-chips {
@@ -34,17 +35,17 @@ div.mainContent>div.header div.item-wrap.flex-row.flex-c>div.bg-game-chips {
 }
 
 div.mainContent>div.header .bg {
-    max-width: 800px;
+    max-width: 1000px;
     width: 100%;
-    background-color: #1b1c1e;
-    border-radius: 10%;
+    background-color: #212529;
     position: absolute;
-    height: 200%;
-    max-height: 1500px;
-    /* top: -190%; */
-    top: -1425px;
+    height: 100%;
+    max-height: 75px;
+    top: 60px;
     left: 50%;
     transform: translateX(-50%);
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
 
 div.mainContent>div.mainLayer>div>div>div.middle.flex-row.flex-c-c {
@@ -67,13 +68,15 @@ div.mainContent>div.mainLayer>div>div>div.middle.flex-row.flex-c-c>div:nth-child
 }
 
 div.mainContent>div.mainLayer>div>div>div.bottom>div {
-    padding: 10px 0;
+    padding: 10px 10px;
     justify-content: space-between;
     align-items: center;
 }
 
 div.mainContent>div.mainLayer>div>div>div.top.flex-row>div.title {
     padding: 15px 10px;
+    display: flex;
+    align-items: center;
 }
 
 div.mainContent>div.mainLayer>div>div>div.bottom>div>div:nth-child(5)>div::after,
@@ -81,8 +84,8 @@ div.mainContent>div.mainLayer>div>div>div.bottom>div>div:nth-child(6)>div::after
     content: '';
     display: inline-block;
     border-radius: 10px;
-    width: 5px;
-    height: 5px;
+    width: 9px;
+    height: 9px;
     border: 1px solid #1d1c1e;
     position: absolute;
     background-color: #185cc6;
@@ -92,8 +95,34 @@ div.mainContent>div.mainLayer>div>div>div.bottom>div>div:nth-child(6)>div::after
 
 div.mainContent>div.mainLayer>div>div>div.bottom>div>div:nth-child(6)>div::after {
     background-color: #c52123;
-    right: 0;
+    left: 10px;
     bottom: 0;
     top: auto;
+}
+
+.play-btn {
+    height: 100px;
+}
+
+.player {
+    justify-content: end;
+}
+
+.count {
+    margin-right: 20px;
+}
+
+.left {
+    top: 5px;
+    left: 10px;
+}
+
+.right {
+    top: 5px;
+    right: 10px;
+}
+
+.top {
+    justify-content: space-between;
 }
 
