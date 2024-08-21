@@ -1,8 +1,8 @@
 <div class="header flex-row bc-header g-12">
     <div class="wrap flex-row left">
         <div class="logo flex-row flex-c cursor-p">
-            <img src="../static/images/svg/logo-icon.svg" alt=""/>
-            <img class="p-l-10" src="../static/images/svg/logo-text.svg" alt=""/>
+            <img src="../../static/images/svg/logo-icon.svg" alt=""/>
+            <img class="p-l-10" src="../../static/images/svg/logo-text.svg" alt=""/>
             <div id="nav_button" class="menu-btn-layer cursor-p">
                 <div class="menu-btn">
                     <div class="line"></div>
@@ -15,45 +15,45 @@
     <div class="center  flex-row flex-c">
         <div class="header-search">
             <input type="text" class="white" placeholder="에볼류션 테이블 검색">
-            <img src="../static/images/svg/search.svg" alt="" class="input-icon search"/>
+            <img src="../../static/images/svg/search.svg" alt="" class="input-icon search"/>
         </div>
         <div class="white flex-row flex-c px15">
             <div id="header-item-tooltip-1"  class="items flex-c cursor-p">
-                <img src="../static/images/svg/header-item-1.svg" alt=""/>
+                <img src="../../static/images/svg/header-item-1.svg" alt=""/>
                 <span class="p-l-3">JACKPOT</span><span id="bettingPoints">0</span>
             </div>
             <div id="header-item-tooltip-2"  class="items flex-c cursor-p">
-                <img src="../static/images/svg/header-item-2.svg" alt=""/>
+                <img src="../../static/images/svg/header-item-2.svg" alt=""/>
                 <span id="goldChip" class="p-l-3">0</span>
             </div>
             <div class="items flex-c">
-                <img src="../static/images/svg/header-item-3.svg" alt=""/>
+                <img src="../../static/images/svg/header-item-3.svg" alt=""/>
             </div>
             <div id="header-item-tooltip-4" class="items flex-c bc-red-f23f42 cursor-p">
-                <img src="../static/images/svg/header-item-4.svg" alt=""/>
+                <img src="../../static/images/svg/header-item-4.svg" alt=""/>
             </div>
         </div>
     </div>
     <div class="wrap flex-row right flex-c">
         <div class="info_option flex-row">
             <div id="header-item-tooltip-5" class="items flex-c cursor-p">
-                <img src="../static/images/svg/header-item-5.svg" alt="선물함"/>
+                <img src="../../static/images/svg/header-item-5.svg" alt="선물함"/>
             </div>
             <div id="header-item-tooltip-6" class="items flex-c cursor-p">
-                <img src="../static/images/svg/header-item-6.svg" alt="히스토리"/>
+                <img src="../../static/images/svg/header-item-6.svg" alt="히스토리"/>
             </div>
             <div id="header-item-tooltip-7" class="items flex-c cursor-p">
-                <img src="../static/images/svg/header-item-7.svg" alt="채팅방"/>
+                <img src="../../static/images/svg/header-item-7.svg" alt="채팅방"/>
             </div>
             <div id="header-item-tooltip-8" class="items flex-c cursor-p">
-                <img src="../static/images/svg/header-item-8.svg" alt="알림"/>
+                <img src="../../static/images/svg/header-item-8.svg" alt="알림"/>
             </div>
             <div id="header-item-tooltip-9" class="items flex-c cursor-p">
-                <img src="../static/images/svg/header-item-9.svg" alt="언어선택"/>
+                <img src="../../static/images/svg/header-item-9.svg" alt="언어선택"/>
             </div>
             <div class="items flex-c dropdown">
                 <button id="profile" class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img class="dropdown-toggle profile-img-44" src="../static/images/profile/default.png" alt="프로필이미지.png"></button>
+                    <img class="dropdown-toggle profile-img-44" src="../../static/images/profile/default.png" alt="프로필이미지.png"></button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownHeaderButton">
                     <li><a class="dropdown-item" href="my_pqge">마이페이지</a></li>
                     <li><a class="dropdown-item" href="#" onclick="logout()">로그아웃</a></li>
@@ -130,37 +130,25 @@
         let isInitialNavVisible = JSON.parse(localStorage.getItem('isInitialNavVisible')) || false;
         let isNavExpanded = JSON.parse(localStorage.getItem('isNavExpanded')) || !isInitialNavVisible;
 
-        // Restore the state on page load
+        // 페이지 로드 시 상태 복원
         if (isInitialNavVisible) {
-            $("#initialNav").css({ display: "block", width: "100%" });
-            $("#newNav").css({ display: "none", width: "25%" });
+            $("#initialNav").css({ display: "block", width: "100%", visibility: "visible", opacity: 1 });
+            $("#newNav").css({ display: "none", width: "25%", visibility: "hidden", opacity: 0 });
             $("#nav").css("width", "100%");
         } else {
-            $("#initialNav").css({ display: "none", width: "100%" });
-            $("#newNav").css({ display: "block", width: "25%" });
+            $("#initialNav").css({ display: "none", width: "100%", visibility: "hidden", opacity: 0 });
+            $("#newNav").css({ display: "block", width: "25%", visibility: "visible", opacity: 1 });
             $("#nav").css("width", "55px");
         }
 
-        $('.nav-link').each(function() {
-            const linkPath = $(this).attr('href');
-            if (linkPath === $('body').attr('data-active-category')) {
-                $(this).addClass('active');
-            }
-        });
-
         $("#nav_button").click(function() {
             if ($("#newNav").is(":visible")) {
-                // Transition from newNav to initialNav with text appearing in place after layout expansion
-                $("#newNav").animate({ width: "0%" }, 200, function() {
-                    $(this).css("display", "none");
-                    $("#initialNav").css({ display: "block", width: "0%" });
-
-                    // Hide text initially by setting visibility to hidden
-                    $("#initialNav").children().css("visibility", "hidden");
+                $("#newNav").animate({ width: "0%", opacity: 0 }, 200, function() {
+                    $(this).css({ display: "none", visibility: "hidden" });
+                    $("#initialNav").css({ display: "block", width: "0%", visibility: "hidden", opacity: 0 });
 
                     $("#initialNav").animate({ width: "100%" }, 200, function() {
-                        // Show text after layout expansion by setting visibility to visible
-                        $("#initialNav").children().css("visibility", "visible");
+                        $(this).css({ visibility: "visible" }).animate({ opacity: 1 }, 100); // Ensure text appears only after width is fully expanded
                     });
 
                     $("#nav").animate({ width: "100%" }, 200);
@@ -168,16 +156,19 @@
                     localStorage.setItem('isNavExpanded', true);
                 });
             } else {
-                // Transition from initialNav to newNav
-                $("#initialNav").animate({ width: "0%" }, 200, function() {
-                    $(this).css("display", "none");
-                    $("#newNav").css({ display: "block", width: "0%" }).animate({ width: "25%" }, 200);
+                $("#initialNav").animate({ width: "0%", opacity: 0 }, 200, function() {
+                    $(this).css({ display: "none", visibility: "hidden" });
+                    $("#newNav").css({ display: "block", width: "0%", visibility: "hidden", opacity: 0 }).animate({ width: "25%" }, 200, function() {
+                        $(this).css({ visibility: "visible" }).animate({ opacity: 1 }, 100); // Ensure text appears only after width is fully expanded
+                    });
+
                     $("#nav").animate({ width: "55px" }, 200);
                     localStorage.setItem('isInitialNavVisible', false);
                     localStorage.setItem('isNavExpanded', false);
                 });
             }
         });
+
 
         // Handle chat visibility persistence
         const chatActive = localStorage.getItem('chatActive');
@@ -200,32 +191,20 @@
                 }
             });
         });
+
+        if (localStorage.getItem('menuBtnState') === 'active') {
+            $(".menu-btn").addClass('active');
+        }
+        $(".menu-btn-layer").css('visibility', 'visible');
+
         $("#nav_button").click(function() {
             $(".menu-btn").toggleClass('active');  // 햄버거 메뉴 버튼에 active 클래스 추가/제거
 
-            if ($("#newNav").is(":visible")) {
-                $("#newNav").animate({ width: "0%" }, 200, function() {
-                    $(this).css("display", "none");
-                    $("#initialNav").css({ display: "block", width: "0%" });
-
-                    $("#initialNav").children().css("visibility", "hidden");
-
-                    $("#initialNav").animate({ width: "100%" }, 200, function() {
-                        $("#initialNav").children().css("visibility", "visible");
-                    });
-
-                    $("#nav").animate({ width: "100%" }, 200);
-                    localStorage.setItem('isInitialNavVisible', true);
-                    localStorage.setItem('isNavExpanded', true);
-                });
+            // 버튼 상태를 localStorage에 저장
+            if ($(".menu-btn").hasClass('active')) {
+                localStorage.setItem('menuBtnState', 'active');
             } else {
-                $("#initialNav").animate({ width: "0%" }, 200, function() {
-                    $(this).css("display", "none");
-                    $("#newNav").css({ display: "block", width: "0%" }).animate({ width: "25%" }, 200);
-                    $("#nav").animate({ width: "55px" }, 200);
-                    localStorage.setItem('isInitialNavVisible', false);
-                    localStorage.setItem('isNavExpanded', false);
-                });
+                localStorage.removeItem('menuBtnState');
             }
         });
     });
