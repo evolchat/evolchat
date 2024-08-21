@@ -12,6 +12,7 @@ import java.util.List;
 
 public interface SupportPostRepository extends JpaRepository<SupportPost, Integer> {
     Page<SupportPost> findByBoardId(Integer boardId, Pageable pageable);
+    Page<SupportPost> findByBoardIdAndTitleContainingOrContentContaining(Integer boardId, String title, String content, Pageable pageable);
 
     Page<SupportPost> findByBoardIdAndDetailedCategory(Integer boardId, Integer detailedCategory, Pageable pageable);
 

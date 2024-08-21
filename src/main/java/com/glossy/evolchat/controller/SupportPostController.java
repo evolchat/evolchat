@@ -31,9 +31,9 @@ public class SupportPostController {
         Pageable pageable = PageRequest.of(page - 1, size); // 페이지 번호를 0부터 시작하도록 수정
         Page<SupportPost> postsPage;
 
-        // 게시물 조회
+        // boardId가 있는 경우 해당 boardId에 맞는 게시물만 조회
         if (boardId != null) {
-            postsPage = supportPostService.getPosts(pageable, boardId, detailedCategory, search);
+            postsPage = supportPostService.getPostsByBoardId(boardId, pageable, search);
         } else {
             postsPage = supportPostService.getAllPosts(pageable, search);
         }

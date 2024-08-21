@@ -29,7 +29,45 @@ public class SupportController {
     private UserRepository userRepository;
 
     @GetMapping("/support_notice_detail")
-    public String supportDetail(@RequestParam("postId") int postId, @RequestParam("boardId") int boardId, @AuthenticationPrincipal UserDetails userDetails, Model model) {
+    public String supportNoticeDetail(@RequestParam("postId") int postId, @RequestParam("boardId") int boardId, @AuthenticationPrincipal UserDetails userDetails, Model model) {
+        Optional<SupportPost> postOptional = supportPostRepository.findById(postId);
+        if (postOptional.isPresent()) {
+            SupportPost supportPost = postOptional.get();
+
+            // SupportPost 객체를 전달하여 댓글 조회
+            List<SupportComment> supportComments = supportCommentRepository.findBySupportPost(supportPost);
+
+            Optional<User> authorOptional = userRepository.findByUsername(supportPost.getUserId());
+            String authorNickname = authorOptional.map(User::getNickname).orElse("Unknown");
+
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm");
+            String formattedDate = supportPost.getCreatedAt().format(formatter);
+
+            model.addAttribute("supportPost", supportPost);
+            model.addAttribute("comments", supportComments != null ? supportComments : List.of());
+            model.addAttribute("authorNickname", authorNickname);
+            model.addAttribute("formattedDate", formattedDate);
+            model.addAttribute("activeCategory", "support_notice");
+            if(boardId == 1){
+                model.addAttribute("activePage", "support_notice");
+            } else if(boardId == 2){
+                model.addAttribute("activePage", "support_help");
+            } else if(boardId == 3){
+                model.addAttribute("activePage", "support_inquiry");
+            }
+            model.addAttribute("contentFragment", "fragments/support_notice_detail");
+
+            // 사용자 정보를 모델에 추가
+            Optional<User> currentUserOptional = userRepository.findByUsername(userDetails.getUsername());
+            currentUserOptional.ifPresent(user -> model.addAttribute("user", user));
+        } else {
+            return "error/404";
+        }
+        return "index";
+    }
+
+    @GetMapping("/support_inquiry_detail")
+    public String supportInquiryDetail(@RequestParam("postId") int postId, @RequestParam("boardId") int boardId, @AuthenticationPrincipal UserDetails userDetails, Model model) {
         Optional<SupportPost> postOptional = supportPostRepository.findById(postId);
         if (postOptional.isPresent()) {
             SupportPost supportPost = postOptional.get();

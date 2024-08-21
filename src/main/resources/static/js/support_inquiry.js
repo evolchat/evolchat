@@ -32,9 +32,9 @@ $(document).ready(function () {
         fetchPosts(currentPage, searchInput.val().trim());
     });
 
-    // 공지사항 데이터를 가져오는 함수
+    // 문의사항 데이터를 가져오는 함수
     function fetchPosts(page, search) {
-        const boardId = 1; // 공지사항 boardId
+        const boardId = 3; // 문의하기 boardId
         $.ajax({
             url: `/support-posts?page=${page}&size=${pageSize}&boardId=${boardId}&search=${encodeURIComponent(search)}`,
             method: 'GET',
@@ -54,39 +54,27 @@ $(document).ready(function () {
     function updateTable(posts) {
         tableBody.empty();
         posts.forEach(post => {
-            const row = $(`<tr class="pointer post-title" data-post-id=${post.postId}>`);
+            const row = $(`<tr class="pointer post-title" data-post-id=${post.postId}></tr>`);
 
-            // 분류
-            const categoryCell = $(`<td><div class="bc-${getCategoryColor(post.detailedCategory)} border-5 flex-c-c square">${getCategoryLabel(post.detailedCategory)}</div></td>`);
-            row.append(categoryCell);
+            // 상태
+            const statusCell = $(`<td><div class="bc-${getStatusColor(post.detailedCategory)} border-5 flex-c-c square">${getStatusLabel(post.detailedCategory)}</div></td>`);
+            row.append(statusCell);
 
-            // 제목 (클릭 이벤트 추가)
-//            const titleCell = $(`
-//                <td>
-//                    <div class="text-left">
-//                        <span class="px15">${post.title}</span>
-//                        <img src="../../static/images/svg/icon-gallery.svg" alt="Gallery Icon">
-//                        <img src="../../static/images/svg/icon-videoplayer.svg" alt="Video Player Icon">
-//                        <img src="../../static/images/svg/icon-folder.svg" alt="Folder Icon">
-//                    </div>
-//                </td>
-//            `);
-            const titleCell = $(`
-                <td>
+            // 문의내용 (클릭 이벤트 추가)
+            const contentCell = $(
+                `<td>
                     <div class="text-left">
                         <span class="px15">${post.title}</span>
+                        ${post.hasGallery ? '<img src="../../static/images/svg/icon-gallery-ivory.svg" alt="Gallery Icon">' : ''}
+                        ${post.hasVideo ? '<img src="../../static/images/svg/icon-videoplayer-red.svg" alt="Video Icon">' : ''}
                     </div>
-                </td>
-            `);
-            row.append(titleCell);
+                </td>`
+            );
+            row.append(contentCell);
 
             // 일시
-            const dateCell = $(`<td class="opacity60">${new Date(post.createdAt).toLocaleDateString()}</td>`);
+            const dateCell = $(`<td class="opacity60">${new Date(post.createdAt).toLocaleString()}</td>`);
             row.append(dateCell);
-
-            // 조회
-            const viewsCell = $(`<td class="opacity60">${post.views}</td>`);
-            row.append(viewsCell);
 
             tableBody.append(row);
         });
@@ -95,7 +83,7 @@ $(document).ready(function () {
         tableBody.on('click', '.post-title', function () {
             const postId = $(this).data('post-id');
             if (postId) {
-                window.location.href = `/support_notice_detail?boardId=1&postId=${postId}`;
+                window.location.href = `/support_inquiry_detail?boardId=2&postId=${postId}`;
             }
         });
     }
@@ -141,26 +129,20 @@ $(document).ready(function () {
         }
     }
 
-    // 상세 분류에 대한 색상 반환
-    function getCategoryColor(category) {
-        switch (category) {
-            case 1: return 'red-f23f42'; // 공지
-            case 2: return 'blue-2379FF'; // 업데이트
-            case 3: return 'ivory'; // 이벤트
-            case 4: return 'yellow'; // 확인대기
-            case 5: return 'green'; // 답변대기
-            case 6: return 'purple'; // 답변완료
+    // 상태에 따른 색상 반환
+    function getStatusColor(status) {
+        switch (status) {
+            case 4: return 'dark-3A3C43'; // 확인전
+            case 5: return 'gray'; // 답변대기
+            case 6: return 'activate'; // 답변완료
             default: return 'gray'; // 기본값
         }
     }
 
-    // 상세 분류에 대한 레이블 반환
-    function getCategoryLabel(category) {
-        switch (category) {
-            case 1: return '공지';
-            case 2: return '업데이트';
-            case 3: return '이벤트';
-            case 4: return '확인대기';
+    // 상태에 따른 레이블 반환
+    function getStatusLabel(status) {
+        switch (status) {
+            case 4: return '확인전';
             case 5: return '답변대기';
             case 6: return '답변완료';
             default: return '기타'; // 기본값

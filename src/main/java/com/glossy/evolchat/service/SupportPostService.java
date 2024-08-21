@@ -31,6 +31,14 @@ public class SupportPostService {
         }
     }
 
+    public Page<SupportPost> getPostsByBoardId(Integer boardId, Pageable pageable, String search) {
+        if (search != null && !search.isEmpty()) {
+            return supportPostRepository.findByBoardIdAndTitleContainingOrContentContaining(boardId, search, search, pageable);
+        } else {
+            return supportPostRepository.findByBoardId(boardId, pageable);
+        }
+    }
+
     public Page<SupportPost> getAllPosts(Pageable pageable, String search) {
         if (!search.isEmpty()) {
             return supportPostRepository.findByTitleContainingIgnoreCase(search, pageable);
