@@ -70,6 +70,10 @@ div.mainContent.bc-main>div.mainLayer>div>div>div.line>div.top.flex-row>div.left
     color: #fff;
 }
 
+.count-btn {
+    cursor: pointer;
+}
+
 .shopping-item-wrap .top {
     text-align: left;
 }
