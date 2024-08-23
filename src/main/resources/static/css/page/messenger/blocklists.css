@@ -55,7 +55,7 @@
 .user-list-layer .btn {
     border-radius: 5px;
     background-color: #35373D;
-    color: #ffffff87;
+    color: #ffffff;
     padding: 8px 9px;
 }
 
@@ -78,12 +78,10 @@
 .search .btn {
     width: 145px;
     margin-top: 2px;
-    padding: 0px 10px;
     height: 40px;
     border-radius: 5px;
-    border-radius: 5px;
     background-color: #35373D;
-    color: #ffffff87;
+    color: rgba(255,255,255,0.2);
     padding: 8px 9px;
    }
 
