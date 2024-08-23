@@ -14,6 +14,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -38,10 +39,8 @@ public class CommunityCommentController {
 
     // 댓글 추가
     @PostMapping
-    public ResponseEntity<Void> addComment(@RequestBody CommunityCommentDto commentRequest) {
-        // Authentication context에서 사용자 정보 가져오기
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String username = auth.getName();
+    public ResponseEntity<Void> addComment(@RequestBody CommunityCommentDto commentRequest, Principal principal) {
+        String username = principal.getName();
         User user = userService.findByUsername(username); // Assuming you have a method to get User by username
 
         // CommunityPost 객체를 데이터베이스에서 조회

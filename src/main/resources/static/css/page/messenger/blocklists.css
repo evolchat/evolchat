@@ -86,4 +86,8 @@
     color: #ffffff87;
     padding: 8px 9px;
    }
+
+.mainLayer {
+    min-height: 300px;
+}
 /* messenger_blocklists */

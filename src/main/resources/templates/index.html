@@ -20,11 +20,11 @@
 </head>
 <body th:data-active-category="${activeCategory}" th:data-active-page="${activePage}" th:data-board-id="${boardId}">
         <div class="wrapper bc-black vh100">
-            <div id="header" class="header flex-row bc-header" th:insert="include/header"></div>
+            <div id="header" class="header flex-row bc-header" th:insert="~{include/header}"></div>
             <Section class="flex-row">
-                <div id="nav" th:insert="include/nav"></div>
-                <div th:replace="${contentFragment}"></div>
-                <div id="chat" class="content chatLayer bc-aside" th:insert="include/chat"></div>
+                <div id="nav" th:insert="~{include/nav}"></div>
+                <div th:replace="~{${contentFragment}}"></div>
+                <div id="chat" class="content chatLayer bc-aside" th:insert="~{include/chat}"></div>
             </section>
         </div>
 <script>

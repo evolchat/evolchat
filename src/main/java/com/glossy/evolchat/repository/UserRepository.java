@@ -19,4 +19,6 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
     // BettingProfit 기준으로 사용자 목록을 내림차순으로 페이징 조회
     Page<User> findAllByOrderByBettingProfitDesc(Pageable pageable);
+
+    Optional<User> findByNickname(String nickname);
 }
