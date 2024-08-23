@@ -65,7 +65,6 @@ public class User {
     private String accountNumber;
     private String idCardPicture;
     private String interests;
-
     private int bettingProfit;
     private int bettingWins;
     private int bettingLosses;

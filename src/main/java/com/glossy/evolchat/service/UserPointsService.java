@@ -37,4 +37,13 @@ public class UserPointsService {
         return userPointsRepository.save(userPoints);
     }
 
+    public UserPoints findByUsername(String username) {
+        return userPointsRepository.findByUsername(username)
+                .orElse(null);
+    }
+
+    public void save(UserPoints userPoints) {
+        userPointsRepository.save(userPoints);
+    }
+
 }

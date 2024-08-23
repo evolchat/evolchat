@@ -37,8 +37,6 @@ fetch('/user-points/current')
 
                 if (isBettingItem) {
                     // bbettingPoints를 사용하는 경우
-                    console.log('userBettingPoints', userBettingPoints)
-                    console.log('totalPrice', totalPrice)
                     if (userBettingPoints >= totalPrice) {
                         giftButton.classList.remove('disabled');
                         purchaseButton.classList.remove('disabled');
@@ -242,8 +240,78 @@ fetch('/user-points/current')
 
 // 실제 구매 처리 함수
 function purchaseItem(item, count, paymentMethod, remainingBalance) {
-    // 여기에 구매 처리 로직을 추가하세요
-    console.log(`${item.querySelector('.name').innerText}를(을) ${count}개 ${paymentMethod}로 결제했습니다. 남은 ${paymentMethod}: ${remainingBalance}`);
+    // 아이템 정보 추출
+    const itemId = item.querySelector('.shopping-item').classList[1].split('-')[2]; // 예: shopping-item-17 -> 17
+    const itemName = item.querySelector('.name').innerText;
+
+    // 결제 정보 설정
+    const requestData = {
+        itemId: Number(itemId),
+        quantity: count,
+        paymentMethod: paymentMethod
+    };
+
+    // 서버에 요청 전송
+    fetch('/purchase', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify(requestData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // 서버 응답이 성공적일 경우
+            Swal.fire({
+                title: '구매 완료!',
+                text: `${itemName}를(을) ${count}개 ${paymentMethod}로 결제했습니다. 남은 ${paymentMethod}: ${remainingBalance}`,
+                icon: 'success',
+                confirmButtonText: '확인',
+                confirmButtonColor: '#8744FF',
+                background: '#35373D',
+                color: '#FFFFFF'
+            }).then(() => {
+                    $.ajax({
+                        url: `/user-points/current`,
+                        type: 'GET',
+                        success: function(response) {
+                            $('#bettingPoints').text(response.bbettingPoints);
+                            $('#goldChip').text(response.ggoldChip);
+                        },
+                        error: function() {
+                            console.log('Failed to fetch user points');
+                        }
+                    });
+                updateUIAfterPurchase();
+            });
+        } else {
+            // 서버 응답이 실패일 경우
+            Swal.fire({
+                title: '구매 실패',
+                text: `구매에 실패했습니다. 오류 메시지: ${data.message}`,
+                icon: 'error',
+                confirmButtonText: '확인',
+                confirmButtonColor: '#8744FF',
+                background: '#35373D',
+                color: '#FFFFFF'
+            });
+        }
+    })
+    .catch(error => {
+        // 네트워크 오류 처리
+        console.error('구매 처리 중 오류 발생:', error);
+        Swal.fire({
+            title: '네트워크 오류',
+            text: '서버와의 통신 중 오류가 발생했습니다. 나중에 다시 시도해주세요.',
+            icon: 'error',
+            confirmButtonText: '확인',
+            confirmButtonColor: '#8744FF',
+            background: '#35373D',
+            color: '#FFFFFF'
+        });
+    });
 }
 
 document.addEventListener('DOMContentLoaded', () => {

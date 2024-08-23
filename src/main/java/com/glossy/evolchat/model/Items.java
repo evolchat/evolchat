@@ -1,25 +1,38 @@
 package com.glossy.evolchat.model;
 
-import lombok.Data;
 import jakarta.persistence.*;
+import lombok.Data;
 
 @Entity
+@Table(name = "items")
 @Data
 public class Items {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int seq;
+    @Column(name = "id")
+    private Long id;
 
-    @Column(unique = true, nullable = false)
+    @Column(name = "item_id", unique = true, nullable = false)
     private int itemId;
 
-    @Column(nullable = false)
-    private String itemName;
+    @Column(name = "ccash", nullable = false)
+    private int ccash;
 
-    @Column
-    private String description;
+    @Column(name = "ggold_chip", nullable = false)
+    private int ggoldChip;
 
-    @Column(nullable = false)
-    private boolean isConsumable;
+    @Column(name = "bbetting_points", nullable = false)
+    private int bbettingPoints;
+
+    // 기본 생성자
+    public Items() {}
+
+    // 생성자
+    public Items(int itemId, int ccash, int ggoldChip, int bbettingPoints) {
+        this.itemId = itemId;
+        this.ccash = ccash;
+        this.ggoldChip = ggoldChip;
+        this.bbettingPoints = bbettingPoints;
+    }
 }
