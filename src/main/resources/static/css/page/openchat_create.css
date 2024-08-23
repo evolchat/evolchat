@@ -33,12 +33,21 @@
     text-align: center;
     margin-bottom: 20px;
     background: #232428;
+    padding-bottom: 60px;
 }
 
 .upload-area img {
     width: 80px;
     height: 80px;
     margin-bottom: 10px;
+}
+
+.char-count {
+    display: block;
+    text-align: right;
+    color: #909090; /* 글자 수 색상 */
+    font-size: 0.9rem;
+    margin-right: 5%;
 }
 
 .tags {
@@ -51,8 +60,8 @@
 
 .tag {
     background-color: #555;
-    border-radius: 15px;
-    padding: 5px 10px;
+    border-radius: 20px;
+    padding: 10px 12px;
     margin: 0 5px;
     cursor: pointer;
 }
@@ -65,12 +74,12 @@
 .upload-area input[type="text"],
 textarea {
     width: 88%;
-    padding: 17px 0 70px;
+    padding: 17px 0 35px;
     margin: 35px;
     border: none;
-    border-radius: 5px;
     color: #eee;
     font-size: 2rem;
+    border-bottom: 1px solid #35373D;
 }
 
 input[type="text"] {
@@ -107,14 +116,14 @@ input[type="checkbox"] + label::before {
     margin-right: 10px;
     vertical-align: middle;
     background-color: transparent;
-    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="gray" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check"><polyline points="20 6 9 17 4 12"></polyline></svg>');
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="gray" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check"><polyline points="20 6 9 17 4 12"></polyline></svg>');
     background-size: 14px 14px;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 input[type="checkbox"]:checked + label::before {
-    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check"><polyline points="20 6 9 17 4 12"></polyline></svg>');
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23FFD700" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check"><polyline points="20 6 9 17 4 12"></polyline></svg>');
 }
 
 /* Style for checked checkboxes */
@@ -128,25 +137,17 @@ input[type="checkbox"]#agreeAll {
 
 input[type="checkbox"]#agreeAll + label {
     position: relative;
-    padding-left: 30px; /* 체크박스와 텍스트 사이 간격 */
     cursor: pointer; /* 커서를 포인터로 변경 */
 }
 
 input[type="checkbox"]#agreeAll + label::before {
-    content: "";
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
+    background-image: none; /* 체크되지 않은 상태에서 이미지를 제거 */
     border-radius: 4px; /* 네모난 모서리 */
     box-shadow: 0 0 0 2px #555 inset; /* 테두리 */
 }
 
 input[type="checkbox"]#agreeAll:checked + label::before {
-    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check"><polyline points="20 6 9 17 4 12"></polyline></svg>');
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23FFD700" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check"><polyline points="20 6 9 17 4 12"></polyline></svg>');
     background-size: 14px 14px;
     background-repeat: no-repeat;
     background-position: center;
@@ -159,17 +160,17 @@ input[type="checkbox"]#agreeAll:checked + label::before {
 
 .agreement label {
     cursor: pointer;
-    margin-bottom: 8px;
+    margin-bottom: 5px;
+}
+
+.agreement label .agreeAll {
+    margin-bottom: 10px;
 }
 
 .agreement ul {
     margin: 0;
     list-style: none;
     color: #909090;
-}
-
-.agreement ul li {
-    margin-bottom: 10px;
 }
 
 .agreement ul li input[type="checkbox"] {

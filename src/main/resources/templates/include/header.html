@@ -156,13 +156,13 @@
                     localStorage.setItem('isNavExpanded', true);
                 });
             } else {
-                $("#initialNav").animate({ width: "0%", opacity: 0 }, 200, function() {
+                $("#initialNav").animate({ width: "0%", opacity: 0 }, 300, function() {
                     $(this).css({ display: "none", visibility: "hidden" });
                     $("#newNav").css({ display: "block", width: "0%", visibility: "hidden", opacity: 0 }).animate({ width: "25%" }, 100, function() {
                         $(this).css({ visibility: "visible" }).animate({ opacity: 1 }, 100); // Ensure text appears only after width is fully expanded
                     });
 
-                    $("#nav").animate({ width: "55px" }, 200);
+                    $("#nav").animate({ width: "55px" }, 100);
                     localStorage.setItem('isInitialNavVisible', false);
                     localStorage.setItem('isNavExpanded', false);
                 });

@@ -314,6 +314,13 @@ input[type="radio"]:checked::after {
     }
 }
 
+.char-count {
+    display: block;
+    text-align: right;
+    color: #909090; /* 글자 수 색상 */
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
 
 
 /* mypage */

@@ -30,7 +30,8 @@
                         </div>
                         <div class="sub-header hidden">
                             <div class="sub-header-search bc-footer flex-grow">
-                                <input type="text" placeholder="닉네임 검색">
+                                <input type="text" id="nicknameSearch" placeholder="닉네임 검색" maxlength="20">
+                                <span class="char-count" id="nicknameSearch-count">0 / 20</span>
                                 <img src="../../static/images/svg/search.svg" alt="" class="input-icon search" />
                             </div>
                         </div>
@@ -171,6 +172,7 @@
                                                 <label for="todaysMessage">오늘의 한마디</label>
                                                 <div class="border word">
                                                     <input class="input" type="text" id="todaysMessage" th:value="${user.todaysMessage}" placeholder="평생 살 것처럼 꿈을 꾸어라. 그리고 내일 죽을 것처럼 오늘을 살아라" maxlength="60">
+                                                    <span class="char-count" id="todaysMessage-count">0 / 60</span>
                                                 </div>
                                             </div>
                                         </div>

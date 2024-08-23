@@ -1,3 +1,20 @@
+document.addEventListener('DOMContentLoaded', function () {
+    const titleInput = document.getElementById('title-input');
+    const titleCount = document.getElementById('title-count');
+    const descInput = document.getElementById('desc-input');
+    const descCount = document.getElementById('desc-count');
+
+    // 제목 입력 필드에서 글자 수 업데이트
+    titleInput.addEventListener('input', function () {
+        titleCount.textContent = `${titleInput.value.length} / 20`;
+    });
+
+    // 소개글 입력 필드에서 글자 수 업데이트
+    descInput.addEventListener('input', function () {
+        descCount.textContent = `${descInput.value.length} / 80`;
+    });
+});
+
 document.addEventListener('DOMContentLoaded', () => {
     const tags = document.querySelectorAll('.tag');
 
@@ -37,7 +54,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const openButton = document.getElementById('open');
 
     function updateOpenButtonState() {
+        // 모든 입력 필드가 채워졌는지 확인
         const allInputsFilled = Array.from(inputs).every(input => input.value.trim() !== "");
+        // 모든 체크박스가 체크되었는지 확인
         const allCheckboxesChecked = Array.from(checkboxes).every(checkbox => checkbox.checked);
 
         if (allInputsFilled && allCheckboxesChecked) {
@@ -59,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function() {
         checkboxes.forEach(checkbox => {
             checkbox.checked = agreeAll.checked;
         });
-        updateOpenButtonState();
+        updateOpenButtonState(); // 전체 체크박스 상태에 따라 버튼 상태 업데이트
     });
 
     checkboxes.forEach(checkbox => {
@@ -70,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const allChecked = Array.from(checkboxes).every(checkbox => checkbox.checked);
                 agreeAll.checked = allChecked;
             }
-            updateOpenButtonState();
+            updateOpenButtonState(); // 개별 체크박스 상태에 따라 버튼 상태 업데이트
         });
     });
 });
