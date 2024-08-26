@@ -59,12 +59,12 @@ function initializeChat() {
         });
 
         // Set up the send message button
-        const sendMessageButton = document.getElementById('sendMessageButton');
-        if (sendMessageButton) {
-            sendMessageButton.addEventListener('click', sendMessage);
-        } else {
-            console.error('Send message button not found'); // 버튼 확인
-        }
+        //        const sendMessageButton = document.getElementById('sendMessageButton');
+        //        if (sendMessageButton) {
+        //            sendMessageButton.addEventListener('click', sendMessage);
+        //        } else {
+        //            console.error('Send message button not found'); // 버튼 확인
+        //        }
 
         // Set up the Enter key for sending messages
         const messageInput = document.getElementById('messageInput');
