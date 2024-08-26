@@ -4,7 +4,6 @@ $(function() {
     $('select').selectric();
 
     if (activePage) {
-        loadPageContent(activePage);
         $('.nav-link[href="' + activeCategory + '"]').addClass('active');
     }
 
@@ -36,7 +35,6 @@ $(function() {
 
     window.onpopstate = function() {
         const currentPath = window.location.pathname.split("/").pop();
-        loadPageContent(currentPath);
         $('.nav-link').removeClass('active');
         $('.nav-link[href="' + activeCategory + '"]').addClass('active');
     };
