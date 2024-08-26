@@ -123,4 +123,46 @@
             }
         });
     });
+    let isInitialNavVisible = JSON.parse(localStorage.getItem('isInitialNavVisible')) || false;
+    let isNavExpanded = JSON.parse(localStorage.getItem('isNavExpanded')) || !isInitialNavVisible;
+
+        // 페이지 로드 시 상태 복원
+        if (isInitialNavVisible) {
+            $("#initialNav").css({ display: "block", width: "100%", visibility: "visible", opacity: 1 });
+            $("#newNav").css({ display: "none", width: "25%", visibility: "hidden", opacity: 0 });
+            $("#nav").css("width", "100%");
+        } else {
+            $("#initialNav").css({ display: "none", width: "100%", visibility: "hidden", opacity: 0 });
+            $("#newNav").css({ display: "block", width: "25%", visibility: "visible", opacity: 1 });
+            $("#nav").css("width", "55px");
+        }
+
+        $("#nav_button").click(function() {
+            if ($("#newNav").is(":visible")) {
+                $("#newNav").animate({ width: "0%", opacity: 0 }, 0, function() {
+                    $(this).css({ display: "none", visibility: "hidden" });
+                    $("#initialNav").css({ display: "block", width: "0%", visibility: "hidden", opacity: 0 });
+
+                    $("#initialNav").animate({ width: "100%" }, 0, function() {
+                        $(this).css({ visibility: "visible" }).animate({ opacity: 1 }, 250); // Ensure text appears only after width is fully expanded
+                    });
+
+                    $("#nav").animate({ width: "100%" }, 500);
+                    localStorage.setItem('isInitialNavVisible', true);
+                    localStorage.setItem('isNavExpanded', true);
+                });
+            } else {
+                $("#initialNav").animate({ width: "0%", opacity: 1 }, 200, function() {
+                    $(this).css({ display: "none", visibility: "hidden" });
+                    $("#newNav").css({ display: "block", width: "0%", visibility: "hidden", opacity: 0 }).animate({ width: "25%" }, 0, function() {
+                        $(this).css({ visibility: "visible" }).animate({ opacity: 1 }, 0); // Ensure text appears only after width is fully expanded
+                    });
+
+                    $("#nav").animate({ width: "55px" }, 100);
+                    localStorage.setItem('isInitialNavVisible', false);
+                    localStorage.setItem('isNavExpanded', false);
+                });
+            }
+        });
+
 </script>

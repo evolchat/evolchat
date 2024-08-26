@@ -28,13 +28,6 @@
                             <!-- <div class="list"><a href="#">마이홈</a></div>-->
                             <!-- <div class="list"><a href="#">비밀번호 변경</a></div>-->
                         </div>
-                        <div class="sub-header hidden">
-                            <div class="sub-header-search bc-footer flex-grow">
-                                <input type="text" id="nicknameSearch" placeholder="닉네임 검색" maxlength="20">
-                                <span class="char-count" id="nicknameSearch-count">0 / 20</span>
-                                <img src="../../static/images/svg/search.svg" alt="" class="input-icon search" />
-                            </div>
-                        </div>
                         <div class="mainLayer white">
                             <div class="content-wrap flex-c-c flex-column p-20 mypage">
                                 <div class="etc flex-row">
@@ -132,10 +125,11 @@
                                         <div class="row">
                                             <div class="field">
                                                 <div class="g12 m-tb-20">
-                                                    <label for="nickname">닉네임</label>
+                                                    <label for="nicknameSearch">닉네임</label>
                                                 </div>
                                                 <div class="border word">
-                                                    <input class="input" type="text" id="nickname" th:value="${user.nickname}" placeholder="그레이코드" maxlength="12">
+                                                    <input class="input" type="text" id="nicknameSearch" th:value="${user.nickname}" placeholder="그레이코드" maxlength="12">
+                                                    <span class="char-count" id="nicknameSearch-count">0 / 12</span>
                                                 </div>
                                             </div>
                                         </div>

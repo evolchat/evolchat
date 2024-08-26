@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // "닉네임 검색" 입력 필드에서 글자 수 업데이트
     nicknameSearchInput.addEventListener('input', function () {
-        nicknameSearchCount.textContent = `${nicknameSearchInput.value.length} / 20`;
+        nicknameSearchCount.textContent = `${nicknameSearchInput.value.length} / 12`;
     });
 
     // 기존 코드: "오늘의 한마디" 입력 필드에 대한 글자 수 업데이트
