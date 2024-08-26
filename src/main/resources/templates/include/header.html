@@ -126,6 +126,7 @@
             placement: 'bottom',
             animation: 'fade',
         });
+
         const chatActive = localStorage.getItem('chatActive');
             if (chatActive === 'true') {
                 $("#chat").show();
@@ -160,27 +161,6 @@
                     localStorage.setItem('menuBtnState', 'active');
                 } else {
                     localStorage.removeItem('menuBtnState');
-                }
-            });
-        });
-        // Handle chat visibility persistence
-        const chatActive = localStorage.getItem('chatActive');
-        if (chatActive === 'true') {
-            $("#chat").show();
-            $("#header-item-tooltip-7").addClass('active');
-        } else {
-            $("#chat").hide();
-            $("#header-item-tooltip-7").removeClass('active');
-        }
-
-        $("#header-item-tooltip-7").click(function() {
-            $("#chat").slideToggle(400, function() {
-                const chatVisible = $("#chat").is(":visible");
-                localStorage.setItem('chatActive', chatVisible.toString());
-                if (chatVisible) {
-                    $("#header-item-tooltip-7").addClass('active');
-                } else {
-                    $("#header-item-tooltip-7").removeClass('active');
                 }
             });
         });

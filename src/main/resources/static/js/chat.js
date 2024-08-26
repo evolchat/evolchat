@@ -201,30 +201,51 @@ function initializeChat() {
 $(document).ready(function() {
     initializeChat(); // 페이지가 처음 로드될 때 전체 채팅 초기화
 
+    const chatActive = localStorage.getItem('chatActive');
+    if (chatActive === 'true') {
+        $("#chat").show();
+        $("#header-item-tooltip-7").addClass('active');
+    } else {
+        $("#chat").hide();
+        $("#header-item-tooltip-7").removeClass('active');
+    }
+
+    $("#header-item-tooltip-7").click(function() {
+        $("#chat").slideToggle(400, function() {
+            const chatVisible = $("#chat").is(":visible");
+            localStorage.setItem('chatActive', chatVisible.toString());
+            if (chatVisible) {
+                $("#header-item-tooltip-7").addClass('active');
+            } else {
+                $("#header-item-tooltip-7").removeClass('active');
+            }
+        });
+    });
      // Handle chat visibility persistence
 
-$(function() {
-    // 탭 클릭 핸들러 설정
-    $('#totalChatTab').click(function() {
-        switchChatTab('total');
+    $(function() {
+        // 탭 클릭 핸들러 설정
+        $('#totalChatTab').click(function() {
+            switchChatTab('total');
+        });
+
+        $('#tableChatTab').click(function() {
+            switchChatTab('table');
+        });
     });
 
-    $('#tableChatTab').click(function() {
-        switchChatTab('table');
-    });
-});
-
-function switchChatTab(tab) {
-    if (tab === 'total') {
-        $('#totalChatTab').addClass('active');
-        $('#tableChatTab').removeClass('active');
-        $('#totalChatContent').show();
-        $('#tableChatContent').hide();
-    } else if (tab === 'table') {
-        $('#totalChatTab').removeClass('active');
-        $('#tableChatTab').addClass('active');
-        $('#totalChatContent').hide();
-        $('#tableChatContent').show();
-        $('#tableChatContent').empty(); // 테이블 채팅 클릭 시 빈 채팅창으로 초기화
+    function switchChatTab(tab) {
+        if (tab === 'total') {
+            $('#totalChatTab').addClass('active');
+            $('#tableChatTab').removeClass('active');
+            $('#totalChatContent').show();
+            $('#tableChatContent').hide();
+        } else if (tab === 'table') {
+            $('#totalChatTab').removeClass('active');
+            $('#tableChatTab').addClass('active');
+            $('#totalChatContent').hide();
+            $('#tableChatContent').show();
+            $('#tableChatContent').empty(); // 테이블 채팅 클릭 시 빈 채팅창으로 초기화
+        }
     }
-}
+});
