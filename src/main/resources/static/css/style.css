@@ -1936,7 +1936,6 @@ section.container>.chatLayer {
     align-items: center;
     cursor: pointer;
     transition: transform 0.3s ease-in-out;
-
 }
 
 .wrapper>.header .menu-btn-layer .menu-btn>.line {
@@ -1944,7 +1943,8 @@ section.container>.chatLayer {
     height: 3px;
     background-color: #fff;
     position: absolute;
-    transition: all 0.3s ease-in-out;
+    box-shadow: 0 2px 6px rgba(255, 255, 255, 1); /* 그림자 효과 */
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
 .menu-btn .line:nth-child(1) {
@@ -1960,38 +1960,13 @@ section.container>.chatLayer {
     bottom: 0;
 }
 
-.menu-btn:not(.active):hover .line:nth-child(1) {
-    transform: rotate(45deg);
-    top: 50%;
-}
-
-.menu-btn:not(.active):hover .line:nth-child(2) {
-    opacity: 0;
-}
-
-.menu-btn:not(.active):hover .line:nth-child(3) {
-    transform: rotate(-45deg);
-    top: 50%;
-}
-
-/* 클릭했을 때 X 표시로 유지 */
-.menu-btn.active .line:nth-child(1) {
-    transform: rotate(45deg);
-    top: 50%;
-}
-
-.menu-btn.active .line:nth-child(2) {
-    opacity: 0;
-}
-
-.menu-btn.active .line:nth-child(3) {
-    transform: rotate(-45deg);
-    top: 50%;
-}
-
 .wrapper>.header .menu {
     max-width: 700px;
     width: 100%;
+}
+
+.menu-btn-layer.clicked .line {
+    box-shadow: none !important; /* 클릭 시 그림자 제거 */
 }
 
 .wrapper>.header .info_option {

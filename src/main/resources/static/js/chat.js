@@ -1,7 +1,6 @@
 $(function() {
     const activeCategory = $('body').attr('data-active-category');
     const activePage = $('body').attr('data-active-page');
-    $('select').selectric();
 
     if (activePage) {
         $('.nav-link[href="' + activeCategory + '"]').addClass('active');
@@ -203,43 +202,6 @@ $(document).ready(function() {
     initializeChat(); // 페이지가 처음 로드될 때 전체 채팅 초기화
 
      // Handle chat visibility persistence
-    const chatActive = localStorage.getItem('chatActive');
-    if (chatActive === 'true') {
-        $("#chat").show();
-        $("#header-item-tooltip-7").addClass('active');
-    } else {
-        $("#chat").hide();
-        $("#header-item-tooltip-7").removeClass('active');
-    }
-
-    $("#header-item-tooltip-7").click(function() {
-        $("#chat").slideToggle(400, function() {
-            const chatVisible = $("#chat").is(":visible");
-            localStorage.setItem('chatActive', chatVisible.toString());
-            if (chatVisible) {
-                $("#header-item-tooltip-7").addClass('active');
-            } else {
-                $("#header-item-tooltip-7").removeClass('active');
-            }
-        });
-    });
-
-    if (localStorage.getItem('menuBtnState') === 'active') {
-        $(".menu-btn").addClass('active');
-    }
-    $(".menu-btn-layer").css('visibility', 'visible');
-
-    $("#nav_button").click(function() {
-        $(".menu-btn").toggleClass('active');  // 햄버거 메뉴 버튼에 active 클래스 추가/제거
-
-        // 버튼 상태를 localStorage에 저장
-        if ($(".menu-btn").hasClass('active')) {
-            localStorage.setItem('menuBtnState', 'active');
-        } else {
-            localStorage.removeItem('menuBtnState');
-        }
-    });
-});
 
 $(function() {
     // 탭 클릭 핸들러 설정
