@@ -20,11 +20,13 @@
         <div class="white flex-row flex-c px15">
             <div id="header-item-tooltip-1"  class="items flex-c cursor-p">
                 <img src="../../static/images/svg/header-item-1.svg" alt=""/>
-                <span class="p-l-3">JACKPOT</span><span id="goldChip">0</span>
+                <span class="p-l-3">JACKPOT</span><span id="goldChip"></span>
+                <div class="spinner" id="goldChipSpinner"></div>
             </div>
             <div id="header-item-tooltip-2"  class="items flex-c cursor-p">
                 <img src="../../static/images/svg/header-item-2.svg" alt=""/>
-                <span id="bettingPoints" class="p-l-3">0</span>
+                <span id="bettingPoints" class="p-l-3"></span>
+                <div class="spinner" id="bettingPointsSpinner"></div>
             </div>
             <div class="items flex-c">
                 <img src="../../static/images/svg/header-item-3.svg" alt=""/>
@@ -71,6 +73,8 @@
             success: function(response) {
                 $('#bettingPoints').text(response.bbettingPoints);
                 $('#goldChip').text(response.ggoldChip);
+                $('#goldChipSpinner').remove();
+                $('#bettingPointsSpinner').remove();
             },
             error: function() {
                 console.log('Failed to fetch user points');
@@ -127,41 +131,20 @@
             animation: 'fade',
         });
 
-        const chatActive = localStorage.getItem('chatActive');
-            if (chatActive === 'true') {
-                $("#chat").show();
-                $("#header-item-tooltip-7").addClass('active');
+        if (localStorage.getItem('menuBtnState') === 'active') {
+            $(".menu-btn").addClass('active');
+        }
+        $(".menu-btn-layer").css('visibility', 'visible');
+
+        $("#nav_button").click(function() {
+            $(".menu-btn").toggleClass('active');  // 햄버거 메뉴 버튼에 active 클래스 추가/제거
+
+            // 버튼 상태를 localStorage에 저장
+            if ($(".menu-btn").hasClass('active')) {
+                localStorage.setItem('menuBtnState', 'active');
             } else {
-                $("#chat").hide();
-                $("#header-item-tooltip-7").removeClass('active');
+                localStorage.removeItem('menuBtnState');
             }
-
-            $("#header-item-tooltip-7").click(function() {
-                $("#chat").slideToggle(400, function() {
-                    const chatVisible = $("#chat").is(":visible");
-                    localStorage.setItem('chatActive', chatVisible.toString());
-                    if (chatVisible) {
-                        $("#header-item-tooltip-7").addClass('active');
-                    } else {
-                        $("#header-item-tooltip-7").removeClass('active');
-                    }
-                });
-            });
-
-            if (localStorage.getItem('menuBtnState') === 'active') {
-                $(".menu-btn").addClass('active');
-            }
-            $(".menu-btn-layer").css('visibility', 'visible');
-
-            $("#nav_button").click(function() {
-                $(".menu-btn").toggleClass('active');  // 햄버거 메뉴 버튼에 active 클래스 추가/제거
-
-                // 버튼 상태를 localStorage에 저장
-                if ($(".menu-btn").hasClass('active')) {
-                    localStorage.setItem('menuBtnState', 'active');
-                } else {
-                    localStorage.removeItem('menuBtnState');
-                }
-            });
+        });
     });
 </script>

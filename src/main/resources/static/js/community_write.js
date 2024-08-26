@@ -42,9 +42,18 @@ function uploadFile(type) {
 const draft = localStorage.getItem('postDraft');
 if (draft) {
     const { title, content, tags } = JSON.parse(draft);
-    document.getElementById('title').value = title;
-    document.getElementById('content').innerHTML = content;
-    document.getElementById('tags').value = tags;
+
+    if (title !== null) {
+        document.getElementById('title').value = title;
+    }
+
+    if (content !== null) {
+        document.getElementById('content').innerHTML = content;
+    }
+
+    if (tags !== null) {
+        document.getElementById('tags').value = tags;
+    }
 }
 
 function saveDraft() {

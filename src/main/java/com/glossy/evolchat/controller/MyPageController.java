@@ -1,7 +1,11 @@
 package com.glossy.evolchat.controller;
 
+import com.glossy.evolchat.dto.ItemPurchaseSummary;
+import com.glossy.evolchat.model.Purchase;
 import com.glossy.evolchat.model.User;
 import com.glossy.evolchat.model.UserPoints;
+import com.glossy.evolchat.repository.PurchaseRepository;
+import com.glossy.evolchat.service.PurchaseService;
 import com.glossy.evolchat.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -10,12 +14,20 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.security.Principal;
+import java.util.List;
 import java.util.Optional; // Add this import
 
 @Controller
 public class MyPageController {
     @Autowired
     private UserService userService; // Assume a UserService that fetches user data
+
+    @Autowired
+    private PurchaseService purchaseService;
+
+    @Autowired
+    private PurchaseRepository purchaseRepository;
 
     @GetMapping("/my_pqge")
     public String myPqge(Model model) {
@@ -48,8 +60,15 @@ public class MyPageController {
     }
 
     @GetMapping("/my_item")
-    public String my_item(Model model) {
-        model.addAttribute("activeCategory", "my_pqge");
+    public String my_item(Principal principal, Model model) {
+        String username = principal.getName();
+        User user = userService.findByUsername(username);
+
+        // 아이템별 총 보유 갯수 조회
+        List<ItemPurchaseSummary> itemPurchaseSummaries = purchaseService.getItemPurchaseSummariesByUser(user);
+
+        model.addAttribute("itemPurchaseSummaries", itemPurchaseSummaries);
+        model.addAttribute("activeCategory", "my_page");
         model.addAttribute("activePage", "my_item");
         model.addAttribute("contentFragment", "fragments/my_item");
         return "index";
@@ -70,7 +89,6 @@ public class MyPageController {
         model.addAttribute("contentFragment", "fragments/my_bettingpoints");
         return "index";
     }
-
 
     @GetMapping("/my_activitypoints")
     public String my_activitypoints(Model model) {

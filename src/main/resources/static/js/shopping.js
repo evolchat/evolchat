@@ -284,7 +284,6 @@ function purchaseItem(item, count, paymentMethod, remainingBalance) {
                             console.log('Failed to fetch user points');
                         }
                     });
-                updateUIAfterPurchase();
             });
         } else {
             // 서버 응답이 실패일 경우
