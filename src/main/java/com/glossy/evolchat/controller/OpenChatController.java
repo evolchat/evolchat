@@ -87,6 +87,13 @@ public class OpenChatController {
         model.addAttribute("contentFragment", "fragments/openchat_favorites");
         return "index";
     }
+    @GetMapping("/openchat_place")
+    public String openchat_place(Model model) {
+        model.addAttribute("activeCategory", "openchat");
+        model.addAttribute("activePage", "openchat_place");
+        model.addAttribute("contentFragment", "fragments/openchat_place");
+        return "index";
+    }
     @GetMapping("/openchat_create")
     public String openchat_create(Model model) {
         model.addAttribute("activeCategory", "openchat");
