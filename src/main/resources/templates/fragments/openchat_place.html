@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>에볼챗닷컴</title>
+    <script src="../../static/js/openchat.js"></script>
+    <link rel="stylesheet" href="../../static/css/page/openchat.css" />
+</head>
+<body>
+<div id="content-area" class="flex-grow" style="">
+    <div class="wrapper bc-black vh100 ">
+        <Section class="flex-row">
+            <div class="wrap bc-footer">
+                <div class="content">
+                    <div class="mainContent bc-main text-center">
+                        <div class="sub-header flex-row flex-c white opacity60 px15">
+                            <div class="list active"><a href="openchat">전체</a></div>
+                            <div class="list"><a href="openchat_evolution">에볼루션</a></div>
+                            <div class="list"><a href="openchat_sports">스포츠</a></div>
+                            <div class="list"><a href="openchat_game">게임</a></div>
+                            <div class="list"><a href="openchat_cryptocurrency">가상화폐</a></div>
+                            <div class="list"><a href="openchat_stock">주식</a></div>
+                            <div class="list"><a href="openchat_amity">친목</a></div>
+                            <div class="list"><a href="openchat_favorites">즐겨찾기</a></div>
+                        </div>
+                        <div class="mainLayer">
+                            
+                        </div>
+                    </div>
+                    <div id="footer" class=" bc-footer" th:insert="~{include/footer}">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+</body>
+</html>
