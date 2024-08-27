@@ -1,3 +1,73 @@
+
+/* openchat */
+
+.room-layer .room {
+    max-width: 320px;
+    width: 320px;
+    margin: 10px;
+    display: inline-block;
+    line-height: 0;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: left;
+}
+
+.room-layer .room .photo-layout {
+    max-height: 150px;
+    width: 100%;
+    height: 150px;
+    overflow: hidden;
+    display: inline-block;
+    position: relative;
+
+}
+
+.room-layer .room .photo-layout>.img {
+    width: 100%;
+    height: 100%;
+}
+
+.room-layer .room .photo-layout>.img>img {
+    height: 100%;
+    width: 100%;
+    border: 0 none;
+    vertical-align: top;
+    object-fit: cover;
+}
+
+.room-layer .room .text-wrap {
+    height: 190px;
+    background-color: #232428;
+    max-height: 190px;
+    min-height: 190px;
+    line-height: normal;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    color: #A8ADBB;
+}
+
+.room-layer .room .text-wrap .v-h {
+    flex-grow: 1;
+}
+
+.room-layer .room .text-wrap .position-a {
+    top: -20px;
+    left: 20px;
+    width: 52px;
+    max-width: 52px;
+    max-height: 52px;
+    height: 52px;
+}
+
+.room-layer .room .text-wrap .position-a img {
+    width: 100%;
+    height: 100%;
+}
+
+/* openchat */
+
+
 .contain {
     width: 640px;
     background-color: #232428;
