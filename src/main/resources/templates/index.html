@@ -20,16 +20,19 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body th:data-active-category="${activeCategory}" th:data-active-page="${activePage}" th:data-board-id="${boardId}">
-        <div class="wrapper bc-black vh100">
-            <div id="header" class="header flex-row bc-header" th:insert="~{include/header}"></div>
-            <Section class="flex-row">
-                <div id="nav" th:insert="~{include/nav}"></div>
-                <div id="main-content" th:replace="~{${contentFragment}}"></div>
-                <div id="chat" class="content chatLayer bc-aside" th:insert="~{include/chat}"></div>
-            </section>
-        </div>
+<div class="wrapper bc-black vh100">
+    <div id="header" class="header flex-row bc-header" th:insert="~{include/header}"></div>
+    <Section class="flex-row">
+        <div id="nav" th:insert="~{include/nav}"></div>
+        <div id="main-content" th:replace="~{${contentFragment}}"></div>
+        <div id="chat" class="content chatLayer bc-aside" th:insert="~{include/chat}"></div>
+    </section>
+</div>
+</body>
 <script>
     $(function() {
+        let previousPath = window.location.pathname.split("/").pop();
+
         // 현재 활성화된 카테고리와 페이지를 설정
         const activeCategory = $('body').attr('data-active-category');
         const activePage = $('body').attr('data-active-page');
@@ -79,11 +82,13 @@
                     // Load new CSS
                     newCssLinks.each(function() {
                         const href = $(this).attr('href');
+                        const id = href.split('/').pop().split('.').shift(); // Extract id from href
                         if (href && !$(`link[href="${href}"]`).length) {
                             $('<link>', {
                                 rel: 'stylesheet',
                                 type: 'text/css',
-                                href: href
+                                href: href,
+                                id: id // Set id for the new stylesheet
                             }).appendTo('head');
                         }
                     });
@@ -101,6 +106,9 @@
                     // Optionally handle active class
                     $('.nav-link').removeClass('active');
                     $('.nav-link[href="' + url + '"]').addClass('active');
+
+                    // Update the previousPath for the next navigation
+                    previousPath = url.split("/").pop();
                 },
                 error: function() {
                     alert('Failed to load content.');
@@ -110,14 +118,16 @@
 
         // Remove old CSS and JS
         function removeOldResources() {
-            // Remove all <link> elements with rel="stylesheet" except those currently in use
-            $('link[rel="stylesheet"]').each(function() {
-                const href = $(this).attr('href');
-                if (href && !$(`link[href="${href}"]`).length) {
-                    $(this).remove();
-                    console.log(this)
+            // Use the previous path to find and remove the old stylesheet
+            const previousCssId = previousPath.split('.').shift(); // Extract id from the previous path
+
+            if (previousCssId) {
+                const stylesheet = document.getElementById(previousCssId);
+                if (stylesheet) {
+                    stylesheet.parentNode.removeChild(stylesheet);
+                    console.log('Removed stylesheet with id:', previousCssId);
                 }
-            });
+            }
 
             // Remove all <script> elements except those currently in use
             $('script').each(function() {
@@ -129,5 +139,5 @@
         }
     });
 </script>
-</body>
+
 </html>
