@@ -30,7 +30,7 @@ $(document).ready(function() {
                                 ${typeof medalOrText === 'number' ? medalOrText : `<img src="${medalOrText}" alt="#">`}
                             </td>
                             <td><img class="profile-img-60" src="${profileImage}" alt="#"></td>
-                            <td class="opacity80 px17 text-left">${user.nickname}</td>
+                            <td class="opacity80 px17 text-center">${user.nickname}</td>
                             <td class="text-center">${user.bettingProfit}</td>
                             <td><span class="orange-FFBF00">${user.bettingWins}승</span><span class="blue">&nbsp${user.bettingLosses}패</span></td>
                             <td class="opacity60">${user.winRate}</td>

@@ -1621,9 +1621,23 @@ table {
     vertical-align: middle;
 }
 
+.rank-table th:nth-child(1) {
+    width: 180px;
+}
+
+.rank-table th:nth-child(2) {
+    width: 800px;
+}
+
+.rank-table th:nth-child(3) {
+    width: 200px;
+    padding-left: 25px;
+}
+
 .rank-table tr {
     border-collapse: collapse;
     border: 1px solid #35373D;
+    color: #afafaf;
 }
 
 .rank-table tbody tr:hover,
@@ -2058,7 +2072,7 @@ div.mainContent {
 
 /* sub-header */
 .sub-header {
-    padding: 10px 20px;
+    padding: 8px 20px;
 }
 
 .sub-header:nth-child(1) {
