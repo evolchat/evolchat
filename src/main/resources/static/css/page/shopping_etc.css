@@ -1,0 +1,126 @@
+
+
+/* shopping */
+.mainLayer>.item-list {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.mainLayer>.item-list .shopping-item-wrap {
+    max-width: 320px;
+    width: 320px;
+    max-height: 226px;
+    /* height: 226px; */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background-color: transparent;
+    margin: 10px;
+}
+
+.mainLayer>.item-list .shopping-item-wrap .line {
+    padding: 20px;
+    border: 1px solid #35373D;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.mainLayer>.item-list .shopping-item-wrap .line .case img {
+    margin-right: 6px;
+}
+
+.shopping-item-wrap .btn-wrap button:nth-of-type(1) {
+    margin-right: 8px;
+}
+
+.shopping-item-wrap .btn-wrap button {
+    background-color: #35373D;
+    display: inline-block;
+    border: none;
+    width: 66px;
+    text-align: center;
+    height: 36px;
+    vertical-align: middle;
+    color: #75767A;
+    border-radius: 5px;
+    font-size: 0.9375 rem;
+}
+
+div.mainContent.bc-main>div.mainLayer>div>div>div.line>div.top.flex-row>div.left {
+    /* background-color: #03c104; */
+    height: 120px;
+    /* opacity: .5; */
+}
+
+.shopping-item-wrap .btn-wrap .gift.activate {
+    background-color: #BF9B30;
+    color: #fff;
+    cursor: pointer;
+}
+
+.shopping-item-wrap .btn-wrap .purchase.activate {
+    color: #fff;
+    cursor: pointer;
+    background-color: #8744FF;
+}
+
+.count-btn-wrap .count {
+    color: #fff;
+}
+
+.count-btn {
+    cursor: pointer;
+}
+
+.shopping-item-wrap .top {
+    text-align: left;
+}
+
+.shopping-item-wrap .top .left {
+    max-width: 215px;
+}
+
+.shopping-item-wrap .top .left .type {
+    color: #E7BC11;
+    font-size: 0.875 rem;
+}
+
+.shopping-item-wrap .top .left .name {
+    color: #fff;
+    font-size: 1.0625 rem;
+}
+
+.shopping-item-wrap .top .left .text {
+    color: #76777B;
+}
+
+.shopping-item-wrap .top .left .text .red {
+    margin: 6px 0 0 0;
+}
+
+/* 쇼핑 */
+#content-area div.mainLayer .bottom>div>div {
+    display: flex !important;
+    align-items: center;
+    width: 150px;
+    margin-right: 30px;
+}
+
+#content-area div.mainLayer .bottom>div>div>div {
+    display: flex !important;
+    align-items: center;
+    width: 36px;
+    height: 36px;
+    justify-content: center;
+    border: 1px solid #35373D;
+}
+#content-area div.mainLayer .bottom>div>div>div.count {
+    flex-grow: 1;
+}
+
+.shopping-item-wrap .bottom .btn-wrap {
+    margin-top: 15px;
+}
+/* 셔핑 */
