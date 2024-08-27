@@ -28,7 +28,7 @@ $(document).ready(function() {
                     const commentCountHtml = post.commentCount > 0 ? `<span>+${post.commentCount}</span>` : '';
 
                     const postHtml = `
-                        <div class="post flex-row tr" data-post-id="${post.postId}">
+                        <a class="post flex-row tr" data-post-id="${post.postId}" href="/community_detail?boardId=1&postId=${post.postId}">
                             <div class="text-wrap">
                                 <div class="title white m-b-10 px17">
                                     ${post.title} ${commentCountHtml}
@@ -161,12 +161,12 @@ $(document).ready(function() {
     });
 
     // 게시물 클릭 이벤트 추가
-    $('#posts-container').on('click', '.post', function() {
-        const postId = $(this).data('post-id');
-        if (postId) {
-            window.location.href = `/community_detail?boardId=1&postId=${postId}`;
-        }
-    });
+    //$('#posts-container').on('click', '.post', function() {
+    //   const postId = $(this).data('post-id');
+    //   if (postId) {
+    //        window.location.href = `/community_detail?boardId=1&postId=${postId}`;
+    //    }
+    //});
 
     // 정렬 버튼 클릭 이벤트 추가
     $('#sort-latest').on('click', function() {
