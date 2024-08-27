@@ -20,9 +20,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             }
         });
     });
-});
 
-document.addEventListener('DOMContentLoaded', function () {
     const nicknameSearchInput = document.getElementById('nicknameSearch');
     const nicknameSearchCount = document.getElementById('nicknameSearch-count');
 

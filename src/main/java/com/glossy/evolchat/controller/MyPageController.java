@@ -29,8 +29,8 @@ public class MyPageController {
     @Autowired
     private PurchaseRepository purchaseRepository;
 
-    @GetMapping("/my_pqge")
-    public String myPqge(Model model) {
+    @GetMapping("/my_page")
+    public String my_page(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String username = auth.getName();
 
@@ -52,9 +52,9 @@ public class MyPageController {
             model.addAttribute("error", "User not authenticated.");
         }
 
-        model.addAttribute("activeCategory", "my_pqge");
-        model.addAttribute("activePage", "my_pqge");
-        model.addAttribute("contentFragment", "fragments/my_pqge");
+        model.addAttribute("activeCategory", "my_page");
+        model.addAttribute("activePage", "my_page");
+        model.addAttribute("contentFragment", "fragments/my_page");
 
         return "index";
     }
@@ -76,7 +76,7 @@ public class MyPageController {
 
     @GetMapping("/my_cash")
     public String my_cash(Model model) {
-        model.addAttribute("activeCategory", "my_pqge");
+        model.addAttribute("activeCategory", "my_page");
         model.addAttribute("activePage", "my_cash");
         model.addAttribute("contentFragment", "fragments/my_cash");
         return "index";
@@ -84,7 +84,7 @@ public class MyPageController {
 
     @GetMapping("/my_bettingpoints")
     public String my_bettingpoints(Model model) {
-        model.addAttribute("activeCategory", "my_pqge");
+        model.addAttribute("activeCategory", "my_page");
         model.addAttribute("activePage", "my_bettingpoints");
         model.addAttribute("contentFragment", "fragments/my_bettingpoints");
         return "index";
@@ -92,23 +92,16 @@ public class MyPageController {
 
     @GetMapping("/my_activitypoints")
     public String my_activitypoints(Model model) {
-        model.addAttribute("activeCategory", "my_pqge");
+        model.addAttribute("activeCategory", "my_page");
         model.addAttribute("activePage", "my_activitypoints");
         model.addAttribute("contentFragment", "fragments/my_activitypoints");
         return "index";
     }
     @GetMapping("/my_goldchip")
     public String my_goldchip(Model model) {
-        model.addAttribute("activeCategory", "my_pqge");
+        model.addAttribute("activeCategory", "my_page");
         model.addAttribute("activePage", "my_goldchip");
         model.addAttribute("contentFragment", "fragments/my_goldchip");
-        return "index";
-    }
-    @GetMapping("/my_mypqge")
-    public String my_mypqge(Model model) {
-        model.addAttribute("activeCategory", "my_pqge");
-        model.addAttribute("activePage", "my_mypqge");
-        model.addAttribute("contentFragment", "fragments/my_mypqge");
         return "index";
     }
 }

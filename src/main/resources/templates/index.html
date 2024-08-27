@@ -47,7 +47,6 @@
             e.preventDefault(); // 기본 동작 방지
 
             const url = $(this).attr('href');
-
             // 새 컨텐츠를 로드
             loadContent(url);
 
@@ -120,7 +119,6 @@
         function removeOldResources() {
             // Use the previous path to find and remove the old stylesheet
             const previousCssId = previousPath.split('.').shift(); // Extract id from the previous path
-
             if (previousCssId) {
                 const stylesheet = document.getElementById(previousCssId);
                 if (stylesheet) {
