@@ -69,6 +69,9 @@
                     const newCssLinks = $response.find('link[rel="stylesheet"]');
                     const newJsScripts = $response.find('script');
 
+                    // Remove old CSS and JS
+                    removeOldResources();
+
                     // Update content
                     $('#content-area').html(newContent);
 
@@ -100,6 +103,26 @@
                 },
                 error: function() {
                     alert('Failed to load content.');
+                }
+            });
+        }
+
+        // Remove old CSS and JS
+        function removeOldResources() {
+            // Remove all <link> elements with rel="stylesheet" except those currently in use
+            $('link[rel="stylesheet"]').each(function() {
+                const href = $(this).attr('href');
+                if (href && !$(`link[href="${href}"]`).length) {
+                    $(this).remove();
+                    console.log(this)
+                }
+            });
+
+            // Remove all <script> elements except those currently in use
+            $('script').each(function() {
+                const src = $(this).attr('src');
+                if (src && !$(`script[src="${src}"]`).length) {
+                    $(this).remove();
                 }
             });
         }
