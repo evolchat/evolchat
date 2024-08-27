@@ -23,26 +23,86 @@
             <div id="header" class="header flex-row bc-header" th:insert="~{include/header}"></div>
             <Section class="flex-row">
                 <div id="nav" th:insert="~{include/nav}"></div>
-                <div th:replace="~{${contentFragment}}"></div>
+                <div id="main-content" th:replace="~{${contentFragment}}"></div>
                 <div id="chat" class="content chatLayer bc-aside" th:insert="~{include/chat}"></div>
             </section>
         </div>
 <script>
     $(function() {
+        // 현재 활성화된 카테고리와 페이지를 설정
         const activeCategory = $('body').attr('data-active-category');
         const activePage = $('body').attr('data-active-page');
 
-        $('select').selectric();
-
+        // 네비게이션에서 현재 페이지에 해당하는 링크에 'active' 클래스 추가
         if (activePage) {
             $('.nav-link[href="' + activeCategory + '"]').addClass('active');
         }
 
+        // a 태그 클릭 시 컨텐츠만 로드
+        $(document).on('click', 'a', function(e) {
+            e.preventDefault(); // 기본 동작 방지
+
+            const url = $(this).attr('href');
+
+            // 새 컨텐츠를 로드
+            loadContent(url);
+
+            // URL을 변경하고 기록
+            history.pushState(null, null, url);
+        });
+
+        // 페이지 이동 시 (뒤로/앞으로 가기 등)
         window.onpopstate = function() {
             const currentPath = window.location.pathname.split("/").pop();
-            $('.nav-link').removeClass('active');
-            $('.nav-link[href="' + activeCategory + '"]').addClass('active');
+            loadContent(currentPath);
         };
+
+        // 서버에서 컨텐츠를 가져와서 #content 영역에 넣기
+        function loadContent(url) {
+            $.ajax({
+                url: url,
+                method: 'GET',
+                success: function(response) {
+                    // Extract new content and resources from response
+                    const $response = $(response);
+                    const newContent = $response.find('#content-area').html();
+                    const newCssLinks = $response.find('link[rel="stylesheet"]');
+                    const newJsScripts = $response.find('script');
+
+                    // Update content
+                    $('#content-area').html(newContent);
+
+                    // Load new CSS
+                    newCssLinks.each(function() {
+                        const href = $(this).attr('href');
+                        if (href && !$(`link[href="${href}"]`).length) {
+                            $('<link>', {
+                                rel: 'stylesheet',
+                                type: 'text/css',
+                                href: href
+                            }).appendTo('head');
+                        }
+                    });
+
+                    // Load new JS
+                    newJsScripts.each(function() {
+                        const src = $(this).attr('src');
+                        if (src && !$(`script[src="${src}"]`).length) {
+                            $.getScript(src, function() {
+                                console.log('New script loaded:', src);
+                            });
+                        }
+                    });
+
+                    // Optionally handle active class
+                    $('.nav-link').removeClass('active');
+                    $('.nav-link[href="' + url + '"]').addClass('active');
+                },
+                error: function() {
+                    alert('Failed to load content.');
+                }
+            });
+        }
     });
 </script>
 </body>

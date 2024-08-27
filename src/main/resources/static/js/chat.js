@@ -2,10 +2,6 @@
 const activeCategory = $('body').attr('data-active-category');
 const activePage = $('body').attr('data-active-page');
 
-if (activePage) {
-    $('.nav-link[href="' + activeCategory + '"]').addClass('active');
-}
-
 $("#header-item-tooltip-7").click(function() {
     $("#chat").toggle();
     chatCheckActive();
@@ -21,12 +17,6 @@ function chatCheckActive() {
         sessionStorage.setItem('chatActive', 'false'); // 비활성화 상태 저장
     }
 }
-
-window.onpopstate = function() {
-    const currentPath = window.location.pathname.split("/").pop();
-    $('.nav-link').removeClass('active');
-    $('.nav-link[href="' + activeCategory + '"]').addClass('active');
-};
 
 let chatInitialized = false; // 채팅 초기화 여부 플래그
 
