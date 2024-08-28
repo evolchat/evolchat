@@ -31,6 +31,17 @@
 </body>
 <script>
     $(document).ready(function() {
+
+        const currentPath = $('body').attr('data-active-category');
+
+        $('.nav-link').each(function() {
+            const linkPath = $(this).attr('href');
+
+            if (linkPath === currentPath) {
+                $(this).addClass('active');
+            }
+        });
+
         let previousPath = window.location.pathname.split("/").pop();
 
         // a 태그 클릭 시 컨텐츠만 로드
@@ -57,22 +68,18 @@
                 url: url,
                 method: 'GET',
                 success: function(response) {
-                    // Extract new content and resources from response
                     const $response = $(response);
                     const newContent = $response.find('#content-area').html();
                     const newCssLinks = $response.find('link[rel="stylesheet"]');
                     const newJsScripts = $response.find('script');
 
-                    // Remove old CSS and JS
                     removeOldResources();
 
-                    // Update content
                     $('#content-area').html(newContent);
 
-                    // Load new CSS
                     newCssLinks.each(function() {
                         const href = $(this).attr('href');
-                        const id = href.split('/').pop().split('.').shift(); // Extract id from href
+                        const id = href.split('/').pop().split('.').shift();
                         if (href && !$(`link[href="${href}"]`).length) {
                             $('<link>', {
                                 rel: 'stylesheet',
@@ -83,7 +90,6 @@
                         }
                     });
 
-                    // Load new JS
                     newJsScripts.each(function() {
                         const src = $(this).attr('src');
                         if (src && !$(`script[src="${src}"]`).length) {
@@ -93,11 +99,9 @@
                         }
                     });
 
-                    // Optionally handle active class
                     $('.nav-link').removeClass('active');
                     $('.nav-link[href="' + url + '"]').addClass('active');
 
-                    // Update the previousPath for the next navigation
                     previousPath = url.split("/").pop();
                 },
                 error: function() {
@@ -108,13 +112,11 @@
 
         // Remove old CSS and JS
         function removeOldResources() {
-            // Use the previous path to find and remove the old stylesheet
-            const previousCssId = previousPath.split('.').shift(); // Extract id from the previous path
+            const previousCssId = previousPath.split('.').shift();
             if (previousCssId) {
                 const stylesheet = document.getElementById(previousCssId);
                 if (stylesheet) {
                     stylesheet.parentNode.removeChild(stylesheet);
-                    console.log('Removed stylesheet with id:', previousCssId);
                 }
             }
 

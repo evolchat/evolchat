@@ -114,16 +114,6 @@
 </header>
 <script>
     $(document).ready(function() {
-        const currentPath = $('body').attr('data-active-category');
-
-        $('.nav-link').each(function() {
-            const linkPath = $(this).attr('href');
-
-            if (linkPath === currentPath) {
-                $(this).addClass('active');
-            }
-        });
-
         let isInitialNavVisible = JSON.parse(localStorage.getItem('isInitialNavVisible')) || false;
         let isNavExpanded = JSON.parse(localStorage.getItem('isNavExpanded')) || !isInitialNavVisible;
 
