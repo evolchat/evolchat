@@ -24,7 +24,7 @@
     <div id="header" class="header flex-row bc-header" th:insert="~{include/header}"></div>
     <Section class="flex-row">
         <div id="nav" th:insert="~{include/nav}"></div>
-        <div id="main-content" th:replace="~{${contentFragment}}"></div>
+        <div th:replace="~{${contentFragment}}"></div>
         <div id="chat" class="content chatLayer bc-aside" th:insert="~{include/chat}"></div>
     </section>
 </div>
@@ -76,7 +76,6 @@
                     removeOldResources();
 
                     $('#content-area').html(newContent);
-
                     newCssLinks.each(function() {
                         const href = $(this).attr('href');
                         const id = href.split('/').pop().split('.').shift();
@@ -100,8 +99,7 @@
                     });
 
                     $('.nav-link').removeClass('active');
-                    $('.nav-link[href="' + url + '"]').addClass('active');
-
+                    $('.nav-link[href="' + $('#content-area .wrapper').attr('data-active-category') + '"]').addClass('active');
                     previousPath = url.split("/").pop();
                 },
                 error: function() {
@@ -110,7 +108,6 @@
             });
         }
 
-        // Remove old CSS and JS
         function removeOldResources() {
             const previousCssId = previousPath.split('.').shift();
             if (previousCssId) {

@@ -100,7 +100,7 @@ function submitPost() {
     const title = document.getElementById('title').value;
     const content = document.getElementById('content').innerHTML;
     const tags = document.getElementById('tags').value;
-    const boardId = document.body.getAttribute('data-board-id');
+    const boardId = $('#content-area .wrapper').attr('data-board-id');
 
     // 제목과 본문이 비어 있는지 확인
     if (!title || !content.trim()) {
