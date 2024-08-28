@@ -177,7 +177,7 @@ function submitPost() {
                             } else if (boardId == 2) {
                                 window.location.href = '/community_photo'; // 포토 게시판 페이지로 이동
                             } else if (boardId == 3) {
-                                window.location.href = '/community_videos'; // 동영상 게시판 페이지로 이동
+                                window.location.href = '/community_video'; // 동영상 게시판 페이지로 이동
                             }
                         }
                     });

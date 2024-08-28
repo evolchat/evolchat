@@ -17,11 +17,11 @@ $(document).ready(function() {
 
                 if (response.length === 0) {
                     postsContainer.append('<div class="no-posts">게시물이 없습니다.</div>'); // 게시물이 없으면 메시지 표시
-                    $('#pagination-container').hide(); // 페이지네이션 숨기기
+                    $('#comm-photo-pagination-container').hide(); // 페이지네이션 숨기기
                     return;
                 }
 
-                $('#pagination-container').show(); // 게시물이 있을 때 페이지네이션 표시
+                $('#comm-photo-pagination-container').show(); // 게시물이 있을 때 페이지네이션 표시
 
                 response.forEach(post => {
                     // 댓글 수 처리
@@ -80,7 +80,7 @@ $(document).ready(function() {
 
     // 페이지네이션을 업데이트하는 함수
     function updatePagination() {
-        const paginationContainer = $('#pagination-container');
+        const paginationContainer = $('#comm-photo-pagination-container');
         paginationContainer.empty(); // 기존 페이지네이션 제거
 
         // 이전 두 페이지 버튼
@@ -145,7 +145,7 @@ $(document).ready(function() {
     }
 
     function handleSearch() {
-        const searchQuery = $('#search-input').val();
+        const searchQuery = $('#comm-photo-search-input').val();
         fetchPosts(1, currentBoardId, searchQuery, currentSort); // 첫 페이지부터 검색
     }
 
@@ -153,12 +153,12 @@ $(document).ready(function() {
     fetchPosts(1, currentBoardId);
 
     // 검색 버튼 클릭 이벤트
-    $('#search-button').on('click', function() {
+    $('#comm-photo-search-button').on('click', function() {
         handleSearch();
     });
 
     // 검색 입력 필드에서 Enter 키 눌렀을 때
-    $('#search-input').on('keypress', function(event) {
+    $('#comm-photo-search-input').on('keypress', function(event) {
         if (event.which === 13) { // Enter 키 코드
             event.preventDefault();
             handleSearch();

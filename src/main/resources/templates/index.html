@@ -30,17 +30,8 @@
 </div>
 </body>
 <script>
-    $(function() {
+    $(document).ready(function() {
         let previousPath = window.location.pathname.split("/").pop();
-
-        // 현재 활성화된 카테고리와 페이지를 설정
-        const activeCategory = $('body').attr('data-active-category');
-        const activePage = $('body').attr('data-active-page');
-
-        // 네비게이션에서 현재 페이지에 해당하는 링크에 'active' 클래스 추가
-        if (activePage) {
-            $('.nav-link[href="' + activeCategory + '"]').addClass('active');
-        }
 
         // a 태그 클릭 시 컨텐츠만 로드
         $(document).on('click', 'a', function(e) {

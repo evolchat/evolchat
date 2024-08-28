@@ -13,11 +13,11 @@ $(document).ready(function() {
 
                 if (response.length === 0) {
                     usersContainer.append('<tr><td colspan="8">검색 결과가 없습니다.</td></tr>'); // 데이터가 없으면 메시지 표시
-                    $('#pagination-container').hide(); // 페이지네이션 숨기기
+                    $('#rank-pagination-container').hide(); // 페이지네이션 숨기기
                     return;
                 }
 
-                $('#pagination-container').show(); // 데이터가 있으면 페이지네이션 표시
+                $('#rank-pagination-container').show(); // 데이터가 있으면 페이지네이션 표시
 
                 response.forEach((user, index) => {
                     const rank = (page - 1) * usersPerPage + index + 1;
@@ -59,7 +59,7 @@ $(document).ready(function() {
     }
 
     function updatePagination() {
-        const paginationContainer = $('#pagination-container');
+        const paginationContainer = $('#rank-pagination-container');
         paginationContainer.empty(); // 기존 페이지네이션 제거
 
         // '맨 앞으로' 버튼

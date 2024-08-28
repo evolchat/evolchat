@@ -132,7 +132,7 @@ $(document).ready(function() {
             // page 값이 유효한지 확인
             if (!isNaN(page) && page > 0 && page <= totalPages) {
                 currentPage = page; // currentPage 업데이트
-                fetchPosts(currentPage, currentBoardId, $('#search-input').val(), currentSort);
+                fetchPosts(currentPage, currentBoardId, $('#comm-free-search-input').val(), currentSort);
             } else {
                 console.error('Invalid page value:', page); // 오류 로그 출력
             }
@@ -140,7 +140,7 @@ $(document).ready(function() {
     }
 
     function handleSearch() {
-        const searchQuery = $('#search-input').val();
+        const searchQuery = $('#comm-free-search-input').val();
         fetchPosts(1, currentBoardId, searchQuery, currentSort); // 첫 페이지부터 검색
     }
 
@@ -148,42 +148,34 @@ $(document).ready(function() {
     fetchPosts(1, currentBoardId);
 
     // 검색 버튼 클릭 이벤트
-    $('#search-button').on('click', function() {
+    $('#comm-free-search-button').on('click', function() {
         handleSearch();
     });
 
     // 검색 입력 필드에서 Enter 키 눌렀을 때
-    $('#search-input').on('keypress', function(event) {
+    $('#comm-free-search-input').on('keypress', function(event) {
         if (event.which === 13) { // Enter 키 코드
             event.preventDefault();
             handleSearch();
         }
     });
 
-    // 게시물 클릭 이벤트 추가
-    //$('#posts-container').on('click', '.post', function() {
-    //   const postId = $(this).data('post-id');
-    //   if (postId) {
-    //        window.location.href = `/community_detail?boardId=1&postId=${postId}`;
-    //    }
-    //});
-
     // 정렬 버튼 클릭 이벤트 추가
     $('#sort-latest').on('click', function() {
         currentSort = 'latest'; // 정렬 기준을 최신글로 설정
-        fetchPosts(1, currentBoardId, $('#search-input').val(), currentSort);
+        fetchPosts(1, currentBoardId, $('#comm-free-search-input').val(), currentSort);
         updateActiveClass($(this));
     });
 
     $('#sort-popular').on('click', function() {
         currentSort = 'popular'; // 정렬 기준을 인기글로 설정
-        fetchPosts(1, currentBoardId, $('#search-input').val(), currentSort);
+        fetchPosts(1, currentBoardId, $('#comm-free-search-input').val(), currentSort);
         updateActiveClass($(this));
     });
 
     $('#sort-most-comments').on('click', function() {
         currentSort = 'most-comments'; // 정렬 기준을 댓글 많은 글로 설정
-        fetchPosts(1, currentBoardId, $('#search-input').val(), currentSort);
+        fetchPosts(1, currentBoardId, $('#comm-free-search-input').val(), currentSort);
         updateActiveClass($(this));
     });
 

@@ -97,7 +97,7 @@ public class CommunityController {
             } else if(boardId == 2){
                 model.addAttribute("activePage", "community_photo");
             } else if(boardId == 3){
-                model.addAttribute("activePage", "community_videos");
+                model.addAttribute("activePage", "community_video");
             }
 
             model.addAttribute("contentFragment", "fragments/community_detail");
@@ -128,11 +128,11 @@ public class CommunityController {
         return "index";
     }
 
-    @GetMapping("/community_videos")
-    public String community_videos(Model model) {
+    @GetMapping("/community_video")
+    public String community_video(Model model) {
         model.addAttribute("activeCategory", "community_free");
-        model.addAttribute("activePage", "community_videos");
-        model.addAttribute("contentFragment", "fragments/community_videos");
+        model.addAttribute("activePage", "community_video");
+        model.addAttribute("contentFragment", "fragments/community_video");
         return "index";
     }
 
@@ -144,7 +144,7 @@ public class CommunityController {
         } else if(boardId == 2){
             model.addAttribute("activePage", "community_photo");
         } else if(boardId == 3){
-            model.addAttribute("activePage", "community_videos");
+            model.addAttribute("activePage", "community_video");
         }
         model.addAttribute("contentFragment", "fragments/community_write");
         model.addAttribute("boardId", boardId);

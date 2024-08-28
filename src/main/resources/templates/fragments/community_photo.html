@@ -12,29 +12,24 @@
 <body>
     <div id="content-area" class="flex-grow" style="">
         <div class="wrapper bc-black vh100 ">
-    <!--        <div id="header" class="header flex-row bc-header"></div>-->
             <Section class="flex-row">
-    <!--            <div id="nav"></div>-->
                 <div class="wrap bc-footer ">
                     <div class="content">
                         <div class="mainContent bc-main">
                             <div class="sub-header flex-row flex-c white opacity60 px15">
                                 <div class="list"><a href="community_free">자유</a></div>
                                 <div class="list active"><a href="community_photo">포토</a></div>
-    <!--                            <div class="list "><a href="#">유머</a></div>-->
-                                <div class="list"><a href="community_videos">동영상</a></div>
-    <!--                            <div class="list"><a href="#">노하우</a></div>-->
-    <!--                            <div class="list"><a href="#">신고게시판</a></div>-->
+                                <div class="list"><a href="community_video">동영상</a></div>
                             </div>
                             <div class="sub-header flex-row flex-c">
                                 <div class="sub-header-search bc-footer flex-grow">
-                                    <input type="text" id="search-input" placeholder="제목, 내용, 태그 검색">
-                                    <img src="../../static/images/svg/search.svg" alt="" class="input-icon search" id="search-button"/>
+                                    <input type="text" id="comm-photo-search-input" placeholder="제목, 내용, 태그 검색">
+                                    <img src="../../static/images/svg/search.svg" alt="" class="input-icon search" id="comm-photo-search-button"/>
                                 </div>
                                 <button class="bc-activate white" onclick="location.href='community_write?boardId=2'"><img src="../../static/images/svg/pen.svg" alt="">글작성</button>
                             </div>
                             <div class="mainLayer text-center"></div>
-                            <div class="pagination flex-row flex-c-c" id="pagination-container"></div>
+                            <div class="pagination flex-row flex-c-c" id="comm-photo-pagination-container"></div>
                         </div>
                         <div id="footer" class=" bc-footer" th:insert="~{include/footer}">
                     </div>
