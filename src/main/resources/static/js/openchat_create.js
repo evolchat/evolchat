@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function () {
+$(document).ready(function() {
     const titleInput = document.getElementById('title-input');
     const titleCount = document.getElementById('title-count');
     const descInput = document.getElementById('desc-input');
@@ -13,9 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
     descInput.addEventListener('input', function () {
         descCount.textContent = `${descInput.value.length} / 80`;
     });
-});
 
-document.addEventListener('DOMContentLoaded', () => {
     const tags = document.querySelectorAll('.tag');
 
     tags.forEach(tag => {
@@ -24,9 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
             tag.classList.add('active');
         });
     });
-});
 
-document.addEventListener('DOMContentLoaded', () => {
     const agreeAll = document.getElementById('agreeAll');
     const subCheckboxes = document.querySelectorAll('.sub-checkbox');
 
@@ -45,12 +41,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-});
 
-document.addEventListener('DOMContentLoaded', function() {
     const inputs = document.querySelectorAll('.upload-area input[type="text"]');
     const checkboxes = document.querySelectorAll('.agreement .sub-checkbox');
-    const agreeAll = document.getElementById('agreeAll');
     const openButton = document.getElementById('open');
 
     function updateOpenButtonState() {

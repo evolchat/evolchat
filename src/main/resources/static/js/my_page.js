@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', (event) => {
+$(document).ready(function() {
         // Select all checkboxes with the class 'interest-checkbox'
         const checkboxes = document.querySelectorAll('.interest-checkbox');
 

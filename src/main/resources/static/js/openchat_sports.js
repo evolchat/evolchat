@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+$(document).ready(function() {
     function loadChatRooms() {
         fetch('/chatrooms')
             .then(response => response.json())

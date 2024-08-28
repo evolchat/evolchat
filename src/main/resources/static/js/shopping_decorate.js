@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+$(document).ready(function() {
     fetch('/user-points/current')
         .then(response => response.json())
         .then(data => {
@@ -314,6 +314,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const searchInput = document.getElementById('search-input');
+    console.log(searchInput)
     const searchButton = document.getElementById('search-button');
     const shoppingItems = document.querySelectorAll('.shopping-item-wrap');
 
