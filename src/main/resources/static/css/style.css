@@ -145,6 +145,7 @@ input[type="password"] {
     -webkit-appearance: none;
     text-overflow: ellipsis;
     box-sizing: border-box;
+    color: white !important;
 }
 
 img {
@@ -1621,18 +1622,6 @@ table {
     vertical-align: middle;
 }
 
-.rank-table th:nth-child(1) {
-    width: 180px;
-}
-
-.rank-table th:nth-child(2) {
-    width: 800px;
-}
-
-.rank-table th:nth-child(3) {
-    width: 200px;
-    padding-left: 25px;
-}
 
 .rank-table tr {
     border-collapse: collapse;
