@@ -2,20 +2,35 @@
 <div class="content chatLayer bc-aside">
     <div class="chat">
         <div class="title">
-            <p id="totalChatTab" class="tab active">전체 채팅<span id="messageCount" class="m-l-10">0</span></p>
-            <p id="tableChatTab" class="tab">테이블 채팅</p>
+            <p id="totalChatTab" class="tab px14 active">전체<span id="messageCount" class="m-l-5">0</span></p>
+            <p id="tableChatTab" class="tab px14">테이블</p>
+            <p id="alarmChatTab" class="tab px14">알림</p>
         </div>
         <div id="chatingLayer" class="content">
             <div id="totalChatContent" class="chatingLayer">
             </div>
             <div id="tableChatContent" class="chatingLayer" style="display:none;">
             </div>
+            <div id="alarmChatContent" class="chatingLayer" style="display:none;">
+            </div>
         </div>
         <div class="chatInsert bc-gray-dark">
-            <img src="../static/images/svg/chat-icon-1.svg" alt=""/>
             <input type="text" id="messageInput" placeholder="채팅 메세지 보내기">
-            <img src="../static/images/svg/chat-icon-2.svg" alt=""/>
-            <img src="../static/images/svg/chat-icon-3.svg" alt="" onclick="sendMessage()"/>
+            <div class="user-chat-menu">
+                <div class="chat-gif parents">
+                    <div id="gif-fold">
+                        <i class="fa-kit fa-icon-solid-fa-gif"></i>
+                    </div>
+                </div>
+                <div class="chat-emoticon parents">
+                    <div id="emoticon-fold">
+                        <i class="fa-sharp fa-solid fa-face-angry fa-fw"></i>
+                    </div>
+                </div>
+                <div class="chat-send-wrap">
+                    <button id="chat-send" class="chat-send ripple">전송</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>

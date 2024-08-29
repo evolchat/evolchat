@@ -369,6 +369,10 @@ html.wf-loading {
     margin: 20px 0 !important;
 }
 
+.m-l-5 {
+    margin-left: 5px !important;
+}
+
 .m-l-10 {
     margin-left: 10px !important;
 }
@@ -738,7 +742,7 @@ table {
 }
 
 .bc-aside {
-    background-color: #1e2023;
+    background-color: #252525;
 }
 
 .bc-main {
@@ -830,7 +834,7 @@ table {
 }
 
 .msg {
-    padding-left: 10px;
+    padding-left: 20px;
 }
 
 .orange-FBC22B {
@@ -1552,7 +1556,7 @@ table {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    gap: 45px;
+    gap: 50px;
 }
 
 .i-circle {
@@ -1687,7 +1691,7 @@ table {
 /* header */
 #nav {
     max-width: 240px;
-    background-color: #1e2023;
+    background-color: #252525;
 }
 
 #newNav {
@@ -1705,6 +1709,10 @@ table {
 
 #initialNav {
     min-width: 152px;
+}
+
+.nav-text {
+    color: white;
 }
 
 /* 최근메시지 영역 */
@@ -1777,7 +1785,7 @@ header>.nav a {
     display: flex;
     width: 100%;
     height: 38px;
-    gap: 10px;
+    gap: 15px;
     padding: 10px 28px 10px 15px;
     align-items: center;
     justify-content: flex-start;
@@ -1878,10 +1886,79 @@ section.container>.chatLayer {
 }
 
 .wrapper>.header .center .items {
+    height: 34px;
     margin: 0 5px;
-    background-color: #111214;
-    padding: 10px;
-    border-radius: 50px;
+    background-color: #000000;
+    padding: 0 14px;
+    border-radius: 2px;
+}
+
+*, :after, :before {
+    outline:none;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    box-sizing:border-box;
+    transition:all .05s ease-in-out
+}
+
+.mini-icon-box {
+    width: 34px;
+    height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1e2023;
+    border-right: 1px solid #27292d;
+}
+
+.user-menu-item {
+    height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+    border: 1px solid #27292d;
+    cursor: pointer;
+    color: white;
+}
+
+.mini-menu-box {
+    height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 5px;
+}
+
+.user-chat-menu {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding: 0 14px;
+    gap: 2px;
+}
+
+.chat-send-wrap {
+    margin-left: auto;
+}
+
+.chat-send {
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 14px;
+    background-color: rgba(255,255,255,0.2);
+    border-radius: 2px;
+}
+
+#emoticon-fold, #gif-fold {
+    width: 34px;
+    height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .wrapper>.header .center .items span {
@@ -1995,10 +2072,6 @@ section.container>.chatLayer {
     font-size: 0.9rem;
 }
 
-.wrapper>.header .info_option .active {
-    background-color: #40393c;
-    border-radius: 10px;
-}
 
 /* .wrapper>.header .info_option .items:nth-child(1),
 .wrapper>.header .info_option .items:nth-child(2) {
@@ -2074,7 +2147,9 @@ div.mainContent {
 
 /* sub-header */
 .sub-header {
+    height: 51px;
     padding: 8px 20px;
+    gap: 2px;
 }
 
 .sub-header:nth-child(1) {
@@ -2082,15 +2157,13 @@ div.mainContent {
 }
 
 .sub-header>.list {
-    opacity: 0.3;
-    padding: 12px 6px;
-    margin: 0 4px;
+    padding: 10px 12px;
+    font-size: 14px;
 }
 
 .sub-header>.active {
-    opacity: 1;
-    border-radius: 5px;
-    background-color: #404040;
+    border-radius: 2px;
+    background-color: #515151;
 }
 
 .sub-header-search {
@@ -2141,8 +2214,7 @@ div.mainContent {
     color: #fff;
     margin-left: 2px;
     display: flex;
-    background-color: #2c2c2c;
-    /* background-color: #044bb6; */
+    background-color: #1e2023;
 }
 
 .chatLayer>div>div.title p {
@@ -2152,19 +2224,19 @@ div.mainContent {
     text-align: center;
     color: #999;
     cursor: pointer;
-    background-color: #333;
+    background-color: #1e2023;
     transition: background-color 0.3s, color 0.3s;
     line-height: 1.5; /* 텍스트 라인 높이를 조정합니다 */
 }
 
 .chatLayer>div>div.title p.active {
     color: #fff;
-    background: linear-gradient(to bottom, rgba(163, 100, 255, 0.1), rgba(125, 85, 255, 0.5));
+    background: linear-gradient(0deg, rgba(135,68,255,.3) 0%, rgba(135,68,255,.01) 100%);
     border-bottom: 2px solid #7d55ff;
 }
 
 .chatLayer>div>div.title span {
-    color: #f5931c;
+    color: white;
 }
 
 div.chatContent {
@@ -2189,9 +2261,12 @@ div.chatContent>div.text.grey-1 {
 }
 
 .chatLayer>div>div.chatInsert {
-    padding: 20px;
-    max-height: 58px;
-    min-height: 58px;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex-shrink: 0;
+    flex-direction: column;
+    background: #5f6064;
 }
 
 .chatLayer>div>div.chatInsert>input[type=text] {

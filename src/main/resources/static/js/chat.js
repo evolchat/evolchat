@@ -200,6 +200,10 @@ $('#tableChatTab').click(function() {
     switchChatTab('table');
 });
 
+$('#alarmChatTab').click(function() {
+    switchChatTab('alarm');
+});
+
 function switchChatTab(tab) {
     if (tab === 'total') {
         $('#totalChatTab').addClass('active');
@@ -212,5 +216,14 @@ function switchChatTab(tab) {
         $('#totalChatContent').hide();
         $('#tableChatContent').show();
         $('#tableChatContent').empty(); // 테이블 채팅 클릭 시 빈 채팅창으로 초기화
+    }
+    else if (tab === 'alarm') {
+        $('#totalChatTab').removeClass('active');
+        $('#tableChatTab').removeClass('active');
+        $('#alarmChatTab').addClass('active');
+        $('#totalChatContent').hide();
+        $('#tableChatContent').hide();
+        $('#alarmChatContent').show();
+        $('#alarmChatContent').empty(); // 알림 채팅 클릭 시 빈 채팅창으로 초기화
     }
 }

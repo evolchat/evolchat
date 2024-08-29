@@ -20,7 +20,7 @@
         <div class="white flex-row flex-c px15">
             <div id="header-item-tooltip-1"  class="items flex-c cursor-p">
                 <img src="../../static/images/svg/header-item-1.svg" alt=""/>
-                <span class="p-l-3">JACKPOT</span><span id="goldChip"></span>
+                <span class="p-l-3"></span><span id="goldChip"></span>
                 <div class="spinner" id="goldChipSpinner"></div>
             </div>
             <div id="header-item-tooltip-2"  class="items flex-c cursor-p">
@@ -39,19 +39,22 @@
     <div class="wrap flex-row right flex-c">
         <div class="info_option flex-row">
             <div id="header-item-tooltip-5" class="items flex-c cursor-p">
-                <img src="../../static/images/svg/header-item-5.svg" alt="선물함"/>
-            </div>
-            <div id="header-item-tooltip-6" class="items flex-c cursor-p">
-                <img src="../../static/images/svg/header-item-6.svg" alt="히스토리"/>
+                <div class="user-menu-item ripple">
+                    <span class="mini-icon-box"><i class="fa-sharp fa-solid fa-gift fa-fw"></i></span>
+                    <span class="mini-menu-box">선물</span>
+                </div>
             </div>
             <div id="header-item-tooltip-7" class="items flex-c cursor-p">
-                <img src="../../static/images/svg/header-item-7.svg" alt="채팅방"/>
+                <div class="user-menu-item ripple">
+                    <span class="mini-icon-box"><i id="chat-icon" class="fa-kit fa-icon-solid-fa-chat fa-fw"></i></span>
+                    <span class="mini-menu-box">채팅</span>
+                </div>
             </div>
             <div id="header-item-tooltip-8" class="items flex-c cursor-p">
-                <img src="../../static/images/svg/header-item-8.svg" alt="알림"/>
-            </div>
-            <div id="header-item-tooltip-9" class="items flex-c cursor-p">
-                <img src="../../static/images/svg/header-item-9.svg" alt="언어선택"/>
+                <div class="user-menu-item ripple">
+                    <span class="mini-icon-box"><i class="fa-kit fa-icon-solid-fa-history fa-fw"></i></span>
+                    <span class="mini-menu-box">배팅내역</span>
+                </div>
             </div>
             <div class="items flex-c dropdown">
                 <button id="profile" class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
