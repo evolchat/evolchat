@@ -314,7 +314,6 @@ $(document).ready(function() {
     }
 
     const searchInput = document.getElementById('search-input');
-    console.log(searchInput)
     const searchButton = document.getElementById('search-button');
     const shoppingItems = document.querySelectorAll('.shopping-item-wrap');
 

@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
-<body th:data-active-category="${activeCategory}" th:data-active-page="${activePage}" th:data-board-id="${boardId}">
+<body>
 <div class="wrapper bc-black vh100">
     <div id="header" class="header flex-row bc-header" th:insert="~{include/header}"></div>
     <Section class="flex-row">
@@ -33,16 +33,22 @@
     $(document).ready(function() {
 
         const currentPath = $('body').attr('data-active-category');
-
-        $('.nav-link').each(function() {
-            const linkPath = $(this).attr('href');
-
-            if (linkPath === currentPath) {
-                $(this).addClass('active');
-            }
-        });
-
         let previousPath = window.location.pathname.split("/").pop();
+        if(currentPath == undefined) {
+            $('.nav-link').each(function() {
+                const linkPath = $(this).attr('href');
+                if (window.location.pathname.split("/").pop() === linkPath) {
+                    $(this).addClass('active');
+                }
+            });
+        } else {
+            $('.nav-link').each(function() {
+                const linkPath = $(this).attr('href');
+                if (linkPath === currentPath) {
+                    $(this).addClass('active');
+                }
+            });
+        }
 
         // a 태그 클릭 시 컨텐츠만 로드
         $(document).on('click', 'a', function(e) {

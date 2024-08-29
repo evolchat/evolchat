@@ -16,7 +16,6 @@ public class CorsConfig {
 
         // 특정 origin을 허용할 경우
         config.addAllowedOrigin("*");
-//        config.addAllowedOrigin("https://example.com");
 
         // 모든 HTTP 메서드를 허용할 경우
         config.addAllowedMethod("*");
