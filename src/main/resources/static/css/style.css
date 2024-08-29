@@ -153,22 +153,22 @@ img {
     vertical-align: top;
 }
 
-::-webkit-scrollbar {
-    width: 10px;
+*::-webkit-scrollbar {
+    width: 2px;
+    background: transparent;
 }
 
-::-webkit-scrollbar-thumb {
-    background-color: #2f3542;
-}
-
-::-webkit-scrollbar-track {
-    background-color: #69696978;
+*::-webkit-scrollbar-track {
+    background:transparent;
 }
 
 html.wf-loading {
     visibility: hidden;
 }
 
+.fs {
+    justify-content: flex-start;
+}
 
 /* 폰트 사이즈 정리 1rem : 16px*/
 .px8 {
@@ -355,6 +355,10 @@ html.wf-loading {
 
 .m-0 {
     margin: 0 !important;
+}
+
+.m-t-3 {
+    margin-top: 3px !important;
 }
 
 .m-t-10 {
@@ -570,6 +574,16 @@ table {
     overflow-y: auto;
 }
 
+.vh100::-webkit-scrollbar-thumb {
+    background-color: #35373D;
+    border:4px solid #27292D;
+}
+
+.vh100::-webkit-scrollbar-thumb:hover {
+    background-color: #5F6064;
+    cursor:pointer;
+}
+
 .h100 {
     height: 100%;
 }
@@ -742,7 +756,7 @@ table {
 }
 
 .bc-aside {
-    background-color: #252525;
+    background-color: #1e2023;
 }
 
 .bc-main {
@@ -767,6 +781,10 @@ table {
 
 .bc-dark {
     background-color: #2f2f2f;
+}
+
+.bc-dark-chat {
+    background-color: rgba(255, 255, 255, .05);
 }
 
 .bc-dark-3A3C43 {
@@ -1691,7 +1709,7 @@ table {
 /* header */
 #nav {
     max-width: 240px;
-    background-color: #252525;
+    background-color: #1e2023;
 }
 
 #newNav {
@@ -1890,7 +1908,6 @@ section.container>.chatLayer {
     margin: 0 5px;
     background-color: #000000;
     padding: 0 14px;
-    border-radius: 2px;
 }
 
 *, :after, :before {
@@ -1898,7 +1915,8 @@ section.container>.chatLayer {
     -webkit-box-sizing:border-box;
     -moz-box-sizing:border-box;
     box-sizing:border-box;
-    transition:all .05s ease-in-out
+    transition:all .05s ease-in-out;
+    color: white;
 }
 
 .mini-icon-box {
@@ -1951,6 +1969,16 @@ section.container>.chatLayer {
     padding: 0 14px;
     background-color: rgba(255,255,255,0.2);
     border-radius: 2px;
+    color: white;
+    font-size: 13px;
+}
+
+#gif-fold .fa-kit {
+    font-size: 20px;
+}
+
+#emoticon-fold .fa-solid {
+    font-size: 20px;
 }
 
 #emoticon-fold, #gif-fold {
@@ -1962,7 +1990,7 @@ section.container>.chatLayer {
 }
 
 .wrapper>.header .center .items span {
-    margin-right: 6px;
+    margin: 0 8px;
 }
 
 .wrapper>.header .center {
@@ -1996,14 +2024,14 @@ section.container>.chatLayer {
 }
 
 .wrapper>.header .header-search {
-    max-width: 310px;
+    max-width: 300px;
     width: 100%;
-    max-height: 38px;
-    min-height: 38px;
-    height: 38px;
+    max-height: 36px;
+    min-height: 36px;
+    height: 36px;
     background-color: #2C2E33;
     border-radius: 2px;
-    padding: 0 15px;
+    padding: 0 12px;
     position: relative;
 }
 
@@ -2021,19 +2049,20 @@ section.container>.chatLayer {
 }
 
 .wrapper>.header .menu-btn-layer .menu-btn {
-    width: 20px;
-    height: 18px;
+    width: 18px;
+    height: 14px;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     transition: transform 0.3s ease-in-out;
+    top: 2px;
 }
 
 .wrapper>.header .menu-btn-layer .menu-btn>.line {
     width: 100%;
-    height: 3px;
+    height: 2px;
     background-color: #fff;
     position: absolute;
     box-shadow: 0 0 5px rgba(255, 255, 255, 1); /* 그림자 효과 */
@@ -2063,12 +2092,12 @@ section.container>.chatLayer {
 }
 
 .wrapper>.header .info_option {
-    justify-content: space-evenly;
+    justify-content: right;
     width: 100%;
+    gap: 10px;
 }
 
 .wrapper>.header .info_option .items {
-    padding: 10px;
     font-size: 0.9rem;
 }
 
@@ -2127,8 +2156,18 @@ body>div>section>div.wrap {
     overflow-y: scroll;
 }
 
+.chatLayer>div>div.content::-webkit-scrollbar-thumb {
+    background-color: #232428;
+    border: 4px solid #1E2023;
+}
+
+.chatLayer>div>div.content::-webkit-scrollbar-thumb:hover {
+    background-color: #5F6064;
+    cursor:pointer;
+}
+
 .chatLayer>div>div.content>div>div {
-    padding: 10px;
+    padding: 10px 0;
 }
 
 body>div>section>div.wrap>div {
@@ -2240,6 +2279,7 @@ div.mainContent {
 }
 
 div.chatContent {
+    margin-top: 8px;
     margin-left: 10px;
 }
 
@@ -2248,10 +2288,8 @@ div.chatContent>div.bottom.grey-1 {
 }
 
 div.chatContent>div.bottom {
-    margin-top: 4px;
-    border-top-right-radius: 5px;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
+    margin-top: 10px;
+    border-radius: 0 2px 2px 10px;
     padding: 10px;
 }
 
@@ -2270,10 +2308,12 @@ div.chatContent>div.text.grey-1 {
 }
 
 .chatLayer>div>div.chatInsert>input[type=text] {
-    border: none;
     width: 100%;
-    color: #fff;
-    max-width: 200px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    background: transparent;
+    padding: 0 20px;
 }
 
 /* 프로젝트 레이아웃 변경으로 html 구조가 변하여 수정  */

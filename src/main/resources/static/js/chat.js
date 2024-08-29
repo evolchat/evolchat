@@ -115,11 +115,11 @@ function displayMessage(nickname, message) {
         messageElement.innerHTML = `
             <div class="profile"><img class="profile-img-44" src="../static/images/profile/default.png" alt="#"></div>
             <div class="chatContent">
-                <div class="top flex-row flex-c">
-                    <div class="nickname grey-4">${nickname}</div>
-                    <div class="time grey-1 m-l-10">${new Date().toLocaleTimeString()}</div>
+                <div class="fs flex-row flex-c">
+                    <div class="nickname grey-4 px14">${nickname}</div>
+                    <div class="time grey-5 m-l-5 m-t-3 px10">${new Date().toLocaleTimeString()}</div>
                 </div>
-                <div class="bottom white opacity80 bc-dark">
+                <div class="bottom white opacity80 bc-dark-chat">
                     <div class="text">${message}</div>
                 </div>
             </div>
@@ -216,8 +216,7 @@ function switchChatTab(tab) {
         $('#totalChatContent').hide();
         $('#tableChatContent').show();
         $('#tableChatContent').empty(); // 테이블 채팅 클릭 시 빈 채팅창으로 초기화
-    }
-    else if (tab === 'alarm') {
+    } else if (tab === 'alarm') {
         $('#totalChatTab').removeClass('active');
         $('#tableChatTab').removeClass('active');
         $('#alarmChatTab').addClass('active');
