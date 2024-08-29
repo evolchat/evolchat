@@ -164,7 +164,4 @@ $(document).ready(function() {
             handleSearch();
         }
     });
-
-    // 초기 게시물 가져오기
-    fetchPosts(currentPage);
 });

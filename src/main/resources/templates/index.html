@@ -33,23 +33,16 @@
 <script>
     $(document).ready(function() {
 
-        const currentPath = $('body').attr('data-active-category');
+        const currentPath = $('#content-area .wrapper').attr('data-active-category');
         let previousPath = window.location.pathname.split("/").pop();
-        if(currentPath == undefined) {
-            $('.nav-link').each(function() {
-                const linkPath = $(this).attr('href');
-                if (window.location.pathname.split("/").pop() === linkPath) {
-                    $(this).addClass('active');
-                }
-            });
-        } else {
-            $('.nav-link').each(function() {
-                const linkPath = $(this).attr('href');
-                if (linkPath === currentPath) {
-                    $(this).addClass('active');
-                }
-            });
-        }
+
+        $('.nav-link').each(function() {
+            const linkPath = $(this).attr('href');
+            if (linkPath === currentPath) {
+                $(this).addClass('active');
+            }
+        });
+
 
         // a 태그 클릭 시 컨텐츠만 로드
         $(document).on('click', 'a', function(e) {
