@@ -14,8 +14,13 @@ function chatCheckActive() {
     }
 }
 
-let chatInitialized = false; // 채팅 초기화 여부 플래그
-let stompClient = null; // 전역 변수로 선언
+if (typeof chatInitialized === 'undefined') {
+    var chatInitialized = false; // 채팅 초기화 여부 플래그
+}
+
+if (typeof stompClient === 'undefined') {
+    var stompClient = null; // 전역 변수로 선언
+}
 
 function initializeChat() {
     if (chatInitialized) return; // 이미 초기화된 경우 리턴
@@ -162,7 +167,10 @@ function updateMessageCount(count) {
 
 initializeChat(); // 페이지가 처음 로드될 때 전체 채팅 초기화
 
-const chatActive = localStorage.getItem('chatActive');
+if (typeof chatActive === 'undefined') {
+    var chatActive = localStorage.getItem('chatActive');
+}
+
 if (chatActive === 'true') {
     $("#chat").show();
     $("#header-item-tooltip-7").addClass('active');
