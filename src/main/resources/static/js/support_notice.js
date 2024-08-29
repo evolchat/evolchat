@@ -54,10 +54,10 @@ $(document).ready(function () {
     function updateTable(posts) {
         tableBody.empty();
         posts.forEach(post => {
-            const row = $(`<tr class="pointer post-title" data-post-id=${post.postId}>`);
+            const row = $(`<tr class="pointer post-title">`);
 
             // 분류
-            const categoryCell = $(`<td><div class="bc-${getCategoryColor(post.detailedCategory)} border-5 flex-c-c square">${getCategoryLabel(post.detailedCategory)}</div></td>`);
+            const categoryCell = $(`<td><a href="/support_notice_detail?boardId=1&postId=${post.postId}"><div class="bc-${getCategoryColor(post.detailedCategory)} border-5 flex-c-c square">${getCategoryLabel(post.detailedCategory)}</div></a></td>`);
             row.append(categoryCell);
 
             // 제목 (클릭 이벤트 추가)
@@ -73,19 +73,21 @@ $(document).ready(function () {
 //            `);
             const titleCell = $(`
                 <td>
-                    <div class="text-left">
-                        <span class="px15">${post.title}</span>
-                    </div>
+                    <a href="/support_notice_detail?boardId=1&postId=${post.postId}">
+                        <div class="text-left">
+                            <span class="px15">${post.title}</span>
+                        </div>
+                    </a>
                 </td>
             `);
             row.append(titleCell);
 
             // 일시
-            const dateCell = $(`<td class="opacity60">${new Date(post.createdAt).toLocaleDateString()}</td>`);
+            const dateCell = $(`<td class="opacity60"><a href="/support_notice_detail?boardId=1&postId=${post.postId}">${new Date(post.createdAt).toLocaleDateString()}</a></td>`);
             row.append(dateCell);
 
             // 조회
-            const viewsCell = $(`<td class="opacity60">${post.views}</td>`);
+            const viewsCell = $(`<td class="opacity60"><a href="/support_notice_detail?boardId=1&postId=${post.postId}">${post.views}</a></td>`);
             row.append(viewsCell);
 
             tableBody.append(row);

@@ -1,36 +1,32 @@
 <header id="initialNav" class="bc-aside">
     <ul class="nav">
         <li class="grey-1"><a class="text-white-50 nav-link" href="home">
-            <img src="../static/images/svg/nav-item-1.svg" alt=""/>
-            에볼루션
+            <span class="nav-icon"><i class="fa-kit fa-fa-light-fa-evolution fa-fw"></i></span>
+            <span class="nav-text px15">에볼루션</span>
         </a></li>
-        <!--        <li class="grey-1"><a class="nav-link" href="#">-->
-        <!--            <img src="../static/images/svg/nav-item-2.svg" alt=""/>-->
-        <!--                오토봇-->
-        <!--            </a></li>-->
         <li class="grey-1"><a class="text-white-50 nav-link" href="openchat">
-            <img src="../static/images/svg/nav-item-3.svg" alt=""/>
-            <span class="nav-text">오픈채팅</span>
+            <span class="nav-icon"><i class="fa-kit fa-fa-light-fa-openchat fa-fw"></i></span>
+            <span class="nav-text px15">오픈채팅</span>
         </a></li>
         <li class="grey-1"><a class="text-white-50 nav-link" href="community_free">
-            <img src="../static/images/svg/nav-item-4.svg" alt=""/>
-            <span class="nav-text">커뮤니티</span>
+            <span class="nav-icon"><i class="fa-sharp fa-light fa-mug-saucer fa-fw"></i></span>
+            <span class="nav-text px15">커뮤니티</span>
         </a></li>
         <li class="grey-1"><a class="text-white-50 nav-link" href="rank">
-            <img src="../static/images/svg/nav-item-5.svg" alt=""/>
-            <span class="nav-text">랭킹</span>
+            <span class="nav-icon"><i class="fa-sharp fa-light fa-stars fa-fw"></i></span>
+            <span class="nav-text px15">랭킹</span>
         </a></li>
         <li class="grey-1"><a class="text-white-50 nav-link" href="shopping">
-            <img src="../static/images/svg/nav-item-6.svg" alt=""/>
-            <span class="nav-text">상점</span>
+            <span class="nav-icon"><i class="fa-sharp fa-light fa-store fa-fw"></i></span>
+            <span class="nav-text px15">상점</span>
         </a></li>
         <li class="grey-1"><a class="text-white-50 nav-link" href="support_notice">
-            <img src="../static/images/svg/nav-item-7.svg" alt=""/>
-            <span class="nav-text">고객센터</span>
+            <span class="nav-icon"><i class="fa-sharp fa-light fa-circle-info fa-fw"></i></span>
+            <span class="nav-text px15">고객센터</span>
         </a></li>
         <li class="grey-1"><a class="text-white-50 nav-link" href="messenger_friend">
-            <img src="../static/images/svg/nav-item-8.svg" alt=""/>
-            <span class="nav-text">메신저<span class="notice hidden">3</span></span>
+            <span class="nav-icon"><i class="fa-kit fa-light-fa-evoltalk fa-fw"></i></span>
+            <span class="nav-text px15">메신저<span class="notice hidden">3</span></span>
         </a></li>
     </ul>
     <p class="px12 opacity60 white msg">최근 메시지 <span class="orange">4</span></p>
@@ -38,37 +34,45 @@
         <li class="grey-1"><a href="#" class="flex-row flex-c">
             <img class="profile-img-36" src="../static/images/profile/default.png" />
             <div class="opacity60">
-                <p class=" px14">슈퍼컴퓨터분석</p>
+                <div class="receive">
+                    <p class=" px12">슈퍼컴퓨터분석</p>
+                    <span class="notice px12">+2</span>
+                </div>
                 <p class=" px12">오늘 언제 시작하세요?</p>
             </div>
-            <span class="notice">3</span>
         </a>
         </li>
         <li class="grey-1"><a href="#" class="flex-row flex-c">
             <img class="profile-img-36" src="../static/images/profile/default.png" />
             <div class="opacity60">
-                <p class=" px14">슈퍼컴퓨터분석</p>
+                <div class="receive">
+                    <p class=" px12">슈퍼컴퓨터분석</p>
+                    <span class="notice px12">+3</span>
+                </div>
                 <p class=" px12">오늘 언제 시작하세요?</p>
             </div>
-            <span class="notice">3</span>
         </a>
         </li>
         <li class="grey-1"><a href="#" class="flex-row flex-c">
             <img class="profile-img-36" src="../static/images/profile/default.png" />
             <div class="opacity60">
-                <p class=" px14">슈퍼컴퓨터분석</p>
+                <div class="receive">
+                    <p class=" px12">슈퍼컴퓨터분석</p>
+                    <span class="notice px12">+3</span>
+                </div>
                 <p class=" px12">오늘 언제 시작하세요?</p>
             </div>
-            <span class="notice">3</span>
         </a>
         </li>
         <li class="grey-1"><a href="#" class="flex-row flex-c">
             <img class="profile-img-36" src="../static/images/profile/default.png" />
             <div class="opacity60">
-                <p class=" px14">슈퍼컴퓨터분석</p>
+                <div class="receive">
+                    <p class=" px12">슈퍼컴퓨터분석</p>
+                    <span class="notice px12">+3</span>
+                </div>
                 <p class=" px12">오늘 언제 시작하세요?</p>
             </div>
-            <span class="notice">3</span>
         </a>
         </li>
     </ul>
@@ -157,5 +161,33 @@
              $(this).toggleClass('clicked');
         });
     });
+    document.addEventListener('DOMContentLoaded', function() {
+            const navMenus = document.querySelectorAll('.nav-menu');
+
+            navMenus.forEach(menu => {
+                menu.addEventListener('click', function() {
+                    // 현재 클릭된 메뉴가 이미 active 상태인 경우
+                    const isActive = this.classList.contains('active');
+
+                    // 모든 메뉴에서 active 제거 및 fa-solid를 fa-light로 변경
+                    navMenus.forEach(nav => {
+                        nav.classList.remove('active');
+                        const icon = nav.querySelector('i');
+                        if (icon && icon.className.includes('fa-solid')) {
+                            icon.className = icon.className.replace('fa-solid', 'fa-light');
+                        }
+                    });
+
+                    // 클릭된 메뉴가 active 상태가 아니었을 때만 active 추가
+                    if (!isActive) {
+                        this.classList.add('active');
+                        const activeIcon = this.querySelector('i');
+                        if (activeIcon && activeIcon.className.includes('fa-light')) {
+                            activeIcon.className = activeIcon.className.replace('fa-light', 'fa-solid');
+                        }
+                    }
+                });
+            });
+        });
 
 </script>

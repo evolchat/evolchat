@@ -54,26 +54,28 @@ $(document).ready(function () {
     function updateTable(posts) {
         tableBody.empty();
         posts.forEach(post => {
-            const row = $(`<tr class="pointer post-title" data-post-id=${post.postId}></tr>`);
+            const row = $(`<tr class="pointer post-title"></tr>`);
 
             // 상태
-            const statusCell = $(`<td><div class="bc-${getStatusColor(post.detailedCategory)} border-5 flex-c-c square">${getStatusLabel(post.detailedCategory)}</div></td>`);
+            const statusCell = $(`<td><a href="/support_inquiry_detail?boardId=2&postId=${post.postId}"><div class="bc-${getStatusColor(post.detailedCategory)} border-5 flex-c-c square">${getStatusLabel(post.detailedCategory)}</div></a></td>`);
             row.append(statusCell);
 
             // 문의내용 (클릭 이벤트 추가)
             const contentCell = $(
                 `<td>
-                    <div class="text-left">
-                        <span class="px15">${post.title}</span>
-                        ${post.hasGallery ? '<img src="../../static/images/svg/icon-gallery-ivory.svg" alt="Gallery Icon">' : ''}
-                        ${post.hasVideo ? '<img src="../../static/images/svg/icon-videoplayer-red.svg" alt="Video Icon">' : ''}
-                    </div>
-                </td>`
+                     <a href="/support_inquiry_detail?boardId=2&postId=${post.postId}">
+                         <div class="text-left">
+                             <span class="px15">${post.title}</span>
+                             ${post.hasGallery ? '<img src="../../static/images/svg/icon-gallery-ivory.svg" alt="Gallery Icon">' : ''}
+                             ${post.hasVideo ? '<img src="../../static/images/svg/icon-videoplayer-red.svg" alt="Video Icon">' : ''}
+                         </div>
+                     </a>
+                 </td>`
             );
             row.append(contentCell);
 
             // 일시
-            const dateCell = $(`<td class="opacity60">${new Date(post.createdAt).toLocaleString()}</td>`);
+            const dateCell = $(`<td class="opacity60"><a href="/support_inquiry_detail?boardId=2&postId=${post.postId}">${new Date(post.createdAt).toLocaleString()}</a></td>`);
             row.append(dateCell);
 
             tableBody.append(row);
