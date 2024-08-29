@@ -32,7 +32,6 @@
 </body>
 <script>
     $(document).ready(function() {
-
         const currentPath = $('#content-area .wrapper').attr('data-active-category');
         let previousPath = window.location.pathname.split("/").pop();
 
@@ -42,7 +41,6 @@
                 $(this).addClass('active');
             }
         });
-
 
         // a 태그 클릭 시 컨텐츠만 로드
         $(document).on('click', 'a', function(e) {
@@ -61,7 +59,7 @@
             const currentPath = window.location.pathname.split("/").pop();
             loadContent(currentPath);
         };
-
+        loadContent(window.location.pathname)
         // 서버에서 컨텐츠를 가져와서 #content 영역에 넣기
         function loadContent(url) {
             $.ajax({
@@ -72,7 +70,6 @@
                     const newContent = $response.find('#content-area').html();
                     const newCssLinks = $response.find('link[rel="stylesheet"]');
                     const newJsScripts = $response.find('script');
-
                     removeOldResources();
 
                     $('#content-area').html(newContent);
@@ -91,7 +88,8 @@
 
                     newJsScripts.each(function() {
                         const src = $(this).attr('src');
-                        if (src && !$(`script[src="${src}"]`).length) {
+
+                        if (src && $(`script[src="${src}"]`).length != 2) {
                             $.getScript(src, function() {
                                 console.log('New script loaded:', src);
                             });
