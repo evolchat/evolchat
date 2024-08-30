@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PurchaseService {
@@ -44,5 +45,15 @@ public class PurchaseService {
         }
 
         return summaries;
+    }
+
+    public int getMyHomeUploadTicketCount(User user) {
+        Optional<Purchase> purchase = purchaseRepository.findByUserAndItemId(user, 3);
+        return purchase.map(Purchase::getQuantity).orElse(0);
+    }
+
+    public int getProfileUploadTicketCount(User user) {
+        Optional<Purchase> purchase = purchaseRepository.findByUserAndItemId(user, 2);
+        return purchase.map(Purchase::getQuantity).orElse(0);
     }
 }

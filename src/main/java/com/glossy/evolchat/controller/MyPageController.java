@@ -5,6 +5,7 @@ import com.glossy.evolchat.model.Purchase;
 import com.glossy.evolchat.model.User;
 import com.glossy.evolchat.model.UserPoints;
 import com.glossy.evolchat.repository.PurchaseRepository;
+import com.glossy.evolchat.service.MyPageService;
 import com.glossy.evolchat.service.PurchaseService;
 import com.glossy.evolchat.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,12 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.io.IOException;
 import java.security.Principal;
 import java.util.List;
 import java.util.Optional; // Add this import
@@ -29,6 +35,9 @@ public class MyPageController {
     @Autowired
     private PurchaseRepository purchaseRepository;
 
+    @Autowired
+    private MyPageService myPageService;
+
     @GetMapping("/my_page")
     public String my_page(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -38,6 +47,8 @@ public class MyPageController {
             User user = userService.getUserByUsername(username);
             if (user != null) {
                 model.addAttribute("user", user);
+
+                // Fetch user points
                 Optional<UserPoints> userPointsOptional = userService.getUserPointsByUsername(username);
                 if (userPointsOptional.isPresent()) {
                     model.addAttribute("userPoints", userPointsOptional.get());
@@ -45,6 +56,15 @@ public class MyPageController {
                     model.addAttribute("userPoints", new UserPoints()); // Handle the case where UserPoints is not found
                     model.addAttribute("error", "User points not found.");
                 }
+
+                // Get the count of profile picture upload tickets (item_id = 2)
+                int uploadTicketCount = purchaseService.getProfileUploadTicketCount(user);
+                model.addAttribute("uploadTicketCount", uploadTicketCount);
+
+                // Get the count of My Home background upload tickets (item_id = 3)
+                int myHomeTicketCount = purchaseService.getMyHomeUploadTicketCount(user);
+                model.addAttribute("myHomeTicketCount", myHomeTicketCount);
+
             } else {
                 model.addAttribute("error", "User not found.");
             }
@@ -57,6 +77,50 @@ public class MyPageController {
         model.addAttribute("contentFragment", "fragments/my_page");
 
         return "index";
+    }
+
+    @PostMapping("/my_page/save")
+    public String saveUserInfo(@RequestParam("username") String username,
+                               @RequestParam(value = "profile", required = false) MultipartFile profilePicture,
+                               @RequestParam(value = "background", required = false) MultipartFile backgroundPicture,
+                               @RequestParam(value = "idCardUpload", required = false) MultipartFile idCardPicture,
+                               @RequestParam("myHomeUrl") String myHomeUrl,
+                               @RequestParam("todaysMessage") String todaysMessage,
+                               @RequestParam("country") String country,
+                               @RequestParam("region") String region,
+                               @RequestParam("gender") String gender,
+                               @RequestParam("locationPublic") boolean locationPublic,
+                               @RequestParam("bankName") String bankName,
+                               @RequestParam("accountNumber") String accountNumber,
+                               @RequestParam("interests") String interests,
+                               RedirectAttributes redirectAttributes) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String currentUsername = auth.getName();
+
+        User user = userService.getUserByUsername(currentUsername);
+        if (user != null) {
+            user.setNickname(username);
+            user.setMyHomeUrl(myHomeUrl);
+            user.setTodaysMessage(todaysMessage);
+            user.setCountry(country);
+            user.setRegion(region);
+            user.setGender(gender);
+            user.setLocationPublic(locationPublic);
+            user.setBankName(bankName);
+            user.setAccountNumber(accountNumber);
+            user.setInterests(interests);
+
+            try {
+                myPageService.saveUserWithFiles(user, profilePicture, backgroundPicture, idCardPicture);
+                return "redirect:/my_page"; // 성공 시 페이지 리다이렉트
+            } catch (IOException e) {
+                redirectAttributes.addFlashAttribute("error", "파일 업로드 실패");
+                return "redirect:/my_page";
+            }
+        } else {
+            redirectAttributes.addFlashAttribute("error", "사용자를 찾을 수 없습니다.");
+            return "redirect:/my_page";
+        }
     }
 
     @GetMapping("/my_item")

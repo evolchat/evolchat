@@ -42,8 +42,8 @@ public class UserDto {
         userDto.setUsername(user.getUsername());
         userDto.setEmail(user.getEmail());
         userDto.setRoleId(user.getRoleId());
-        userDto.setProfilePicture(user.getProfilePicture());
-        userDto.setHomeBackgroundPicture(user.getHomeBackgroundPicture());
+//        userDto.setProfilePicture(user.getProfilePicture());
+//        userDto.setHomeBackgroundPicture(user.getHomeBackgroundPicture());
         userDto.setMyHomeUrl(user.getMyHomeUrl());
         userDto.setNickname(user.getNickname());
         userDto.setTodaysMessage(user.getTodaysMessage());
@@ -53,7 +53,7 @@ public class UserDto {
         userDto.setLocationPublic(user.isLocationPublic());
         userDto.setBankName(user.getBankName());
         userDto.setAccountNumber(user.getAccountNumber());
-        userDto.setIdCardPicture(user.getIdCardPicture());
+//        userDto.setIdCardPicture(user.getIdCardPicture());
         userDto.setInterests(user.getInterests());
         return userDto;
     }

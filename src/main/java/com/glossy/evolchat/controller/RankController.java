@@ -56,7 +56,7 @@ public class RankController {
         UserDto userDto = new UserDto();
         userDto.setUserId(user.getId());
         userDto.setNickname(user.getNickname());
-        userDto.setProfilePicture(user.getProfilePicture());
+//        userDto.setProfilePicture(user.getProfilePicture());
         userDto.setBettingWins(user.getBettingWins());
         userDto.setBettingLosses(user.getBettingLosses());
         userDto.setBettingProfit(user.getBettingProfit());

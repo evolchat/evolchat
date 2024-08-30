@@ -30,8 +30,8 @@ public class User {
     @Column(nullable = false)
     private int roleId;
 
-    @Column(nullable = false)
     private String phone;  // 전화번호 필드 추가
+
     @Column(nullable = false)
     private LocalDateTime createdAt;
 
@@ -53,8 +53,6 @@ public class User {
     }
 
     private String nickname;
-    private String profilePicture;
-    private String homeBackgroundPicture;
     private String myHomeUrl;
     private String todaysMessage;
     private String country;
@@ -63,21 +61,21 @@ public class User {
     private boolean locationPublic;
     private String bankName;
     private String accountNumber;
-    private String idCardPicture;
     private String interests;
     private int bettingProfit;
     private int bettingWins;
     private int bettingLosses;
     private int maxWinningStreak;
 
+    @Lob
+    private byte[] profilePicture; // 프로필 사진 데이터
+
+    @Lob
+    private byte[] homeBackgroundPicture; // 배경 사진 데이터
+
+    @Lob
+    private byte[] idCardPicture; // 신분증 사진 데이터
+
     @Transient
     private String winRate; // 승률을 위한 임시 필드
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setConfirmPassword(String confirmPassword) {
-        this.confirmPassword = confirmPassword;
-    }
 }

@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface PurchaseRepository extends JpaRepository<Purchase, Integer> {
     @Query("SELECT p.item.id, p.item.type, p.item.name, p.item.description, SUM(p.quantity) " +
@@ -14,4 +15,6 @@ public interface PurchaseRepository extends JpaRepository<Purchase, Integer> {
             "WHERE p.user = :user " +
             "GROUP BY p.item.id, p.item.type, p.item.name, p.item.description")
     List<Object[]> findItemPurchaseSummariesByUser(User user);
+
+    Optional<Purchase> findByUserAndItemId(User user, int itemId);
 }
