@@ -119,7 +119,7 @@ function displayMessage(nickname, message) {
                     <div class="nickname grey-4 px14">${nickname}</div>
                     <div class="time grey-5 m-l-5 m-t-3 px10">${new Date().toLocaleTimeString()}</div>
                 </div>
-                <div class="bottom white opacity80 bc-dark-chat">
+                <div class="bottom bc-dark-chat px13 lh">
                     <div class="text">${message}</div>
                 </div>
             </div>
