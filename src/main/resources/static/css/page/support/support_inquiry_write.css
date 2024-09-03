@@ -25,25 +25,30 @@
     margin: 10px auto;
     height: 50px;
 }
+
 .toolbar-wrapper {
     border: 1px solid #35373D;
     border-radius: 7px;
     padding: 10px;
     margin-bottom: 20px;
 }
+
 .toolbar {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
 }
+
 .toolbar .section {
     display: flex;
 }
+
 .toolbar .section:not(:nth-last-child(2)) {
     position: relative;
     margin-right: 10px;
     padding-right: 10px;
 }
+
 .toolbar .section:not(:nth-last-child(2))::after {
     content: "";
     position: absolute;
@@ -53,6 +58,7 @@
     width: 1px;
     background-color: #35373D;
 }
+
 .toolbar button {
     border: 1px solid #35373D !important;
     background-color: #27292D;;
@@ -64,6 +70,7 @@
     height: 36px; /* 고정된 높이로 동일한 크기 유지 */
     margin: 0; /* 기본 마진 제거 */
 }
+
 .editor {
     border-top: 1px solid #35373D;
     color: white;
@@ -73,6 +80,7 @@
     border-left: none;
     border-right: none;
 }
+
 .input-tags {
   border-top: 1px solid #35373D;
   color: white;
@@ -85,10 +93,12 @@
   vertical-align: top; /* 텍스트 입력이 상단에 위치하도록 조정 */
   padding-top: 0px;
 }
+
 .submit-buttons {
     display: flex;
     gap: 10px;
 }
+
 .submit-buttons button {
     font-size: 15px;
     background-color: #2C2E33;
@@ -98,6 +108,7 @@
     border-radius: 7px;
     cursor: pointer;
 }
+
 .toolbar-btn {
     padding: 5px 10px;
     margin: 2px;
@@ -106,9 +117,11 @@
     border: none;
     cursor: pointer;
 }
+
 .toolbar-btn:hover {
     background-color: #555;
 }
+
 .editor {
     padding: 10px;
     min-height: 400px;
@@ -118,6 +131,7 @@
     resize: vertical;
     max-width: 100%;
 }
+
 .emoji-picker {
     display: none;
     position: absolute;
@@ -127,6 +141,7 @@
     overflow-y: auto;
     z-index: 10;
 }
+
 .emoji-picker button {
     background: none;
     border: none;
@@ -134,13 +149,28 @@
     font-size: 20px;
     margin: 5px;
 }
+
 .toolbar-btn input[type="color"] {
     display: none;
 }
+
 .toolbar-btn input[type="color"].active {
     display: inline;
 }
+
 .color-picker {
     width: 36px;
     height: 36px;
+}
+
+select {
+    background-color: transparent;
+    width: 100%;
+    height: 50px;
+    border: 1px solid #35373D;
+    padding: 0 10px;
+}
+
+option {
+    background: #2C2E33;
 }

@@ -65,4 +65,63 @@
     height: 100%;
 }
 
+.container {
+    display: flex;
+    justify-content: space-between;
+    width: 800px;
+    height: 200px;
+    background-color: transparent;
+    padding: 10px;
+}
+
+
+.left-section, .right-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 105px;
+}
+
+.middle-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 560px;
+}
+
+.small-rectangle {
+    width: 100%;
+    height: 56px;
+    background: linear-gradient(to bottom, #000080, #00004d);
+}
+
+.brown {
+    background: linear-gradient(to bottom, #5c4033, #4d322b);
+}
+
+.blue-section {
+    width: 240px;
+    height: 180px;
+    background: linear-gradient(to bottom, #000080, #00004d);
+    border-bottom-right-radius: 80px;
+    position: relative;
+}
+
+.red-section {
+    width: 240px;
+    height: 180px;
+    background: linear-gradient(to bottom, #800000, #4d0000);
+    border-bottom-left-radius: 80px;
+    position: relative;
+}
+
+.arch {
+    width: 80px;
+    height: 160px;
+    background: linear-gradient(to bottom, #006400, #003300);
+    border-top-left-radius: 80px;
+    border-top-right-radius: 80px;
+    position: relative;
+}
+
 /* openchat */

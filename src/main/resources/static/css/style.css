@@ -1788,7 +1788,7 @@ header>p {
 /* 최근메시지 영역 */
 header>.nav {
     flex-flow: column;
-    padding: 10px;
+    padding: 10px 5px;
     gap: 4px;
 }
 
@@ -2200,6 +2200,7 @@ div.mainContent {
     font-size: 14px;
 }
 
+
 .sub-header>.active {
     border-radius: 2px;
     background-color: #515151;
@@ -2329,6 +2330,10 @@ div.chatContent>div.text.grey-1 {
     width: 100%;
 }
 
+.footer p {
+    color: #B0B0B1;
+}
+
 .footer .footer-notification,
 .footer .footer-corp {
     font-size: 0.8125 rem;
@@ -2356,6 +2361,7 @@ div.chatContent>div.text.grey-1 {
 .footer .footer-nav .nav-list .nav-item {
     font-size: 0.875 rem;
     margin: 15px 0;
+    color: #B0B0B1;
 }
 
 .footer-corp {
@@ -2433,6 +2439,20 @@ img.profile-img-60 {
 
 .pointer {
     cursor: pointer;
+}
+
+.ripple {
+    position: relative;
+    overflow: hidden;
+}
+
+.ripple-effect {
+    position: absolute;
+    border-radius: 50%;
+    background: var(--rgba-08);
+    transform: scale(0);
+    animation: ripple-animation 0.4s linear;
+    pointer-events: none;
 }
 
 /* 스피너 스타일 */
