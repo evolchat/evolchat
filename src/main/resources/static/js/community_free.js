@@ -1,191 +1,147 @@
 $(document).ready(function() {
-    const postsPerPage = 10; // 페이지당 게시물 수
-    let currentBoardId = 1; // 초기 boardId 값 설정
-    let currentPage = 1; // 현재 페이지
-    let totalPages = 1; // 총 페이지 수
-    let currentSort = 'latest'; // 현재 정렬 기준 (최신글)
+    const postsPerPage = 10;
+    let currentBoardId = 1;
+    let currentPage = 1;
+    let totalPages = 1;
+    let currentSort = 'latest';
 
     function fetchPosts(page = 1, boardId = currentBoardId, searchQuery = '', sort = currentSort) {
-        let url = `/community-posts?page=${page}&size=${postsPerPage}&boardId=${boardId}&search=${encodeURIComponent(searchQuery)}&sort=${sort}`;
+        const url = `/community-posts?page=${page}&size=${postsPerPage}&boardId=${boardId}&search=${encodeURIComponent(searchQuery)}&sort=${sort}`;
 
         $.ajax({
             url: url,
             type: 'GET',
             success: function(response, status, xhr) {
-                const postsContainer = $('#posts-container');
-                postsContainer.empty(); // 기존 콘텐츠 제거
-
-                if (response.length === 0) {
-                    postsContainer.append('<div class="no-posts">검색 결과가 없습니다.</div>'); // 게시물이 없으면 메시지 표시
-                    $('#pagination-container').hide(); // 페이지네이션 숨기기
-                    return;
-                }
-
-                $('#pagination-container').show(); // 게시물이 있을 때는 페이지네이션 표시
-
-                response.forEach(post => {
-                    // 댓글 개수 처리
-                    const commentCountHtml = post.commentCount > 0 ? `<span>+${post.commentCount}</span>` : '';
-
-                    const postHtml = `
-                        <a class="post flex-row tr" data-post-id="${post.postId}" href="/community_detail?boardId=1&postId=${post.postId}">
-                            <div class="text-wrap">
-                                <div class="title white m-b-10 px17">
-                                    ${post.title} ${commentCountHtml}
-                                </div>
-                                <div class="summary m-b-18 px15">
-                                    ${post.content}
-                                </div>
-                                <div class="etc">
-                                    <div class="profile flex-row flex-c m-b-8">
-                                        <img class="profile-img-24 m-r-10" src="../static/images/profile/default.png" alt="#" class="m-r-6">
-                                        <div class="nickname px15">${post.userId}</div>
-                                    </div>
-                                    <div class="info px12 flex-c flex-row">
-                                        <span class="m-r-20">${new Date(post.createdAt).toLocaleString()}</span>
-                                        <span class="flex-c flex-row m-r-20"><img
-                                                src="../static/images/svg/input-icon-eye.svg" alt=""
-                                                class="m-r-4">${post.views}</span>
-                                        <span class="flex-c flex-row"><img
-                                                src="../static/images/svg/hearts.svg" alt=""
-                                                class="m-r-4">${post.likeCount}</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="img-wrap">
-                                <img src="${post.imageUrl || '../../static/images/svg/logo.svg'}" alt="#" onerror="this.src='../../static/images/svg/logo.svg'">
-                            </div>
-                        </div>
-                    `;
-                    postsContainer.append(postHtml);
-                });
-
+                renderPosts(response);
                 totalPages = parseInt(xhr.getResponseHeader('X-Total-Pages')) || 1;
-                updatePagination(currentPage, totalPages, boardId); // boardId 전달
+                updatePagination(currentPage, totalPages);
             },
             error: function() {
-                console.log('게시물을 가져오는 데 실패했습니다.');
+                console.error('게시물을 가져오는 데 실패했습니다.');
             }
         });
     }
 
-    function updatePagination(currentPage, totalPages, boardId) {
-        const paginationContainer = $('#pagination-container');
-        paginationContainer.empty(); // 기존 페이지네이션 제거
+    function renderPosts(posts) {
+        const postsContainer = $('#posts-container');
+        postsContainer.empty();
 
-        // 맨 앞으로 이동
+        if (posts.length === 0) {
+            postsContainer.append('<div class="no-posts">검색 결과가 없습니다.</div>');
+            $('#comm-free-pagination-container').hide();
+            return;
+        }
+
+        $('#comm-free-pagination-container').show();
+
+        posts.forEach(post => {
+            const postHtml = generatePostHtml(post);
+            postsContainer.append(postHtml);
+        });
+    }
+
+    function generatePostHtml(post) {
+        const commentCountHtml = post.commentCount > 0 ? `<span>+${post.commentCount}</span>` : '';
+        return `
+            <a class="post flex-row tr" data-post-id="${post.postId}" href="/community_detail?boardId=1&postId=${post.postId}">
+                <div class="text-wrap">
+                    <div class="title white m-b-10 px17">${post.title} ${commentCountHtml}</div>
+                    <div class="summary m-b-18 px15">${post.content}</div>
+                    <div class="etc">
+                        <div class="profile flex-row flex-c m-b-8">
+                            <img class="profile-img-24 m-r-10" src="../static/images/profile/default.png" alt="#">
+                            <div class="nickname px15">${post.userId}</div>
+                        </div>
+                        <div class="info px12 flex-c flex-row">
+                            <span class="m-r-20">${new Date(post.createdAt).toLocaleString()}</span>
+                            <span class="flex-c flex-row m-r-20"><img src="../static/images/svg/input-icon-eye.svg" alt="" class="m-r-4">${post.views}</span>
+                            <span class="flex-c flex-row"><img src="../static/images/svg/hearts.svg" alt="" class="m-r-4">${post.likeCount}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="img-wrap">
+                    <img src="${post.imageUrl || '../../static/images/svg/logo.svg'}" alt="#" onerror="this.src='../../static/images/svg/logo.svg'">
+                </div>
+            </a>
+        `;
+    }
+
+    function updatePagination(currentPage, totalPages) {
+        const paginationContainer = $('#comm-free-pagination-container');
+        paginationContainer.empty();
+
         if (currentPage > 3) {
-            const prevTwoButton = $('<div class="prev-btn page flex-c-c" data-page="prev-two" data-board="' + boardId + '"><img src="../static/images/svg/prev-two.svg" alt="맨 처음 페이지"></div>');
-            paginationContainer.append(prevTwoButton);
+            paginationContainer.append(createPaginationButton('prev-two', '맨 처음 페이지', 1));
         }
-
-        // 이전 버튼
         if (currentPage > 1) {
-            const prevButton = $('<div class="prev-btn page flex-c-c" data-page="prev" data-board="' + boardId + '"><img src="../static/images/svg/prev.svg" alt="이전 페이지"></div>');
-            paginationContainer.append(prevButton);
+            paginationContainer.append(createPaginationButton('prev', '이전 페이지', currentPage - 1));
         }
 
-        // 페이지 번호 버튼
-        const startPage = Math.max(1, currentPage - 2);
-        const endPage = Math.min(totalPages, currentPage + 2);
-
-        for (let i = startPage; i <= endPage; i++) {
-            const pageDiv = $(`<div class="page flex-c-c" data-page="${i}" data-board="${boardId}">${i}</div>`);
+        for (let i = Math.max(1, currentPage - 2); i <= Math.min(totalPages, currentPage + 2); i++) {
+            const pageDiv = createPaginationButton(i, `${i}`, i);
             if (i === currentPage) {
-                pageDiv.addClass('bc-activate'); // 현재 페이지에 bc-activate 클래스 추가
+                pageDiv.addClass('bc-activate');
             }
             paginationContainer.append(pageDiv);
         }
 
-        // 다음 버튼
         if (currentPage < totalPages) {
-            const nextButton = $('<div class="next-btn page flex-c-c" data-page="next" data-board="' + boardId + '"><img src="../static/images/svg/next.svg" alt="다음 페이지"></div>');
-            paginationContainer.append(nextButton);
+            paginationContainer.append(createPaginationButton('next', '다음 페이지', currentPage + 1));
         }
-
-        // 맨 뒤로 이동
         if (currentPage < totalPages - 2) {
-            const nextTwoButton = $('<div class="next-btn page flex-c-c" data-page="next-two" data-board="' + boardId + '"><img src="../static/images/svg/next-two.svg" alt="맨 마지막 페이지"></div>');
-            paginationContainer.append(nextTwoButton);
+            paginationContainer.append(createPaginationButton('next-two', '맨 마지막 페이지', totalPages));
         }
 
-        attachPaginationEventListeners(); // 페이지네이션 이벤트 리스너 부착
+        attachPaginationEventListeners();
+    }
+
+    function createPaginationButton(dataPage, altText, page) {
+        if(isNaN(dataPage)) {
+            return $(`<div class="page flex-c-c" data-page="${page}" title="${altText}"><img src="../static/images/svg/${dataPage}.svg" alt="${altText}"></div>`);
+        }
+        return $(`<div class="page flex-c-c" data-page="${page}" title="${altText}">${dataPage}</div>`);
     }
 
     function attachPaginationEventListeners() {
-        $('.page').off('click').on('click', function() { // 중복 바인딩 방지
-            let page = $(this).data('page');
-            const boardId = $(this).data('board'); // 데이터 속성에서 boardId 가져오기
-
-            if (page === 'next') {
-                page = currentPage + 1;
-            } else if (page === 'prev') {
-                page = currentPage - 1;
-            } else if (page === 'next-two') {
-                page = totalPages; // 전체 페이지 수로 이동
-            } else if (page === 'prev-two') {
-                page = 1; // 첫 페이지로 이동
-            } else {
-                page = parseInt(page);
-            }
-
-            // page 값이 유효한지 확인
+        $('.page').off('click').on('click', function() {
+            const page = $(this).data('page');
             if (!isNaN(page) && page > 0 && page <= totalPages) {
-                currentPage = page; // currentPage 업데이트
+                currentPage = page;
                 fetchPosts(currentPage, currentBoardId, $('#comm-free-search-input').val(), currentSort);
-            } else {
-                console.error('Invalid page value:', page); // 오류 로그 출력
             }
         });
     }
 
     function handleSearch() {
-        const searchQuery = $('#comm-free-search-input').val();
-        fetchPosts(1, currentBoardId, searchQuery, currentSort); // 첫 페이지부터 검색
+        fetchPosts(1, currentBoardId, $('#comm-free-search-input').val(), currentSort);
     }
 
-    // 초기 게시물 가져오기
-    fetchPosts(1, currentBoardId);
+    function setupSortButtons() {
+        $('.sort-btn').on('click', function() {
+            currentSort = $(this).data('sort');
+            fetchPosts(1, currentBoardId, $('#comm-free-search-input').val(), currentSort);
+            updateActiveClass($(this));
+        });
+    }
 
-    // 검색 버튼 클릭 이벤트
-    $('#comm-free-search-button').on('click', function() {
-        handleSearch();
-    });
-
-    // 검색 입력 필드에서 Enter 키 눌렀을 때
-    $('#comm-free-search-input').on('keypress', function(event) {
-        if (event.which === 13) { // Enter 키 코드
-            event.preventDefault();
-            handleSearch();
-        }
-    });
-
-    // 정렬 버튼 클릭 이벤트 추가
-    $('#sort-latest').on('click', function() {
-        currentSort = 'latest'; // 정렬 기준을 최신글로 설정
-        fetchPosts(1, currentBoardId, $('#comm-free-search-input').val(), currentSort);
-        updateActiveClass($(this));
-    });
-
-    $('#sort-popular').on('click', function() {
-        currentSort = 'popular'; // 정렬 기준을 인기글로 설정
-        fetchPosts(1, currentBoardId, $('#comm-free-search-input').val(), currentSort);
-        updateActiveClass($(this));
-    });
-
-    $('#sort-most-comments').on('click', function() {
-        currentSort = 'most-comments'; // 정렬 기준을 댓글 많은 글로 설정
-        fetchPosts(1, currentBoardId, $('#comm-free-search-input').val(), currentSort);
-        updateActiveClass($(this));
-    });
-
-    // 활성화된 정렬 버튼 스타일 업데이트
     function updateActiveClass(activeElement) {
-        $('.sorting div').removeClass('white active');
+        $('.sorting .sort-btn').removeClass('white active');
         activeElement.addClass('white active');
     }
 
-    $('.sorting div').on('click', function() {
-        updateActiveClass($(this));
-    });
+    // 초기화 함수
+    function init() {
+        fetchPosts();
+        $('#comm-free-search-button').on('click', handleSearch);
+        $('#comm-free-search-input').on('keypress', function(event) {
+            if (event.which === 13) {
+                event.preventDefault();
+                handleSearch();
+            }
+        });
+        setupSortButtons();
+    }
+
+    // 초기화 실행
+    init();
 });
