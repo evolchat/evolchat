@@ -13,7 +13,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id; // id 타입을 Integer로 변경
 
     @Column(nullable = false, unique = true)
     private String username;
@@ -78,4 +78,7 @@ public class User {
 
     @Transient
     private String winRate; // 승률을 위한 임시 필드
+
+    @Transient
+    private String currentPage; // 현재 페이지 정보 추가
 }

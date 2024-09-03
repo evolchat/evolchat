@@ -2,27 +2,52 @@ package com.glossy.evolchat.model;
 
 import lombok.Data;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.time.LocalDateTime;
 
 @Entity
-@Data
 public class Friend {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int seq;
+    private Integer id;
 
-    @Column(nullable = false)
-    private int userId1;
+    private Integer userId1;
+    private Integer userId2;
+    private boolean isBlocked; // 차단 상태를 나타내는 필드
 
-    @Column(nullable = false)
-    private int userId2;
+    // Getter and Setter methods
+    public Integer getId() {
+        return id;
+    }
 
-    @Column(nullable = false)
-    private LocalDateTime createdAt;
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-    @PrePersist
-    protected void onCreate() {
-        createdAt = LocalDateTime.now();
+    public Integer getUserId1() {
+        return userId1;
+    }
+
+    public void setUserId1(Integer userId1) {
+        this.userId1 = userId1;
+    }
+
+    public Integer getUserId2() {
+        return userId2;
+    }
+
+    public void setUserId2(Integer userId2) {
+        this.userId2 = userId2;
+    }
+
+    public boolean isBlocked() {
+        return isBlocked;
+    }
+
+    public void setBlocked(boolean isBlocked) {
+        this.isBlocked = isBlocked;
     }
 }

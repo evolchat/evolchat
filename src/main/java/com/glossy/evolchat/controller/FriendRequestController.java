@@ -35,15 +35,13 @@ public class FriendRequestController {
         List<FriendRequest> pendingRequests = friendRequestService.getPendingRequests(currentUser);
 
         // Convert to DTOs
-        List<FriendRequestDTO> dtoList = pendingRequests.stream()
+        return pendingRequests.stream()
                 .map(request -> new FriendRequestDTO(
                         request.getId(),
                         request.getReceiver().getNickname(), // Assuming `getReceiver()` returns the `User` who received the request
                         request.getReceiver().getTodaysMessage() // Use appropriate getter if message is part of FriendRequest
                 ))
                 .collect(Collectors.toList());
-
-        return dtoList;
     }
 
     @PostMapping("/send-request")

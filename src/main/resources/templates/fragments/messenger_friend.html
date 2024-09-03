@@ -8,112 +8,42 @@
     <link id="messenger_friend" rel="stylesheet" href="../../static/css/page/messenger/messenger_friend.css">
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="https://unpkg.com/tippy.js@6"></script>
+    <style>
+        #no-friends-message {
+            display: none;
+            text-align: center;
+            color: #ffffff;
+            padding: 20px;
+            background-color: #333333;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
-<div id="content-area" class="flex-grow" style="">
+<div id="content-area" class="flex-grow">
     <div class="wrapper bc-black vh100" th:data-active-category="${activeCategory}" th:data-active-page="${activePage}">
 
         <div class="mainContent bc-main">
             <div class="sub-header flex-row flex-c white opacity60 px15">
                 <div class="list active"><a href="messenger_friend">친구</a></div>
                 <div class="list"><a href="messenger_message">메시지</a></div>
-                <div class="list "><a href="messenger_blocklists">차단 목록</a></div>
+                <div class="list"><a href="messenger_blocklists">차단 목록</a></div>
                 <div class="list"><a href="messenger_add_friend_wait"><img src="../../static/images/svg/icon-add.svg" alt="#">친구 추가하기</a></div>
             </div>
             <div class="sub-header flex-row flex-c">
                 <div class="sub-header-search bc-footer flex-grow">
-                    <input type="text" placeholder="닉네임 검색">
-                    <img src="../../static/images/svg/search.svg" alt="" class="input-icon search" />
+                    <input type="text" placeholder="닉네임 검색" id="search-input">
+                    <img src="../../static/images/svg/search.svg" alt="" class="input-icon search" id="search-icon"/>
                 </div>
             </div>
             <div class="mainLayer">
-                <div class="user-list-layer  px15 white">
-                    <div class="user-list flex-row flex-c tr">
-                        <div class="profile"><img class="profile-img-52" src="../../static/images/profile/default.png" alt="#"></div>
-                        <div class="user">
-                            <p class="nickname opacity80">제임스뒨</p>
-                            <p class="text opacity60 px14">커뮤니티-포토-아이유화보</p>
-                        </div>
-                        <div class="btn-wrap flex-row flex-c">
-                            <div class="icon flex-c-c cursor-p"><img src="../../static/images/svg/pins.svg" alt="" style="height: auto; width: auto;" />
-                                <div class="hidden">고정</div>
-                            </div>
-                            <div class="icon flex-c-c cursor-p"><img src="../../static/images/svg/home.svg" alt="" style="height: auto; width: auto;" />
-                                <div class="hidden">홈피</div>
-                            </div>
-                            <div class="icon flex-c-c cursor-p"><img src="../../static/images/svg/chat.svg" alt="" style="height: auto; width: auto;" />
-                                <div class="hidden">메시지보내기</div>
-                            </div>
-                            <div class="icon flex-c-c cursor-p"><img src="../../static/images/svg/hyphenation.svg" alt="" style="height: auto; width: auto;" />
-                                <div class="hidden">더보기</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="user-list flex-row flex-c tr">
-                        <div class="profile"><img class="profile-img-52" src="../../static/images/profile/default.png" alt="#"></div>
-                        <div class="user">
-                            <p class="nickname opacity80">우울한협객</p>
-                            <p class="text opacity60 px14">에볼루션-스피드 바카라 1</p>
-                        </div>
-                        <div class="btn-wrap flex-row flex-c">
-                            <div class="icon flex-c-c cursor-p"><img src="../../static/images/svg/pins.svg" alt="" style="height: auto; width: auto;" />
-                                <div class="hidden">고정</div>
-                            </div>
-                            <div class="icon flex-c-c cursor-p"><img src="../../static/images/svg/home.svg" alt="" style="height: auto; width: auto;" />
-                                <div class="hidden">홈피</div>
-                            </div>
-                            <div class="icon flex-c-c cursor-p"><img src="../../static/images/svg/chat.svg" alt="" style="height: auto; width: auto;" />
-                                <div class="hidden">메시지보내기</div>
-                            </div>
-                            <div class="icon flex-c-c cursor-p"><img src="../../static/images/svg/hyphenation.svg" alt="" style="height: auto; width: auto;" />
-                                <div class="hidden">더보기</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="user-list flex-row flex-c tr">
-                        <div class="profile"><img class="profile-img-52" src="../../static/images/profile/default.png" alt="#"></div>
-                        <div class="user">
-                            <p class="nickname opacity80">겸댕이</p>
-                            <p class="text opacity60 px14">오프라인</p>
-                        </div>
-                        <div class="btn-wrap flex-row flex-c">
-                            <div class="icon flex-c-c cursor-p"><img src="../../static/images/svg/pins.svg" alt="" style="height: auto; width: auto;" />
-                                <div class="hidden">고정</div>
-                            </div>
-                            <div class="icon flex-c-c cursor-p"><img src="../../static/images/svg/home.svg" alt="" style="height: auto; width: auto;" />
-                                <div class="hidden">홈피</div>
-                            </div>
-                            <div class="icon flex-c-c cursor-p"><img src="../../static/images/svg/chat.svg" alt="" style="height: auto; width: auto;" />
-                                <div class="hidden">메시지보내기</div>
-                            </div>
-                            <div class="icon flex-c-c cursor-p"><img src="../../static/images/svg/hyphenation.svg" alt="" style="height: auto; width: auto;" />
-                                <div class="hidden">더보기</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="user-list flex-row flex-c tr">
-                        <div class="profile"><img class="profile-img-52" src="../../static/images/profile/default.png" alt="#"></div>
-                        <div class="user">
-                            <p class="nickname opacity80">부끄럼쟁이</p>
-                            <p class="text opacity60 px14">오프라인</p>
-                        </div>
-                        <div class="btn-wrap flex-row flex-c">
-                            <div class="icon flex-c-c cursor-p"><img src="../../static/images/svg/pins.svg" alt="" style="height: auto; width: auto;" />
-                                <div class="hidden">고정</div>
-                            </div>
-                            <div class="icon flex-c-c cursor-p"><img src="../../static/images/svg/home.svg" alt="" style="height: auto; width: auto;" />
-                                <div class="hidden">홈피</div>
-                            </div>
-                            <div class="icon flex-c-c cursor-p"><img src="../../static/images/svg/chat.svg" alt="" style="height: auto; width: auto;" />
-                                <div class="hidden">메시지보내기</div>
-                            </div>
-                            <div class="icon flex-c-c cursor-p"><img src="../../static/images/svg/hyphenation.svg" alt="" style="height: auto; width: auto;" />
-                                <div class="hidden">더보기</div>
-                            </div>
-                        </div>
-                    </div>
+                <div id="user-list-layer" class="user-list-layer px15 white">
+                    <!-- 친구 리스트가 동적으로 추가될 곳 -->
                 </div>
-                <div id="footer" class=" bc-footer" th:insert="~{include/footer}">
+                <div id="no-friends-message">
+                    아직 친구가 없습니다.
+                </div>
+                <div id="footer" class="bc-footer" th:insert="~{include/footer}">
                 </div>
             </div>
         </div>
@@ -122,26 +52,83 @@
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         // Apply Tippy.js to all icons in the user list
-        document.querySelectorAll('.user-list .btn-wrap .icon').forEach(function (icon) {
-            tippy(icon, {
-                content: icon.querySelector('.hidden').textContent,
-                placement: 'top',
-                animation: 'fade',
-                 onShow(instance) {
-                // 툴팁의 루트 요소에 접근하여 스타일을 직접 변경
-                instance.popper.querySelector('.tippy-box').style.backgroundColor = '#000000'; // 배경색 설정
-                instance.popper.querySelector('.tippy-box').style.color = 'white'; // 텍스트 색상 설정
-                instance.popper.querySelector('.tippy-arrow').style.color = '#000000'; // 화살표 색상 설정
-            }
+        function initializeTooltips() {
+            document.querySelectorAll('.user-list .btn-wrap .icon').forEach(function (icon) {
+                tippy(icon, {
+                    content: icon.querySelector('.hidden').textContent,
+                    placement: 'top',
+                    animation: 'fade',
+                    onShow(instance) {
+                        // 툴팁의 루트 요소에 접근하여 스타일을 직접 변경
+                        instance.popper.querySelector('.tippy-box').style.backgroundColor = '#000000'; // 배경색 설정
+                        instance.popper.querySelector('.tippy-box').style.color = 'white'; // 텍스트 색상 설정
+                        instance.popper.querySelector('.tippy-arrow').style.color = '#000000'; // 화살표 색상 설정
+                    }
+                });
             });
-        });
+        }
+
+        // Fetch friends list from server and populate it
+        function loadFriends() {
+            fetch('/messenger_friend_list') // 서버에서 친구 리스트를 가져오는 API 엔드포인트
+                .then(response => response.json())
+                .then(data => {
+                    const userListLayer = document.getElementById('user-list-layer');
+                    const noFriendsMessage = document.getElementById('no-friends-message');
+                    userListLayer.innerHTML = ''; // 기존 목록 비우기
+
+                    if (Array.isArray(data) && data.length === 0) {
+                        noFriendsMessage.style.display = 'block'; // 친구가 없으면 메시지 표시
+                    } else if (Array.isArray(data)) {
+                        noFriendsMessage.style.display = 'none'; // 친구가 있으면 메시지 숨기기
+                        data.forEach(friend => {
+                            const userItem = document.createElement('div');
+                            userItem.className = 'user-list flex-row flex-c tr';
+                            userItem.innerHTML = `
+                                <div class="profile"><img class="profile-img-52" src="${friend.profileImg || '../../static/images/profile/default.png'}" alt="#"></div>
+                                <div class="user">
+                                    <p class="nickname opacity80">${friend.nickname}</p>
+                                    <p class="text opacity60 px14">${friend.status}</p>
+                                </div>
+                                <div class="btn-wrap flex-row flex-c">
+                                    <div class="icon flex-c-c cursor-p"><img src="../../static/images/svg/pins.svg" alt="" style="height: auto; width: auto;" />
+                                        <div class="hidden">고정</div>
+                                    </div>
+                                    <div class="icon flex-c-c cursor-p"><img src="../../static/images/svg/home.svg" alt="" style="height: auto; width: auto;" />
+                                        <div class="hidden">홈피</div>
+                                    </div>
+                                    <div class="icon flex-c-c cursor-p"><img src="../../static/images/svg/chat.svg" alt="" style="height: auto; width: auto;" />
+                                        <div class="hidden">메시지보내기</div>
+                                    </div>
+                                    <div class="icon flex-c-c cursor-p"><img src="../../static/images/svg/hyphenation.svg" alt="" style="height: auto; width: auto;" />
+                                        <div class="hidden">더보기</div>
+                                    </div>
+                                </div>
+                            `;
+                            userListLayer.appendChild(userItem);
+                        });
+                        initializeTooltips(); // 툴팁 초기화
+                    } else {
+                        console.error('Unexpected data format:', data);
+                        noFriendsMessage.style.display = 'block'; // 예기치 않은 데이터 형식일 경우 메시지 표시
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching friends list:', error);
+                    const noFriendsMessage = document.getElementById('no-friends-message');
+                    noFriendsMessage.style.display = 'block'; // 에러 발생 시 메시지 표시
+                });
+        }
+
+        loadFriends(); // 페이지 로드 시 친구 리스트 불러오기
 
         // Event listener for pin icon click to toggle pin status
-        document.querySelectorAll('.user-list .btn-wrap .icon:nth-of-type(1)').forEach(function (icon) {
-            icon.addEventListener('click', function () {
+        document.addEventListener('click', function (event) {
+            if (event.target.closest('.user-list .btn-wrap .icon:nth-of-type(1)')) {
+                var icon = event.target.closest('.user-list .btn-wrap .icon:nth-of-type(1)');
                 var img = icon.querySelector('img');
                 var userItem = icon.closest('.user-list');
-                var userListLayer = document.querySelector('.user-list-layer');
+                var userListLayer = document.querySelector('#user-list-layer');
                 var pinsSrc = '../../static/images/svg/pins.svg';
                 var goldPinsSrc = '../../static/images/svg/goldpins.svg';
 
@@ -157,7 +144,7 @@
                 } else {
                     img.src = pinsSrc;
                 }
-            });
+            }
         });
     });
 </script>

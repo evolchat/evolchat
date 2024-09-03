@@ -188,4 +188,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Load friend requests when the page loads
     loadFriendRequests();
+
+    function loadFriendList() {
+        fetch('/messenger/friends')
+            .then(response => response.json())
+            .then(data => {
+                const userList = document.getElementById('userList');
+                userList.innerHTML = '';
+                data.forEach(friend => {
+                    userList.innerHTML += `
+                        <div class="user-list flex-row flex-c tr">
+                            <div class="profile"><img class="profile-img-52" src="../../static/images/profile/default.png" alt="#"></div>
+                            <div class="user">
+                                <p class="nickname opacity80">${friend.nickname}</p>
+                                <p class="text opacity60 px14">현재 페이지: ${friend.currentPage}</p>
+                            </div>
+                        </div>
+                    `;
+                });
+            });
+    }
+
+    // 페이지 로드 시 친구 목록을 불러옵니다.
+    document.addEventListener("DOMContentLoaded", function () {
+        loadFriendList();
+    });
 });
