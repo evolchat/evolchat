@@ -128,10 +128,16 @@
             $("#initialNav").css({ display: "block", width: "100%", visibility: "visible", opacity: 1 });
             $("#newNav").css({ display: "none", width: "25%", visibility: "hidden", opacity: 0 });
             $("#nav").css("width", "100%");
+
+            // CSS 클래스를 제거
+            $("#newNav").removeClass('nav-expanded');
         } else {
             $("#initialNav").css({ display: "none", width: "100%", visibility: "hidden", opacity: 0 });
             $("#newNav").css({ display: "block", width: "25%", visibility: "visible", opacity: 1 });
             $("#nav").css("width", "55px");
+
+            // CSS 클래스를 추가
+            $("#newNav").addClass('nav-expanded');
         }
 
         $("#nav_button").click(function() {
@@ -145,6 +151,10 @@
                     });
 
                     $("#nav").animate({ width: "100%" }, 300);
+
+                    // CSS 클래스를 제거
+                    $("#newNav").removeClass('nav-expanded');
+
                     localStorage.setItem('isInitialNavVisible', true);
                     localStorage.setItem('isNavExpanded', true);
                 });
@@ -156,6 +166,10 @@
                     });
 
                     $("#nav").animate({ width: "55px" }, 200);
+
+                    // CSS 클래스를 추가
+                    $("#newNav").addClass('nav-expanded');
+
                     localStorage.setItem('isInitialNavVisible', false);
                     localStorage.setItem('isNavExpanded', false);
                 });

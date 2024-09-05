@@ -1805,6 +1805,11 @@ header>.nav {
     border-bottom: 1px solid #2c2e33;
 }
 
+#newNav .nav {
+    padding: 10px 5px;
+}
+
+
 header>.nav a.active {
     background-color: #8744FF;
     color: #fff !important;
@@ -1837,6 +1842,10 @@ header>.nav a>div {
 
 header .recentMessages li {
     padding: 10px 17px;
+}
+
+#newNav .recentMessages li {
+    padding: 10px 10px; /* 새로운 padding 값 설정 */
 }
 
 header .recentMessages li>a {
@@ -2002,6 +2011,11 @@ section.container>.chatLayer {
 
 .nav-icon .fa-sharp {
     font-size: 18px;
+}
+
+#newNav .nav-icon .fa-kit,
+#newNav .nav-icon .fa-sharp {
+    padding-right: 5px;
 }
 
 #gif-fold .fa-kit {

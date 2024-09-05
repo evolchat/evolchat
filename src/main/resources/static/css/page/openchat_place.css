@@ -1,5 +1,9 @@
 
 /* openchat */
+.count {
+    margin-left: 20px;
+    font-size: 18px;
+}
 
 .room-layer .room {
     max-width: 320px;
@@ -103,7 +107,7 @@
     width: 240px;
     height: 180px;
     background: linear-gradient(to bottom, #000080, #00004d);
-    border-bottom-right-radius: 80px;
+    border-top-right-radius: 80px;
     position: relative;
 }
 
@@ -111,17 +115,274 @@
     width: 240px;
     height: 180px;
     background: linear-gradient(to bottom, #800000, #4d0000);
-    border-bottom-left-radius: 80px;
+    border-top-left-radius: 80px;
     position: relative;
 }
 
 .arch {
-    width: 80px;
-    height: 160px;
+    width: 125px;
+    height: 125px;
     background: linear-gradient(to bottom, #006400, #003300);
     border-top-left-radius: 80px;
     border-top-right-radius: 80px;
     position: relative;
+    top: 27px;
 }
 
+.chatInsert {
+    display: flex;
+    flex-direction: column;
+    height: 50%; /* 전체 높이를 차지하도록 */
+    overflow: hidden; /* 스크롤은 자식 요소에서 발생하도록 */
+    padding: 20px 0;
+}
+
+.chat-container {
+    width: 98%;
+    height: 350px;
+    margin: 0 auto;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* 요소를 하단에 고정 */
+    overflow: hidden;
+}
+
+.chat-messages {
+    flex-grow: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column; /* 위에서 아래로 쌓이도록 설정 */
+    justify-content: flex-end; /* 요소를 하단에 고정 */
+    padding-right: 10px;
+}
+
+.chat-message {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.badge {
+    background-color: #3a3a3a;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: #ffcc00;
+    font-weight: bold;
+}
+
+.rank {
+    color: #909090;
+    margin-top: 5px;
+}
+
+.message {
+    background-color: #333;
+    padding: 10px 15px;
+    border-radius: 10px;
+    max-width: 80%;
+    word-wrap: break-word;
+    text-align: start;
+}
+
+.system .message {
+    background-color: #2c2c2c;
+    color: #ddd;
+}
+
+.user .badge {
+    background-color: #555;
+    color: #ccc;
+}
+
+.user .time {
+    font-size: 12px;
+    color: #707070;
+    margin-top: 5px;
+}
+
+.chat-date {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #909090;
+    margin-top: 10px;
+    width: 100%;
+    flex-shrink: 0; /* 날짜가 줄어들지 않도록 고정 */
+    margin-bottom: 10px;
+}
+
+.chat-date::before,
+.chat-date::after {
+    content: "";
+    flex-grow: 1;
+    height: 1px;
+    background-color: #515151;
+    margin: 0 10px;
+}
+
+.chat-input-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 98%;
+    margin: 0 auto;
+    padding: 10px;
+    background-color: #35373D;
+    border-top: 1px solid #333;
+}
+
+.chat-input {
+    flex-grow: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: transparent;
+    color: white;
+    margin-right: 10px;
+}
+
+.chat-input::placeholder {
+    color: #999;
+}
+
+.item-wrap {
+    gap: 20px;
+}
+
+/* Custom Scrollbar */
+.chat-messages::-webkit-scrollbar {
+    width: 8px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+    background-color: #555;
+    border-radius: 10px;
+}
+
+.dot-table-container {
+    display: flex;
+    width: 100%;
+    height: 25vh;
+    background-color: transparent;
+    padding: 10px 20px 30px 20px;
+}
+
+.dot-left-section {
+    width: 35%;
+    height: 100%;
+}
+
+.dot-right-section {
+    display: flex;
+    flex-direction: column;
+    width: 65%;
+    height: 100%;
+}
+
+.dot-top-right, .dot-bottom-right {
+    flex-grow: 1;
+    padding: 2px;
+}
+
+.table-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.gameTable {
+    border-collapse: collapse;
+    width: 100%;
+    height: 100%;
+}
+
+.gameTable td {
+    width: 10px;
+    height: 10px;
+    text-align: center;
+    vertical-align: middle;
+    padding: 0;
+    background-color: transparent;
+}
+
+.dot-left-section .dot {
+    width: 5px;
+    height: 5px;
+    background-color: #35373D;
+    border-radius: 50%;
+    display: block;
+    margin: auto;
+}
+
+.dot-right-section .dot {
+    width: 3px;
+    height: 3px;
+    background-color: #35373D;
+    border-radius: 50%;
+    display: block;
+    margin: auto;
+}
+
+.count img {
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.icon-row {
+    gap: 10px;
+}
+
+.jcs {
+    justify-content: space-between;
+    padding: 15px 30px;
+}
+
+.top {
+    justify-content: end;
+    gap: 20px;
+    padding-right: 50px;
+    padding-top: 20px;
+}
+
+.i-circle {
+    padding: 3px;
+    width: 20px;
+    height: 20px;
+}
+
+.gameCount {
+    position: relative;
+    top: 3px;
+}
+
+.blue-win .i-circle::after,
+.red-win .i-circle::after {
+    content: '';
+    display: inline-block;
+    border-radius: 10px;
+    width: 12px;
+    height: 12px;
+    border: 1px solid #1d1c1e;
+    position: absolute;
+    background-color: #185cc6;
+    top: 0;
+    left: 0;
+}
+
+.red-win .i-circle::after {
+    background-color: #c52123;
+    left: 14px;
+    bottom: 0;
+    top: auto;
+}
 /* openchat */

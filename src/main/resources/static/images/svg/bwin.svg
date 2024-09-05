@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="85" height="26" viewBox="0 0 85 26">
+    <defs>
+        <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#ad2828"/>
+            <stop offset="1" stop-color="#460707"/>
+        </linearGradient>
+    </defs>
+    <g id="사각형_25368" data-name="사각형 25368" stroke="rgba(253,1,1,0.5)" stroke-width="1" fill="url(#linear-gradient)">
+        <rect width="85" height="26" rx="13" stroke="none"/>
+        <rect x="0.5" y="0.5" width="84" height="25" rx="12.5" fill="none"/>
+    </g>
+    <text id="B_" data-name="B?" transform="translate(12 18)" fill="#fff" font-size="15" font-family="SegoeUI, Segoe UI"><tspan x="0" y="0">B?</tspan></text>
+    <g id="타원_1250" data-name="타원 1250" transform="translate(33 7)" fill="none" stroke="#c52123" stroke-width="2">
+        <circle cx="6" cy="6" r="6" stroke="none"/>
+        <circle cx="6" cy="6" r="5" fill="none"/>
+    </g>
+    <circle id="타원_1251" data-name="타원 1251" cx="6" cy="6" r="6" transform="translate(49 7)" fill="#c52123"/>
+    <line id="선_31" data-name="선 31" x1="10" y2="10" transform="translate(65 8)" fill="none" stroke="#c52123" stroke-width="2"/>
+</svg>
