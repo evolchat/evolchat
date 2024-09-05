@@ -1,14 +1,20 @@
 package com.glossy.evolchat.controller;
 
+import com.glossy.evolchat.dto.CommunityPostDto;
 import com.glossy.evolchat.dto.ItemPurchaseSummary;
-import com.glossy.evolchat.model.Purchase;
-import com.glossy.evolchat.model.User;
-import com.glossy.evolchat.model.UserPoints;
+import com.glossy.evolchat.model.*;
 import com.glossy.evolchat.repository.PurchaseRepository;
 import com.glossy.evolchat.service.MyPageService;
 import com.glossy.evolchat.service.PurchaseService;
 import com.glossy.evolchat.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -23,6 +29,7 @@ import java.io.IOException;
 import java.security.Principal;
 import java.util.List;
 import java.util.Optional; // Add this import
+import java.util.stream.Collectors;
 
 @Controller
 public class MyPageController {

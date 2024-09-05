@@ -10,109 +10,71 @@
 </head>
 
 <body>
-    <div id="content-area" class="flex-grow" style="">
-        <div class="wrapper bc-black vh100" th:data-active-category="${activeCategory}" th:data-active-page="${activePage}">
+<div id="content-area" class="flex-grow" style="">
+    <div class="wrapper bc-black vh100" th:data-active-category="${activeCategory}" th:data-active-page="${activePage}">
 
-            <Section class="flex-row">
-    <!--            <div id="nav" class="bc-aside g-12"></div>-->
-                <div class="wrap bc-footer ">
-                    <div class="content">
-                        <div class="mainContent bc-main">
-                            <div class="sub-header flex-row flex-c white px15">
-                                <div class="list"><a href="my_page">내정보</a></div>
-                                <div class="list"><a href="my_item">아이템</a></div>
-                                <div class="list active"><a href="my_cash">캐시</a></div>
-                                <div class="list"><a href="my_bettingpoints">배팅 포인트</a></div>
-                                <div class="list"><a href="my_activitypoints">활동 포인트</a></div>
-                                <div class="list"><a href="my_goldchip">골드칩</a></div>
-    <!--                        <div class="list"><a href="#">마이홈</a></div>-->
-    <!--                        <div class="list"><a href="#">비빌번호 변경</a></div>-->
-                            </div>
-                            <div class="sub-header flex-row flex-c box">
-                                <div class="flex-row cash-charge">
-                                    <div class="txt px15"><img class="cash_img" src="../../static/images/svg/cash.svg" alt=""> 보유 캐시</div>
-                                    <div class="amount px15">420,800</div>
-                                </div>
-                                <button class="bc-activate white px15 btn">캐시충전</button>
-                            </div>
-                            <div class="sub-header flex-row flex-c">
-                                <div class="sub-header-search bc-footer flex-grow">
-                                    <input type="text" placeholder="내용">
-                                    <img src="../../static/images/svg/search.svg" alt=""
-                                         class="input-icon search" />
-                                </div>
-                            </div>
-                            <div class="mainLayer">
-                                <div class="table-radius">
-                                    <table class="rank-table white">
-                                        <thead>
-                                            <tr class="text-center">
-                                                <th>내용</th>
-                                                <th>금액</th>
-                                                <th>사용 후 잔액</th>
-                                                <th>일시</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody  class="text-right">
-                                            <tr>
-                                                <td class="text-left">닉네임 변경권 2개 <span>구매</span></td>
-                                                <td class="text-center">39,600</td>
-                                                <td class="text-center">420,800</td>
-                                                <td class="text-center">2024-05-21 23:23:09</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-left ">프로필 사진 등록권 1개 <span class="gold">포커페이스</span>님에게 <span class="gold">선물</span></td>
-                                                <td class="text-center">39,600</td>
-                                                <td class="text-center">420,800</td>
-                                                <td class="text-center">2024-05-21 23:23:09</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-left">프로필 배경 등록권 1개 <span>구매</span></td>
-                                                <td class="text-center">39,600</td>
-                                                <td class="text-center">420,800</td>
-                                                <td class="text-center">2024-05-21 23:23:09</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-left">캐시 충전</td>
-                                                <td class="text-center">39,600</td>
-                                                <td class="text-center">420,800</td>
-                                                <td class="text-center">2024-05-21 23:23:09</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <tfoot class="h100px">
-                            <tr>
-                                <td colspan='8' class="text-cneter">
-                                    <div class="pagination flex-row flex-c-c">
-                                        <div class="page flex-c-c bc-activate">1</div>
-                                        <div class="page flex-c-c">2</div>
-                                        <div class="page flex-c-c">3</div>
-                                        <div class="page flex-c-c">4</div>
-                                        <div class="page flex-c-c">5</div>
-                                        <div class="page flex-c-c">6</div>
-                                        <div class="page flex-c-c">7</div>
-                                        <div class="page flex-c-c">8</div>
-                                        <div class="page flex-c-c">9</div>
-                                        <div class="page flex-c-c">10</div>
-                                        <button class="next-btn page flex-c-c">
-                                            <img src="../../static/images/svg/next.svg" alt="">
-                                        </button>
-                                        <button class="next-btn page flex-c-c">
-                                            <img src="../../static/images/svg/next-two.svg" alt="">
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                            </tfoot>
+        <Section class="flex-row">
+            <!--            <div id="nav" class="bc-aside g-12"></div>-->
+            <div class="wrap bc-footer ">
+                <div class="content">
+                    <div class="mainContent bc-main">
+                        <div class="sub-header flex-row flex-c white px15">
+                            <div class="list"><a href="my_page">내정보</a></div>
+                            <div class="list"><a href="my_item">아이템</a></div>
+                            <div class="list active"><a href="my_cash">캐시</a></div>
+                            <div class="list"><a href="my_bettingpoints">배팅 포인트</a></div>
+                            <div class="list"><a href="my_activitypoints">활동 포인트</a></div>
+                            <div class="list"><a href="my_goldchip">골드칩</a></div>
+                            <!--                        <div class="list"><a href="#">마이홈</a></div>-->
+                            <!--                        <div class="list"><a href="#">비빌번호 변경</a></div>-->
                         </div>
-                        <div id="footer" class=" bc-footer" th:insert="~{include/footer}">
+                        <div class="sub-header flex-row flex-c box">
+                            <div class="flex-row cash-charge">
+                                <div class="txt px15"><img class="cash_img" src="../../static/images/svg/cash.svg" alt=""> 보유 캐시</div>
+                                <div id="ccash" class="amount px15">420,800</div>
+                            </div>
+                            <button class="bc-activate white px15 btn">캐시충전</button>
+                        </div>
+                        <div class="sub-header flex-row flex-c">
+                            <div class="sub-header-search bc-footer flex-grow">
+                                <input id="cash-search-input" type="text" placeholder="내용">
+                                <img id="cash-search-button" src="../../static/images/svg/search.svg" alt=""
+                                     class="input-icon search" />
+                            </div>
+                        </div>
+                        <div class="mainLayer">
+                            <div class="table-radius">
+                                <table class="rank-table white">
+                                    <thead>
+                                    <tr class="text-center">
+                                        <th>내용</th>
+                                        <th>금액</th>
+                                        <th>사용 후 잔액</th>
+                                        <th>일시</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="cash-transaction-table-body" class="text-right">
+                                    <!-- Data will be inserted here by JavaScript -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <tfoot class="h100px">
+                        <tr>
+                            <td colspan='8' class="text-center">
+                                <div id="pagination-container" class="pagination flex-row flex-c-c">
+                                    <!-- Pagination buttons will be inserted here by JavaScript -->
+                                </div>
+                            </td>
+                        </tr>
+                        </tfoot>
+                    </div>
+                    <div id="footer" class="bc-footer" th:insert="~{include/footer}">
                     </div>
                 </div>
-            </section>
-        </div>
+            </div>
+        </section>
     </div>
+</div>
 </body>
-
 </html>

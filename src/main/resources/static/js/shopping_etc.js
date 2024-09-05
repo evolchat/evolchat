@@ -277,8 +277,8 @@ $(document).ready(function() {
                             url: `/user-points/current`,
                             type: 'GET',
                             success: function(response) {
-                                $('#bettingPoints').text(response.bbettingPoints);
-                                $('#goldChip').text(response.ggoldChip);
+                                $('#bettingPoints').text(response.bbettingPoints.toLocaleString('ko-KR'));
+                                $('#goldChip').text(response.ggoldChip.toLocaleString('ko-KR'));
                             },
                             error: function() {
                                 console.log('Failed to fetch user points');

@@ -8,16 +8,6 @@
     <link id="messenger_friend" rel="stylesheet" href="../../static/css/page/messenger/messenger_friend.css">
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="https://unpkg.com/tippy.js@6"></script>
-    <style>
-        #no-friends-message {
-            display: none;
-            text-align: center;
-            color: #ffffff;
-            padding: 20px;
-            background-color: #333333;
-            border-radius: 5px;
-        }
-    </style>
 </head>
 <body>
 <div id="content-area" class="flex-grow">
@@ -40,7 +30,7 @@
                 <div id="user-list-layer" class="user-list-layer px15 white">
                     <!-- 친구 리스트가 동적으로 추가될 곳 -->
                 </div>
-                <div id="no-friends-message">
+                <div id="no-friends-message" class="no-posts">
                     아직 친구가 없습니다.
                 </div>
                 <div id="footer" class="bc-footer" th:insert="~{include/footer}">

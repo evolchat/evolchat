@@ -37,23 +37,29 @@
                             <div class="mainLayer">
                                 <div class="item-list">
                                     <!-- Thymeleaf 템플릿 코드 시작 -->
-                                    <div th:each="summary : ${itemPurchaseSummaries}" class="shopping-item-wrap">
-                                        <div class="line">
-                                            <div class="top flex-row">
-                                                <div class="left flex-grow">
-                                                    <div class="type px14 m-b-8" th:text="${summary.type}">일회용</div>
-                                                    <div class="name px17 m-b-10" th:text="${summary.name}">아이템 이름</div>
-                                                    <div class="text px13 description" th:text="${summary.description}">아이템 설명</div>
+                                    <div th:if="${itemPurchaseSummaries.size() > 0}">
+                                        <div th:each="summary : ${itemPurchaseSummaries}" class="shopping-item-wrap">
+                                            <div class="line">
+                                                <div class="top flex-row">
+                                                    <div class="left flex-grow">
+                                                        <div class="type px14 m-b-8" th:text="${summary.type}">일회용</div>
+                                                        <div class="name px17 m-b-10" th:text="${summary.name}">아이템 이름</div>
+                                                        <div class="text px13 description" th:text="${summary.description}">아이템 설명</div>
+                                                    </div>
+                                                    <div class="right">
+                                                        <div th:class="'shopping-item shopping-item-' + ${summary.itemId}"></div>
+                                                    </div>
                                                 </div>
-                                                <div class="right">
-                                                    <div th:class= "'shopping-item shopping-item-' + ${summary.itemId}"></div>
+                                                <div class="btn-wrap flex-row">
+                                                    <button class="gift px15">보유 <span class="orange-FFBF00" th:text="${summary.totalQuantity}">0</span></button>
+                                                    <button class="purchase activate px15" th:if="${summary.totalQuantity > 0}">사용하기</button>
                                                 </div>
-                                            </div>
-                                            <div class="btn-wrap flex-row">
-                                                <button class="gift px15">보유 <span class="orange-FFBF00" th:text="${summary.totalQuantity}">0</span></button>
-                                                <button class="purchase activate px15" th:if="${summary.totalQuantity > 0}">사용하기</button>
                                             </div>
                                         </div>
+                                    </div>
+                                    <!-- 아이템이 없을 때 표시할 메시지 -->
+                                    <div class="no-posts" th:unless="${itemPurchaseSummaries.size() > 0}">
+                                        아직 아이템이 없습니다.
                                     </div>
                                     <!-- Thymeleaf 템플릿 코드 끝 -->
                                 </div>
@@ -61,6 +67,7 @@
                         </div>
                         <div id="footer" class=" bc-footer" th:insert="~{include/footer}">
                     </div>
+                </div>
                 </div>
             </section>
         </div>
