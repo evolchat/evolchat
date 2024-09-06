@@ -140,41 +140,31 @@
             $("#newNav").addClass('nav-expanded');
         }
 
+        // #nav_button 클릭 시 네비게이션 토글
         $("#nav_button").click(function() {
             if ($("#newNav").is(":visible")) {
-                $("#newNav").animate({ width: "0%", opacity: 0 }, 300, function() {
-                    $(this).css({ display: "none", visibility: "hidden" });
-                    $("#initialNav").css({ display: "block", width: "0%", visibility: "hidden", opacity: 0 });
+                // 기존에 있던 애니메이션 제거하고 즉시 전환
+                $("#newNav").css({ display: "none", visibility: "hidden", opacity: 0 });
+                $("#initialNav").css({ display: "block", width: "100%", visibility: "visible", opacity: 1 });
+                $("#nav").css("width", "100%");
 
-                    $("#initialNav").animate({ width: "100%" }, 0, function() {
-                        $(this).css({ visibility: "visible" }).animate({ opacity: 1 }, 0);
-                    });
+                // CSS 클래스를 제거
+                $("#newNav").removeClass('nav-expanded');
 
-                    $("#nav").animate({ width: "100%" }, 300);
-
-                    // CSS 클래스를 제거
-                    $("#newNav").removeClass('nav-expanded');
-
-                    localStorage.setItem('isInitialNavVisible', true);
-                    localStorage.setItem('isNavExpanded', true);
-                });
+                localStorage.setItem('isInitialNavVisible', true);
+                localStorage.setItem('isNavExpanded', true);
             } else {
-                $("#initialNav").animate({ width: "0%", opacity: 1 }, 100, function() {
-                    $(this).css({ display: "none", visibility: "hidden" });
-                    $("#newNav").css({ display: "block", width: "0%", visibility: "hidden", opacity: 0 }).animate({ width: "25%" }, 0, function() {
-                        $(this).css({ visibility: "visible" }).animate({ opacity: 1 }, 0);
-                    });
+                // 기존에 있던 애니메이션 제거하고 즉시 전환
+                $("#initialNav").css({ display: "none", visibility: "hidden", opacity: 0 });
+                $("#newNav").css({ display: "block", width: "25%", visibility: "visible", opacity: 1 });
+                $("#nav").css("width", "55px");
 
-                    $("#nav").animate({ width: "55px" }, 200);
+                // CSS 클래스를 추가
+                $("#newNav").addClass('nav-expanded');
 
-                    // CSS 클래스를 추가
-                    $("#newNav").addClass('nav-expanded');
-
-                    localStorage.setItem('isInitialNavVisible', false);
-                    localStorage.setItem('isNavExpanded', false);
-                });
+                localStorage.setItem('isInitialNavVisible', false);
+                localStorage.setItem('isNavExpanded', false);
             }
-             $(this).toggleClass('clicked');
         });
     });
     document.addEventListener('DOMContentLoaded', function() {

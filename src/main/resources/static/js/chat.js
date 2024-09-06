@@ -3,17 +3,38 @@ $("#header-item-tooltip-7").click(function() {
     chatCheckActive();
 });
 
-function chatCheckActive() {
-    var isActive = $("#header-item-tooltip-7").hasClass('active');
-    if (isActive) {
-        $("#chat").show();
-        sessionStorage.setItem('chatActive', 'true'); // 활성화 상태 저장
-    } else {
-        $("#chat").hide();
-        sessionStorage.setItem('chatActive', 'false'); // 비활성화 상태 저장
+if (typeof chatActive === 'undefined') {
+    var chatActive = localStorage.getItem('chatActive');
+    if (chatActive === null) {
+        chatActive = 'false';  // 기본값으로 비활성화 상태 설정
     }
 }
 
+// 페이지 로드 시 chatActive 값에 따라 채팅창 표시
+if (chatActive === 'true') {
+    $("#chat").show();
+    $("#header-item-tooltip-7").addClass('active');
+} else {
+    $("#chat").hide();
+    $("#header-item-tooltip-7").removeClass('active');
+}
+
+// 채팅 토글 버튼 클릭 이벤트 핸들러
+$("#header-item-tooltip-7").click(function() {
+    const chatVisible = $("#chat").is(":visible");
+
+    if (chatVisible) {
+        $("#chat").hide(); // 채팅창 숨기기
+        $("#header-item-tooltip-7").removeClass('active');
+        localStorage.setItem('chatActive', 'false');
+    } else {
+        $("#chat").show(); // 채팅창 보이기
+        $("#header-item-tooltip-7").addClass('active');
+        localStorage.setItem('chatActive', 'true');
+    }
+});
+
+// 채팅 초기화 여부 플래그
 if (typeof chatInitialized === 'undefined') {
     var chatInitialized = false; // 채팅 초기화 여부 플래그
 }
@@ -56,6 +77,7 @@ function initializeChat() {
     });
 }
 
+// 사용자 이름 가져오는 함수
 async function getCurrentUsername() {
     try {
         const response = await fetch('/users/current');
@@ -90,7 +112,7 @@ async function getCurrentUsername() {
     }
 }
 
-// Function to send a message
+// 메시지 전송 함수
 async function sendMessage() {
     const input = document.getElementById('messageInput');
     const message = input ? input.value.trim() : '';
@@ -102,11 +124,12 @@ async function sendMessage() {
         };
         stompClient.send('/app/send', {}, JSON.stringify(chatMessage));
         if (input) {
-            input.value = ''; // Clear the input field
+            input.value = ''; // 입력 필드 초기화
         }
     }
 }
 
+// 메시지 표시 함수
 function displayMessage(nickname, message) {
     const totalChatContent = document.querySelector('#totalChatContent'); // 전체 채팅에만 표시
     if (totalChatContent) {
@@ -129,7 +152,7 @@ function displayMessage(nickname, message) {
         const chatingLayer = document.querySelector('#chatingLayer'); // 전체 채팅에만 표시
         scrollToBottom(chatingLayer);
 
-        // Update message count
+        // 메시지 카운트 업데이트
         const currentCount = parseInt(document.querySelector('.title span').textContent);
         updateMessageCount(currentCount + 1);
     } else {
@@ -137,6 +160,7 @@ function displayMessage(nickname, message) {
     }
 }
 
+// 스크롤을 가장 아래로 이동
 function scrollToBottom(element) {
     element.scroll({
         top: element.scrollHeight,
@@ -144,6 +168,7 @@ function scrollToBottom(element) {
     });
 }
 
+// 채팅 기록 불러오기
 function loadChatHistory() {
     fetch('/chat/history')
         .then(response => response.json())
@@ -152,7 +177,7 @@ function loadChatHistory() {
                 displayMessage(msg.sender, msg.content);
             });
             updateMessageCount(messages.length);
-            // Ensure scroll to bottom after loading history
+            // 기록을 불러온 후 스크롤을 가장 아래로 이동
             const chatLayer = document.querySelector('#totalChatContent'); // 전체 채팅에만 기록을 불러옴
             if (chatLayer) {
                 scrollToBottom(chatLayer);
@@ -161,35 +186,13 @@ function loadChatHistory() {
         .catch(error => console.error('Error loading chat history:', error));
 }
 
+// 메시지 카운트 업데이트
 function updateMessageCount(count) {
     document.querySelector('#messageCount').textContent = count;
 }
 
-initializeChat(); // 페이지가 처음 로드될 때 전체 채팅 초기화
-
-if (typeof chatActive === 'undefined') {
-    var chatActive = localStorage.getItem('chatActive');
-}
-
-if (chatActive === 'true') {
-    $("#chat").show();
-    $("#header-item-tooltip-7").addClass('active');
-} else {
-    $("#chat").hide();
-    $("#header-item-tooltip-7").removeClass('active');
-}
-
-$("#header-item-tooltip-7").click(function() {
-    $("#chat").slideToggle(400, function() {
-        const chatVisible = $("#chat").is(":visible");
-        localStorage.setItem('chatActive', chatVisible.toString());
-        if (chatVisible) {
-            $("#header-item-tooltip-7").addClass('active');
-        } else {
-            $("#header-item-tooltip-7").removeClass('active');
-        }
-    });
-});
+// 채팅 초기화 호출
+initializeChat();
 
 // 탭 클릭 핸들러 설정
 $('#totalChatTab').click(function() {
@@ -204,6 +207,7 @@ $('#alarmChatTab').click(function() {
     switchChatTab('alarm');
 });
 
+// 탭 전환 함수
 function switchChatTab(tab) {
     // 모든 탭의 활성 상태 제거
     $('#totalChatTab').removeClass('active');
