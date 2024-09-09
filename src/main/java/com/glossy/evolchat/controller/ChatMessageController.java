@@ -17,7 +17,6 @@ public class ChatMessageController {
     public List<ChatMessage> getMessages(@PathVariable String chatRoomId) {
         return chatMessageRepository.findByChatRoomId(chatRoomId);
     }
-
     @PostMapping
     public ChatMessage sendMessage(@RequestBody ChatMessage message) {
         return chatMessageRepository.save(message);

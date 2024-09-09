@@ -55,7 +55,7 @@ function initializeChat() {
         stompClient.subscribe('/topic/chat', (message) => {
             if (message.body) {
                 const chatMessage = JSON.parse(message.body);
-                displayMessage(chatMessage.sender, chatMessage.content);
+                displayMessage(chatMessage.sender, chatMessage.content, chatMessage.timestamp);
             }
         });
 
@@ -83,7 +83,7 @@ async function getCurrentUsername() {
         const response = await fetch('/users/current');
         if (response.ok) {
             const user = await response.json();
-            return user.nickname || 'Unknown'; // 닉네임 필드가 있는 경우 반환
+            return user.nickname || user.username; // 닉네임 필드가 있는 경우 반환
         } else {
             Swal.fire({
                 title: '회원님의 이름을 가지고 오지 못 했습니다.',
@@ -130,7 +130,7 @@ async function sendMessage() {
 }
 
 // 메시지 표시 함수
-function displayMessage(nickname, message) {
+function displayMessage(nickname, message, timestamp) {
     const totalChatContent = document.querySelector('#totalChatContent'); // 전체 채팅에만 표시
     if (totalChatContent) {
         const messageElement = document.createElement('div');
@@ -140,7 +140,7 @@ function displayMessage(nickname, message) {
             <div class="chatContent">
                 <div class="fs flex-row flex-c">
                     <div class="nickname grey-4 px14">${nickname}</div>
-                    <div class="time grey-5 m-l-5 m-t-3 px10">${new Date().toLocaleTimeString()}</div>
+                    <div class="time grey-5 m-l-5 m-t-3 px10">${new Date(timestamp).toLocaleTimeString()}</div>
                 </div>
                 <div class="bottom bc-dark-chat px13 lh">
                     <div class="text">${message}</div>
@@ -174,7 +174,7 @@ function loadChatHistory() {
         .then(response => response.json())
         .then(messages => {
             messages.forEach(msg => {
-                displayMessage(msg.sender, msg.content);
+                displayMessage(msg.sender, msg.content, msg.timestamp);
             });
             updateMessageCount(messages.length);
             // 기록을 불러온 후 스크롤을 가장 아래로 이동

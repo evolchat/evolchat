@@ -22,13 +22,14 @@ public class UserPointsController {
     @GetMapping("/current")
     public ResponseEntity<UserPoints> getUserPointsByUsername(HttpSession session) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String username = auth.getName();
+        String id = auth.getName();
 
-        if (username == null) {
+        if (id == null) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
         }
 
-        Optional<UserPoints> userPointsOptional = userPointsService.getUserPointsByUsername(username);
+        Optional<UserPoints> userPointsOptional = userPointsService.getUserPointsByUsername(id);
+
 
         if (userPointsOptional.isEmpty()) {
             return ResponseEntity.notFound().build();
