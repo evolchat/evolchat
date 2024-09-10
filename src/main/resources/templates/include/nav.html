@@ -33,7 +33,7 @@
     </ul>
     <p class="px12 opacity60 white msg m-b-20">최근 메시지 <span class="orange"></span></p>
     <ul class="white recentMessages">
-        <li class="grey-1"><a href="#" class="flex-row flex-c">
+        <li class="grey-1"><a href="#" class="flex-row flex-c chat-toggle">
             <img class="profile-img-36" src="../static/images/profile/default.png" />
             <div>
                 <div class="receive">
@@ -44,7 +44,7 @@
             </div>
         </a>
         </li>
-        <li class="grey-1"><a href="#" class="flex-row flex-c">
+        <li class="grey-1"><a href="#" class="flex-row flex-c chat-toggle">
             <img class="profile-img-36" src="../static/images/profile/default.png" />
             <div>
                 <div class="receive">
@@ -55,7 +55,7 @@
             </div>
         </a>
         </li>
-        <li class="grey-1"><a href="#" class="flex-row flex-c">
+        <li class="grey-1"><a href="#" class="flex-row flex-c chat-toggle">
             <img class="profile-img-36" src="../static/images/profile/default.png" />
             <div>
                 <div class="receive">
@@ -66,7 +66,7 @@
             </div>
         </a>
         </li>
-        <li class="grey-1"><a href="#" class="flex-row flex-c">
+        <li class="grey-1"><a href="#" class="flex-row flex-c chat-toggle">
             <img class="profile-img-36" src="../static/images/profile/default.png" />
             <div>
                 <div class="receive">
@@ -78,6 +78,59 @@
         </a>
         </li>
     </ul>
+    <div id="chatPanel" class="chat-panel hidden">
+        <div class="chat-header">
+            <div class="flex-c">
+                <img class="profile-img-36 m-r-6" src="../static/images/profile/default.png" alt="">
+                <p>유저닉네임</p>
+            </div>
+            <div class="flex-c gap">
+                <img src="../../static/images/svg/hyphenation.svg" alt="">
+                <span class="close-btn" id="closeChat"><img src="../../static/images/svg/cencel-small.svg" alt=""></span>
+            </div>
+        </div>
+        <div class="chat-content">
+            <div class="chat-footer">
+                <div class="line-container">
+                    <div class="line"></div>
+                    <p>2024년 5월 20일 월요일</p>
+                    <div class="line"></div>
+                </div>
+            </div>
+            <div class="message">
+                <img class="profile-img-36 m-r-6" src="../static/images/profile/default.png" alt="">
+                <div class="message-content">
+                    <div class="message-text-left">
+                            <p class="px14">오늘 카드는 너무 이쁘게 나오네~ 100출 1000마감 해봐야겠다!</p>
+                        </div>
+                        <span class="message-time">오후 8:12</span>
+                    </div>
+                </div>
+            <div class="message me">
+                <div class="message-content">
+                    <span class="message-time">오후 8:13</span>
+                    <div class="message-text-right">
+                        <p class="px14">코스바 C 오늘 진짜 답답.. 패를 까나? 속터지네!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="chat-text flex-c">
+            <img src="../static/images/svg/icon-add.svg" alt="">
+            <input type="text" placeholder="채팅 메세지 보내기">
+            <div class="chat-gif parents">
+                <div id="gif-fold">
+                    <i class="fa-kit fa-icon-solid-fa-gif"></i>
+                </div>
+            </div>
+            <div class="chat-emoticon parents">
+                <div id="emoticon-fold">
+                    <i class="fa-sharp fa-solid fa-face-angry fa-fw"></i>
+                </div>
+            </div>
+        </div>
+
+    </div>
 </header>
 <header id="newNav" class="bc-aside" style="display: none;">
     <ul class="nav">
@@ -119,84 +172,101 @@
     </ul>
 </header>
 <script>
-    $(document).ready(function() {
-        let isInitialNavVisible = JSON.parse(localStorage.getItem('isInitialNavVisible')) || false;
-        let isNavExpanded = JSON.parse(localStorage.getItem('isNavExpanded')) || !isInitialNavVisible;
-
-        // 페이지 로드 시 상태 복원
-        if (isInitialNavVisible) {
-            $("#initialNav").css({ display: "block", width: "100%", visibility: "visible", opacity: 1 });
-            $("#newNav").css({ display: "none", width: "25%", visibility: "hidden", opacity: 0 });
-            $("#nav").css("width", "100%");
-
-            // CSS 클래스를 제거
-            $("#newNav").removeClass('nav-expanded');
-        } else {
-            $("#initialNav").css({ display: "none", width: "100%", visibility: "hidden", opacity: 0 });
-            $("#newNav").css({ display: "block", width: "25%", visibility: "visible", opacity: 1 });
-            $("#nav").css("width", "55px");
-
-            // CSS 클래스를 추가
-            $("#newNav").addClass('nav-expanded');
-        }
-
-        // #nav_button 클릭 시 네비게이션 토글
-        $("#nav_button").click(function() {
-            if ($("#newNav").is(":visible")) {
-                // 기존에 있던 애니메이션 제거하고 즉시 전환
-                $("#newNav").css({ display: "none", visibility: "hidden", opacity: 0 });
-                $("#initialNav").css({ display: "block", width: "100%", visibility: "visible", opacity: 1 });
-                $("#nav").css("width", "100%");
-
-                // CSS 클래스를 제거
-                $("#newNav").removeClass('nav-expanded');
-
-                localStorage.setItem('isInitialNavVisible', true);
-                localStorage.setItem('isNavExpanded', true);
-            } else {
-                // 기존에 있던 애니메이션 제거하고 즉시 전환
-                $("#initialNav").css({ display: "none", visibility: "hidden", opacity: 0 });
-                $("#newNav").css({ display: "block", width: "25%", visibility: "visible", opacity: 1 });
-                $("#nav").css("width", "55px");
-
-                // CSS 클래스를 추가
-                $("#newNav").addClass('nav-expanded');
-
-                localStorage.setItem('isInitialNavVisible', false);
-                localStorage.setItem('isNavExpanded', false);
-            }
-        });
-    });
     document.addEventListener('DOMContentLoaded', function() {
-            const navMenus = document.querySelectorAll('.nav-menu');
+        var chatToggles = document.querySelectorAll('.chat-toggle');
+        var chatPanel = document.getElementById('chatPanel');
+        var closeChat = document.getElementById('closeChat');
 
-            navMenus.forEach(menu => {
-                menu.addEventListener('click', function() {
-                    // 현재 클릭된 메뉴가 이미 active 상태인 경우
-                    const isActive = this.classList.contains('active');
-
-                    // 모든 메뉴에서 active 제거 및 fa-solid를 fa-light로 변경
-                    navMenus.forEach(nav => {
-                        nav.classList.remove('active');
-                        const icon = nav.querySelector('i');
-                        if (icon && icon.className.includes('fa-solid')) {
-                            icon.className = icon.className.replace('fa-solid', 'fa-light');
-                        }
-                    });
-
-                    // 클릭된 메뉴가 active 상태가 아니었을 때만 active 추가
-                    if (!isActive) {
-                        this.classList.add('active');
-                        const activeIcon = this.querySelector('i');
-                        if (activeIcon && activeIcon.className.includes('fa-light')) {
-                            activeIcon.className = activeIcon.className.replace('fa-light', 'fa-solid');
-                        }
-                    }
-                });
+        chatToggles.forEach(function(toggle) {
+            toggle.addEventListener('click', function(event) {
+                event.preventDefault();
+                chatPanel.classList.remove('hidden');
             });
         });
-        $(document.body).on('click', '.nav-menu', function() {
-            // 클릭된 항목의 .active 클래스를 토글
-            $(this).toggleClass('active');
+
+        closeChat.addEventListener('click', function() {
+            chatPanel.classList.add('hidden');  // Hide chat panel
         });
+    });
+
+     $(document).ready(function() {
+         let isInitialNavVisible = JSON.parse(localStorage.getItem('isInitialNavVisible')) || false;
+         let isNavExpanded = JSON.parse(localStorage.getItem('isNavExpanded')) || !isInitialNavVisible;
+ 
+         // 페이지 로드 시 상태 복원
+         if (isInitialNavVisible) {
+             $("#initialNav").css({ display: "block", width: "100%", visibility: "visible", opacity: 1 });
+             $("#newNav").css({ display: "none", width: "25%", visibility: "hidden", opacity: 0 });
+             $("#nav").css("width", "100%");
+
+             // CSS 클래스를 제거
+             $("#newNav").removeClass('nav-expanded');
+         } else {
+             $("#initialNav").css({ display: "none", width: "100%", visibility: "hidden", opacity: 0 });
+             $("#newNav").css({ display: "block", width: "25%", visibility: "visible", opacity: 1 });
+             $("#nav").css("width", "55px");
+
+             // CSS 클래스를 추가
+             $("#newNav").addClass('nav-expanded');
+         }
+
+         // #nav_button 클릭 시 네비게이션 토글
+         $("#nav_button").click(function() {
+             if ($("#newNav").is(":visible")) {
+                 // 기존에 있던 애니메이션 제거하고 즉시 전환
+                 $("#newNav").css({ display: "none", visibility: "hidden", opacity: 0 });
+                 $("#initialNav").css({ display: "block", width: "100%", visibility: "visible", opacity: 1 });
+                 $("#nav").css("width", "100%");
+
+                 // CSS 클래스를 제거
+                 $("#newNav").removeClass('nav-expanded');
+
+                 localStorage.setItem('isInitialNavVisible', true);
+                 localStorage.setItem('isNavExpanded', true);
+             } else {
+                 // 기존에 있던 애니메이션 제거하고 즉시 전환
+                 $("#initialNav").css({ display: "none", visibility: "hidden", opacity: 0 });
+                 $("#newNav").css({ display: "block", width: "25%", visibility: "visible", opacity: 1 });
+                 $("#nav").css("width", "55px");
+
+                 // CSS 클래스를 추가
+                 $("#newNav").addClass('nav-expanded');
+
+                 localStorage.setItem('isInitialNavVisible', false);
+                 localStorage.setItem('isNavExpanded', false);
+             }
+         });
+     });
+     document.addEventListener('DOMContentLoaded', function() {
+             const navMenus = document.querySelectorAll('.nav-menu');
+
+             navMenus.forEach(menu => {
+                 menu.addEventListener('click', function() {
+                     // 현재 클릭된 메뉴가 이미 active 상태인 경우
+                     const isActive = this.classList.contains('active');
+
+                     // 모든 메뉴에서 active 제거 및 fa-solid를 fa-light로 변경
+                     navMenus.forEach(nav => {
+                         nav.classList.remove('active');
+                         const icon = nav.querySelector('i');
+                         if (icon && icon.className.includes('fa-solid')) {
+                             icon.className = icon.className.replace('fa-solid', 'fa-light');
+                         }
+                     });
+
+                     // 클릭된 메뉴가 active 상태가 아니었을 때만 active 추가
+                     if (!isActive) {
+                         this.classList.add('active');
+                         const activeIcon = this.querySelector('i');
+                         if (activeIcon && activeIcon.className.includes('fa-light')) {
+                             activeIcon.className = activeIcon.className.replace('fa-light', 'fa-solid');
+                         }
+                     }
+                 });
+             });
+         });
+         $(document.body).on('click', '.nav-menu', function() {
+             // 클릭된 항목의 .active 클래스를 토글
+             $(this).toggleClass('active');
+         });
 </script>

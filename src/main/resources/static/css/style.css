@@ -2520,6 +2520,135 @@ img.profile-img-60 {
     font-size: 16px !important;
 }
 
+.chat-panel {
+  width: 300px;
+  background-color: #1c1c1c;
+  border-left: 1px solid #333;
+  position: absolute;
+  left: 15rem;
+  bottom: 6rem;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+  box-shadow: -2px 0px 5px rgba(0,0,0,0.5);
+}
+
+.chat-header {
+  padding: 10px 15px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chat-content {
+  flex-grow: 1;
+  padding: 10px;
+  color: white;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.message {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.message-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.message-text-left {
+  background-color: #3d3d3d; /* 배경색 */
+  border-radius: 3px;
+  padding: 10px;
+  margin-right: 10px;
+  display: inline-block;
+}
+
+.message.me .message-text-right {
+  background-color: #536DFE; /* 본인 메시지 배경색 */
+  border-radius: 3px;
+  padding: 10px;
+  color: white;
+  display: inline-block;
+}
+
+.message-time {
+    font-size: 10px;
+    color: #ccc;
+    align-self: flex-end;
+    width: 80px;
+}
+.me .message-time {
+    font-size: 10px;
+    color: #ccc;
+    align-self: flex-end;
+    width: 60px;
+}
+
+.message.me .message-time {
+    margin-left: 5px;
+}
+
+.chat-footer {
+  padding: 10px;
+  margin-bottom: 15px;
+  text-align: center;
+  font-size: 12px;
+  color: #ccc;
+}
+
+.line-container {
+    display: flex;
+    align-items: center;
+}
+
+.line-container p {
+    border: 1px solid #333;
+    border-radius: 10px;
+    padding: 8px;
+}
+
+.line {
+    flex-grow: 1;
+    height: 1px;
+    background-color: #333;
+}
+
+.close-btn {
+  cursor: pointer;
+  color: #ddd;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.chat-text {
+    justify-content: space-between;
+    background-color: #3d3d3d;
+    padding: 10px 0;
+    overflow: hidden;
+}
+
+.chat-text img {
+    margin: 0 5px;
+}
+
+.chat-text i {
+    margin-right: 20px;
+}
+
+.gap {
+    gap: 25px;
+}
+
 /* 스피너 스타일 */
 .spinner {
     border: 4px solid #f3f3f3; /* Light grey */
