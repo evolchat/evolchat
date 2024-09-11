@@ -23,7 +23,7 @@ public class FriendRequestController {
 
     private final FriendRequestService friendRequestService;
     private final UserService userService;
-    private final FriendService friendService; // 추가된 필드
+    private final FriendService friendService;
 
     public FriendRequestController(FriendRequestService friendRequestService, UserService userService, FriendService friendService) {
         this.friendRequestService = friendRequestService;
@@ -148,6 +148,56 @@ public class FriendRequestController {
 
             response.put("success", true);
             response.put("friends", friendsList);
+        }
+
+        return ResponseEntity.ok(response);
+    }
+
+    @PostMapping("/unblock-user")
+    @ResponseBody
+    public ResponseEntity<Map<String, Object>> unblockUser(@RequestParam("userId") Integer userId, Principal principal) {
+        Map<String, Object> response = new HashMap<>();
+        try {
+            User currentUser = userService.findByUsername(principal.getName());
+            friendService.unblockUser(currentUser.getId(), userId);
+            response.put("success", true);
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            response.put("success", false);
+            response.put("message", "차단 해제 처리 중 오류가 발생했습니다.");
+            return ResponseEntity.ok(response);
+        }
+    }
+
+    @GetMapping("/blocked-users")
+    @ResponseBody
+    public ResponseEntity<Map<String, Object>> getBlockedUsers(
+            @RequestParam(value = "query", required = false, defaultValue = "") String query,
+            Principal principal) {
+        User currentUser = userService.findByUsername(principal.getName());
+        List<Friend> blockedUsers = friendService.getBlocklist(currentUser.getId());
+
+        Map<String, Object> response = new HashMap<>();
+        if (blockedUsers.isEmpty()) {
+            response.put("success", true);
+            response.put("blockedUsers", List.of());
+        } else {
+            List<Map<String, Object>> blockedUsersList = blockedUsers.stream()
+                    .map(friend -> {
+                        Integer blockedUserId = (friend.getUserId1().equals(currentUser.getId())) ? friend.getUserId2() : friend.getUserId1();
+                        User blockedUser = userService.getUserById(blockedUserId);
+                        Map<String, Object> blockedUserInfo = new HashMap<>();
+                        blockedUserInfo.put("id", blockedUser.getId());
+                        blockedUserInfo.put("nickname", blockedUser.getNickname());
+                        blockedUserInfo.put("profileImg", blockedUser.getProfilePicture());
+                        blockedUserInfo.put("status", blockedUser.getTodaysMessage());
+                        return blockedUserInfo;
+                    })
+                    .filter(blockedUserInfo -> blockedUserInfo.get("nickname").toString().toLowerCase().contains(query.toLowerCase())) // 필터링
+                    .collect(Collectors.toList());
+
+            response.put("success", true);
+            response.put("blockedUsers", blockedUsersList);
         }
 
         return ResponseEntity.ok(response);

@@ -2540,6 +2540,8 @@ img.profile-img-60 {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  cursor: move;
+  z-index: 1000; /* 다른 요소들 위에 표시 */
 }
 
 .chat-content {
@@ -2557,7 +2559,9 @@ img.profile-img-60 {
   align-items: center;
   margin-bottom: 15px;
 }
-
+.chat-toggle {
+    cursor: pointer;
+}
 .message-content {
     display: flex;
     align-items: center;

@@ -2,27 +2,30 @@ package com.glossy.evolchat.model;
 
 import lombok.Data;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Data
-public class ChatRoomMember {
-
+@Getter
+@Setter
+public class FriendChatRoom {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int seq;
+    private Integer id;
 
     @Column(nullable = false)
-    private int chatRoomId;
+    private Integer user1Id;
 
     @Column(nullable = false)
-    private int userId;
+    private Integer user2Id;
 
     @Column(nullable = false)
-    private LocalDateTime joinedAt;
+    private String roomName;
 
-    @PrePersist
-    protected void onCreate() {
-        joinedAt = LocalDateTime.now();
-    }
+    // getters and setters
 }

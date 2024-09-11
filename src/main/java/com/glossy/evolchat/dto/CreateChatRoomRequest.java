@@ -1,10 +1,10 @@
 package com.glossy.evolchat.dto;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
+@Data
 public class CreateChatRoomRequest {
+    private int user1Id;
+    private int user2Id;
     private String name;
 }
