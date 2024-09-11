@@ -78,59 +78,6 @@
         </a>
         </li>
     </ul>
-    <div id="chatPanel" class="chat-panel hidden">
-        <div class="chat-header">
-            <div class="flex-c">
-                <img class="profile-img-36 m-r-6" src="../static/images/profile/default.png" alt="">
-                <p>유저닉네임</p>
-            </div>
-            <div class="flex-c gap">
-                <img src="../../static/images/svg/hyphenation.svg" alt="">
-                <span class="close-btn" id="closeChat"><img src="../../static/images/svg/cencel-small.svg" alt=""></span>
-            </div>
-        </div>
-        <div class="chat-content">
-            <div class="chat-footer">
-                <div class="line-container">
-                    <div class="line"></div>
-                    <p>2024년 5월 20일 월요일</p>
-                    <div class="line"></div>
-                </div>
-            </div>
-            <div class="message">
-                <img class="profile-img-36 m-r-6" src="../static/images/profile/default.png" alt="">
-                <div class="message-content">
-                    <div class="message-text-left">
-                            <p class="px14">오늘 카드는 너무 이쁘게 나오네~ 100출 1000마감 해봐야겠다!</p>
-                        </div>
-                        <span class="message-time">오후 8:12</span>
-                    </div>
-                </div>
-            <div class="message me">
-                <div class="message-content">
-                    <span class="message-time">오후 8:13</span>
-                    <div class="message-text-right">
-                        <p class="px14">코스바 C 오늘 진짜 답답.. 패를 까나? 속터지네!</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="chat-text flex-c">
-            <img src="../static/images/svg/icon-add.svg" alt="">
-            <input type="text" placeholder="채팅 메세지 보내기">
-            <div class="chat-gif parents">
-                <div id="gif-fold">
-                    <i class="fa-kit fa-icon-solid-fa-gif"></i>
-                </div>
-            </div>
-            <div class="chat-emoticon parents">
-                <div id="emoticon-fold">
-                    <i class="fa-sharp fa-solid fa-face-angry fa-fw"></i>
-                </div>
-            </div>
-        </div>
-
-    </div>
 </header>
 <header id="newNav" class="bc-aside" style="display: none;">
     <ul class="nav">
@@ -157,25 +104,77 @@
         </a></li>
     </ul>
     <ul class="white recentMessages">
-        <li class="grey-1"><a href="#" class="flex-row flex-c">
+        <li class="grey-1"><a href="#" class="flex-row flex-c chat-toggle">
             <img class="profile-img-36" src="../static/images/profile/default.png" />
         </a></li>
-        <li class="grey-1"><a href="#" class="flex-row flex-c">
+        <li class="grey-1"><a href="#" class="flex-row flex-c chat-toggle">
             <img class="profile-img-36" src="../static/images/profile/default.png" />
         </a></li>
-        <li class="grey-1"><a href="#" class="flex-row flex-c">
+        <li class="grey-1"><a href="#" class="flex-row flex-c chat-toggle">
             <img class="profile-img-36" src="../static/images/profile/default.png" />
         </a></li>
-        <li class="grey-1"><a href="#" class="flex-row flex-c">
+        <li class="grey-1"><a href="#" class="flex-row flex-c chat-toggle">
             <img class="profile-img-36" src="../static/images/profile/default.png" />
         </a></li>
     </ul>
 </header>
+<div id="chatPanel" class="chat-panel hidden">
+    <div class="chat-header">
+        <div class="flex-c">
+            <img class="profile-img-36 m-r-6" src="../static/images/profile/default.png" alt="">
+            <p>유저닉네임</p>
+        </div>
+        <div class="flex-c gap">
+            <img src="../../static/images/svg/hyphenation.svg" alt="">
+            <span class="close-btn" id="closeChat"><img src="../../static/images/svg/cencel-small.svg" alt=""></span>
+        </div>
+    </div>
+    <div class="chat-content">
+        <div class="chat-footer">
+            <div class="line-container">
+                <div class="line"></div>
+                <p>2024년 5월 20일 월요일</p>
+                <div class="line"></div>
+            </div>
+        </div>
+        <div class="message">
+            <img class="profile-img-36 m-r-6" src="../static/images/profile/default.png" alt="">
+            <div class="message-content">
+                <div class="message-text-left">
+                    <p class="px14">오늘 카드는 너무 이쁘게 나오네~ 100출 1000마감 해봐야겠다!</p>
+                </div>
+                <span class="message-time">오후 8:12</span>
+            </div>
+        </div>
+        <div class="message me">
+            <div class="message-content">
+                <span class="message-time">오후 8:13</span>
+                <div class="message-text-right">
+                    <p class="px14">코스바 C 오늘 진짜 답답.. 패를 까나? 속터지네!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="chat-text flex-c">
+        <img src="../static/images/svg/icon-add.svg" alt="">
+        <input type="text" placeholder="채팅 메세지 보내기">
+        <div class="chat-gif parents">
+            <div id="gif-fold">
+                <i class="fa-kit fa-icon-solid-fa-gif"></i>
+            </div>
+        </div>
+        <div class="chat-emoticon parents">
+            <div id="emoticon-fold">
+                <i class="fa-sharp fa-solid fa-face-angry fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         var chatToggles = document.querySelectorAll('.chat-toggle');
         var chatPanel = document.getElementById('chatPanel');
-        var closeChat = document.getElementById('closeChat');
+        var closeChat = document.getElementById('closeChat');   
 
         chatToggles.forEach(function(toggle) {
             toggle.addEventListener('click', function(event) {
@@ -192,7 +191,7 @@
      $(document).ready(function() {
          let isInitialNavVisible = JSON.parse(localStorage.getItem('isInitialNavVisible')) || false;
          let isNavExpanded = JSON.parse(localStorage.getItem('isNavExpanded')) || !isInitialNavVisible;
- 
+
          // 페이지 로드 시 상태 복원
          if (isInitialNavVisible) {
              $("#initialNav").css({ display: "block", width: "100%", visibility: "visible", opacity: 1 });

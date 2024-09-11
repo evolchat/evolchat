@@ -1,38 +1,42 @@
-$("#header-item-tooltip-7").click(function() {
-    $("#chat").toggle();
+$(document).ready(function() {
+    // 페이지 로드 시 chatActive 값에 따라 채팅창 표시 및 버튼 상태 동기화
     chatCheckActive();
+
+    // 채팅 토글 버튼 클릭 이벤트 핸들러
+    $("#header-item-tooltip-7").off("click").on("click", function() {
+        toggleChat();
+    });
+
+    // 채팅 초기화 호출
+    initializeChat();
 });
 
-if (typeof chatActive === 'undefined') {
-    var chatActive = localStorage.getItem('chatActive');
-    if (chatActive === null) {
-        chatActive = 'false';  // 기본값으로 비활성화 상태 설정
+// chatActive 값을 확인하고 채팅창을 보이거나 숨기고 버튼 상태를 동기화하는 함수
+function chatCheckActive() {
+    const chatActive = localStorage.getItem('chatActive');
+    if (chatActive === 'true') {
+        $("#chat").show();
+        $("#header-item-tooltip-7").addClass('active');
+    } else {
+        $("#chat").hide();
+        $("#header-item-tooltip-7").removeClass('active');
     }
 }
 
-// 페이지 로드 시 chatActive 값에 따라 채팅창 표시
-if (chatActive === 'true') {
-    $("#chat").show();
-    $("#header-item-tooltip-7").addClass('active');
-} else {
-    $("#chat").hide();
-    $("#header-item-tooltip-7").removeClass('active');
-}
-
-// 채팅 토글 버튼 클릭 이벤트 핸들러
-$("#header-item-tooltip-7").click(function() {
+// 채팅창 토글 함수 (show/hide 처리 명확히)
+function toggleChat() {
     const chatVisible = $("#chat").is(":visible");
 
     if (chatVisible) {
         $("#chat").hide(); // 채팅창 숨기기
         $("#header-item-tooltip-7").removeClass('active');
-        localStorage.setItem('chatActive', 'false');
+        localStorage.setItem('chatActive', 'false'); // 상태를 로컬 스토리지에 저장
     } else {
         $("#chat").show(); // 채팅창 보이기
         $("#header-item-tooltip-7").addClass('active');
-        localStorage.setItem('chatActive', 'true');
+        localStorage.setItem('chatActive', 'true'); // 상태를 로컬 스토리지에 저장
     }
-});
+}
 
 // 채팅 초기화 여부 플래그
 if (typeof chatInitialized === 'undefined') {
@@ -190,9 +194,6 @@ function loadChatHistory() {
 function updateMessageCount(count) {
     document.querySelector('#messageCount').textContent = count;
 }
-
-// 채팅 초기화 호출
-initializeChat();
 
 // 탭 클릭 핸들러 설정
 $('#totalChatTab').click(function() {

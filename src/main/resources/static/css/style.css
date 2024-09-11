@@ -2617,7 +2617,7 @@ img.profile-img-60 {
     padding: 8px;
 }
 
-.line {
+.line-container .line {
     flex-grow: 1;
     height: 1px;
     background-color: #333;

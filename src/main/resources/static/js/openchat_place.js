@@ -1,3 +1,34 @@
+document.querySelectorAll('.hover-image').forEach(function(hoverImage) {
+    hoverImage.addEventListener('click', function() {
+        // 먼저 모든 드롭다운을 닫습니다
+        document.querySelectorAll('.dropbox').forEach(function(dropdown) {
+            dropdown.classList.remove('show');
+        });
+
+        // 클릭한 요소의 다음 형제 요소(dropbox)에 'show' 클래스를 토글합니다
+        const dropdown = this.nextElementSibling;
+        dropdown.classList.toggle('show');
+    });
+});
+
+// Optional: 드롭박스 외부를 클릭하면 모든 드롭박스를 닫습니다
+document.addEventListener('click', function(event) {
+    if (!event.target.closest('.hover-image') && !event.target.closest('.dropbox')) {
+        document.querySelectorAll('.dropbox').forEach(function(dropdown) {
+            dropdown.classList.remove('show');
+        });
+    }
+});
+
+// Optional: To close any open dropdown if clicking outside
+document.addEventListener('click', function(event) {
+    if (!event.target.closest('.hover-image') && !event.target.closest('.dropdown')) {
+        document.querySelectorAll('.dropdown').forEach(function(dropdown) {
+            dropdown.classList.remove('show');
+        });
+    }
+});
+
 $(function() {
     $('select').selectric();
 
