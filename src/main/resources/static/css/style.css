@@ -1836,9 +1836,9 @@ header>.nav a>div {
     margin-right: 20px;
 }
 
-.nav-menu.active {
-     background-color: #f0f0f0; /* 클릭 시 색상 */
-}
+/* .nav-menu.active {
+     background-color: #f0f0f0;
+} */
 
 header .recentMessages li {
     padding: 10px 17px;
