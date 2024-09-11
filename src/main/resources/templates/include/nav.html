@@ -33,50 +33,6 @@
     </ul>
     <p class="px12 opacity60 white msg m-b-20">최근 메시지 <span class="orange"></span></p>
     <ul class="white recentMessages">
-        <li class="grey-1"><div href="#" class="flex-row flex-c chat-toggle">
-            <img class="profile-img-36" src="../static/images/profile/default.png" />
-            <div>
-                <div class="receive">
-                    <p class="white px12">유저닉네임</p>
-                    <span class="notice px12">+2</span>
-                </div>
-                <p class="white px12">더미 텍스트 더미 텍스트 더미...</p>
-            </div>
-        </div>
-        </li>
-        <li class="grey-1"><div class="flex-row flex-c chat-toggle">
-            <img class="profile-img-36" src="../static/images/profile/default.png" />
-            <div>
-                <div class="receive">
-                    <p class="white px12">유저닉네임</p>
-                    <span class="notice px12">+3</span>
-                </div>
-                <p class="white px12">더미 텍스트 더미 텍스트 더미...</p>
-            </div>
-        </div>
-        </li>
-        <li class="grey-1"><div class="flex-row flex-c chat-toggle">
-            <img class="profile-img-36" src="../static/images/profile/default.png" />
-            <div>
-                <div class="receive">
-                    <p class="white px12">유저닉네임</p>
-                    <span class="notice px12">+3</span>
-                </div>
-                <p class="white px12">더미 텍스트 더미 텍스트 더미...</p>
-            </div>
-        </div>
-        </li>
-        <li class="grey-1"><div class="flex-row flex-c chat-toggle">
-            <img class="profile-img-36" src="../static/images/profile/default.png" />
-            <div>
-                <div class="receive">
-                    <p class="white px12">유저닉네임</p>
-                    <span class="notice px12">+3</span>
-                </div>
-                <p class="white px12">더미 텍스트 더미 텍스트 더미...</p>
-            </div>
-        </a>
-        </li>
     </ul>
 </header>
 <header id="newNav" class="bc-aside" style="display: none;">
@@ -197,6 +153,7 @@
             containment: 'window'  // 화면 밖으로 나가지 않도록 제한
         });
 
+        // 내비게이션 설정
         let isInitialNavVisible = JSON.parse(localStorage.getItem('isInitialNavVisible')) || false;
         let isNavExpanded = JSON.parse(localStorage.getItem('isNavExpanded')) || !isInitialNavVisible;
 
@@ -234,6 +191,7 @@
             }
         });
 
+        // 내비게이션 메뉴 활성화
         const navMenus = document.querySelectorAll('.nav-menu');
 
         navMenus.forEach(menu => {
@@ -258,10 +216,36 @@
             });
         });
 
-        $(document.body).on('click', '.nav-menu', function() {
-            $(this).toggleClass('active');
-        });
+        // 최근 메시지 로드
+        function loadRecentMessages() {
+            $.get('/friend-chat/user-chats', function(data) {
+                const recentMessagesContainer = $('.recentMessages');
+                recentMessagesContainer.empty();
 
+                data.forEach(chatRoom => {
+                    const recentMessageItem = `
+                        <li class="grey-1">
+                            <div href="#" class="flex-row flex-c chat-toggle">
+                                <img class="profile-img-36" src="../static/images/profile/default.png" />
+                                <div>
+                                    <div class="receive">
+                                        <p class="white px12">${chatRoom.username}</p>
+                                        <span class="notice px12">${chatRoom.unreadCount}</span>
+                                    </div>
+                                    <p class="white px12">${chatRoom.lastMessage}</p>
+                                </div>
+                            </div>
+                        </li>
+                    `;
+                    recentMessagesContainer.append(recentMessageItem);
+                });
+            });
+        }
+
+        // 페이지 로드 시 최근 메시지 로드
+        loadRecentMessages();
+
+        // 채팅 메시지 전송 및 수신
         var socket = new SockJS('/chat'); // WebSocket 엔드포인트
         var stompClient = Stomp.over(socket);
 
@@ -271,7 +255,7 @@
                 var newMessage = JSON.parse(message.body);
                 var messageElement = document.createElement('div');
                 messageElement.classList.add('message');
-                messageElement.innerHTML = `<img class="profile-img-36 m-r-6" src="../static/images/profile/default.png" alt="">
+                messageElement.innerHTML = `<img class="profile-img-36 m-r-6" src="../static/images/profile/default.png" alt=""/>
                     <div class="message-content">
                         <div class="message-text-left">
                             <p class="px14">${newMessage.text}</p>
