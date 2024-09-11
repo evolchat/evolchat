@@ -1,23 +1,62 @@
 package com.glossy.evolchat.dto;
 
-import com.glossy.evolchat.model.User;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-@Getter
-@Setter
-@NoArgsConstructor
 public class FriendRequestDTO {
     private Long id;
-    private String nickname;
+    private String senderNickname;
+    private String receiverNickname;
     private String message;
+    private boolean isSentByCurrentUser;
 
-    // Constructor
-    public FriendRequestDTO(Long id, String nickname, String message) {
+    // 기본 생성자
+    public FriendRequestDTO() {}
+
+    // 생성자
+    public FriendRequestDTO(Long id, String senderNickname, String receiverNickname, String message, boolean isSentByCurrentUser) {
         this.id = id;
-        this.nickname = nickname;
+        this.senderNickname = senderNickname;
+        this.receiverNickname = receiverNickname;
         this.message = message;
+        this.isSentByCurrentUser = isSentByCurrentUser;
+    }
+
+    // Getter 및 Setter
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getSenderNickname() {
+        return senderNickname;
+    }
+
+    public void setSenderNickname(String senderNickname) {
+        this.senderNickname = senderNickname;
+    }
+
+    public String getReceiverNickname() {
+        return receiverNickname;
+    }
+
+    public void setReceiverNickname(String receiverNickname) {
+        this.receiverNickname = receiverNickname;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public boolean isSentByCurrentUser() {
+        return isSentByCurrentUser;
+    }
+
+    public void setSentByCurrentUser(boolean sentByCurrentUser) {
+        isSentByCurrentUser = sentByCurrentUser;
     }
 }

@@ -50,5 +50,4 @@ public class FriendService {
     public void unblockUser(Integer userId1, Integer userId2) {
         friendRepository.unblockUser(userId1, userId2);
     }
-
 }

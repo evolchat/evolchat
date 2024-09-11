@@ -1,13 +1,14 @@
 package com.glossy.evolchat.controller;
 
 import com.glossy.evolchat.dto.FriendRequestDTO;
+import com.glossy.evolchat.model.Friend;
 import com.glossy.evolchat.model.FriendRequest;
 import com.glossy.evolchat.model.User;
 import com.glossy.evolchat.service.FriendRequestService;
+import com.glossy.evolchat.service.FriendService;
 import com.glossy.evolchat.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
@@ -22,10 +23,12 @@ public class FriendRequestController {
 
     private final FriendRequestService friendRequestService;
     private final UserService userService;
+    private final FriendService friendService; // 추가된 필드
 
-    public FriendRequestController(FriendRequestService friendRequestService, UserService userService) {
+    public FriendRequestController(FriendRequestService friendRequestService, UserService userService, FriendService friendService) {
         this.friendRequestService = friendRequestService;
         this.userService = userService;
+        this.friendService = friendService;
     }
 
     @GetMapping("/friend-requests")
@@ -34,12 +37,13 @@ public class FriendRequestController {
         User currentUser = userService.findByUsername(principal.getName());
         List<FriendRequest> pendingRequests = friendRequestService.getPendingRequests(currentUser);
 
-        // Convert to DTOs
         return pendingRequests.stream()
                 .map(request -> new FriendRequestDTO(
                         request.getId(),
-                        request.getReceiver().getNickname(), // Assuming `getReceiver()` returns the `User` who received the request
-                        request.getReceiver().getTodaysMessage() // Use appropriate getter if message is part of FriendRequest
+                        request.getSender().getNickname(),
+                        request.getReceiver().getNickname(),
+                        request.getSender().getTodaysMessage(),
+                        request.getSender().equals(currentUser)
                 ))
                 .collect(Collectors.toList());
     }
@@ -53,7 +57,29 @@ public class FriendRequestController {
 
             if (receiver == null) {
                 response.put("success", false);
+                response.put("errorType", "USER_NOT_FOUND");
                 response.put("message", "존재하지 않는 사용자입니다.");
+                return ResponseEntity.ok(response);
+            }
+
+            if (receiver.equals(sender)) {
+                response.put("success", false);
+                response.put("errorType", "SELF_REQUEST");
+                response.put("message", "자기 자신에게는 친구 요청을 보낼 수 없습니다.");
+                return ResponseEntity.ok(response);
+            }
+
+            if (friendRequestService.isAlreadyFriend(sender, receiver)) {
+                response.put("success", false);
+                response.put("errorType", "ALREADY_FRIEND");
+                response.put("message", "이미 친구입니다.");
+                return ResponseEntity.ok(response);
+            }
+
+            if (friendRequestService.isRequestAlreadySent(sender, receiver)) {
+                response.put("success", false);
+                response.put("errorType", "ALREADY_SENT");
+                response.put("message", "이미 친구 요청을 보냈습니다.");
                 return ResponseEntity.ok(response);
             }
 
@@ -65,5 +91,65 @@ public class FriendRequestController {
             response.put("message", "요청 처리 중 오류가 발생했습니다.");
             return ResponseEntity.ok(response);
         }
+    }
+
+    @PostMapping("/cancel-request")
+    @ResponseBody
+    public ResponseEntity<?> cancelFriendRequest(@RequestParam("requestId") Long requestId, Principal principal) {
+        User currentUser = userService.findByUsername(principal.getName());
+
+        boolean result = friendRequestService.cancelFriendRequest(requestId, currentUser);
+        if (result) {
+            return ResponseEntity.ok("{\"success\": true}");
+        } else {
+            return ResponseEntity.badRequest().body("{\"success\": false, \"message\": \"친구 요청 취소에 실패했습니다.\"}");
+        }
+    }
+
+    @PostMapping("/accept-request")
+    @ResponseBody
+    public ResponseEntity<?> acceptFriendRequest(@RequestParam("requestId") Long requestId, Principal principal) {
+        User currentUser = userService.findByUsername(principal.getName());
+
+        boolean result = friendRequestService.acceptFriendRequest(requestId, currentUser);
+        if (result) {
+            return ResponseEntity.ok("{\"success\": true}");
+        } else {
+            return ResponseEntity.badRequest().body("{\"success\": false, \"message\": \"친구 요청 수락에 실패했습니다.\"}");
+        }
+    }
+
+    @GetMapping("/friends")
+    @ResponseBody
+    public ResponseEntity<Map<String, Object>> getFriendsList(
+            @RequestParam(value = "query", required = false, defaultValue = "") String query,
+            Principal principal) {
+        User currentUser = userService.findByUsername(principal.getName());
+        List<Friend> friends = friendService.getFriends(currentUser.getId());
+
+        Map<String, Object> response = new HashMap<>();
+        if (friends.isEmpty()) {
+            response.put("success", true);
+            response.put("friends", List.of());
+        } else {
+            List<Map<String, Object>> friendsList = friends.stream()
+                    .map(friend -> {
+                        Integer friendId = (friend.getUserId1().equals(currentUser.getId())) ? friend.getUserId2() : friend.getUserId1();
+                        User friendUser = userService.getUserById(friendId);
+                        Map<String, Object> friendInfo = new HashMap<>();
+                        friendInfo.put("id", friend.getId());
+                        friendInfo.put("nickname", friendUser.getNickname());
+                        friendInfo.put("profileImg", friendUser.getProfilePicture());
+                        friendInfo.put("status", friendUser.getTodaysMessage());
+                        return friendInfo;
+                    })
+                    .filter(friendInfo -> friendInfo.get("nickname").toString().toLowerCase().contains(query.toLowerCase())) // 필터링
+                    .collect(Collectors.toList());
+
+            response.put("success", true);
+            response.put("friends", friendsList);
+        }
+
+        return ResponseEntity.ok(response);
     }
 }
