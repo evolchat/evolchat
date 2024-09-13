@@ -30,6 +30,7 @@ public class FriendChatService {
         this.friendChatMessageRepository = friendChatMessageRepository;
     }
 
+    // 채팅방 생성
     public FriendChatRoom createChatRoom(int user1Id, int user2Id) {
         FriendChatRoom chatRoom = new FriendChatRoom();
         chatRoom.setUser1Id(user1Id);
@@ -38,24 +39,29 @@ public class FriendChatService {
         return friendChatRoomRepository.save(chatRoom);
     }
 
-    public List<FriendChatMessage> getChatMessages(int chatRoomId) {
-        return friendChatMessageRepository.findByChatRoomId(chatRoomId);
+    // 특정 채팅방의 메시지 조회
+    public List<FriendChatMessage> getMessagesByChatRoomId(int chatRoomId) {
+        return friendChatMessageRepository.findByChatRoomIdOrderByTimestampAsc(chatRoomId);
     }
 
+    // 메시지 저장
     public FriendChatMessage saveMessage(FriendChatMessage message) {
         return friendChatMessageRepository.save(message);
     }
 
+    // 특정 사용자의 채팅방 검색 (두 사용자의 ID로)
     public Optional<FriendChatRoom> findChatRoom(int user1Id, int user2Id) {
         return friendChatRoomRepository.findByUser1IdAndUser2Id(user1Id, user2Id);
     }
 
+    // 특정 사용자의 모든 채팅방 조회
     public List<FriendChatRoomDTO> getUserChatRooms(int userId) {
         List<FriendChatRoom> chatRooms = friendChatRoomRepository.findByUser1IdOrUser2Id(userId, userId);
         List<FriendChatRoomDTO> chatRoomDTOs = new ArrayList<>();
 
         for (FriendChatRoom chatRoom : chatRooms) {
-            List<FriendChatMessage> recentMessages = friendChatMessageRepository.findByChatRoomId(chatRoom.getId());
+            // 채팅방의 최근 메시지 조회
+            List<FriendChatMessage> recentMessages = friendChatMessageRepository.findByChatRoomIdOrderByTimestampAsc(chatRoom.getId());
             FriendChatRoomDTO chatRoomDTO = new FriendChatRoomDTO();
             chatRoomDTO.setId(chatRoom.getId());
             chatRoomDTO.setRoomName(chatRoom.getRoomName());

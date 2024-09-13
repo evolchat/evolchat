@@ -5,14 +5,12 @@ import com.glossy.evolchat.model.FriendChatMessage;
 import com.glossy.evolchat.model.FriendChatRoom;
 import com.glossy.evolchat.repository.FriendChatMessageRepository;
 import com.glossy.evolchat.repository.FriendChatRoomRepository;
-import lombok.Getter;
-import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class FriendChatRoomService {
@@ -28,7 +26,9 @@ public class FriendChatRoomService {
         List<FriendChatRoomDTO> chatRoomDTOs = new ArrayList<>();
 
         for (FriendChatRoom chatRoom : chatRooms) {
-            List<FriendChatMessage> recentMessages = friendChatMessageRepository.findByChatRoomId(chatRoom.getId());
+            // 최신 10개의 메시지를 가져온다고 가정
+            List<FriendChatMessage> recentMessages = friendChatMessageRepository.findTopNByChatRoomIdOrderByTimestampDesc(chatRoom.getId(), PageRequest.of(0, 10));
+
             FriendChatRoomDTO chatRoomDTO = new FriendChatRoomDTO();
             chatRoomDTO.setId(chatRoom.getId());
             chatRoomDTO.setRoomName(chatRoom.getRoomName());

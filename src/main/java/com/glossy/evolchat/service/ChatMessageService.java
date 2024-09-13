@@ -13,11 +13,6 @@ public class ChatMessageService {
     @Autowired
     private ChatMessageRepository chatMessageRepository;
 
-    // 저장된 모든 메시지 가져오기
-    public List<ChatMessage> getAllMessages() {
-        return chatMessageRepository.findAll();
-    }
-
     public List<ChatMessage> getRecentMessages(int count) {
         return chatMessageRepository.findTopByOrderByTimestampDesc(count);
     }

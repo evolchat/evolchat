@@ -13,7 +13,7 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     @Override
     public void configureMessageBroker(MessageBrokerRegistry config) {
         // Configure the message broker
-        config.enableSimpleBroker("/topic");
+        config.enableSimpleBroker("/topic"); // Add /queue for point-to-point messaging
         config.setApplicationDestinationPrefixes("/app");
     }
 
@@ -23,6 +23,9 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
                 .setAllowedOriginPatterns("*")
                 .withSockJS();
         registry.addEndpoint("/game")
+                .setAllowedOriginPatterns("*")
+                .withSockJS();
+        registry.addEndpoint("/friend-chat")
                 .setAllowedOriginPatterns("*")
                 .withSockJS();
     }

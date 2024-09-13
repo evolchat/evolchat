@@ -7,7 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface ChatMessageRepository extends JpaRepository<ChatMessage, Long> {
-    List<ChatMessage> findByChatRoomId(String chatRoomId);
     @Query(value = "SELECT * FROM chat_message ORDER BY timestamp ASC LIMIT ?1", nativeQuery = true)
     List<ChatMessage> findTopByOrderByTimestampDesc(int count);
 }
