@@ -15,6 +15,7 @@ import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Controller
@@ -134,13 +135,21 @@ public class FriendRequestController {
         } else {
             List<Map<String, Object>> friendsList = friends.stream()
                     .map(friend -> {
-                        Integer friendId = (friend.getUserId1().equals(currentUser.getId())) ? friend.getUserId2() : friend.getUserId1();
+                        Integer friendId;
+
+                        if (Objects.equals(friend.getUserId1(), currentUser.getId())) {
+                            friendId = friend.getUserId2();  // 현재 유저가 userId1이면 userId2를 friendId로 설정
+                        } else {
+                            friendId = friend.getUserId1();  // 현재 유저가 userId1이면 userId2를 friendId로 설정
+                        }
                         User friendUser = userService.getUserById(friendId);
                         Map<String, Object> friendInfo = new HashMap<>();
                         friendInfo.put("id", friend.getId());
                         friendInfo.put("nickname", friendUser.getNickname());
                         friendInfo.put("profileImg", friendUser.getProfilePicture());
                         friendInfo.put("status", friendUser.getTodaysMessage());
+                        friendInfo.put("friendId", friendId);
+
                         return friendInfo;
                     })
                     .filter(friendInfo -> friendInfo.get("nickname").toString().toLowerCase().contains(query.toLowerCase())) // 필터링

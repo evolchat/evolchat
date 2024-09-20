@@ -27,6 +27,10 @@ public class FriendChatMessage {
     @Column(name = "timestamp", nullable = false)
     private LocalDateTime timestamp;
 
+
+    @Column(name = "read_status", nullable = false)
+    private boolean readStatus = false; // 메시지가 읽혔는지 여부
+
     // 기본 생성자
     public FriendChatMessage() {
     }

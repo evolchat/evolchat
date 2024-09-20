@@ -21,4 +21,10 @@ public interface FriendChatMessageRepository extends JpaRepository<FriendChatMes
     // 채팅방 ID로 최근 메시지를 특정 개수만큼 가져오는 메서드
     @Query("SELECT m FROM FriendChatMessage m WHERE m.chatRoom.id = :chatRoomId ORDER BY m.timestamp DESC")
     List<FriendChatMessage> findTopNByChatRoomIdOrderByTimestampDesc(@Param("chatRoomId") int chatRoomId, Pageable pageable);
+
+    @Query("SELECT m FROM FriendChatMessage m WHERE m.chatRoom.id = :chatRoomId AND m.senderId <> :userId AND m.readStatus = false")
+    List<FriendChatMessage> findUnreadMessages(@Param("userId") int userId, @Param("chatRoomId") int chatRoomId);
+
+    @Query("SELECT COUNT(m) FROM FriendChatMessage m WHERE m.chatRoom.id = :chatRoomId AND m.senderId <> :userId AND m.readStatus = false")
+    int countUnreadMessages(@Param("userId") int userId, @Param("chatRoomId") int chatRoomId);
 }

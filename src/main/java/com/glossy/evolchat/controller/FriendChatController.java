@@ -1,12 +1,10 @@
 package com.glossy.evolchat.controller;
 
 import com.glossy.evolchat.dto.CreateChatRoomRequest;
+import com.glossy.evolchat.dto.FriendChatMessageDTO;
 import com.glossy.evolchat.dto.FriendChatMessageRequest;
 import com.glossy.evolchat.dto.FriendChatRoomDTO;
-import com.glossy.evolchat.model.ChatMessage;
-import com.glossy.evolchat.model.FriendChatMessage;
-import com.glossy.evolchat.model.FriendChatRoom;
-import com.glossy.evolchat.model.User;
+import com.glossy.evolchat.model.*;
 import com.glossy.evolchat.service.FriendChatService;
 import com.glossy.evolchat.service.FriendChatMessageService;
 import com.glossy.evolchat.service.UserService;
@@ -18,6 +16,8 @@ import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
@@ -93,8 +93,8 @@ public class FriendChatController {
 
     // 특정 채팅방의 메시지 조회
     @GetMapping("/messages/{chatRoomId}")
-    public ResponseEntity<List<FriendChatMessage>> getChatMessages(@PathVariable("chatRoomId") int chatRoomId) {
-        List<FriendChatMessage> messages = friendChatMessageService.getMessagesByChatRoom(chatRoomId);
+    public ResponseEntity<List<FriendChatMessageDTO>> getChatMessages(@PathVariable("chatRoomId") int chatRoomId) {
+        List<FriendChatMessageDTO> messages = friendChatMessageService.getMessagesByChatRoom(chatRoomId);
         return ResponseEntity.ok(messages);
     }
 
@@ -103,13 +103,15 @@ public class FriendChatController {
     @SendTo("/topic/friend-chat/{chatRoomId}")
     public FriendChatMessage sendWebSocketMessage(
             @DestinationVariable("chatRoomId") int chatRoomId,
+            Principal principal,
             @Payload Map<String, Object> payload
     ) {
-        // 요청 데이터에서 'text'와 'chatRoomId'를 추출
+        String username = principal.getName();
+        User user = userService.findByUsername(username);
+
         String text = (String) payload.get("text");
-        // 실제 사용자 ID는 인증 정보를 통해 가져오는 것이 일반적입니다.
-        // 여기서는 예를 들어 사용자 ID를 1로 가정하겠습니다.
-        int senderId = 1;
+
+        int senderId = user.getId();
 
         // FriendChatMessage 객체 생성 및 데이터 설정
         FriendChatMessage message = new FriendChatMessage();

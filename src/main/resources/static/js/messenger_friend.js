@@ -46,7 +46,7 @@ $(document).ready(function() {
                                 <div class="icon flex-c-c cursor-p"><img src="../../static/images/svg/home.svg" alt="" style="height: auto; width: auto;" />
                                     <div class="hidden">홈피</div>
                                 </div>
-                                <div class="icon flex-c-c cursor-p chat-button" data-user-id="${friend.id}"><img src="../../static/images/svg/chat.svg" alt="" style="height: auto; width: auto;" />
+                                <div class="icon flex-c-c cursor-p chat-button" data-user-id="${friend.friendId}"><img src="../../static/images/svg/chat.svg" alt="" style="height: auto; width: auto;" />
                                     <div class="hidden">메시지보내기</div>
                                 </div>
                                 <div class="icon flex-c-c cursor-p"><img src="../../static/images/svg/hyphenation.svg" alt="" style="height: auto; width: auto;" />
@@ -70,8 +70,13 @@ $(document).ready(function() {
 
     loadFriends(); // 페이지 로드 시 친구 리스트 불러오기
 
-    // Event listener for pin icon click to toggle pin status
-    document.addEventListener('click', function (event) {
+    // 새로운 이벤트 핸들러를 등록합니다.
+    $(document).on('click', '.chat-button', function(event) {
+
+        var chatButton = event.target.closest('.chat-button');
+        if (!chatButton) return;
+
+        // 핀 아이콘 클릭 처리
         if (event.target.closest('.user-list .btn-wrap .icon:nth-of-type(1)')) {
             var icon = event.target.closest('.user-list .btn-wrap .icon:nth-of-type(1)');
             var img = icon.querySelector('img');
@@ -80,48 +85,45 @@ $(document).ready(function() {
             var pinsSrc = '../../static/images/svg/pins.svg';
             var goldPinsSrc = '../../static/images/svg/goldpins.svg';
 
-            // Handle absolute and relative paths using URL object
             var imgSrc = new URL(img.src, window.location.href).pathname;
             var pinsPath = new URL(pinsSrc, window.location.href).pathname;
             var goldPinsPath = new URL(goldPinsSrc, window.location.href).pathname;
 
             if (imgSrc === pinsPath) {
                 img.src = goldPinsSrc;
-                // Move the item to the top of the list
                 userListLayer.prepend(userItem);
             } else {
                 img.src = pinsSrc;
             }
         }
-        
-        // Handle message button click
-        if (event.target.closest('.chat-button')) {
-            var userId = event.target.closest('.chat-button').dataset.userId;
 
-            // Create a chat room with a proper request body
-            fetch('/friend-chat/create-chat-room', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({
-                    user2Id: userId // Assuming 'user2Id' is the required field in the request body
-                })
+        // 채팅방 생성 요청
+        var userId = chatButton.dataset.userId;
+
+        fetch('/friend-chat/create-chat-room', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+                user2Id: userId
             })
-            .then(response => response.json())
-            .then(data => {
-                if (data.id) {
-                    // 채팅방 생성 성공 시 채팅방 표시
-                    showChatRoom(data.id);
-                } else {
-                    console.error('Failed to create chat room');
-                }
-            })
-            .catch(error => {
-                console.error('Error creating chat room:', error);
-            });
-        }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.id) {
+                // 채팅방 생성 성공 시 채팅방 표시
+                showChatRoom(data.id);
+            } else {
+                console.error('Failed to create chat room');
+            }
+        })
+        .catch(error => {
+            console.error('Error creating chat room:', error);
+        });
+
+        event.preventDefault();
     });
 
     // Event listener for search input
@@ -130,10 +132,30 @@ $(document).ready(function() {
         loadFriends(query); // 검색 쿼리를 사용하여 친구 리스트를 다시 불러오기
     });
 
-    // Function to display chat room
     function showChatRoom(chatRoomId) {
-        // 여기에 채팅방을 표시하는 로직을 추가하세요
-        console.log('Showing chat room:', chatRoomId);
-        // 예를 들어, 채팅방 UI를 생성하고, 채팅 기록을 로드하는 등의 작업을 수행합니다.
+        $.get('/friend-chat/user-chats', function(data) {
+            const recentMessagesContainer = $('.recentMessages');
+            recentMessagesContainer.empty();
+
+            data.forEach(chatRoom => {
+                let recentMessageItem = `
+                    <li class="grey-1">
+                        <div class="flex-row flex-c chat-toggle" data-chat-room-id="${chatRoom.id}">
+                            <img class="profile-img-36" src="../static/images/profile/default.png" />
+                            <div>
+                                <div class="receive">
+                                    <p class="white px12 m-l-10">${chatRoom.roomName}</p>
+                                    <span class="notice px12">${chatRoom.unreadCount}</span>
+                                </div>`;
+                                if(chatRoom.recentMessages == ""){
+                                    recentMessageItem += `<p class="white px12 m-l-10">${chatRoom.recentMessages}</p>`;
+                                } else {
+                                    recentMessageItem += `<p class="white px12 m-l-10">${chatRoom.recentMessages[chatRoom.recentMessages.length - 1].message || ""}</p>`;
+                                }
+                                recentMessageItem += `</div></div></li>`
+
+                recentMessagesContainer.append(recentMessageItem);
+            });
+        });
     }
 });

@@ -35,13 +35,8 @@ public class FriendChatService {
         FriendChatRoom chatRoom = new FriendChatRoom();
         chatRoom.setUser1Id(user1Id);
         chatRoom.setUser2Id(user2Id);
-        chatRoom.setRoomName("Chat Room between " + user1Id + " and " + user2Id); // 적절한 방 이름 설정
+        chatRoom.setRoomName(user1Id + " and " + user2Id); // 적절한 방 이름 설정
         return friendChatRoomRepository.save(chatRoom);
-    }
-
-    // 특정 채팅방의 메시지 조회
-    public List<FriendChatMessage> getMessagesByChatRoomId(int chatRoomId) {
-        return friendChatMessageRepository.findByChatRoomIdOrderByTimestampAsc(chatRoomId);
     }
 
     // 메시지 저장
@@ -51,7 +46,7 @@ public class FriendChatService {
 
     // 특정 사용자의 채팅방 검색 (두 사용자의 ID로)
     public Optional<FriendChatRoom> findChatRoom(int user1Id, int user2Id) {
-        return friendChatRoomRepository.findByUser1IdAndUser2Id(user1Id, user2Id);
+        return friendChatRoomRepository.findByUserIds(user1Id, user2Id);
     }
 
     // 특정 사용자의 모든 채팅방 조회

@@ -10,7 +10,6 @@
                 url: url,
                 type: 'GET',
                 success: function(response) {
-                    console.log('Fetched data:', response); // 데이터 확인
                     renderTransactions(response.cashPointsHistories);
                     totalPages = response.totalPages;
                     updatePagination(currentPage, totalPages);

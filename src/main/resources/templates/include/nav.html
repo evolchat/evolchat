@@ -60,18 +60,6 @@
         </a></li>
     </ul>
     <ul class="white recentMessages">
-        <li class="grey-1"><div class="flex-row flex-c chat-toggle">
-            <img class="profile-img-36" src="../static/images/profile/default.png" />
-        </div></li>
-        <li class="grey-1"><div class="flex-row flex-c chat-toggle">
-            <img class="profile-img-36" src="../static/images/profile/default.png" />
-        </div></li>
-        <li class="grey-1"><div class="flex-row flex-c chat-toggle">
-            <img class="profile-img-36" src="../static/images/profile/default.png" />
-        </div></li>
-        <li class="grey-1"><div class="flex-row flex-c chat-toggle">
-            <img class="profile-img-36" src="../static/images/profile/default.png" />
-        </div></li>
     </ul>
 </header>
 <div id="chatPanel" class="chat-panel hidden">
@@ -135,17 +123,12 @@
         var currentChatRoomId = null; // 현재 채팅방 ID를 저장할 변수
 
         // 채팅창 열기 및 최근 대화 불러오기
-        chatToggles.forEach(function(toggle) {
-            $(document).on('click', '.chat-toggle', function(event) {
-                event.preventDefault();
-                chatPanel.fadeIn(100).removeClass('hidden'); // 부드럽게 나타나게 설정
-
-                // 최근 메시지를 클릭할 때 해당 채팅방의 대화 내용을 불러옴
-                currentChatRoomId = $(this).data('chat-room-id'); // chat-toggle에 chat-room-id를 저장했다고 가정
-                loadChatMessages(currentChatRoomId);
-            });
+        $(document).on('click', '.chat-toggle', function(event) {
+            event.preventDefault();
+            chatPanel.fadeIn(100).removeClass('hidden'); // 부드럽게 나타나게 설정
+            currentChatRoomId = $(this).data('chat-room-id'); // chat-toggle에 chat-room-id를 저장했다고 가정
+            loadChatMessages(currentChatRoomId);
         });
-
         // 채팅창 닫기 애니메이션
         closeChat.click(function() {
             chatPanel.fadeOut(100, function() {
@@ -164,24 +147,44 @@
                 const chatContent = $('.chat-content');
                 chatContent.empty(); // 기존 메시지 비우기
 
-                // 불러온 메시지 데이터를 순회하면서 화면에 메시지를 추가
-                data.forEach(function(message) {
-                    const messageHtml = `
-                        <div class="message ${message.senderId === currentUserId ? 'me' : ''}">
-                            <img class="profile-img-36 m-r-6" src="../static/images/profile/default.png" alt="">
-                            <div class="message-content">
-                                <div class="${message.senderId === currentUserId ? 'message-text-right' : 'message-text-left'}">
-                                    <p class="px14">${message.message}</p>
-                                </div>
-                                <span class="message-time">${formatTime(message.timestamp)}</span>
-                            </div>
-                        </div>
-                    `;
-                    chatContent.append(messageHtml); // 채팅 내용에 추가
-                });
+                $.get(`/users/current`, function(userData) {
+                    const currentChatUserId = userData.id;  // 여기서 값을 할당
 
-                // 스크롤을 최신 메시지로 이동
-                chatContent.scrollTop(chatContent.prop("scrollHeight"));
+                    // 불러온 메시지 데이터를 순회하면서 화면에 메시지를 추가
+                    data.forEach(function(message) {
+                        let messageHtml;
+                        if (message.senderId == currentChatUserId) {
+                            messageHtml = `
+                            <div class="message me">
+                                <div class="message-content">
+                                    <span class="message-time">${formatTime(message.timestamp)}</span>
+                                    <div class="message-text-right">
+                                        <p class="px14">${message.message}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            `;
+                        } else {
+                            messageHtml = `
+                                <div class="message">
+                                    <img class="profile-img-36 m-r-6" src="../static/images/profile/default.png" alt="">
+                                    <div class="message-content">
+                                        <div class="message-text-left">
+                                            <p class="px14">${message.message}</p>
+                                        </div>
+                                        <span class="message-time">${formatTime(message.timestamp)}</span>
+                                    </div>
+                                </div>
+                            `;
+                        }
+
+                        chatContent.append(messageHtml); // 채팅 내용에 추가
+                    });
+
+                    // 스크롤을 최신 메시지로 이동
+                    chatContent.scrollTop(chatContent.prop("scrollHeight"));
+
+                });  // 현재 사용자 정보가 로딩된 후에 메시지를 처리
             });
         }
 
@@ -256,6 +259,8 @@
             });
         });
 
+        var friendSocket = new SockJS('/friend-chat'); // WebSocket 엔드포인트
+        var stompFriendClient = Stomp.over(friendSocket);
         // 최근 메시지 로드
         function loadRecentMessages() {
             $.get('/friend-chat/user-chats', function(data) {
@@ -269,17 +274,53 @@
                                 <img class="profile-img-36" src="../static/images/profile/default.png" />
                                 <div>
                                     <div class="receive">
-                                        <p class="white px12">${chatRoom.roomName}</p>
-                                        <span class="notice px12">${chatRoom.unreadCount}</span>
+                                        <p class="white px12 m-l-10">${chatRoom.roomName}</p>
+                                        <span class="notice px12">${'+' + chatRoom.unreadCount || '+0'}</span>
                                     </div>`;
-                                    if(chatRoom.recentMessages == ""){
-                                        recentMessageItem += `<p class="white px12">${chatRoom.recentMessages}</p>`;
-                                    } else {
-                                        recentMessageItem += `<p class="white px12">${chatRoom.recentMessages[chatRoom.recentMessages.length - 1].message || ""}</p>`;
+                                    if(chatRoom.recentMessages && chatRoom.recentMessages.length > 0) {
+                                        recentMessageItem += `<p class="white px12 m-l-10">${chatRoom.recentMessages[chatRoom.recentMessages.length - 1].message || ""}</p>`;
                                     }
                                     recentMessageItem += `</div></div></li>`
-
                     recentMessagesContainer.append(recentMessageItem);
+                    stompFriendClient.connect({}, function (frame) {
+                        stompFriendClient.subscribe('/topic/friend-chat/' + chatRoom.id, (message) => {
+                            const chatContent = $('.chat-content');
+
+                            $.get(`/users/current`, function(userData) {
+                                const friendChatMessage = JSON.parse(message.body)
+                                const friendChatRoom = JSON.parse(message.body).chatRoom;
+                                const currentChatUserId = userData.id;  // 여기서 값을 할당
+                                let newMessageHtml;
+                                if (friendChatMessage.senderId == userData.id) {
+                                        newMessageHtml = `
+                                        <div class="message me">
+                                            <div class="message-content">
+                                                <span class="message-time">${formatTime(friendChatMessage.timestamp)}</span>
+                                                <div class="message-text-right">
+                                                    <p class="px14">${friendChatMessage.message}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        `;
+                                    } else {
+                                        newMessageHtml = `
+                                            <div class="message">
+                                                <img class="profile-img-36 m-r-6" src="../static/images/profile/default.png" alt="">
+                                                <div class="message-content">
+                                                    <div class="message-text-left">
+                                                        <p class="px14">${friendChatMessage.message}</p>
+                                                    </div>
+                                                    <span class="message-time">${formatTime(friendChatMessage.timestamp)}</span>
+                                                </div>
+                                            </div>
+                                        `;
+                                }
+
+                                chatContent.append(newMessageHtml);
+                                chatContent.scrollTop(chatContent.prop("scrollHeight"));
+                            });
+                        });
+                    });
                 });
             });
         }
@@ -287,31 +328,17 @@
         // 페이지 로드 시 최근 메시지 로드
         loadRecentMessages();
 
-        // 채팅 메시지 전송 및 수신
-        var friendSocket = new SockJS('/friend-chat'); // WebSocket 엔드포인트
-        var stompFriendClient = Stomp.over(friendSocket);
-
-        stompFriendClient.connect({}, function (frame) {
-            stompFriendClient.subscribe('/topic/friend-chat/' + currentChatRoomId, function (message) {
-                var chatContentFriend = document.querySelector('.chat-content');
-                var newMessage = JSON.parse(message.body);
-                var messageFriendElement = document.createElement('div');
-                messageFriendElement.classList.add('message');
-                messageFriendElement.innerHTML = `<img class="profile-img-36 m-r-6" src="../static/images/profile/default.png" alt=""/>
-                    <div class="message-content">
-                        <div class="message-text-left">
-                            <p class="px14">${newMessage.text}</p>
-                        </div>
-                        <span class="message-time">${formatTime(newMessage.timestamp)}</span>
-                    </div>`;
-                chatContentFriend.appendChild(messageFriendElement);
-
-                // 스크롤을 최신 메시지로 이동
-                chatContentFriend.scrollTop = chatContentFriend.scrollHeight;
-            });
-        });
-
         var chatInput = document.querySelector('.chat-text input');
+
+        friendSocket.onmessage = function(event) {
+            const messageData = JSON.parse(event.data);
+            const chatRoomId = messageData.chatRoomId;
+            const lastMessage = messageData.message;
+
+            // 해당 채팅방의 마지막 메시지 업데이트
+            document.querySelector(`#chatRoom_${chatRoomId} .recentMessage`).innerText = lastMessage;
+        };
+
         chatInput.addEventListener('keypress', function(event) {
             if (event.key === 'Enter') {
                 var message = event.target.value;

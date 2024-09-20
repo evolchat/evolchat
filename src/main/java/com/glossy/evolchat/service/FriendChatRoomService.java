@@ -22,7 +22,7 @@ public class FriendChatRoomService {
     private FriendChatMessageRepository friendChatMessageRepository;
 
     public List<FriendChatRoomDTO> getUserChatRooms(int userId) {
-        List<FriendChatRoom> chatRooms = friendChatRoomRepository.findByUser1Id(userId);
+        List<FriendChatRoom> chatRooms = friendChatRoomRepository.findByUser1IdOrUser2Id(userId, userId);
         List<FriendChatRoomDTO> chatRoomDTOs = new ArrayList<>();
 
         for (FriendChatRoom chatRoom : chatRooms) {
