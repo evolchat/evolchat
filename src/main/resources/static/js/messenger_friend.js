@@ -16,7 +16,6 @@ $(document).ready(function() {
         });
     }
 
-    // Fetch friends list from server and populate it
     function loadFriends(query = '') {
         fetch(`/messenger/friends?query=${encodeURIComponent(query)}`) // 서버에서 친구 리스트를 가져오는 API 엔드포인트
             .then(response => response.json())
@@ -40,13 +39,13 @@ $(document).ready(function() {
                         userItem.innerHTML += `
                             </div>
                             <div class="btn-wrap flex-row flex-c">
-                                <div class="icon flex-c-c cursor-p"><img src="../../static/images/svg/pins.svg" alt="" style="height: auto; width: auto;" />
+                                <div onclick="setFriendFin(event)" class="icon flex-c-c cursor-p"><img src="../../static/images/svg/pins.svg" alt="" style="height: auto; width: auto;" />
                                     <div class="hidden">고정</div>
                                 </div>
                                 <div class="icon flex-c-c cursor-p"><img src="../../static/images/svg/home.svg" alt="" style="height: auto; width: auto;" />
                                     <div class="hidden">홈피</div>
                                 </div>
-                                <div class="icon flex-c-c cursor-p chat-button" data-user-id="${friend.friendId}"><img src="../../static/images/svg/chat.svg" alt="" style="height: auto; width: auto;" />
+                                <div onclick="messengerFriendMsgSend(event)" class="icon flex-c-c cursor-p chat-button" data-user-id="${friend.friendId}"><img src="../../static/images/svg/chat.svg" alt="" style="height: auto; width: auto;" />
                                     <div class="hidden">메시지보내기</div>
                                 </div>
                                 <div class="icon flex-c-c cursor-p"><img src="../../static/images/svg/hyphenation.svg" alt="" style="height: auto; width: auto;" />
@@ -70,92 +69,78 @@ $(document).ready(function() {
 
     loadFriends(); // 페이지 로드 시 친구 리스트 불러오기
 
-    // 새로운 이벤트 핸들러를 등록합니다.
-    $(document).on('click', '.chat-button', function(event) {
-
-        var chatButton = event.target.closest('.chat-button');
-        if (!chatButton) return;
-
-        // 핀 아이콘 클릭 처리
-        if (event.target.closest('.user-list .btn-wrap .icon:nth-of-type(1)')) {
-            var icon = event.target.closest('.user-list .btn-wrap .icon:nth-of-type(1)');
-            var img = icon.querySelector('img');
-            var userItem = icon.closest('.user-list');
-            var userListLayer = document.querySelector('#user-list-layer');
-            var pinsSrc = '../../static/images/svg/pins.svg';
-            var goldPinsSrc = '../../static/images/svg/goldpins.svg';
-
-            var imgSrc = new URL(img.src, window.location.href).pathname;
-            var pinsPath = new URL(pinsSrc, window.location.href).pathname;
-            var goldPinsPath = new URL(goldPinsSrc, window.location.href).pathname;
-
-            if (imgSrc === pinsPath) {
-                img.src = goldPinsSrc;
-                userListLayer.prepend(userItem);
-            } else {
-                img.src = pinsSrc;
-            }
-        }
-
-        // 채팅방 생성 요청
-        var userId = chatButton.dataset.userId;
-
-        fetch('/friend-chat/create-chat-room', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
-            body: JSON.stringify({
-                user2Id: userId
-            })
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.id) {
-                // 채팅방 생성 성공 시 채팅방 표시
-                showChatRoom(data.id);
-            } else {
-                console.error('Failed to create chat room');
-            }
-        })
-        .catch(error => {
-            console.error('Error creating chat room:', error);
-        });
-
-        event.preventDefault();
-    });
-
-    // Event listener for search input
     $('#search-input').on('input', function() {
         var query = $(this).val();
         loadFriends(query); // 검색 쿼리를 사용하여 친구 리스트를 다시 불러오기
     });
-
-    function showChatRoom(chatRoomId) {
-        $.get('/friend-chat/user-chats', function(data) {
-            const recentMessagesContainer = $('.recentMessages');
-            recentMessagesContainer.empty();
-
-            data.forEach(chatRoom => {
-                let recentMessageItem = `
-                    <li class="grey-1">
-                        <div class="flex-row flex-c chat-toggle" data-chat-room-id="${chatRoom.id}">
-                            <img class="profile-img-36" src="../static/images/profile/default.png" />
-                            <div>
-                                <div class="receive">
-                                    <p class="white px12 m-l-10">${chatRoom.roomName}</p>
-                                    <span class="notice px12">${chatRoom.unreadCount}</span>
-                                </div>`;
-                                if(chatRoom.recentMessages == ""){
-                                    recentMessageItem += `<p class="white px12 m-l-10">${chatRoom.recentMessages}</p>`;
-                                } else {
-                                    recentMessageItem += `<p class="white px12 m-l-10">${chatRoom.recentMessages[chatRoom.recentMessages.length - 1].message || ""}</p>`;
-                                }
-                                recentMessageItem += `</div></div></li>`
-
-                recentMessagesContainer.append(recentMessageItem);
-            });
-        });
-    }
 });
+
+function showChatRoom(chatRoomId) {
+    $.get('/friend-chat/user-chats', function(data) {
+        const recentMessagesContainer = $('.recentMessages');
+        recentMessagesContainer.empty();
+
+        data.forEach(chatRoom => {
+            let recentMessageItem = `
+                <li class="grey-1">
+                    <div class="flex-row flex-c chat-toggle" data-chat-room-id="${chatRoom.id}">
+                        <img class="profile-img-36" src="../static/images/profile/default.png" />
+                        <div>
+                            <div class="receive">
+                                <p class="white px12 m-l-10">${chatRoom.roomName}</p>
+                                <span class="notice px12">${chatRoom.unreadCount}</span>
+                            </div>`;
+                            recentMessageItem += `</div></div></li>`
+            recentMessagesContainer.append(recentMessageItem);
+        });
+    });
+}
+
+function messengerFriendMsgSend(event) {
+    var chatButton = event.target.closest('.chat-button');
+    var userId = chatButton.dataset.userId;
+    fetch('/friend-chat/create-chat-room', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+            user2Id: userId
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.id) {
+            // 채팅방 생성 성공 시 채팅방 표시
+            showChatRoom(data.id);
+        } else {
+            console.error('Failed to create chat room');
+        }
+    })
+    .catch(error => {
+        console.error('Error creating chat room:', error);
+    });
+}
+
+function setFriendFin(event) {
+    if (event.target.closest('.user-list .btn-wrap .icon:nth-of-type(1)')) {
+        var icon = event.target.closest('.user-list .btn-wrap .icon:nth-of-type(1)');
+        var img = icon.querySelector('img');
+        var userItem = icon.closest('.user-list');
+        var userListLayer = document.querySelector('#user-list-layer');
+        var pinsSrc = '../../static/images/svg/pins.svg';
+        var goldPinsSrc = '../../static/images/svg/goldpins.svg';
+
+        var imgSrc = new URL(img.src, window.location.href).pathname;
+        var pinsPath = new URL(pinsSrc, window.location.href).pathname;
+        var goldPinsPath = new URL(goldPinsSrc, window.location.href).pathname;
+
+        if (imgSrc === pinsPath) {
+            img.src = goldPinsSrc;
+            userListLayer.prepend(userItem);
+        } else {
+            img.src = pinsSrc;
+        }
+    }
+}
