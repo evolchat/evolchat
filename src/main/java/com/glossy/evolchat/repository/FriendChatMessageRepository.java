@@ -4,6 +4,7 @@ import com.glossy.evolchat.model.FriendChatMessage;
 import com.glossy.evolchat.model.FriendChatRoom;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
@@ -27,4 +28,8 @@ public interface FriendChatMessageRepository extends JpaRepository<FriendChatMes
 
     @Query("SELECT COUNT(m) FROM FriendChatMessage m WHERE m.chatRoom.id = :chatRoomId AND m.senderId <> :userId AND m.readStatus = false")
     int countUnreadMessages(@Param("userId") int userId, @Param("chatRoomId") int chatRoomId);
+
+    @Modifying
+    @Query("UPDATE FriendChatMessage m SET m.readStatus = true WHERE m.chatRoom.id = :chatRoomId AND m.senderId <> :userId AND m.readStatus = false")
+    void markMessagesAsRead(@Param("userId") int userId, @Param("chatRoomId") int chatRoomId);
 }

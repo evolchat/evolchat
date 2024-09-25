@@ -98,6 +98,20 @@ public class FriendChatController {
         return ResponseEntity.ok(messages);
     }
 
+    @GetMapping("/unread-count/{chatRoomId}")
+    public ResponseEntity<Integer> getUnreadMessageCount(@PathVariable("chatRoomId") int chatRoomId, Principal principal) {
+        User currentUser = userService.findByUsername(principal.getName());
+        int unreadCount = friendChatMessageService.getUnreadMessageCount(currentUser.getId(), chatRoomId);
+        return ResponseEntity.ok(unreadCount);
+    }
+
+    @PostMapping("/update-unread/{chatRoomId}")
+    public ResponseEntity<Void> updateUnreadMessages(@PathVariable("chatRoomId") int chatRoomId, Principal principal) {
+        User currentUser = userService.findByUsername(principal.getName());
+        friendChatMessageService.updateUnreadMessages(currentUser.getId(), chatRoomId);
+        return ResponseEntity.ok().build();
+    }
+
     // 웹소켓을 통한 메시지 전송
     @MessageMapping("/send/{chatRoomId}")
     @SendTo("/topic/friend-chat/{chatRoomId}")

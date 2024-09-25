@@ -3,8 +3,10 @@ package com.glossy.evolchat.service;
 import com.glossy.evolchat.dto.FriendChatRoomDTO;
 import com.glossy.evolchat.model.FriendChatMessage;
 import com.glossy.evolchat.model.FriendChatRoom;
+import com.glossy.evolchat.model.User;
 import com.glossy.evolchat.repository.FriendChatRoomRepository;
 import com.glossy.evolchat.repository.FriendChatMessageRepository;
+import com.glossy.evolchat.repository.UserRepository;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,9 +27,12 @@ public class FriendChatService {
     @Autowired
     private final FriendChatMessageRepository friendChatMessageRepository;
 
-    public FriendChatService(FriendChatRoomRepository friendChatRoomRepository, FriendChatMessageRepository friendChatMessageRepository) {
+    @Autowired
+    private final UserRepository userRepository;
+    public FriendChatService(FriendChatRoomRepository friendChatRoomRepository, FriendChatMessageRepository friendChatMessageRepository, UserRepository userRepository) {
         this.friendChatRoomRepository = friendChatRoomRepository;
         this.friendChatMessageRepository = friendChatMessageRepository;
+        this.userRepository = userRepository;
     }
 
     // 채팅방 생성
@@ -59,10 +64,22 @@ public class FriendChatService {
             List<FriendChatMessage> recentMessages = friendChatMessageRepository.findByChatRoomIdOrderByTimestampAsc(chatRoom.getId());
             FriendChatRoomDTO chatRoomDTO = new FriendChatRoomDTO();
             chatRoomDTO.setId(chatRoom.getId());
-            chatRoomDTO.setRoomName(chatRoom.getRoomName());
+
+            // 상대방의 ID에 따라 룸 이름 설정
+            if (chatRoom.getUser1Id() == userId) {
+                // user2의 닉네임을 가져오는 로직
+                Optional<User> user2Optional = userRepository.findById(chatRoom.getUser2Id());
+                user2Optional.ifPresent(user -> chatRoomDTO.setRoomName(user.getNickname()));
+            } else {
+                // user1의 닉네임을 가져오는 로직
+                Optional<User> user1Optional = userRepository.findById(chatRoom.getUser1Id());
+                user1Optional.ifPresent(user -> chatRoomDTO.setRoomName(user.getNickname()));
+            }
+
             chatRoomDTO.setRecentMessages(recentMessages);
             chatRoomDTOs.add(chatRoomDTO);
         }
         return chatRoomDTOs;
     }
+
 }

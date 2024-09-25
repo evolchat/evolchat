@@ -4,6 +4,7 @@ import com.glossy.evolchat.dto.FriendChatMessageDTO;
 import com.glossy.evolchat.model.FriendChatMessage;
 import com.glossy.evolchat.model.FriendChatRoom;
 import com.glossy.evolchat.repository.FriendChatMessageRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -44,6 +45,11 @@ public class FriendChatMessageService {
 
     public List<FriendChatMessage> getUnreadMessages(int userId, int chatRoomId) {
         return friendChatMessageRepository.findUnreadMessages(userId, chatRoomId);
+    }
+
+    @Transactional
+    public void updateUnreadMessages(int userId, int chatRoomId) {
+        friendChatMessageRepository.markMessagesAsRead(userId, chatRoomId);
     }
 
     // 읽지 않은 메시지 갯수 반환
