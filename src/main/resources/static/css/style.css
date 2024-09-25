@@ -979,6 +979,10 @@ table {
     height: 36px;
 }
 
+.search-area .search input[type=text] {
+    color: #000 !important;
+}
+
 /* svg관련 */
 .input-icon.search {
     position: absolute;
@@ -1840,6 +1844,12 @@ header>.nav a>div {
      background-color: #f0f0f0;
 } */
 
+header .chat-message {
+    max-height: 300px; /* 고정 높이 설정 */
+    overflow-y: auto;  /* 세로 스크롤 활성화 */
+    overflow-x: hidden; /* 가로 스크롤 숨기기 (필요에 따라) */
+}
+
 header .recentMessages li {
     padding: 10px 17px;
 }
@@ -1847,6 +1857,7 @@ header .recentMessages li {
 #newNav .recentMessages li {
     padding: 10px 10px; /* 새로운 padding 값 설정 */
 }
+
 
 header .recentMessages li>a {
     flex-wrap: wrap;
@@ -1937,6 +1948,10 @@ section.container>.chatLayer {
     padding: 0 14px;
 }
 
+.wrapper>.header .wrap .items button {
+    border-color: #171819;
+}
+
 .charge {
     background-color: transparent !important;
     border: 1px solid #2c2e33;
@@ -1949,6 +1964,10 @@ section.container>.chatLayer {
     box-sizing:border-box;
     transition:all .05s ease-in-out;
     color: white;
+}
+
+.tippy-arrow::before {
+    color: inherit !important;
 }
 
 .mini-icon-box {
@@ -2511,6 +2530,10 @@ img.profile-img-60 {
     color: transparent;
 }
 
+.dropdown-menu {
+    transition: none !important; /* 애니메이션 전환 제거 */
+}
+
 .header-betting-point.active > i {
     color: white;
 }
@@ -2645,6 +2668,10 @@ img.profile-img-60 {
     overflow: hidden;
 }
 
+.chat-text input {
+    width: 100%;
+}
+
 .chat-text img {
     margin: 0 5px;
 }
@@ -2653,8 +2680,16 @@ img.profile-img-60 {
     margin-right: 20px;
 }
 
+.emotion-btn {
+    display:flex;
+}
+
 .gap {
     gap: 25px;
+}
+
+.ui-resizable {
+    position: absolute !important;
 }
 
 /* 스피너 스타일 */

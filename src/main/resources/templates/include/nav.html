@@ -32,8 +32,11 @@
         </a></li>
     </ul>
     <p class="px12 opacity60 white msg m-b-20">최근 메시지 <span class="orange"></span></p>
-    <ul class="white recentMessages">
-    </ul>
+
+    <div class="chat-message">
+        <ul class="white recentMessages">
+        </ul>
+    </div>
 </header>
 <header id="newNav" class="bc-aside" style="display: none;">
     <ul class="nav">
@@ -62,7 +65,7 @@
     <ul class="white recentMessages">
     </ul>
 </header>
-<div id="chatPanel" class="chat-panel hidden">
+<div id="chatPanel" class="chat-panel hidden" style="display: flex;">
     <div class="chat-header">
         <div class="flex-c">
             <img class="profile-img-36 m-r-6" src="../static/images/profile/default.png" alt="">
@@ -102,313 +105,324 @@
     <div class="chat-text flex-c">
         <img src="../static/images/svg/icon-add.svg" alt="">
         <input type="text" placeholder="채팅 메세지 보내기">
-        <div class="chat-gif parents">
-            <div id="gif-fold">
-                <i class="fa-kit fa-icon-solid-fa-gif"></i>
+        <div class="emotion-btn">
+            <div class="chat-gif parents">
+                <div id="gif-fold">
+                    <i class="fa-kit fa-icon-solid-fa-gif"></i>
+                </div>
             </div>
-        </div>
-        <div class="chat-emoticon parents">
-            <div id="emoticon-fold">
-                <i class="fa-sharp fa-solid fa-face-angry fa-fw"></i>
+            <div class="chat-emoticon parents">
+                <div id="emoticon-fold">
+                    <i class="fa-sharp fa-solid fa-face-angry fa-fw"></i>
+                </div>
             </div>
         </div>
     </div>
 </div>
 <script>
-    $(document).ready(function() {
-        var chatToggles = document.querySelectorAll('.chat-toggle');
-        var chatPanel = $('#chatPanel');
-        var closeChat = $('#closeChat');
-
-        var currentChatRoomId = null; // 현재 채팅방 ID를 저장할 변수
-
-        // 채팅창 열기 및 최근 대화 불러오기
-        $(document).on('click', '.chat-toggle', function(event) {
-            event.preventDefault();
-            chatPanel.fadeIn(100).removeClass('hidden'); // 부드럽게 나타나게 설정
-            currentChatRoomId = $(this).data('chat-room-id'); // chat-toggle에 chat-room-id를 저장했다고 가정
-            currentChatRoomName = $(this).data('chat-room-name'); // chat-toggle에 chat-room-id를 저장했다고 가정
-            loadChatMessages(currentChatRoomId, currentChatRoomName);
-
-            const chatElement = $(`.chat-toggle[data-chat-room-id="${currentChatRoomId}"]`);
-            const messageItemElement = chatElement.find('p.message-item')[0];
-            const noticeElement = chatElement[0].getElementsByClassName('receive')[0].getElementsByClassName('notice')[0];
-            noticeElement.textContent = '';
-        });
-
-        // 채팅창 닫기 애니메이션
-        closeChat.click(function() {
-            chatPanel.fadeOut(100, function() {
-                chatPanel.addClass('hidden');  // 닫을 때 부드러운 애니메이션 후 숨김 처리
-            });
-            currentChatRoomId = '';
-        });
-
-        // jQuery UI를 사용하여 채팅창을 부드럽게 드래그 가능하게 설정
-        $('#chatPanel').draggable({
-            handle: '.chat-header',  // 드래그 가능한 영역을 지정 (chat-header)
-            containment: 'window'  // 화면 밖으로 나가지 않도록 제한
-        });
-
-
-        function loadChatMessages(chatRoomId, chatRoomName) {
-            $.get(`/friend-chat/messages/${chatRoomId}`, function(data) {
-                const chatContent = $('.chat-content');
-                chatContent.empty(); // 기존 메시지 비우기
-
-                $.get(`/users/current`, function(userData) {
-                    const currentChatUserId = userData.id;  // 여기서 값을 할당
-
-                    // 불러온 메시지 데이터를 순회하면서 화면에 메시지를 추가
-                    data.forEach(function(message) {
-                        let messageHtml;
-                        if (message.senderId == currentChatUserId) {
-                            messageHtml = `
-                            <div class="message me">
-                                <div class="message-content">
-                                    <span class="message-time">${formatTime(message.timestamp)}</span>
-                                    <div class="message-text-right">
-                                        <p class="px14">${message.message}</p>
-                                    </div>
-                                </div>
-                            </div>
-                            `;
-                        } else {
-                            messageHtml = `
-                            <div class="message">
-                                <img class="profile-img-36 m-r-6" src="../static/images/profile/default.png" alt="">
-                                <div class="message-content">
-                                    <div class="message-text-left">
-                                        <p class="px14">${message.message}</p>
-                                    </div>
-                                    <span class="message-time">${formatTime(message.timestamp)}</span>
-                                </div>
-                            </div>
-                            `;
-                        }
-                        chatContent.append(messageHtml); // 채팅 내용에 추가
-                    });
-
-                    $.ajax({
-                        url: `/friend-chat/update-unread/${chatRoomId}`,
-                        method: 'POST',
-                        contentType: 'application/json',
-                        error: function(xhr, status, error) {
-                            console.error('Failed to update unread messages:', error);
-                        }
-                    });
-
-                    $('#chatRoomNickname').text(chatRoomName);
-                    // 스크롤을 최신 메시지로 이동
-                    chatContent.scrollTop(chatContent.prop("scrollHeight"));
-
-                });
-            });
-        }
-
-
-        // 시간을 포맷하는 함수
-        function formatTime(timestamp) {
-            const date = new Date(timestamp);
-            const hours = date.getHours();
-            const minutes = date.getMinutes();
-            return `${hours > 12 ? hours - 12 : hours}:${minutes < 10 ? '0' + minutes : minutes} ${hours >= 12 ? '오후' : '오전'}`;
-        }
-
-        // 내비게이션 설정
-        let isInitialNavVisible = JSON.parse(localStorage.getItem('isInitialNavVisible')) || false;
-        let isNavExpanded = JSON.parse(localStorage.getItem('isNavExpanded')) || !isInitialNavVisible;
-
-        if (isInitialNavVisible) {
-            $("#initialNav").css({ display: "block", width: "100%", visibility: "visible", opacity: 1 });
-            $("#newNav").css({ display: "none", width: "25%", visibility: "hidden", opacity: 0 });
-            $("#nav").css("width", "100%");
-
-            $("#newNav").removeClass('nav-expanded');
-        } else {
-            $("#initialNav").css({ display: "none", width: "100%", visibility: "hidden", opacity: 0 });
-            $("#newNav").css({ display: "block", width: "25%", visibility: "visible", opacity: 1 });
-            $("#nav").css("width", "55px");
-
-            $("#newNav").addClass('nav-expanded');
-        }
-
-        $("#nav_button").click(function() {
-            if ($("#newNav").is(":visible")) {
-                $("#newNav").css({ display: "none", visibility: "hidden", opacity: 0 });
-                $("#initialNav").css({ display: "block", width: "100%", visibility: "visible", opacity: 1 });
-                $("#nav").css("width", "100%");
-
-                $("#newNav").removeClass('nav-expanded');
-                localStorage.setItem('isInitialNavVisible', true);
-                localStorage.setItem('isNavExpanded', true);
-            } else {
-                $("#initialNav").css({ display: "none", visibility: "hidden", opacity: 0 });
-                $("#newNav").css({ display: "block", width: "25%", visibility: "visible", opacity: 1 });
-                $("#nav").css("width", "55px");
-
-                $("#newNav").addClass('nav-expanded');
-                localStorage.setItem('isInitialNavVisible', false);
-                localStorage.setItem('isNavExpanded', false);
-            }
-        });
-
-        // 내비게이션 메뉴 활성화
-        const navMenus = document.querySelectorAll('.nav-menu');
-
-        navMenus.forEach(menu => {
-            menu.addEventListener('click', function() {
-                const isActive = this.classList.contains('active');
-
-                navMenus.forEach(nav => {
-                    nav.classList.remove('active');
-                    const icon = nav.querySelector('i');
-                    if (icon && icon.className.includes('fa-solid')) {
-                        icon.className = icon.className.replace('fa-solid', 'fa-light');
-                    }
-                });
-
-                if (!isActive) {
-                    this.classList.add('active');
-                    const activeIcon = this.querySelector('i');
-                    if (activeIcon && activeIcon.className.includes('fa-light')) {
-                        activeIcon.className = activeIcon.className.replace('fa-light', 'fa-solid');
-                    }
-                }
-            });
-        });
-
-        var friendSocket = new SockJS('/friend-chat'); // WebSocket 엔드포인트
-        var stompFriendClient = Stomp.over(friendSocket);
-        // 최근 메시지 로드
-        function loadRecentMessages() {
-            $.get('/friend-chat/user-chats', function(data) {
-                const recentMessagesContainer = $('.recentMessages');
-                recentMessagesContainer.empty();
-                data.forEach(chatRoom => {
-                    $.get('/friend-chat/unread-count/' + chatRoom.id, function(unreadCount) {
-                        let recentMessageItem = `
-                            <li class="grey-1">
-                                <div class="flex-row flex-c chat-toggle" data-chat-room-id="${chatRoom.id}" data-chat-room-name="${chatRoom.roomName}">
-                                    <img class="profile-img-36" src="../static/images/profile/default.png" />
-                                    <div>
-                                        <div class="receive">
-                                            <p class="white px12 m-l-10">${chatRoom.roomName}</p>
-                                            <span class="notice px12">${unreadCount == 0 ? "" : "+" + unreadCount}</span>
-                                        </div>`;
-                                        if(chatRoom.recentMessages && chatRoom.recentMessages.length > 0) {
-                                            recentMessageItem += `<p class="white px12 m-l-10 message-item">${chatRoom.recentMessages[chatRoom.recentMessages.length - 1].message || ""}</p>`;
-                                        }
-                                        recentMessageItem += `</div></div></li>`
-
-                        recentMessagesContainer.append(recentMessageItem);
-
-                        stompFriendClient.connect({}, function (frame) {
-                            stompFriendClient.subscribe('/topic/friend-chat/' + chatRoom.id, (message) => {
-                                const chatContent = $('.chat-content');
-                                $.get(`/users/current`, function(userData) {
-                                    const friendChatMessage = JSON.parse(message.body)
-                                    const friendChatRoom = JSON.parse(message.body).chatRoom;
-                                    const currentChatUserId = userData.id;  // 여기서 값을 할당
-                                    let newMessageHtml;
-                                    if (friendChatMessage.senderId == userData.id) {
-                                            newMessageHtml = `
-                                            <div class="message me">
-                                                <div class="message-content">
-                                                    <span class="message-time">${formatTime(friendChatMessage.timestamp)}</span>
-                                                    <div class="message-text-right">
-                                                        <p class="px14">${friendChatMessage.message}</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            `;
-                                        } else {
-                                            newMessageHtml = `
-                                                <div class="message">
-                                                    <img class="profile-img-36 m-r-6" src="../static/images/profile/default.png" alt="">
-                                                    <div class="message-content">
-                                                        <div class="message-text-left">
-                                                            <p class="px14">${friendChatMessage.message}</p>
-                                                        </div>
-                                                        <span class="message-time">${formatTime(friendChatMessage.timestamp)}</span>
-                                                    </div>
-                                                </div>
-                                            `;
-                                    }
-                                    const chatElement = $(`.chat-toggle[data-chat-room-id="${chatRoom.id}"]`);
-                                    // 찾은 p.message-item의 텍스트 업데이트
-                                    const messageItemElement = chatElement.find('p.message-item')[0];
-                                    if (messageItemElement) {
-                                        $(messageItemElement).text(friendChatMessage.message); // 메시지 내용을 업데이트
-                                    }
-                                    const noticeElement = chatElement[0].getElementsByClassName('receive')[0].getElementsByClassName('notice')[0];
-
-                                    const chatPanel = document.getElementById('chatPanel');
-                                    if (chatPanel.style.display != 'block' & chatRoom.id != currentChatRoomId) {
-                                        let currentCount = noticeElement.textContent.trim(); // 텍스트에서 공백 제거
-
-                                        // 숫자가 비어 있거나 +가 없는 경우
-                                        if (currentCount === '' || !currentCount.startsWith('+')) {
-                                            currentCount = 1;  // 처음인 경우 +1로 설정
-                                        } else {
-                                            // 기존 숫자에서 + 제거 후 파싱
-                                            currentCount = parseInt(currentCount.replace('+', ''));
-
-                                            // 숫자가 제대로 추출되었는지 확인 후 1을 더함
-                                            if (!isNaN(currentCount)) {
-                                                currentCount += 1;
-                                            }
-                                        }
-
-                                        // 증가된 숫자를 다시 요소에 반영
-                                        noticeElement.textContent = `+${currentCount}`;
-                                    }
-
-                                    chatContent.append(newMessageHtml);
-                                    chatContent.scrollTop(chatContent.prop("scrollHeight"));
-                                });
-                            });
-                        });
-                    });
-                });
-            });
-        }
-
-        // 페이지 로드 시 최근 메시지 로드
-        loadRecentMessages();
-
-        var chatInput = document.querySelector('.chat-text input');
-
-        friendSocket.onmessage = function(event) {
-            const messageData = JSON.parse(event.data);
-            const chatRoomId = messageData.chatRoomId;
-            const lastMessage = messageData.message;
-
-            // 해당 채팅방의 마지막 메시지 업데이트
-            document.querySelector(`#chatRoom_${chatRoomId} .recentMessage`).innerText = lastMessage;
-        };
-
-        chatInput.addEventListener('keypress', function(event) {
-            if (event.key === 'Enter') {
-                var message = event.target.value;
-                if (message.trim() !== '') {
-                    var messagePayload = {
-                        text: message,
-                        chatRoomId: currentChatRoomId
-                    };
-                    // 현재 채팅방의 요소 찾기
-                    const chatElement = $(`.chat-toggle[data-chat-room-id="${currentChatRoomId}"]`);
-
-                    // 찾은 p.message-item의 텍스트 업데이트
-                    const messageItemElement = chatElement.find('p.message-item')[0];
-                    if (messageItemElement) {
-                        $(messageItemElement).text(message); // 메시지 내용을 업데이트
-                    }
-
-                    stompFriendClient.send(`/app/send/${currentChatRoomId}`, {}, JSON.stringify(messagePayload));
-                    event.target.value = ''; // 입력창 비우기
-                }
-            }
-        });
+    $(function() {
+      // chatPanel에 resizable 적용
+      $("#chatPanel").resizable({
+        minHeight: 300, // 최소 높이
+        minWidth: 250, // 최소 너비
+        maxHeight: 850, // 최대 높이
+        maxWidth: 700 // 최대 너비
+      });
     });
+  $(document).ready(function() {
+      var chatToggles = document.querySelectorAll('.chat-toggle');
+      var chatPanel = $('#chatPanel');
+      var closeChat = $('#closeChat');
+
+      var currentChatRoomId = null; // 현재 채팅방 ID를 저장할 변수
+
+      // 채팅창 열기 및 최근 대화 불러오기
+      $(document).on('click', '.chat-toggle', function(event) {
+          event.preventDefault();
+          chatPanel.fadeIn(100).removeClass('hidden'); // 부드럽게 나타나게 설정
+          currentChatRoomId = $(this).data('chat-room-id'); // chat-toggle에 chat-room-id를 저장했다고 가정
+          currentChatRoomName = $(this).data('chat-room-name'); // chat-toggle에 chat-room-id를 저장했다고 가정
+          loadChatMessages(currentChatRoomId, currentChatRoomName);
+
+          const chatElement = $(`.chat-toggle[data-chat-room-id="${currentChatRoomId}"]`);
+          const messageItemElement = chatElement.find('p.message-item')[0];
+          const noticeElement = chatElement[0].getElementsByClassName('receive')[0].getElementsByClassName('notice')[0];
+          noticeElement.textContent = '';
+      });
+
+      // 채팅창 닫기 애니메이션
+      closeChat.click(function() {
+          chatPanel.fadeOut(100, function() {
+              chatPanel.addClass('hidden');  // 닫을 때 부드러운 애니메이션 후 숨김 처리
+          });
+          currentChatRoomId = '';
+      });
+
+      // jQuery UI를 사용하여 채팅창을 부드럽게 드래그 가능하게 설정
+      $('#chatPanel').draggable({
+          handle: '.chat-header',  // 드래그 가능한 영역을 지정 (chat-header)
+          containment: 'window'  // 화면 밖으로 나가지 않도록 제한
+      });
+
+
+      function loadChatMessages(chatRoomId, chatRoomName) {
+          $.get(`/friend-chat/messages/${chatRoomId}`, function(data) {
+              const chatContent = $('.chat-content');
+              chatContent.empty(); // 기존 메시지 비우기
+
+              $.get(`/users/current`, function(userData) {
+                  const currentChatUserId = userData.id;  // 여기서 값을 할당
+
+                  // 불러온 메시지 데이터를 순회하면서 화면에 메시지를 추가
+                  data.forEach(function(message) {
+                      let messageHtml;
+                      if (message.senderId == currentChatUserId) {
+                          messageHtml = `
+                          <div class="message me">
+                              <div class="message-content">
+                                  <span class="message-time">${formatTime(message.timestamp)}</span>
+                                  <div class="message-text-right">
+                                      <p class="px14">${message.message}</p>
+                                  </div>
+                              </div>
+                          </div>
+                          `;
+                      } else {
+                          messageHtml = `
+                          <div class="message">
+                              <img class="profile-img-36 m-r-6" src="../static/images/profile/default.png" alt="">
+                              <div class="message-content">
+                                  <div class="message-text-left">
+                                      <p class="px14">${message.message}</p>
+                                  </div>
+                                  <span class="message-time">${formatTime(message.timestamp)}</span>
+                              </div>
+                          </div>
+                          `;
+                      }
+                      chatContent.append(messageHtml); // 채팅 내용에 추가
+                  });
+
+                  $.ajax({
+                      url: `/friend-chat/update-unread/${chatRoomId}`,
+                      method: 'POST',
+                      contentType: 'application/json',
+                      error: function(xhr, status, error) {
+                          console.error('Failed to update unread messages:', error);
+                      }
+                  });
+
+                  $('#chatRoomNickname').text(chatRoomName);
+                  // 스크롤을 최신 메시지로 이동
+                  chatContent.scrollTop(chatContent.prop("scrollHeight"));
+
+              });
+          });
+      }
+
+
+      // 시간을 포맷하는 함수
+      function formatTime(timestamp) {
+          const date = new Date(timestamp);
+          const hours = date.getHours();
+          const minutes = date.getMinutes();
+          return `${hours > 12 ? hours - 12 : hours}:${minutes < 10 ? '0' + minutes : minutes} ${hours >= 12 ? '오후' : '오전'}`;
+      }
+
+      // 내비게이션 설정
+      let isInitialNavVisible = JSON.parse(localStorage.getItem('isInitialNavVisible')) || false;
+      let isNavExpanded = JSON.parse(localStorage.getItem('isNavExpanded')) || !isInitialNavVisible;
+
+      if (isInitialNavVisible) {
+          $("#initialNav").css({ display: "block", width: "100%", visibility: "visible", opacity: 1 });
+          $("#newNav").css({ display: "none", width: "25%", visibility: "hidden", opacity: 0 });
+          $("#nav").css("width", "100%");
+
+          $("#newNav").removeClass('nav-expanded');
+      } else {
+          $("#initialNav").css({ display: "none", width: "100%", visibility: "hidden", opacity: 0 });
+          $("#newNav").css({ display: "block", width: "25%", visibility: "visible", opacity: 1 });
+          $("#nav").css("width", "55px");
+
+          $("#newNav").addClass('nav-expanded');
+      }
+
+      $("#nav_button").click(function() {
+          if ($("#newNav").is(":visible")) {
+              $("#newNav").css({ display: "none", visibility: "hidden", opacity: 0 });
+              $("#initialNav").css({ display: "block", width: "100%", visibility: "visible", opacity: 1 });
+              $("#nav").css("width", "100%");
+
+              $("#newNav").removeClass('nav-expanded');
+              localStorage.setItem('isInitialNavVisible', true);
+              localStorage.setItem('isNavExpanded', true);
+          } else {
+              $("#initialNav").css({ display: "none", visibility: "hidden", opacity: 0 });
+              $("#newNav").css({ display: "block", width: "25%", visibility: "visible", opacity: 1 });
+              $("#nav").css("width", "55px");
+
+              $("#newNav").addClass('nav-expanded');
+              localStorage.setItem('isInitialNavVisible', false);
+              localStorage.setItem('isNavExpanded', false);
+          }
+      });
+
+      // 내비게이션 메뉴 활성화
+      const navMenus = document.querySelectorAll('.nav-menu');
+
+      navMenus.forEach(menu => {
+          menu.addEventListener('click', function() {
+              const isActive = this.classList.contains('active');
+
+              navMenus.forEach(nav => {
+                  nav.classList.remove('active');
+                  const icon = nav.querySelector('i');
+                  if (icon && icon.className.includes('fa-solid')) {
+                      icon.className = icon.className.replace('fa-solid', 'fa-light');
+                  }
+              });
+
+              if (!isActive) {
+                  this.classList.add('active');
+                  const activeIcon = this.querySelector('i');
+                  if (activeIcon && activeIcon.className.includes('fa-light')) {
+                      activeIcon.className = activeIcon.className.replace('fa-light', 'fa-solid');
+                  }
+              }
+          });
+      });
+
+      var friendSocket = new SockJS('/friend-chat'); // WebSocket 엔드포인트
+      var stompFriendClient = Stomp.over(friendSocket);
+      // 최근 메시지 로드
+      function loadRecentMessages() {
+          $.get('/friend-chat/user-chats', function(data) {
+              const recentMessagesContainer = $('.recentMessages');
+              recentMessagesContainer.empty();
+              data.forEach(chatRoom => {
+                  $.get('/friend-chat/unread-count/' + chatRoom.id, function(unreadCount) {
+                      let recentMessageItem = `
+                          <li class="grey-1">
+                              <div class="flex-row flex-c chat-toggle" data-chat-room-id="${chatRoom.id}" data-chat-room-name="${chatRoom.roomName}">
+                                  <img class="profile-img-36" src="../static/images/profile/default.png" />
+                                  <div>
+                                      <div class="receive">
+                                          <p class="white px12 m-l-10">${chatRoom.roomName}</p>
+                                          <span class="notice px12">${unreadCount == 0 ? "" : "+" + unreadCount}</span>
+                                      </div>`;
+                                      if(chatRoom.recentMessages && chatRoom.recentMessages.length > 0) {
+                                          recentMessageItem += `<p class="white px12 m-l-10 message-item">${chatRoom.recentMessages[chatRoom.recentMessages.length - 1].message || ""}</p>`;
+                                      }
+                                      recentMessageItem += `</div></div></li>`
+
+                      recentMessagesContainer.append(recentMessageItem);
+
+                      stompFriendClient.connect({}, function (frame) {
+                          stompFriendClient.subscribe('/topic/friend-chat/' + chatRoom.id, (message) => {
+                              const chatContent = $('.chat-content');
+                              $.get(`/users/current`, function(userData) {
+                                  const friendChatMessage = JSON.parse(message.body)
+                                  const friendChatRoom = JSON.parse(message.body).chatRoom;
+                                  const currentChatUserId = userData.id;  // 여기서 값을 할당
+                                  let newMessageHtml;
+                                  if (friendChatMessage.senderId == userData.id) {
+                                          newMessageHtml = `
+                                          <div class="message me">
+                                              <div class="message-content">
+                                                  <span class="message-time">${formatTime(friendChatMessage.timestamp)}</span>
+                                                  <div class="message-text-right">
+                                                      <p class="px14">${friendChatMessage.message}</p>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          `;
+                                      } else {
+                                          newMessageHtml = `
+                                              <div class="message">
+                                                  <img class="profile-img-36 m-r-6" src="../static/images/profile/default.png" alt="">
+                                                  <div class="message-content">
+                                                      <div class="message-text-left">
+                                                          <p class="px14">${friendChatMessage.message}</p>
+                                                      </div>
+                                                      <span class="message-time">${formatTime(friendChatMessage.timestamp)}</span>
+                                                  </div>
+                                              </div>
+                                          `;
+                                  }
+                                  const chatElement = $(`.chat-toggle[data-chat-room-id="${chatRoom.id}"]`);
+                                  // 찾은 p.message-item의 텍스트 업데이트
+                                  const messageItemElement = chatElement.find('p.message-item')[0];
+                                  if (messageItemElement) {
+                                      $(messageItemElement).text(friendChatMessage.message); // 메시지 내용을 업데이트
+                                  }
+                                  const noticeElement = chatElement[0].getElementsByClassName('receive')[0].getElementsByClassName('notice')[0];
+
+                                  const chatPanel = document.getElementById('chatPanel');
+                                  if (chatPanel.style.display != 'block' & chatRoom.id != currentChatRoomId) {
+                                      let currentCount = noticeElement.textContent.trim(); // 텍스트에서 공백 제거
+
+                                      // 숫자가 비어 있거나 +가 없는 경우
+                                      if (currentCount === '' || !currentCount.startsWith('+')) {
+                                          currentCount = 1;  // 처음인 경우 +1로 설정
+                                      } else {
+                                          // 기존 숫자에서 + 제거 후 파싱
+                                          currentCount = parseInt(currentCount.replace('+', ''));
+
+                                          // 숫자가 제대로 추출되었는지 확인 후 1을 더함
+                                          if (!isNaN(currentCount)) {
+                                              currentCount += 1;
+                                          }
+                                      }
+
+                                      // 증가된 숫자를 다시 요소에 반영
+                                      noticeElement.textContent = `+${currentCount}`;
+                                  }
+
+                                  chatContent.append(newMessageHtml);
+                                  chatContent.scrollTop(chatContent.prop("scrollHeight"));
+                              });
+                          });
+                      });
+                  });
+              });
+          });
+      }
+
+      // 페이지 로드 시 최근 메시지 로드
+      loadRecentMessages();
+
+      var chatInput = document.querySelector('.chat-text input');
+
+      friendSocket.onmessage = function(event) {
+          const messageData = JSON.parse(event.data);
+          const chatRoomId = messageData.chatRoomId;
+          const lastMessage = messageData.message;
+
+          // 해당 채팅방의 마지막 메시지 업데이트
+          document.querySelector(`#chatRoom_${chatRoomId} .recentMessage`).innerText = lastMessage;
+      };
+
+      chatInput.addEventListener('keypress', function(event) {
+          if (event.key === 'Enter') {
+              var message = event.target.value;
+              if (message.trim() !== '') {
+                  var messagePayload = {
+                      text: message,
+                      chatRoomId: currentChatRoomId
+                  };
+                  // 현재 채팅방의 요소 찾기
+                  const chatElement = $(`.chat-toggle[data-chat-room-id="${currentChatRoomId}"]`);
+
+                  // 찾은 p.message-item의 텍스트 업데이트
+                  const messageItemElement = chatElement.find('p.message-item')[0];
+                  if (messageItemElement) {
+                      $(messageItemElement).text(message); // 메시지 내용을 업데이트
+                  }
+
+                  stompFriendClient.send(`/app/send/${currentChatRoomId}`, {}, JSON.stringify(messagePayload));
+                  event.target.value = ''; // 입력창 비우기
+              }
+          }
+      });
+  });
 </script>

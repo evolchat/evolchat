@@ -51,56 +51,67 @@ $(document).ready(function () {
     }
 
     // 테이블을 업데이트하는 함수
-    function updateTable(posts) {
-        tableBody.empty();
-        posts.forEach(post => {
-            const row = $(`<tr class="pointer post-title">`);
+   function updateTable(posts) {
+       tableBody.empty();
+       posts.forEach(post => {
+           const row = $(`<tr class="pointer post-title">`);
 
-            // 분류
-            const categoryCell = $(`<td><a href="/support_notice_detail?boardId=1&postId=${post.postId}"><div class="bc-${getCategoryColor(post.detailedCategory)} border-5 flex-c-c square">${getCategoryLabel(post.detailedCategory)}</div></a></td>`);
-            row.append(categoryCell);
+           // 분류
+           const categoryCell = $(`
+               <td>
+                   <a href="/support_notice_detail?boardId=1&postId=${post.postId}">
+                       <div class="bc-${getCategoryColor(post.detailedCategory)} border-5 flex-c-c square">
+                           ${getCategoryLabel(post.detailedCategory)}
+                       </div>
+                   </a>
+               </td>
+           `);
+           row.append(categoryCell);
 
-            // 제목 (클릭 이벤트 추가)
-//            const titleCell = $(`
-//                <td>
-//                    <div class="text-left">
-//                        <span class="px15">${post.title}</span>
-//                        <img src="../../static/images/svg/icon-gallery.svg" alt="Gallery Icon">
-//                        <img src="../../static/images/svg/icon-videoplayer.svg" alt="Video Player Icon">
-//                        <img src="../../static/images/svg/icon-folder.svg" alt="Folder Icon">
-//                    </div>
-//                </td>
-//            `);
-            const titleCell = $(`
-                <td>
-                    <a href="/support_notice_detail?boardId=1&postId=${post.postId}">
-                        <div class="text-left">
-                            <span class="px15">${post.title}</span>
-                        </div>
-                    </a>
-                </td>
-            `);
-            row.append(titleCell);
+           // 제목
+           const titleCell = $(`
+               <td>
+                   <a href="/support_notice_detail?boardId=1&postId=${post.postId}">
+                       <div class="text-left">
+                           <span class="px15">${post.title}</span>
+                       </div>
+                   </a>
+               </td>
+           `);
+           row.append(titleCell);
 
-            // 일시
-            const dateCell = $(`<td class="opacity60"><a href="/support_notice_detail?boardId=1&postId=${post.postId}">${new Date(post.createdAt).toLocaleDateString()}</a></td>`);
-            row.append(dateCell);
+           // 일시
+           const dateCell = $(`
+               <td class="opacity60">
+                   <a href="/support_notice_detail?boardId=1&postId=${post.postId}">
+                       ${new Date(post.createdAt).toLocaleDateString()}
+                   </a>
+               </td>
+           `);
+           row.append(dateCell);
 
-            // 조회
-            const viewsCell = $(`<td class="opacity60"><a href="/support_notice_detail?boardId=1&postId=${post.postId}">${post.views}</a></td>`);
-            row.append(viewsCell);
+           // 조회
+           const viewsCell = $(`
+               <td class="opacity60">
+                   <a href="/support_notice_detail?boardId=1&postId=${post.postId}">
+                       ${post.views}
+                   </a>
+               </td>
+           `);
+           row.append(viewsCell);
 
-            tableBody.append(row);
-        });
+           // Add row to the table body
+           tableBody.append(row);
+       });
 
-        // 게시물 클릭 시 상세 페이지로 이동하는 이벤트 추가
-        tableBody.on('click', '.post-title', function () {
-            const postId = $(this).data('post-id');
-            if (postId) {
-                window.location.href = `/support_notice_detail?boardId=1&postId=${postId}`;
-            }
-        });
-    }
+       // Add click event to make entire <td> clickable and trigger <a> link
+       tableBody.on('click', 'td', function () {
+           const link = $(this).find('a')[0];
+           if (link) {
+               link.click();
+           }
+       });
+   }
 
     // 페이지네이션을 업데이트하는 함수
     function updatePagination(totalPages, currentPage) {

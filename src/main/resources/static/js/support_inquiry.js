@@ -56,36 +56,37 @@ $(document).ready(function () {
         posts.forEach(post => {
             const row = $(`<tr class="pointer post-title"></tr>`);
 
-            // 상태
+            // 상태 (a 태그를 포함)
             const statusCell = $(`<td><a href="/support_inquiry_detail?boardId=2&postId=${post.postId}"><div class="bc-${getStatusColor(post.detailedCategory)} border-5 flex-c-c square">${getStatusLabel(post.detailedCategory)}</div></a></td>`);
             row.append(statusCell);
 
-            // 문의내용 (클릭 이벤트 추가)
-            const contentCell = $(
-                `<td>
-                     <a href="/support_inquiry_detail?boardId=2&postId=${post.postId}">
-                         <div class="text-left">
-                             <span class="px15">${post.title}</span>
-                             ${post.hasGallery ? '<img src="../../static/images/svg/icon-gallery-ivory.svg" alt="Gallery Icon">' : ''}
-                             ${post.hasVideo ? '<img src="../../static/images/svg/icon-videoplayer-red.svg" alt="Video Icon">' : ''}
-                         </div>
-                     </a>
-                 </td>`
+            // 문의내용 (a 태그를 포함)
+            const contentCell = $(`
+                <td>
+                    <a href="/support_inquiry_detail?boardId=2&postId=${post.postId}">
+                        <div class="text-left">
+                            <span class="px15">${post.title}</span>
+                            ${post.hasGallery ? '<img src="../../static/images/svg/icon-gallery-ivory.svg" alt="Gallery Icon">' : ''}
+                            ${post.hasVideo ? '<img src="../../static/images/svg/icon-videoplayer-red.svg" alt="Video Icon">' : ''}
+                        </div>
+                    </a>
+                </td>`
             );
             row.append(contentCell);
 
-            // 일시
+            // 일시 (a 태그를 포함)
             const dateCell = $(`<td class="opacity60"><a href="/support_inquiry_detail?boardId=2&postId=${post.postId}">${new Date(post.createdAt).toLocaleString()}</a></td>`);
             row.append(dateCell);
 
+            // 행 추가
             tableBody.append(row);
         });
 
-        // 게시물 클릭 시 상세 페이지로 이동하는 이벤트 추가
-        tableBody.on('click', '.post-title', function () {
-            const postId = $(this).data('post-id');
-            if (postId) {
-                window.location.href = `/support_inquiry_detail?boardId=2&postId=${postId}`;
+        // 각 <td> 클릭 시 내부의 <a> 태그 클릭 이벤트를 트리거하도록 설정
+        tableBody.on('click', 'td', function () {
+            const link = $(this).find('a')[0];
+            if (link) {
+                link.click();
             }
         });
     }
