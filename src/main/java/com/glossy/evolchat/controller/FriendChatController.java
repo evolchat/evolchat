@@ -106,7 +106,7 @@ public class FriendChatController {
     }
 
     @PostMapping("/update-unread/{chatRoomId}")
-    public ResponseEntity<Void> updateUnreadMessages(@PathVariable("chatRoomId") int chatRoomId, Principal principal) {
+    public ResponseEntity<Void> updateUnreadMessages(@PathVariable int chatRoomId, Principal principal) {
         User currentUser = userService.findByUsername(principal.getName());
         friendChatMessageService.updateUnreadMessages(currentUser.getId(), chatRoomId);
         return ResponseEntity.ok().build();
