@@ -63,7 +63,11 @@
 .no-posts {
     text-align: center;
     color: #fff;
-    margin: 140px;~
+    margin: 140px;
+}
+
+.mainLayer {
+    margin: 50px 0 0 0;
 }
 
 /* help */
