@@ -88,4 +88,7 @@
 .mainLayer {
     min-height: 300px;
 }
+.user-list.flex-row.flex-c.tr {
+    cursor: pointer;
+}
 /* messenger_blocklists */

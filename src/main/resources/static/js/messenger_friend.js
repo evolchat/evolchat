@@ -76,24 +76,44 @@ $(document).ready(function() {
 });
 
 function showChatRoom(chatRoomId) {
+    let roomName;
     $.get('/friend-chat/user-chats', function(data) {
-        const recentMessagesContainer = $('.recentMessages');
-        recentMessagesContainer.empty();
-
         data.forEach(chatRoom => {
-            let recentMessageItem = `
-                <li class="grey-1">
-                    <div class="flex-row flex-c chat-toggle" data-chat-room-id="${chatRoom.id}">
-                        <img class="profile-img-36" src="../static/images/profile/default.png" />
-                        <div>
-                            <div class="receive">
-                                <p class="white px12 m-l-10">${chatRoom.roomName}</p>
-                                <span class="notice px12">${chatRoom.unreadCount}</span>
-                            </div>`;
-                            recentMessageItem += `</div></div></li>`
-            recentMessagesContainer.append(recentMessageItem);
+            if(chatRoom.id==chatRoomId) {
+                roomName = chatRoom.roomName;
+            }
         });
     });
+    const recentMessagesContainer = $('.recentMessages');
+    let recentMessageItem = `
+        <li class="grey-1">
+            <div class="flex-row flex-c chat-toggle" data-chat-room-id="${chatRoomId}" data-chat-room-name="${roomName}">
+                <img class="profile-img-36" src="../static/images/profile/default.png" />
+                <div>
+                    <div class="receive">
+                        <p class="white px12 m-l-10">${roomName}</p>
+                        <span class="notice px12"></span>
+                    </div>
+                    <p class="white px12 m-l-10 message-item"></p>
+                    </div></div></li>`;
+    recentMessagesContainer.append(recentMessageItem);
+//    $.get('/friend-chat/user-chats', function(data) {
+//        const recentMessagesContainer = $('.recentMessages');
+//        recentMessagesContainer.empty();
+//
+//        data.forEach(chatRoom => {
+//            let recentMessageItem = `
+//                <li class="grey-1">
+//                    <div class="flex-row flex-c chat-toggle" data-chat-room-id="${chatRoom.id}">
+//                        <img class="profile-img-36" src="../static/images/profile/default.png" />
+//                        <div>
+//                            <div class="receive">
+//                                <p class="white px12 m-l-10">${chatRoom.roomName}</p>
+//                                <span class="notice px12">${chatRoom.unreadCount}</span>
+//                            </div></div></div></li>`;
+//            recentMessagesContainer.append(recentMessageItem);
+//        });
+//    });
 }
 
 function messengerFriendMsgSend(event) {
@@ -112,8 +132,25 @@ function messengerFriendMsgSend(event) {
     .then(response => response.json())
     .then(data => {
         if (data.id) {
-            // 채팅방 생성 성공 시 채팅방 표시
-            showChatRoom(data.id);
+            const chatElement = $(`.chat-toggle[data-chat-room-id="${data.id}"]`);
+            const messageItemElement = chatElement.find('p.message-item')[0];
+            if (!chatElement.length) {
+                alert
+                Swal.fire({
+                    title: '채팅방 생성 완료!',
+                    text: '채팅방이 추가되었습니다. 페이지가 새로고침 됩니다.',
+                    icon: 'success',
+                    confirmButtonText: '확인',
+                    confirmButtonColor: '#8744FF',
+                    background: '#35373D',
+                    color: '#FFFFFF'
+                }).then(() => {
+                    location.reload(); // 페이지 새로고침
+                });
+
+            } else {
+                chatElement.click();
+            }
         } else {
             console.error('Failed to create chat room');
         }

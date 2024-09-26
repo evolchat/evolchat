@@ -32,57 +32,7 @@
                             </div>
 
                             <div class="mainLayer">
-                                <div class="user-list-layer  px15 white">
-                                    <div class="user-list flex-row flex-c tr">
-                                        <div class="profile position-r"><img class="profile-img-52" src="../../static/images/profile/default.png"
-                                                alt="#"></div>
-                                        <div class="user">
-                                            <p class="nickname opacity80 m-b-6">우울한협객 <span
-                                                    class="bc-ivory text-center px14">44</span></p>
-                                            <p class="text opacity60 px14">너희들은 내일만 보고 살지? 내일만 사는 놈은 오늘만 사는 놈한테 죽는다. 난 오늘만
-                                                살어!</p>
-                                        </div>
-                                        <div class="flex-row flex-c">
-                                            <span class="opacity40 m-r-14">오후 12:30</span>
-                                            <button class="btn flex-c-c hyphenation"><img
-                                                    src="../../static/images/svg/hyphenation.svg" alt=""
-                                                    style="height: auto; width: auto;" /></button>
-                                        </div>
-
-                                    </div>
-                                    <div class="user-list flex-row flex-c tr">
-                                        <div class="profile position-r rank">
-                                            <img src="../../static/images/svg/rank-1.svg" alt="#" class="position-a">
-                                            <img class="profile-img-52" src="../../static/images/profile/default.png" alt="#">
-
-                                        </div>
-                                        <div class="user">
-                                            <p class="nickname opacity80">연기의정신<span
-                                                    class="bc-ivory text-center px14">4</span></p>
-                                        </div>
-                                        <div class="flex-row flex-c">
-                                            <span class="opacity40 m-r-14">오후 12:30</span>
-                                            <button class="btn flex-c-c hyphenation"><img
-                                                    src="../../static/images/svg/hyphenation.svg" alt=""
-                                                    style="height: auto; width: auto;" /></button>
-                                        </div>
-                                    </div>
-                                    <div class="user-list flex-row flex-c tr">
-                                        <div class="profile position-r"><img class="profile-img-52" src="../../static/images/profile/default.png"
-                                                alt="#"></div>
-                                        <div class="user">
-                                            <p class="nickname opacity80 m-b-6">우울한협객</p>
-                                            <p class="text opacity60 px14">너희들은 내일만 보고 살지? 내일만 사는 놈은 오늘만 사는 놈한테 죽는다. 난 오늘만
-                                                살어!</p>
-                                        </div>
-                                        <div class="flex-row flex-c">
-                                            <span class="opacity40 m-r-14">2024-04-14</span>
-                                            <button class="btn flex-c-c hyphenation"><img
-                                                    src="../../static/images/svg/hyphenation.svg" alt=""
-                                                    style="height: auto; width: auto;" /></button>
-                                        </div>
-                                    </div>
-                                </div>
+                                <div class="user-list-layer  px15 white"></div>
                             </div>
                         </div>
                         <div id="footer" class=" bc-footer" th:insert="~{include/footer}">
@@ -92,24 +42,5 @@
             </section>
         </div>
     </div>
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-    // Apply Tippy.js to all hyphenation buttons in the user list
-    document.querySelectorAll('.mainLayer .btn.flex-c-c.hyphenation').forEach(function (btn) {
-        tippy(btn, {
-            content: '기타', // '기타'라는 텍스트를 툴팁 내용으로 설정
-            placement: 'top',
-            animation: 'fade',
-            onShow(instance) {
-                // 툴팁의 루트 요소에 접근하여 스타일을 직접 변경
-                instance.popper.querySelector('.tippy-box').style.backgroundColor = '#000000'; // 배경색 설정
-                instance.popper.querySelector('.tippy-box').style.color = 'white'; // 텍스트 색상 설정
-                instance.popper.querySelector('.tippy-arrow').style.color = '#000000'; // 화살표 색상 설정
-            }
-        });
-    });
-});
-</script>
 </body>
-
 </html>

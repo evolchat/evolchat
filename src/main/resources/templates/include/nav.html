@@ -385,6 +385,47 @@
                                     noticeElement.textContent = `+${currentCount}`;
                                 }
 
+                                if (window.location.pathname === '/messenger_message') {
+                                    $.get('/friend-chat/user-chats', function(data) {
+                                    const mainLayerContainer = $('.user-list-layer');
+                                    mainLayerContainer.empty();  // 기존 메시지 목록 초기화
+
+                                    data.forEach(chatRoom => {
+                                        $.get('/friend-chat/unread-count/' + chatRoom.id, function(unreadCount) {
+
+                                            let recentMessageItem = `<div onclick="openMessageItem(event)" class="user-list flex-row flex-c tr" data-chat-room-id="${chatRoom.id}">
+                                                <div class="profile position-r" onclick="openMessageItem(event)" data-chat-room-id="${chatRoom.id}"><img onclick="openMessageItem(event)" data-chat-room-id="${chatRoom.id}" class="profile-img-52" src="../../static/images/profile/default.png"
+                                                        alt="#"></div>
+                                                <div class="user" onclick="openMessageItem(event)" data-chat-room-id="${chatRoom.id}">
+                                                    <p class="nickname opacity80 m-b-6" onclick="openMessageItem(event)" data-chat-room-id="${chatRoom.id}">${chatRoom.roomName}`
+                                            if(unreadCount != 0) {
+                                                recentMessageItem += `<span class="bc-ivory text-center px14">${unreadCount}</span></p>`;
+                                            }
+
+                                            if (chatRoom.recentMessages && chatRoom.recentMessages.length > 0) {
+                                                recentMessageItem += `<p class="text opacity60 px14" onclick="openMessageItem(event)" data-chat-room-id="${chatRoom.id}">${chatRoom.recentMessages[chatRoom.recentMessages.length - 1].message || ""}</p>`;
+                                            }
+
+                                          recentMessageItem += `
+                                                </div>
+                                                <div class="flex-row flex-c" onclick="openMessageItem(event)" data-chat-room-id="${chatRoom.id}">`
+
+                                          if (chatRoom.recentMessages && chatRoom.recentMessages.length > 0) {
+                                            recentMessageItem += `<span class="opacity40 m-r-14">${formatTime(chatRoom.recentMessages[chatRoom.recentMessages.length - 1].timestamp)}</span>`
+                                          }
+                                              recentMessageItem +=`
+                                                        <button class="btn flex-c-c hyphenation"><img onclick="openMessageItem(event)" data-chat-room-id="${chatRoom.id}"
+                                                                src="../../static/images/svg/hyphenation.svg" alt=""
+                                                                style="height: auto; width: auto;" /></button>
+                                                    </div>
+                                              </div>`;
+
+                                            mainLayerContainer.append(recentMessageItem);
+                                        });
+                                    });
+                                });
+                                }
+
                                 chatContent.append(newMessageHtml);
                                 chatContent.scrollTop(chatContent.prop("scrollHeight"));
                             });
@@ -427,6 +468,47 @@
                     }
                     stompFriendClient.send(`/app/send/${currentChatRoomId}`, {}, JSON.stringify(messagePayload));
                     event.target.value = ''; // 입력창 비우기
+
+                    if (window.location.pathname === '/messenger_message') {
+                        $.get('/friend-chat/user-chats', function(data) {
+                        const mainLayerContainer = $('.user-list-layer');
+                        mainLayerContainer.empty();  // 기존 메시지 목록 초기화
+
+                        data.forEach(chatRoom => {
+                            $.get('/friend-chat/unread-count/' + chatRoom.id, function(unreadCount) {
+
+                                let recentMessageItem = `<div onclick="openMessageItem(event)" class="user-list flex-row flex-c tr" data-chat-room-id="${chatRoom.id}">
+                                    <div class="profile position-r" onclick="openMessageItem(event)" data-chat-room-id="${chatRoom.id}"><img onclick="openMessageItem(event)" data-chat-room-id="${chatRoom.id}" class="profile-img-52" src="../../static/images/profile/default.png"
+                                            alt="#"></div>
+                                    <div class="user" onclick="openMessageItem(event)" data-chat-room-id="${chatRoom.id}">
+                                        <p class="nickname opacity80 m-b-6" onclick="openMessageItem(event)" data-chat-room-id="${chatRoom.id}">${chatRoom.roomName}`
+                                if(unreadCount != 0) {
+                                    recentMessageItem += `<span class="bc-ivory text-center px14">${unreadCount}</span></p>`;
+                                }
+
+                                if (chatRoom.recentMessages && chatRoom.recentMessages.length > 0) {
+                                    recentMessageItem += `<p class="text opacity60 px14" onclick="openMessageItem(event)" data-chat-room-id="${chatRoom.id}">${chatRoom.recentMessages[chatRoom.recentMessages.length - 1].message || ""}</p>`;
+                                }
+
+                              recentMessageItem += `
+                                    </div>
+                                    <div class="flex-row flex-c" onclick="openMessageItem(event)" data-chat-room-id="${chatRoom.id}">`
+
+                              if (chatRoom.recentMessages && chatRoom.recentMessages.length > 0) {
+                                recentMessageItem += `<span class="opacity40 m-r-14">${formatTime(chatRoom.recentMessages[chatRoom.recentMessages.length - 1].timestamp)}</span>`
+                              }
+                                  recentMessageItem +=`
+                                            <button class="btn flex-c-c hyphenation"><img onclick="openMessageItem(event)" data-chat-room-id="${chatRoom.id}"
+                                                    src="../../static/images/svg/hyphenation.svg" alt=""
+                                                    style="height: auto; width: auto;" /></button>
+                                        </div>
+                                  </div>`;
+
+                                mainLayerContainer.append(recentMessageItem);
+                            });
+                        });
+                    });
+                    }
                 }
             }
         });
