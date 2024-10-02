@@ -28,12 +28,12 @@
                                 </div>
                                 <div class="header">
                                     <div class="options grey-4  flex-row  flex-c-c">
-                                        <div class="icon bdr">
-                                            <img src="../../static/images/svg/play.svg" alt="">
-                                        </div>
-                                        <div class="icon bdr m-r-50">
-                                            <img src="../../static/images/svg/pause.svg" alt="">
-                                        </div>
+<!--                                        <div class="icon bdr">-->
+<!--                                            <img src="../../static/images/svg/play.svg" alt="">-->
+<!--                                        </div>-->
+<!--                                        <div class="icon bdr m-r-50">-->
+<!--                                            <img src="../../static/images/svg/pause.svg" alt="">-->
+<!--                                        </div>-->
                                         <div class="icon">
                                             <img src="../../static/images/svg/return.svg" alt="">
                                         </div>
@@ -48,12 +48,12 @@
                                         <div class="icon m-r-70">
                                             <div class="bg-icon-item-4"></div>
                                         </div>
-                                        <div class="icon bdr">
-                                            패턴 등록
-                                        </div>
-                                        <div class="icon bdr">
-                                            패턴 테이블
-                                        </div>
+<!--                                        <div class="icon bdr">-->
+<!--                                            패턴 등록-->
+<!--                                        </div>-->
+<!--                                        <div class="icon bdr">-->
+<!--                                            패턴 테이블-->
+<!--                                        </div>-->
                                     </div>
                                     <div class="bg"></div>
                                 </div>
@@ -123,51 +123,64 @@
     </div>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        const socket = new SockJS('/game');  // SockJS를 사용하여 연결
-        const stompClient = Stomp.over(socket);
+<!--        const socket = new SockJS('/game');  // SockJS를 사용하여 연결-->
+<!--        const stompClient = Stomp.over(socket);-->
 
-        stompClient.connect({}, function(frame) {
-            console.log('Game Connected: ' + frame);
+<!--        stompClient.connect({}, function(frame) {-->
+<!--            console.log('Game Connected: ' + frame);-->
 
-            // /topic/cards 구독
-            stompClient.subscribe('/topic/cards', function(messageOutput) {
-                const cardMessage = JSON.parse(messageOutput.body);
-                updateCardUI(cardMessage);
-            });
+<!--            // /topic/cards 구독-->
+<!--            stompClient.subscribe('/topic/cards', function(messageOutput) {-->
+<!--                const cardMessage = JSON.parse(messageOutput.body);-->
+<!--                updateCardUI(cardMessage);-->
+<!--            });-->
 
-            // /topic/gameResult 구독
-            stompClient.subscribe('/topic/gameResult', function(gameResultOutput) {
-                const gameResult = JSON.parse(gameResultOutput.body);
-                showGameResult(gameResult);
-            });
-        });
+<!--            // /topic/gameResult 구독-->
+<!--            stompClient.subscribe('/topic/gameResult', function(gameResultOutput) {-->
+<!--                const gameResult = JSON.parse(gameResultOutput.body);-->
+<!--                showGameResult(gameResult);-->
+<!--            });-->
+<!--        });-->
 
-        stompClient.connect({}, function(frame) {
-            console.log('Connected: ' + frame);
-            // 필요한 추가 구독이 있다면 추가
-        });
+<!--        stompClient.connect({}, function(frame) {-->
+<!--            console.log('Connected: ' + frame);-->
+<!--            // 필요한 추가 구독이 있다면 추가-->
+<!--        });-->
 
-        function updateCardUI(cardMessage) {
-            const layer = cardMessage.layer; // 카드 메시지에 포함된 레이어 정보
-            if (!layer) {
-                console.error('카드 메시지에 레이어 정보가 없습니다.');
-                return;
-            }
+<!--        function updateCardUI(cardMessage) {-->
+<!--            const layer = cardMessage.layer; // 카드 메시지에 포함된 레이어 정보-->
+<!--            if (!layer) {-->
+<!--                console.error('카드 메시지에 레이어 정보가 없습니다.');-->
+<!--                return;-->
+<!--            }-->
 
-            // 레이어별 카드 요소 업데이트
-            const prefix = `#${layer}-`;
-            if (cardMessage.playerCard1) document.querySelector(`${prefix}playerCard1`).className = 'bg-card ' + cardMessage.playerCard1;
-            if (cardMessage.playerCard2) document.querySelector(`${prefix}playerCard2`).className = 'bg-card ' + cardMessage.playerCard2;
-            if (cardMessage.playerCard3) document.querySelector(`${prefix}playerCard3`).className = 'bg-card ' + cardMessage.playerCard3;
-            if (cardMessage.bankerCard1) document.querySelector(`${prefix}bankerCard1`).className = 'bg-card ' + cardMessage.bankerCard1;
-            if (cardMessage.bankerCard2) document.querySelector(`${prefix}bankerCard2`).className = 'bg-card ' + cardMessage.bankerCard2;
-            if (cardMessage.bankerCard3) document.querySelector(`${prefix}bankerCard3`).className = 'bg-card ' + cardMessage.bankerCard3;
+<!--            // 레이어별 카드 요소 업데이트-->
+<!--            const prefix = `#${layer}-`;-->
+<!--            if (cardMessage.playerCard1) document.querySelector(`${prefix}playerCard1`).className = 'bg-card ' + cardMessage.playerCard1;-->
+<!--            if (cardMessage.playerCard2) document.querySelector(`${prefix}playerCard2`).className = 'bg-card ' + cardMessage.playerCard2;-->
+<!--            if (cardMessage.playerCard3) document.querySelector(`${prefix}playerCard3`).className = 'bg-card ' + cardMessage.playerCard3;-->
+<!--            if (cardMessage.bankerCard1) document.querySelector(`${prefix}bankerCard1`).className = 'bg-card ' + cardMessage.bankerCard1;-->
+<!--            if (cardMessage.bankerCard2) document.querySelector(`${prefix}bankerCard2`).className = 'bg-card ' + cardMessage.bankerCard2;-->
+<!--            if (cardMessage.bankerCard3) document.querySelector(`${prefix}bankerCard3`).className = 'bg-card ' + cardMessage.bankerCard3;-->
+<!--        }-->
+
+<!--        function showGameResult(gameResult) {-->
+<!--            // 게임 결과를 화면에 표시하는 함수-->
+<!--            console.log('Game Result:', gameResult);-->
+<!--        }-->
+
+        var gameSocket = new SockJS('/game'); // WebSocket 엔드포인트
+        var stompGameClient = Stomp.over(gameSocket);
+        // 최근 메시지 로드
+        function loadGames() {
+                stompGameClient.connect({}, function (frame) {
+                        stompGameClient.subscribe('/topic/game/441', (message) => {
+                                const gameMessage = JSON.parse(message.body)
+                                console.log(gameMessage)
+                        });
+                });
         }
-
-        function showGameResult(gameResult) {
-            // 게임 결과를 화면에 표시하는 함수
-            console.log('Game Result:', gameResult);
-        }
+        loadGames();
     });
 </script>
 </body>

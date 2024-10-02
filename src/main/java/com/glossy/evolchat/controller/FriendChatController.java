@@ -63,26 +63,26 @@ public class FriendChatController {
     }
 
     // 메시지 전송 요청
-    @PostMapping("/send-message")
-    public ResponseEntity<Void> sendMessage(@RequestBody FriendChatMessageRequest messageRequest) {
-        Optional<FriendChatRoom> chatRoomOpt = friendChatService.findChatRoom(messageRequest.getSenderId(), messageRequest.getReceiverId());
-        if (chatRoomOpt.isPresent()) {
-            FriendChatMessage message = new FriendChatMessage();
-            message.setChatRoom(chatRoomOpt.get());  // 채팅방 설정
-            message.setSenderId(messageRequest.getSenderId());
-            message.setMessage(messageRequest.getMessage());
-
-            try {
-                friendChatMessageService.saveMessage(message);
-                messagingTemplate.convertAndSend("/topic/friend-chat/" + chatRoomOpt.get().getId(), message);
-                return ResponseEntity.ok().build();
-            } catch (Exception e) {
-                e.printStackTrace();  // 로그 출력 (개발 중 디버깅에 유용)
-                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-            }
-        }
-        return ResponseEntity.notFound().build();
-    }
+//    @PostMapping("/send-message")
+//    public ResponseEntity<Void> sendMessage(@RequestBody FriendChatMessageRequest messageRequest) {
+//        Optional<FriendChatRoom> chatRoomOpt = friendChatService.findChatRoom(messageRequest.getSenderId(), messageRequest.getReceiverId());
+//        if (chatRoomOpt.isPresent()) {
+//            FriendChatMessage message = new FriendChatMessage();
+//            message.setChatRoom(chatRoomOpt.get());  // 채팅방 설정
+//            message.setSenderId(messageRequest.getSenderId());
+//            message.setMessage(messageRequest.getMessage());
+//
+//            try {
+//                friendChatMessageService.saveMessage(message);
+//                messagingTemplate.convertAndSend("/topic/friend-chat/" + chatRoomOpt.get().getId(), message);
+//                return ResponseEntity.ok().build();
+//            } catch (Exception e) {
+//                e.printStackTrace();  // 로그 출력 (개발 중 디버깅에 유용)
+//                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+//            }
+//        }
+//        return ResponseEntity.notFound().build();
+//    }
 
     @GetMapping("/user-chats")
     public ResponseEntity<List<FriendChatRoomDTO>> getUserChatRooms(Principal principal) {
