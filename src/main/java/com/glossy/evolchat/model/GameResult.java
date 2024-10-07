@@ -1,7 +1,6 @@
 package com.glossy.evolchat.model;
 
 public class GameResult {
-
     private final String winner;
     private final int playerScore;
     private final int dealerScore;

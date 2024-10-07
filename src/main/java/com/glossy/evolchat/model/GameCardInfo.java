@@ -30,4 +30,6 @@ public class GameCardInfo {
     @Column(name = "timestamp", nullable = false)
     private LocalDateTime timestamp;
 
+    @Column(nullable = false)
+    private String gameTypeNum;
 }

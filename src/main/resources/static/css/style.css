@@ -914,6 +914,9 @@ table {
     color: #185CC6
 }
 
+.green {
+    color: #03c104
+}
 .color-red {
     color: #cf0e0f;
 }
@@ -1370,107 +1373,107 @@ table {
     transform: rotate(-90deg);
 }
 
-.bg-card-space-item-1 {
+.bg-card-spade-item-1 {
     background-position: -20px -17px;
 }
 
-.bg-card-space-item-2 {
+.bg-card-spade-item-2 {
     background-position: -43px -17px;
 }
 
-.bg-card-space-item-3 {
+.bg-card-spade-item-3 {
     background-position: -66px -17px;
 }
 
-.bg-card-space-item-4 {
+.bg-card-spade-item-4 {
     background-position: -89px -17px;
 }
 
-.bg-card-space-item-5 {
+.bg-card-spade-item-5 {
     background-position: -112px -17px;
 }
 
-.bg-card-space-item-6 {
+.bg-card-spade-item-6 {
     background-position: -135px -17px;
 }
 
-.bg-card-space-item-7 {
+.bg-card-spade-item-7 {
     background-position: -158px -17px;
 }
 
-.bg-card-space-item-8 {
+.bg-card-spade-item-8 {
     background-position: -181px -17px;
 }
 
-.bg-card-space-item-9 {
+.bg-card-spade-item-9 {
     background-position: -204px -17px;
 }
 
-.bg-card-space-item-10 {
+.bg-card-spade-item-10 {
     background-position: -227px -17px;
 }
 
-.bg-card-space-item-11 {
+.bg-card-spade-item-11 {
     background-position: -250px -17px;
 }
 
-.bg-card-space-item-12 {
+.bg-card-spade-item-12 {
     background-position: -273px -17px;
 }
 
-.bg-card-space-item-13 {
+.bg-card-spade-item-13 {
     background-position: -296px -17px;
 }
 
-.bg-card-clover-item-1 {
+.bg-card-club-item-1 {
     background-position: -20px -45px
 }
 
-.bg-card-clover-item-2 {
+.bg-card-club-item-2 {
     background-position: -43px -45px
 }
 
-.bg-card-clover-item-3 {
+.bg-card-club-item-3 {
     background-position: -66px -45px
 }
 
-.bg-card-clover-item-4 {
+.bg-card-club-item-4 {
     background-position: -89px -45px
 }
 
-.bg-card-clover-item-5 {
+.bg-card-club-item-5 {
     background-position: -112px -45px
 }
 
-.bg-card-clover-item-6 {
+.bg-card-club-item-6 {
     background-position: -135px -45px
 }
 
-.bg-card-clover-item-7 {
+.bg-card-club-item-7 {
     background-position: -158px -45px
 }
 
-.bg-card-clover-item-8 {
+.bg-card-club-item-8 {
     background-position: -181px -45px
 }
 
-.bg-card-clover-item-9 {
+.bg-card-club-item-9 {
     background-position: -204px -45px
 }
 
-.bg-card-clover-item-10 {
+.bg-card-club-item-10 {
     background-position: -227px -45px
 }
 
-.bg-card-clover-item-11 {
+.bg-card-club-item-11 {
     background-position: -250px -45px
 }
 
-.bg-card-clover-item-12 {
+.bg-card-club-item-12 {
     background-position: -273px -45px
 }
 
-.bg-card-clover-item-13 {
+.bg-card-club-item-13 {
     background-position: -296px -45px
 }
 
@@ -2692,6 +2695,9 @@ img.profile-img-60 {
     position: absolute !important;
 }
 
+.card-wrap {
+    justify-content: space-around;
+}
 /* 스피너 스타일 */
 .spinner {
     border: 4px solid #f3f3f3; /* Light grey */

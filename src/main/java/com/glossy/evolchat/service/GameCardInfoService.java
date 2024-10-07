@@ -1,18 +1,12 @@
 package com.glossy.evolchat.service;
 
-import com.glossy.evolchat.dto.FriendChatMessageDTO;
-import com.glossy.evolchat.model.FriendChatMessage;
 import com.glossy.evolchat.model.GameCardInfo;
-import com.glossy.evolchat.repository.FriendChatMessageRepository;
 import com.glossy.evolchat.repository.GameCardInfoRepository;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
+import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class GameCardInfoService {
@@ -20,11 +14,13 @@ public class GameCardInfoService {
     @Autowired
     private GameCardInfoRepository gameCardInfoRepository;
 
-    // 새로운 메시지 저장하기
-    public void saveGameHistory(GameCardInfo cardInfo) {
-        // timestamp 필드 설정
-        cardInfo.setTimestamp(LocalDateTime.now());
-        gameCardInfoRepository.save(cardInfo);
+    // 특정 gameTypeNum에 해당하는 최신 game_id의 카드 정보 가져오기
+    public List<GameCardInfo> findLatestCardsByGameTypeNum(String gameTypeNum) {
+        // 최신 game_id를 조회
+        String latestGameId = gameCardInfoRepository.findLatestGameIdByGameTypeNum(gameTypeNum);
+        if (latestGameId != null) {
+            return gameCardInfoRepository.findCardsByGameIdAndGameTypeNum(latestGameId, gameTypeNum);
+        }
+        return List.of(); // 없으면 빈 리스트 반환
     }
-
 }

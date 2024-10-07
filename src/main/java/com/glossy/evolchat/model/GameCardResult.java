@@ -10,7 +10,6 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 public class GameCardResult {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id; // Long 대신 int 사용
@@ -30,4 +29,6 @@ public class GameCardResult {
     @Column(name = "timestamp", nullable = false)
     private LocalDateTime timestamp;
 
+    @Column(nullable = false)
+    private String gameTypeNum;
 }

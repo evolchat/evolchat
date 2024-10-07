@@ -61,49 +61,41 @@
                                     <div class="gameLayer">
                                         <div class="gameLayout white">
                                             <div class="top flex-row flex-c">
-                                                <div class="title">코리아 스피드 바카라&nbsp<img src="../../static/images/svg/flag-korea.svg" alt=""></div>
-                                                <div class="count px14"><img src="../../static/images/svg/person.svg" alt="">582</div>
+                                                <div class="title">코리아 스피드 바카라 A&nbsp<img src="../../static/images/svg/flag-korea.svg" alt=""></div>
+                                                <div class="count px14"><img src="../../static/images/svg/person.svg" alt="">0</div>
                                             </div>
                                             <div class="middle flex-row flex-c-c">
                                                 <div class="play-btn border-blue bg-b-b left-radius color-blue">플레이어페어</div>
                                                 <div class="play-btn border-blue bg-b-b right-radius position-r flex-c player">
-                                                    <div class="score position-a left px24">4</div>
-                                                    <div class="card-wrap flex-row-reverse">
-                                                        <div class="bg-card bg-card-diamond-item-1"></div>
-                                                        <div class="bg-card bg-card-diamond-item-2"></div>
-                                                        <div class="bg-card bg-card-diamond-item-3 card-rotate-r"></div>
-                                                    </div>
+                                                    <div class="score position-a left px24">0</div>
+                                                    <div class="card-wrap flex-row-reverse"></div>
                                                 </div>
                                                 <div class="play-btn border-green bg-g-b color-green">타이</div>
-                                                <div class="play-btn border-red bg-r-b left-radius position-r flex-c">
-                                                    <div class="score position-a right px24">6</div>
-                                                    <div class="card-wrap flex-row flex-c">
-                                                        <div class="bg-card bg-card-diamond-item-1"></div>
-                                                        <div class="bg-card bg-card-diamond-item-2"></div>
-                                                        <div class="bg-card bg-card-diamond-item-3 card-rotate-l"></div>
-                                                    </div>
+                                                <div class="play-btn border-red bg-r-b left-radius position-r flex-c banker">
+                                                    <div class="score position-a right px24">0</div>
+                                                    <div class="card-wrap flex-row flex-c"></div>
                                                 </div>
                                                 <div class="play-btn border-red bg-r-b right-radius color-red">뱅커페어</div>
                                             </div>
                                             <div class="bottom">
                                                 <div class="top flex-row px14">
-                                                    <div class="gameCount"># 53</div>
+                                                    <div class="gameCount"># 0</div>
                                                     <div class="pWin">
-                                                        <div class="i-circle bc-blue">P </div><span> 23</span>
+                                                        <div class="i-circle bc-blue">P </div><span> 0</span>
                                                     </div>
                                                     <div class="bWin">
-                                                        <div class="i-circle bc-red">B </div><span> 29</span>
+                                                        <div class="i-circle bc-red">B </div><span> 0</span>
                                                     </div>
                                                     <div class="noWin">
-                                                        <div class="i-circle bc-green">T </div><span> 1</span>
+                                                        <div class="i-circle bc-green">T </div><span> 0</span>
                                                     </div>
                                                     <div class="">
                                                         <div class="i-circle bc-grey"><span class="v-h">P</span></div>
-                                                        <span>5</span>
+                                                        <span>0</span>
                                                     </div>
                                                     <div class="">
                                                         <div class="i-circle bc-grey"><span class="v-h">B</span></div>
-                                                        <span>4</span>
+                                                        <span>0</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -122,66 +114,180 @@
         </div>
     </div>
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-<!--        const socket = new SockJS('/game');  // SockJS를 사용하여 연결-->
-<!--        const stompClient = Stomp.over(socket);-->
+$(function() {
 
-<!--        stompClient.connect({}, function(frame) {-->
-<!--            console.log('Game Connected: ' + frame);-->
+    $('select').selectric();
 
-<!--            // /topic/cards 구독-->
-<!--            stompClient.subscribe('/topic/cards', function(messageOutput) {-->
-<!--                const cardMessage = JSON.parse(messageOutput.body);-->
-<!--                updateCardUI(cardMessage);-->
-<!--            });-->
+    function getCardType(cardNum) {
+        const shape = cardNum.charAt(1); // 두 번째 문자가 카드 모양
 
-<!--            // /topic/gameResult 구독-->
-<!--            stompClient.subscribe('/topic/gameResult', function(gameResultOutput) {-->
-<!--                const gameResult = JSON.parse(gameResultOutput.body);-->
-<!--                showGameResult(gameResult);-->
-<!--            });-->
-<!--        });-->
-
-<!--        stompClient.connect({}, function(frame) {-->
-<!--            console.log('Connected: ' + frame);-->
-<!--            // 필요한 추가 구독이 있다면 추가-->
-<!--        });-->
-
-<!--        function updateCardUI(cardMessage) {-->
-<!--            const layer = cardMessage.layer; // 카드 메시지에 포함된 레이어 정보-->
-<!--            if (!layer) {-->
-<!--                console.error('카드 메시지에 레이어 정보가 없습니다.');-->
-<!--                return;-->
-<!--            }-->
-
-<!--            // 레이어별 카드 요소 업데이트-->
-<!--            const prefix = `#${layer}-`;-->
-<!--            if (cardMessage.playerCard1) document.querySelector(`${prefix}playerCard1`).className = 'bg-card ' + cardMessage.playerCard1;-->
-<!--            if (cardMessage.playerCard2) document.querySelector(`${prefix}playerCard2`).className = 'bg-card ' + cardMessage.playerCard2;-->
-<!--            if (cardMessage.playerCard3) document.querySelector(`${prefix}playerCard3`).className = 'bg-card ' + cardMessage.playerCard3;-->
-<!--            if (cardMessage.bankerCard1) document.querySelector(`${prefix}bankerCard1`).className = 'bg-card ' + cardMessage.bankerCard1;-->
-<!--            if (cardMessage.bankerCard2) document.querySelector(`${prefix}bankerCard2`).className = 'bg-card ' + cardMessage.bankerCard2;-->
-<!--            if (cardMessage.bankerCard3) document.querySelector(`${prefix}bankerCard3`).className = 'bg-card ' + cardMessage.bankerCard3;-->
-<!--        }-->
-
-<!--        function showGameResult(gameResult) {-->
-<!--            // 게임 결과를 화면에 표시하는 함수-->
-<!--            console.log('Game Result:', gameResult);-->
-<!--        }-->
-
-        var gameSocket = new SockJS('/game'); // WebSocket 엔드포인트
-        var stompGameClient = Stomp.over(gameSocket);
-        // 최근 메시지 로드
-        function loadGames() {
-                stompGameClient.connect({}, function (frame) {
-                        stompGameClient.subscribe('/topic/game/441', (message) => {
-                                const gameMessage = JSON.parse(message.body)
-                                console.log(gameMessage)
-                        });
-                });
+        switch (shape) {
+            case 'H':
+                return 'heart';
+            case 'D':
+                return 'diamond';
+            case 'C':
+                return 'club';
+            case 'S':
+                return 'spade';
+            default:
+                return 'default';
         }
-        loadGames();
-    });
+    }
+
+    function updateCardDisplay(gameTypeNum) {
+        fetch(`/game/latest-card-info/${gameTypeNum}`)
+            .then(response => response.json())
+            .then(data => {
+                // 기존 카드 영역을 지우고 새로 업데이트
+                const playerCards = document.querySelector('.player .card-wrap');
+                const bankerCards = document.querySelector('.banker .card-wrap');
+                playerCards.innerHTML = '';
+                bankerCards.innerHTML = '';
+
+                // 플레이어와 뱅커의 카드들을 분리
+                const playerCardData = data.filter(card => card.cardPlace === 'player');
+                const bankerCardData = data.filter(card => card.cardPlace === 'banker');
+
+                // 플레이어 카드 업데이트 (카드 개수에 맞게)
+                playerCardData.slice(0, 3).forEach(card => {
+                    const cardElement = document.createElement('div');
+
+                    // 카드의 첫 번째 문자가 J, Q, K일 때 값을 변경
+                    let cardValue = card.cardNum.charAt(0);
+
+                    if (cardValue === 'J') cardValue = 11;
+                    else if (cardValue === 'Q') cardValue = 12;
+                    else if (cardValue === 'K') cardValue = 13;
+
+                    cardElement.className = `bg-card bg-card-${getCardType(card.cardNum)}-item-${cardValue}`;
+                    playerCards.appendChild(cardElement);
+                });
+
+                // 뱅커 카드 업데이트 (카드 개수에 맞게)
+                bankerCardData.slice(0, 3).forEach(card => {
+                    const cardElement = document.createElement('div');
+
+                    // 카드의 첫 번째 문자가 J, Q, K일 때 값을 변경
+                    let cardValue = card.cardNum.charAt(0);
+                    if (cardValue === 'J') cardValue = 11;
+                    else if (cardValue === 'Q') cardValue = 12;
+                    else if (cardValue === 'K') cardValue = 13;
+
+                    cardElement.className = `bg-card bg-card-${getCardType(card.cardNum)}-item-${cardValue}`;
+                    bankerCards.appendChild(cardElement);
+                });
+
+            })
+            .catch(error => console.error('Error:', error));
+    }
+
+    // 1초마다 최신 game_id의 카드 정보 업데이트
+    setInterval(() => updateCardDisplay('441'), 1000);
+
+    function updateCardResultDisplay(gameTypeNum) {
+
+        fetch(`/game/game-result/${gameTypeNum}`)
+            .then(response => response.json())
+            .then(data => {
+                refreshGameResults(data);
+            })
+            .catch(error => console.error('Error:', error));
+    }
+
+    setInterval(() => updateCardResultDisplay('441'), 1000);
+
+    function createTable(tableElement, rows, cols) {
+        // 테이블의 기존 자식 요소를 모두 삭제
+        while (tableElement.firstChild) {
+            tableElement.removeChild(tableElement.firstChild);
+        }
+
+        // 새로운 테이블 생성
+        for (let i = 0; i < rows; i++) {
+            const tr = document.createElement('tr');
+            for (let j = 0; j < cols; j++) {
+                const td = document.createElement('td');
+                const dot = document.createElement('div');
+                dot.classList.add('dot');
+                td.appendChild(dot);
+                tr.appendChild(td);
+            }
+            tableElement.appendChild(tr);
+        }
+    }
+
+    function addCircle(tableElement, row, col, color) {
+        const cell = tableElement.rows[row].cells[col];
+        const circle = document.createElement('div');
+        circle.classList.add('circle', color);
+        cell.innerHTML = '';
+        cell.appendChild(circle);
+    }
+
+    function refreshGameResults(gameResults) {
+        const tables = document.querySelectorAll('.gameTable');
+        let gameCount = 0;
+        let redCount = 0;
+        let blueCount = 0;
+        let tieCount = 0;
+
+        const playerScore = document.querySelector('.player .score');
+        const bankerScore = document.querySelector('.banker .score');
+
+        playerScore.innerHTML = gameResults[gameResults.length-1].playerScore;
+        bankerScore.innerHTML = gameResults[gameResults.length-1].bankerScore;
+
+        tables.forEach((table, index) => {
+            createTable(table, 6, 30);  // 6x30 테이블 생성
+
+            // 열 별로 마지막으로 추가된 색상과 행을 추적
+            let currentCol = 0;  // 현재 열을 추적
+            let currentRow = 0;  // 현재 행을 추적
+            let lastColor = null;  // 마지막으로 추가된 색
+
+            // 게임 결과에 따라 원을 추가
+            gameResults.forEach((result, i) => {
+                let color;
+                if (result.winner === 'player') {
+                    color = 'blue';  // player가 승리하면 파란색
+                    blueCount++;
+                } else if (result.winner === 'banker') {
+                    color = 'red';   // banker가 승리하면 빨간색
+                    redCount++;
+                } else if (result.winner === 'tie') {
+                    color = 'green'; // 무승부면 초록색
+                    tieCount++;
+                }
+                gameCount++;
+                // 현재 결과 색상과 이전 색상이 같으면 같은 열에 추가, 다르면 새로운 열로 이동
+                if (color === lastColor) {
+                    currentRow++;  // 같은 색이면 행 증가
+                    if (currentRow >= 6) {  // 행이 6을 넘으면 새로운 열로 이동
+                        currentRow = 0;
+                        currentCol++;
+                    }
+                } else {
+                    currentRow = 0;  // 다른 색이면 행을 초기화
+                    currentCol++;  // 열을 증가
+                    if (currentCol >= 30) {  // 열이 30을 넘으면 열을 다시 0으로
+                        currentCol = 0;
+                    }
+                }
+
+                // 테이블에 각 게임 결과 추가 (행: currentRow, 열: currentCol)
+                addCircle(table, currentRow, currentCol, color);
+
+                // 마지막 색상 갱신
+                lastColor = color;
+            });
+        });
+        document.querySelector('.pWin span').textContent = ' ' + blueCount;  // 파란색 총 갯수
+        document.querySelector('.bWin span').textContent = ' ' + redCount;   // 빨간색 총 갯수
+        document.querySelector('.noWin span').textContent = ' ' + tieCount;   // 초록색 총 갯수
+        document.querySelector('.gameCount').textContent = '# ' + gameCount;   // 초록색 총 갯수
+    }
+});
 </script>
 </body>
 

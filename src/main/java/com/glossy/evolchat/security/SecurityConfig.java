@@ -27,20 +27,21 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeRequests(authorize -> authorize
-                        .requestMatchers("/login", "/register", "/find-id", "/find-password", "/static/**", "/swagger-ui/**", "/topic/game/**").permitAll()
+                        .requestMatchers("/login", "/register", "/find-id", "/find-password", "/static/**", "/swagger-ui/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
                         .loginPage("/login")
                         .loginProcessingUrl("/login") // 로그인 처리 URL 설정
-                        .defaultSuccessUrl("/home", true) // Redirect to root URL upon successful login
+                        .defaultSuccessUrl("/home", true) // 로그인 성공 시 리다이렉트할 URL
                         .permitAll()
                 )
                 .logout(logout -> logout
                         .logoutUrl("/logout")
                         .logoutSuccessUrl("/login")
                         .permitAll()
-                ).sessionManagement(session -> session
+                )
+                .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED) // 세션 생성 정책 설정
                         .maximumSessions(1) // 최대 세션 수 설정
                         .expiredUrl("/login?sessionExpired=true") // 세션 만료 후 이동할 URL 설정
